@@ -23,5 +23,5 @@ jobs:
 
       - name: Helm
         run: |
-          helm package charts/chart
+          helm package chart
           helm repo index --url https://github.com/lukas-pastva/helm-monitorie --merge index.yaml .

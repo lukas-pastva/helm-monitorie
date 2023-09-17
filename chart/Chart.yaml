@@ -7,10 +7,9 @@ annotations:
       url: https://github.com/lukas-pastva/helm-monitorie
   artifacthub.io/operator: "true"
 apiVersion: v2
-appVersion: v0.1.0
+appVersion: v1.1
 dependencies:
-  - condition: kubePrometheusStack.enabled
-    name: kube-prometheus-stack
+  - name: kube-prometheus-stack
     repository: https://prometheus-community.github.io/helm-charts
     version: 43.2.1
 description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
@@ -26,4 +25,4 @@ name: helm-monitorie
 sources:
   - https://github.com/lukas-pastva/helm-monitorie
 type: application
-version: 0.1.0
+version: 0.1.1
