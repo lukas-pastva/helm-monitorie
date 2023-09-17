@@ -1,0 +1,24 @@
+{{- range $item_name, $item := .Values.pods }}
+{{ if $item.networkPolicy }}
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: "{{ $item_name }}"
+  namespace: "{{ $item.networkPolicy.destinationNamespace }}"
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: "{{ $item.networkPolicy.destinationPod }}"
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: {{ $.Values.namespace }}
+      ports:
+        - protocol: TCP
+          port: 9090
+{{- end }}
+{{- end }}

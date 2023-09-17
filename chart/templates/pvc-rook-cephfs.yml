@@ -1,0 +1,22 @@
+{{- range $item_name, $item := .Values.pods }}
+{{- range $itemVolumes := $item.volumes }}
+{{ if eq $itemVolumes.type "rook-cephfs" }}
+{{ if not $itemVolumes.readOnly }}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ $itemVolumes.name }}
+{{/*  namespace: {{ $itemVolumes.namespace }}*/}}
+spec:
+  storageClassName: rook-cephfs
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: {{ if $itemVolumes.size }}{{ $itemVolumes.size }}{{ else }}1Gi{{ end }}
+  volumeMode: Filesystem
+{{- end }}
+{{- end }}
+{{- end }}
+{{- end }}

@@ -1,0 +1,11 @@
+{{- range $configMap := .Values.configMaps }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ $configMap.name }}
+  namespace: {{ $.Values.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+data: {{- $configMap.data | toYaml | nindent 2 }}
+{{- end }}

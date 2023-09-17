@@ -1,0 +1,23 @@
+{{- range $item_name, $item := .Values.pods }}
+{{- range $itemVolumes := $item.volumes }}
+{{ if eq $itemVolumes.type "csi-s3" }}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ $itemVolumes.name }}
+  labels:
+    app.kubernetes.io/name: {{ $itemVolumes.name }}
+  annotations:
+    volume.beta.kubernetes.io/storage-class: "csi-s3"
+    argocd.argoproj.io/sync-wave: "4"
+spec:
+  storageClassName: csi-s3
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ if $itemVolumes.size }}{{ $itemVolumes.size }}{{ else }}1Gi{{ end }}
+{{- end }}
+{{- end }}
+{{- end }}

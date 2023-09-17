@@ -1,0 +1,252 @@
+{{- range $item_name, $item := .Values.pods }}
+---
+apiVersion: apps/v1
+kind: {{ $.Values.type }}
+metadata:
+  name: {{ $item_name }}
+  labels:
+    app.kubernetes.io/name: {{ $item_name }}
+  namespace: {{ $.Values.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+spec:
+  {{ if eq $.Values.type "Deployment" }}replicas: {{ $item.replicaCount | default 1 }}{{- end }}
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ $item_name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ $item_name }}
+        {{- if $item.labels -}}
+        {{ $item.labels | toYaml | trunc 63 | nindent 8 }}
+        {{- end }}
+      annotations:
+        {{- if $item.annotations -}}
+        {{ $item.annotations | toYaml | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- if $.Values.nodeName }}
+      nodeName: {{ $.Values.nodeName | quote }}
+      {{- end }}
+      {{- if $item.privileged }}
+      securityContext:
+        runAsUser: 0
+        runAsGroup: 0
+        fsGroup: 0
+      {{- end }}
+      {{ if $.Values.tolerations }}
+      tolerations:
+      {{- range $toleration := $.Values.tolerations }}
+      - key: "app-type"
+        operator: "Equal"
+        value: {{ $toleration }}
+        effect: "NoExecute"
+        tolerationSeconds: 3600
+      {{- end }}
+      {{- end }}
+      {{ if $.Values.nodeAffinity }}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+              {{- range $affinity := $.Values.nodeAffinity }}
+                - key: {{ $affinity.key }}
+                  operator: In
+                  values:
+                  {{- range $affinityValue := $affinity.values }}
+                    - {{ $affinityValue }}
+                  {{- end }}
+              {{- end }}
+      {{- end }}
+      {{- if $item.securityContext }}
+      securityContext:
+        {{- $item.securityContext | toYaml | nindent 8 }}
+      {{- end }}
+      {{- if $item.serviceAccountEnabled }}
+      serviceAccountName: {{ $item_name }}
+      {{- end }}
+      containers:
+        {{- if $item.oauth2 }}
+        - name: "{{ $item_name }}-oauth2"
+          image: "registry.gitlab.com/tronic-sk/devops/sys-oauth2/web:51c07eee"
+          resources:
+            limits:
+              cpu: 120m
+              memory: 128Mi
+            requests:
+              cpu: 80m
+              memory: 64Mi
+          ports:
+            - name: http-oauth2
+              containerPort: 4181
+              protocol: TCP
+          env:
+            - name: PROVIDERS_OIDC_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: "oauth2"
+                  key: PROVIDERS_OIDC_CLIENT_SECRET
+            - name: SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: "oauth2"
+                  key: SECRET
+            - name: DEFAULT_PROVIDER
+              value: "oidc"
+            - name: PROVIDERS_OIDC_ISSUER_URL
+              value: "https://sso.mltech.sk/realms/mltech"
+            - name: PROVIDERS_OIDC_CLIENT_ID
+              value: "oauth2-proxy"
+            - name: INSECURE_COOKIE
+              value: "true"
+            - name: COOKIE_DOMAIN
+              value: {{ $item.oauth2 | quote }}
+            - name: DOMAINS
+              value: {{ $item.oauth2 | quote }}
+            - name: AUTH_HOST
+              value: {{ $item.oauth2 | quote }}
+            - name: URL_PATH
+              value: "/_oauth"
+        {{- end }}
+        - name: {{ $item_name }}
+          image: "{{ $item.repo }}"
+        {{- if $item.privileged }}
+          securityContext:
+            privileged: true
+        {{- end }}
+        {{- if $item.podSecurityContext }}
+          securityContext:
+          {{- $item.podSecurityContext | toYaml | nindent 12 }}
+        {{- end }}
+          imagePullPolicy: "Always"
+          {{- if $item.command }}
+          command:
+            {{- range $item.command }}
+             - {{ . }}
+            {{- end }}
+          {{- end }}
+          {{- if $item.ports }}
+          ports:
+          {{- range $itemPort := $item.ports }}
+            - name: {{ $itemPort.name }}
+              containerPort: {{ $itemPort.port }}
+              {{- if $itemPort.hostPort }}
+              hostPort: {{ $itemPort.hostPort }}
+              {{- end }}
+              protocol: TCP
+          {{- end }}
+          {{- end }}
+          {{ if $item.resourcesSimple -}}
+          resources:
+            limits:
+              cpu: {{ mulf $item.resourcesSimple 1.5 }}m
+              memory: {{ mulf $item.resourcesSimple 1.7 }}Mi
+            requests:
+              cpu: {{ $item.resourcesSimple }}m
+              memory: {{ mulf $item.resourcesSimple 1.2 }}Mi
+          {{- end }}
+          {{ if $item.resources -}}
+          resources:
+            {{- $item.resources | toYaml | nindent 12 }}
+          {{- end }}
+          {{ if $item.probesEnabled -}}
+          livenessProbe:
+            httpGet:
+              path: "/health"
+              port: http
+              scheme: "HTTP"
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            timeoutSeconds: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: "/health"
+              port: http
+              scheme: "HTTP"
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 3
+          {{- end -}}
+          {{- if or ($item.env) ($item.mysqlEnvsEnabled) -}}
+          env:
+          {{- if $item.mysqlEnvsEnabled }}
+            - name: MYSQL_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: secrets-sql
+                  key: MYSQL_HOST
+            - name: MYSQL_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: secrets-sql
+                  key: MYSQL_DATABASE
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: secrets-sql
+                  key: MYSQL_USER
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: secrets-sql
+                  key: MYSQL_PASSWORD
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: secrets-sql
+                  key: MYSQL_ROOT_PASSWORD
+          {{- end }}
+          {{- if $item.env }}
+          {{- $item.env | toYaml | nindent 12 }}
+          {{- end }}
+          {{- end }}
+          {{- if $item.args }}
+          args:
+          {{- $item.args |toYaml | nindent 12 }}
+          {{- end }}
+    {{- if $item.volumes }}
+          volumeMounts:
+      {{- range $itemVolumes := $item.volumes }}
+            - name: {{ $itemVolumes.name }}
+              mountPath: {{ $itemVolumes.mountPath | quote }}
+              readOnly: {{ $itemVolumes.readOnly | default false }}
+              {{ if eq $itemVolumes.type "ConfigMap" -}}
+              {{ if $itemVolumes.subPath -}}
+              subPath: {{ $itemVolumes.subPath }}
+              {{- end }}
+              {{- end }}
+      {{- end }}
+    {{- end }}
+      volumes:
+      {{- range $itemVolumes := $item.volumes }}
+        - name: {{ $itemVolumes.name }}
+        {{ if eq $itemVolumes.type "hostPath" }}
+          hostPath:
+            path: {{ $itemVolumes.hostPath | quote}}
+        {{- end }}
+        {{- if eq (include "listContains" (dict "list" (list "rook-cephfs" "csi-s3" "iscsi" "rook-ceph-block" "longhorn" "pvc" "nfs" "openebs-device" "openebs-hostpath") "value" $itemVolumes.type)) "true" }}
+          persistentVolumeClaim:
+            claimName: {{ $itemVolumes.name }}
+            readOnly: {{ $itemVolumes.readOnly | default false }}
+        {{- end }}
+        {{ if eq $itemVolumes.type "ConfigMap" }}
+          configMap:
+            name: {{ $itemVolumes.name }}
+        {{- end }}
+        {{ if eq $itemVolumes.type "secret" }}
+          secret:
+            secretName: {{ $itemVolumes.name }}
+            items:
+              - key: {{ $itemVolumes.subPath }}
+                path: {{ $itemVolumes.mountPath }}
+        {{- end }}
+      {{- end }}
+      imagePullSecrets:
+        - name: secrets-registry
+{{- end }}

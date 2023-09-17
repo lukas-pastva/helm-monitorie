@@ -1,0 +1,47 @@
+namespace: web-conveior
+type: Deployment
+#tolerations:
+#  - web
+#nodeAffinity:
+#  - key: asdf
+#    values:
+#      - asdf
+#      - fdsa
+istioEnabled: false
+#secretRegistry: "ZW1wdHk="
+#oauthClient: "ZW1wdHk="
+#oauthSecret: "ZW1wdHk="
+
+
+pods: {}
+#  conveior:
+#    repo: registry.hub.docker.com/lukaspastva/conveior-web:0.1.44
+#    resourcesSimple: 80
+#    replicaCount: 1
+#    privileged: false
+#    labels:
+#      checksum: {{ include (print $.Template.BasePath "/cm-application.yml") . | sha256sum }}
+#    annotations:
+#      vault.hashicorp.com/agent-inject: "true"
+#      vault.hashicorp.com/role: "myapp-role"
+#      vault.hashicorp.com/agent-inject-secret-s3-asdf: "kv/data/asdf/asdf"
+#
+#    ports:
+#      - name: http
+#        port: 80
+#        domains:
+#          - "conveior.io"
+#          - "www.conveior.iok"
+#        paths:
+#          - "/"
+#        serviceMonitorEnabled: true
+#        serviceAccountEnabled: false
+#        networkPolicy:
+#          enabled: true
+#          destinationNamespace: monitoring
+#          destinationPod: "kube-prometheus-stack-prometheus"
+#configMaps:
+#  - name: config
+#    data:
+#      key1: value1
+#      key2: value2

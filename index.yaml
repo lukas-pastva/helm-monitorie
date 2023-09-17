@@ -1,0 +1,13 @@
+apiVersion: v1
+entries:
+  helm-monitorie:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: "2023-09-17T21:05:32.468941+02:00"
+    description: simple deployments
+    digest: 14869041c7c6820b908a27e60bf64e33ea4862f9328ccde79017f5271c5a8837
+    name: helm-monitorie
+    urls:
+    - https://lukas-pastva.github.io/helm-monitorie/helm-monitorie-0.1.0.tgz
+    version: 0.1.0
+generated: "2023-09-17T21:05:32.46853+02:00"
