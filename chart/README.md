@@ -1,7 +1,7 @@
 # helm-monitorie
 
 This is repository for HELM chart.
-The helm-monitorie can be used for simple deployments for any startup company.
+The helm-monitorie can be used for creating observability stack.
 
 ### usage
 
