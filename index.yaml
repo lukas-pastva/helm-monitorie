@@ -11,7 +11,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2023-09-17T21:45:39.081203+02:00"
+    created: "2023-09-17T22:02:14.536141+02:00"
     dependencies:
     - name: kube-prometheus-stack
       repository: https://prometheus-community.github.io/helm-charts
@@ -35,11 +35,11 @@ entries:
     version: 0.1.1
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2023-09-17T21:45:39.067414+02:00"
+    created: "2023-09-17T22:02:14.522804+02:00"
     description: simple deployments
     digest: 14869041c7c6820b908a27e60bf64e33ea4862f9328ccde79017f5271c5a8837
     name: helm-monitorie
     urls:
     - https://lukas-pastva.github.io/helm-monitorie/helm-monitorie-0.1.0.tgz
     version: 0.1.0
-generated: "2023-09-17T21:45:39.06668+02:00"
+generated: "2023-09-17T22:02:14.521422+02:00"

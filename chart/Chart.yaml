@@ -12,6 +12,9 @@ dependencies:
   - name: kube-prometheus-stack
     repository: https://prometheus-community.github.io/helm-charts
     version: 43.2.1
+  - name: thanos
+    repository: https://charts.bitnami.com/bitnami
+    version: 11.6.8
 description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
 home: https://github.com/lukas-pastva/helm-monitorie
 keywords:
@@ -25,4 +28,4 @@ name: helm-monitorie
 sources:
   - https://github.com/lukas-pastva/helm-monitorie
 type: application
-version: 0.1.1
+version: 0.1.2
