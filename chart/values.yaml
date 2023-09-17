@@ -1,1 +1,3 @@
 kubePrometheusStack: true
+  crds:
+    enabled: false
