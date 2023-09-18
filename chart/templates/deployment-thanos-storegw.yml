@@ -1,0 +1,109 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app.kubernetes.io/component: storegateway
+    app.kubernetes.io/instance: thanos
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: thanos
+    argocd.argoproj.io/instance: thanos
+    helm.sh/chart: {{ include "helmMonitorie.name" . }}-{{ .Chart.Version }}
+  name: thanos-storegateway
+  namespace: {{ .Release.Namespace }}
+spec:
+  podManagementPolicy: OrderedReady
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: storegateway
+      app.kubernetes.io/instance: thanos
+      app.kubernetes.io/name: thanos
+  serviceName: thanos-storegateway-headless
+  template:
+    metadata:
+      annotations:
+        checksum/objstore-configuration: 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      labels:
+        app.kubernetes.io/component: storegateway
+        app.kubernetes.io/instance: thanos
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/name: thanos
+        helm.sh/chart: {{ include "helmMonitorie.name" . }}-{{ .Chart.Version }}
+    spec:
+      affinity:
+        nodeAffinity: null
+        podAffinity: null
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/component: storegateway
+                    app.kubernetes.io/instance: thanos
+                    app.kubernetes.io/name: thanos
+                topologyKey: kubernetes.io/hostname
+              weight: 1
+      automountServiceAccountToken: true
+      containers:
+        - args:
+            - store
+            - '--log.level=info'
+            - '--log.format=logfmt'
+            - '--grpc-address=0.0.0.0:10901'
+            - '--http-address=0.0.0.0:10902'
+            - '--data-dir=/data'
+            - '--objstore.config-file=/conf/objstore.yml'
+          image: 'docker.io/bitnami/thanos:0.30.1-scratch-r0'
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /-/healthy
+              port: http
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 30
+          name: storegateway
+          ports:
+            - containerPort: 10902
+              name: http
+              protocol: TCP
+            - containerPort: 10901
+              name: grpc
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /-/ready
+              port: http
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 30
+          resources:
+            limits: {}
+            requests: {}
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 1001
+          volumeMounts:
+            - mountPath: /conf
+              name: objstore-config
+            - mountPath: /data
+              name: data
+      securityContext:
+        fsGroup: 1001
+      serviceAccount: thanos-storegateway
+      volumes:
+        - name: objstore-config
+          secret:
+            secretName: thanos-objectstorage
+        - emptyDir: {}
+          name: data
+  updateStrategy:
+    type: RollingUpdate
