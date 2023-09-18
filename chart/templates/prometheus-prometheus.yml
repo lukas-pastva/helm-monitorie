@@ -2,7 +2,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: Prometheus
 metadata:
   labels:
-    app: prometheus
+    app: {{ include "helmMonitorie.name" . }}-prometheus
     app.kubernetes.io/instance: {{ include "helmMonitorie.name" . }}
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: {{ include "helmMonitorie.name" . }}
