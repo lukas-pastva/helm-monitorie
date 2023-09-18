@@ -12,13 +12,10 @@ metadata:
   namespace: {{ .Release.Namespace }}
 spec:
   replicas: 1
-  revisionHistoryLimit: 10
   selector:
     matchLabels:
       app.kubernetes.io/instance: grafana
       app.kubernetes.io/name: grafana
-  strategy:
-    type: RollingUpdate
   template:
     metadata:
       labels:

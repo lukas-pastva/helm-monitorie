@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   labels:
     app.kubernetes.io/component: storegateway
@@ -11,18 +11,15 @@ metadata:
   name: thanos-storegateway
   namespace: {{ .Release.Namespace }}
 spec:
-  podManagementPolicy: OrderedReady
   replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/component: storegateway
       app.kubernetes.io/instance: thanos
       app.kubernetes.io/name: thanos
-  serviceName: thanos-storegateway-headless
+  serviceName: thanos-storegateway
   template:
     metadata:
-      annotations:
-        checksum/objstore-configuration: 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
       labels:
         app.kubernetes.io/component: storegateway
         app.kubernetes.io/instance: thanos
@@ -30,19 +27,6 @@ spec:
         app.kubernetes.io/name: thanos
         helm.sh/chart: {{ include "helmMonitorie.name" . }}-{{ .Chart.Version }}
     spec:
-      affinity:
-        nodeAffinity: null
-        podAffinity: null
-        podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-            - podAffinityTerm:
-                labelSelector:
-                  matchLabels:
-                    app.kubernetes.io/component: storegateway
-                    app.kubernetes.io/instance: thanos
-                    app.kubernetes.io/name: thanos
-                topologyKey: kubernetes.io/hostname
-              weight: 1
       automountServiceAccountToken: true
       containers:
         - args:
@@ -105,5 +89,3 @@ spec:
             secretName: thanos-objectstorage
         - emptyDir: {}
           name: data
-  updateStrategy:
-    type: RollingUpdate
