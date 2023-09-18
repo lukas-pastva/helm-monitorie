@@ -26,15 +26,9 @@ spec:
       containers:
         - env:
             - name: GF_SECURITY_ADMIN_USER
-              valueFrom:
-                secretKeyRef:
-                  key: admin-user
-                  name: grafana
+              value: {{ .Values.grafanaAdminUsername }}
             - name: GF_SECURITY_ADMIN_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  key: admin-password
-                  name: grafana
+              value: {{ .Values.grafanaAdminPassword }}
             - name: GF_PATHS_DATA
               value: /var/lib/grafana/
             - name: GF_PATHS_LOGS
@@ -44,7 +38,6 @@ spec:
             - name: GF_PATHS_PROVISIONING
               value: /etc/grafana/provisioning
           image: 'grafana/grafana:10.0.5'
-          imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 10
             httpGet:
@@ -70,18 +63,14 @@ spec:
               memory: 100Mi
           volumeMounts:
             - mountPath: /etc/grafana/grafana.ini
-              name: config
+              name: grafana
               subPath: grafana.ini
-            - mountPath: /var/lib/grafana
-              name: storage
             - mountPath: /etc/grafana/provisioning/datasources/datasources.yaml
-              name: config
+              name: grafana
               subPath: datasources.yaml
-            - mountPath: /tmp/dashboards
-              name: sc-dashboard-volume
-            - mountPath: /etc/grafana/provisioning/dashboards/sc-dashboardproviders.yaml
-              name: sc-dashboard-provider
-              subPath: provider.yaml
+            - mountPath: /etc/grafana/provisioning/dashboards/default.json
+              name: grafana-dashboard
+              subPath: default.json
       enableServiceLinks: true
       securityContext:
         fsGroup: 472
@@ -91,11 +80,7 @@ spec:
       volumes:
         - configMap:
             name: grafana
-          name: config
-        - emptyDir: {}
-          name: storage
-        - emptyDir: {}
-          name: sc-dashboard-volume
+          name: grafana
         - configMap:
-            name: grafana-dashboards
-          name: sc-dashboard-provider
+            name: grafana-dashboard
+          name: grafana-dashboard
