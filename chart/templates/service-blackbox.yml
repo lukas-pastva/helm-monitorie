@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/instance: blackbox
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: blackbox
+    app.kubernetes.io/version: {{ .Chart.Version }}
+    argocd.argoproj.io/instance: blackbox
+    helm.sh/chart: {{ include "helmMonitorie.name" . }}-{{ .Chart.Version }}
+  name: blackbox
+  namespace: {{ .Release.Namespace }}
+spec:
+  ports:
+    - name: http
+      port: 9115
+      protocol: TCP
+      targetPort: http
+  selector:
+    app.kubernetes.io/instance: blackbox
+    app.kubernetes.io/name: blackbox
+  type: ClusterIP

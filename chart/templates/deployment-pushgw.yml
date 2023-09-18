@@ -25,7 +25,7 @@ spec:
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/name: prometheus-pushgateway
         app.kubernetes.io/version: {{ .Chart.Version }}
-        helm.sh/chart: prometheus-pushgateway-2.4.0
+        helm.sh/chart: {{ include "helmMonitorie.name" . }}-{{ .Chart.Version }}
     spec:
       containers:
         - args:

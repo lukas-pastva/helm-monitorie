@@ -18,7 +18,7 @@ spec:
       port: http
   namespaceSelector:
     matchNames:
-      - sys-monitoring
+      - {{ .Release.Namespace }}
   selector:
     matchLabels:
       app.kubernetes.io/instance: pushgw

@@ -18,7 +18,7 @@ spec:
     alertmanagers:
       - apiVersion: v2
         name: alertmanager
-        namespace: sys-monitoring
+        namespace: {{ .Release.Namespace }}
         pathPrefix: /
         port: http-web
   enableAdminAPI: false
