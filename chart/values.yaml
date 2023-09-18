@@ -1,3 +1,7 @@
 nameOverride: ""
 grafanaAdminPassword: ""
 grafanaAdminUsername: ""
+grafanaAllowedDomains: ""
+grafanaClientId: ""
+grafanaClientSecret: ""
+grafanaRootUrl: ""
