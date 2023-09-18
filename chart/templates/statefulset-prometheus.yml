@@ -1,20 +1,23 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   labels:
     release: {{ include "helmMonitorie.name" . }}
   name: prometheus
   namespace: {{ .Release.Namespace }}
 spec:
-  podManagementPolicy: Parallel
   replicas: 1
-  revisionHistoryLimit: 10
   selector:
     matchLabels:
       app.kubernetes.io/instance: prometheus
       app.kubernetes.io/name: prometheus
-  serviceName: prometheus
+  strategy:
+    type: RollingUpdate
   template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: prometheus
+        app.kubernetes.io/name: prometheus
     spec:
       automountServiceAccountToken: true
       containers:
