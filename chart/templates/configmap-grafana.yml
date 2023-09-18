@@ -12,7 +12,7 @@ data:
       name: Loki
       type: loki
       url: http://loki-read.{{ .Release.Namespace }}:3100
-  grafana.ini: >
+  grafana.ini: |
     [analytics]
     check_for_updates = true
     [auth.google]
@@ -39,7 +39,7 @@ data:
     provisioning = /etc/grafana/provisioning
     [server]
     domain = localhost
-    root_url = {{ .Values.grafanaRootUrl }}
+    root_url = https://{{ .Values.grafanaDomain }}{{ .Values.grafanaUri }}
     [users]
     default_theme = light
 kind: ConfigMap
