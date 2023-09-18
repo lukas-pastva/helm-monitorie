@@ -73,7 +73,7 @@ kube-prometheus-stack:
     config:
       global:
         resolve_timeout: 5m
-        slack_api_url: "https://hooks.slack.com/services/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"
+        slack_api_url: {{ .Values.slackWebHook }}
 
 thanos:
   query:
