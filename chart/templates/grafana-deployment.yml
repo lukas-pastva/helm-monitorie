@@ -25,37 +25,6 @@ spec:
       automountServiceAccountToken: true
       containers:
         - env:
-            - name: METHOD
-              value: WATCH
-            - name: LABEL
-              value: grafana_dashboard
-            - name: LABEL_VALUE
-              value: grafana
-            - name: FOLDER
-              value: /tmp/dashboards
-            - name: RESOURCE
-              value: both
-            - name: REQ_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  key: admin-user
-                  name: grafana
-            - name: REQ_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  key: admin-password
-                  name: grafana
-            - name: REQ_URL
-              value: 'http://localhost:3000/api/admin/provisioning/dashboards/reload'
-            - name: REQ_METHOD
-              value: POST
-          image: 'quay.io/kiwigrid/k8s-sidecar:1.21.0'
-          imagePullPolicy: IfNotPresent
-          name: grafana-sc-dashboard
-          volumeMounts:
-            - mountPath: /tmp/dashboards
-              name: sc-dashboard-volume
-        - env:
             - name: GF_SECURITY_ADMIN_USER
               valueFrom:
                 secretKeyRef:

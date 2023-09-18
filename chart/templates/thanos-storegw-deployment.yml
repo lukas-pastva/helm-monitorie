@@ -67,9 +67,7 @@ spec:
             periodSeconds: 10
             successThreshold: 1
             timeoutSeconds: 30
-          resources:
-            limits: {}
-            requests: {}
+          resources: {}
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
