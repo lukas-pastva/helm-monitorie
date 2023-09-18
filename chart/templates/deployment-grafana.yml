@@ -131,5 +131,5 @@ spec:
         - emptyDir: {}
           name: sc-dashboard-volume
         - configMap:
-            name: grafana-config-dashboards
+            name: grafana-dashboards
           name: sc-dashboard-provider
