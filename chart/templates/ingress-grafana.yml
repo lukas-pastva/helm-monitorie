@@ -1,0 +1,27 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: grafana
+  namespace: {{ .Release.Namespace }}
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`{{ .Values.grafanaDomain }}`) && PathPrefix(`{{ .Values.grafanaUri }}`)
+      middlewares:
+        - name: grafana
+          namespace: {{ .Release.Namespace }}
+      services:
+        - name: grafana
+          port: 80
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: grafana
+  namespace: {{ .Release.Namespace }}
+spec:
+  stripPrefix:
+    prefixes:
+      - {{ .Values.grafanaUri }}
