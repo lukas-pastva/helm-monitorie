@@ -23,7 +23,7 @@ data:
     https://www.googleapis.com/auth/userinfo.email
     token_url = https://accounts.google.com/o/oauth2/token
     [dashboards]
-    default_home_dashboard_path = /etc/grafana/provisioning/dashboards/default.json
+    default_home_dashboard_path = /tmp/dashboards/default.json
     [grafana_net]
     url = https://grafana.net
     [log]
