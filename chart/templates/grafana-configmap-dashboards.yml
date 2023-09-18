@@ -4,8 +4,6 @@ kind: ConfigMap
 metadata:
   name: grafana-dashboard
   namespace: {{ .Release.Namespace }}
-  labels:
-    grafana_dashboard: {{ include "helmMonitorie.name" . }}
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
 data:
