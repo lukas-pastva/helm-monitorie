@@ -1,0 +1,25 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app.kubernetes.io/instance: pushgw
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: prometheus-pushgateway
+    app.kubernetes.io/version: {{ .Chart.Version }}
+    argocd.argoproj.io/instance: pushgw
+    helm.sh/chart: {{ include "helmMonitorie.name" . }}-{{ .Chart.Version }}
+    release: {{ include "helmMonitorie.name" . }}
+  name: pushgw
+  namespace: {{ .Release.Namespace }}
+spec:
+  endpoints:
+    - honorLabels: true
+      path: /{{ include "helmMonitorie.name" . }}/metrics
+      port: http
+  namespaceSelector:
+    matchNames:
+      - sys-monitoring
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: pushgw
+      app.kubernetes.io/name: prometheus-pushgateway
