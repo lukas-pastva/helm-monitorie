@@ -8,10 +8,6 @@ data:
       type: prometheus
       uid: P5DCFC7561CCDE821
       url: http://thanos-query.{{ .Release.Namespace }}:9090
-    - access: proxy
-      name: Loki
-      type: loki
-      url: http://loki-read.{{ .Release.Namespace }}:3100
   grafana.ini: |
     [analytics]
     check_for_updates = true

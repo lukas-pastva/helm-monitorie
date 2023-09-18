@@ -8,15 +8,15 @@ metadata:
     app.kubernetes.io/name: thanos
     argocd.argoproj.io/instance: thanos
     helm.sh/chart: {{ include "helmMonitorie.name" . }}-{{ .Chart.Version }}
-  name: thanos-query-grpc
+  name: thanos-query
   namespace: {{ .Release.Namespace }}
 spec:
   ports:
-    - name: grpc
+    - name: http
       nodePort: null
-      port: 10901
+      port: 9090
       protocol: TCP
-      targetPort: grpc
+      targetPort: http
   selector:
     app.kubernetes.io/component: query
     app.kubernetes.io/instance: thanos
