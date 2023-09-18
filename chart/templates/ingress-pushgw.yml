@@ -20,7 +20,7 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: grafana
+  name: pushgw
   namespace: {{ .Release.Namespace }}
 spec:
   basicAuth:
