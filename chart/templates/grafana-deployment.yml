@@ -68,7 +68,7 @@ spec:
             - mountPath: /etc/grafana/provisioning/datasources/datasources.yaml
               name: grafana
               subPath: datasources.yaml
-            - mountPath: /var/lib/grafana/dashboards
+            - mountPath: /etc/grafana/provisioning/dashboards
               name: grafana-dashboard
       enableServiceLinks: true
       securityContext:
