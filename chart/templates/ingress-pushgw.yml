@@ -2,20 +2,20 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: grafana
+  name: pushgw
   namespace: {{ .Release.Namespace }}
 spec:
   entryPoints:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`{{ .Values.grafanaDomain }}`) && PathPrefix(`{{ .Values.grafanaUri }}`)
+      match: Host(`{{ .Values.pushgwDomain }}`) && PathPrefix(`{{ .Values.pushgwUri }}`)
       middlewares:
-        - name: grafana
+        - name: pushgw
           namespace: {{ .Release.Namespace }}
       services:
-        - name: grafana
-          port: 80
+        - name: pushgw
+          port: 9091
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -23,6 +23,14 @@ metadata:
   name: grafana
   namespace: {{ .Release.Namespace }}
 spec:
-  stripPrefix:
-    prefixes:
-      - {{ .Values.grafanaUri }}
+  basicAuth:
+    secret: pushgw
+---
+apiVersion: v1
+data:
+  users: {{ .Values.pushgwAuth }}
+kind: Secret
+metadata:
+  name: pushgw
+  namespace: {{ .Release.Namespace }}
+type: Opaque
