@@ -19,7 +19,6 @@ spec:
         app.kubernetes.io/instance: prometheus
         app.kubernetes.io/name: prometheus
     spec:
-      automountServiceAccountToken: true
       containers:
         - args:
             - '--web.console.templates=/etc/prometheus/consoles'
@@ -245,8 +244,6 @@ spec:
         runAsGroup: 2000
         runAsNonRoot: true
         runAsUser: 1000
-      serviceAccount: sys-monitoring-kube-promet-prometheus
-      serviceAccountName: sys-monitoring-kube-promet-prometheus
       terminationGracePeriodSeconds: 600
       volumes:
         - name: config
