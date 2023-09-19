@@ -22,8 +22,6 @@ spec:
         pathPrefix: /
         port: http-web
   enableAdminAPI: false
-  externalLabels:
-    datacenter: fcm
   externalUrl: 'http://prometheus.{{ .Release.Namespace }}:9090'
   hostNetwork: false
   image: 'quay.io/prometheus/prometheus:v2.40.5'
