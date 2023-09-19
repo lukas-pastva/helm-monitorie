@@ -29,12 +29,12 @@ spec:
     spec:
       containers:
         - args:
-            - '--web.route-prefix=/{{ include "helmMonitorie.name" . }}'
+            - '--web.route-prefix=/{{ .Values.pushgw.uri }}'
           image: 'quay.io/prometheus/pushgateway:v1.6.0'
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
-              path: /{{ include "helmMonitorie.name" . }}/-/healthy
+              path: /{{ .Values.pushgw.uri }}/-/healthy
               port: 9091
             initialDelaySeconds: 10
             timeoutSeconds: 10
@@ -45,7 +45,7 @@ spec:
               protocol: TCP
           readinessProbe:
             httpGet:
-              path: /{{ include "helmMonitorie.name" . }}/-/ready
+              path: /{{ .Values.pushgw.uri }}/-/ready
               port: 9091
             initialDelaySeconds: 10
             timeoutSeconds: 10
