@@ -11,7 +11,7 @@ metadata:
     chart: {{ include "helmMonitorie.name" . }}-{{ .Chart.Version }}
     heritage: Helm
     release: {{ include "helmMonitorie.name" . }}
-  name: prometheus
+  name: prometheus-{{ include "helmMonitorie.name" . }}
   namespace: {{ .Release.Namespace }}
 spec:
   alerting:

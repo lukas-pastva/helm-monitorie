@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: thanos-discovery
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: {{ include "helmMonitorie.name" . }}
+    app.kubernetes.io/version: {{ .Chart.Version }}
+    argocd.argoproj.io/instance: {{ include "helmMonitorie.name" . }}
+    chart: {{ include "helmMonitorie.name" . }}-{{ .Chart.Version }}
+    heritage: Helm
+    release: {{ include "helmMonitorie.name" . }}
+  name: thanos-discovery
+  namespace: {{ .Release.Namespace }}
+spec:
+  clusterIP: None
+  ports:
+    - name: grpc
+      port: 10901
+      targetPort: grpc
+    - name: http
+      port: 10902
+      targetPort: http
+  selector:
+    app.kubernetes.io/name: prometheus
+    prometheus: prometheus-{{ include "helmMonitorie.name" . }}
+  type: ClusterIP
