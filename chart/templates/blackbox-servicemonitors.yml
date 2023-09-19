@@ -10,8 +10,8 @@ metadata:
     app.kubernetes.io/version: {{ $.Chart.Version }}
     argocd.argoproj.io/instance: blackbox
     entity: dashboard-devops
-    helm.sh/chart: {{ include "helmMonitorie.name" . }}-{{ $.Chart.Version }}
-    release: prometheus-{{ include "helmMonitorie.name" . }}
+    helm.sh/chart: {{ include "helmMonitorie.name" $ }}-{{ $.Chart.Version }}
+    release: prometheus-{{ include "helmMonitorie.name" $ }}
   name: blackbox
   namespace: {{ .Release.Namespace }}
 spec:
