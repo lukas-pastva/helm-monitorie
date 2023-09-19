@@ -19,6 +19,8 @@ spec:
   template:
     metadata:
       labels:
+        checksum-config: {{ include (print $.Template.BasePath "/grafana-configmap-config.yml") . | sha256sum }}
+        checksum-dashboards: {{ include (print $.Template.BasePath "/grafana-configmap-dashboards.yml") . | sha256sum }}
         app.kubernetes.io/instance: grafana
         app.kubernetes.io/name: grafana
     spec:
