@@ -13,7 +13,7 @@ metadata:
     helm.sh/chart: {{ include "helmMonitorie.name" $ }}-{{ $.Chart.Version }}
     release: prometheus-{{ include "helmMonitorie.name" $ }}
   name: blackbox
-  namespace: {{ .Release.Namespace }}
+  namespace: {{ $.Release.Namespace }}
 spec:
   endpoints:
     - interval: 300s
