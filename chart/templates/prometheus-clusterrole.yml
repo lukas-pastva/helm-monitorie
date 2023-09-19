@@ -1,0 +1,40 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app: {{ include "helmMonitorie.name" . }}-prometheus
+    app.kubernetes.io/instance: {{ include "helmMonitorie.name" . }}
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: {{ include "helmMonitorie.name" . }}
+    app.kubernetes.io/version: {{ .Chart.Version }}
+    argocd.argoproj.io/instance: {{ include "helmMonitorie.name" . }}
+    chart: {{ include "helmMonitorie.name" . }}-{{ .Chart.Version }}
+    heritage: Helm
+    release: {{ include "helmMonitorie.name" . }}
+  name: prometheus-{{ include "helmMonitorie.name" . }}
+rules:
+  - apiGroups:
+      - ''
+    resources:
+      - nodes
+      - nodes/metrics
+      - services
+      - endpoints
+      - pods
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - networking.k8s.io
+    resources:
+      - ingresses
+    verbs:
+      - get
+      - list
+      - watch
+  - nonResourceURLs:
+      - /metrics
+      - /metrics/cadvisor
+    verbs:
+      - get

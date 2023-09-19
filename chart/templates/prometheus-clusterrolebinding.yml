@@ -1,0 +1,22 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app: {{ include "helmMonitorie.name" . }}-prometheus
+    app.kubernetes.io/instance: {{ include "helmMonitorie.name" . }}
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: {{ include "helmMonitorie.name" . }}
+    app.kubernetes.io/version: {{ .Chart.Version }}
+    argocd.argoproj.io/instance: {{ include "helmMonitorie.name" . }}
+    chart: {{ include "helmMonitorie.name" . }}-{{ .Chart.Version }}
+    heritage: Helm
+    release: {{ include "helmMonitorie.name" . }}
+  name: prometheus-{{ include "helmMonitorie.name" . }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: prometheus-{{ include "helmMonitorie.name" . }}
+subjects:
+  - kind: ServiceAccount
+    name: prometheus
+    namespace: {{ .Release.Namespace }}
