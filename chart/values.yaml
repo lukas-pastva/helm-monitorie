@@ -11,3 +11,6 @@ pushgw:
   domain: ""
   uri: ""
   auth: ""
+prometheus:
+  rulesSystemEnabled: false
+  rulesRempEnabled: false
