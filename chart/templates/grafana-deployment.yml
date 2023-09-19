@@ -26,9 +26,9 @@ spec:
       containers:
         - env:
             - name: GF_SECURITY_ADMIN_USER
-              value: {{ .Values.grafanaAdminUsername }}
+              value: {{ .Values.grafana.adminUsername }}
             - name: GF_SECURITY_ADMIN_PASSWORD
-              value: {{ .Values.grafanaAdminPassword }}
+              value: {{ .Values.grafanaAdmin.password }}
             - name: GF_PATHS_DATA
               value: /var/lib/grafana/
             - name: GF_PATHS_LOGS

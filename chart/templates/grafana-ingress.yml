@@ -9,7 +9,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`{{ .Values.grafanaDomain }}`) && PathPrefix(`{{ .Values.grafanaUri }}`)
+      match: Host(`{{ .Values.grafana.domain }}`) && PathPrefix(`{{ .Values.grafana.uri }}`)
       middlewares:
         - name: grafana
           namespace: {{ .Release.Namespace }}
@@ -25,4 +25,4 @@ metadata:
 spec:
   stripPrefix:
     prefixes:
-      - {{ .Values.grafanaUri }}
+      - {{ .Values.grafana.uri }}

@@ -13,11 +13,11 @@ data:
     check_for_updates = true
     [auth.google]
     allow_sign_up = true
-    allowed_domains = {{ .Values.grafanaAllowedDomains }}
+    allowed_domains = {{ .Values.grafana.allowedDomains }}
     api_url = https://www.googleapis.com/oauth2/v1/userinfo
     auth_url = https://accounts.google.com/o/oauth2/auth
-    client_id = {{ .Values.grafanaClientId }}
-    client_secret = {{ .Values.grafanaClientSecret }}
+    client_id = {{ .Values.grafana.clientId }}
+    client_secret = {{ .Values.grafana.clientSecret }}
     enabled = true
     scopes = https://www.googleapis.com/auth/userinfo.profile
     https://www.googleapis.com/auth/userinfo.email
@@ -35,7 +35,7 @@ data:
     provisioning = /etc/grafana/provisioning
     [server]
     domain = localhost
-    root_url = https://{{ .Values.grafanaDomain }}{{ .Values.grafanaUri }}
+    root_url = https://{{ .Values.grafana.domain }}{{ .Values.grafana.uri }}
     [users]
     default_theme = light
 kind: ConfigMap
