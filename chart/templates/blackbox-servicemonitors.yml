@@ -11,7 +11,7 @@ metadata:
     argocd.argoproj.io/instance: blackbox
     entity: dashboard-devops
     helm.sh/chart: {{ include "helmMonitorie.name" $ }}-{{ $.Chart.Version }}
-    release: prometheus-{{ include "helmMonitorie.name" $ }}
+    release: {{ include "helmMonitorie.name" $ }}
   name: blackbox-{{ $item_name }}
   namespace: {{ $.Release.Namespace }}
 spec:
