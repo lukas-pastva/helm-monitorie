@@ -9,7 +9,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`{{ .Values.pushgw.domain }}`) && PathPrefix(`{{ .Values.pushgw.uri }}`)
+      match: Host(`{{ .Values.pushgw.domain }}`) && PathPrefix(`{{ .Values.pushgw.ingressUri }}`)
       middlewares:
         - name: pushgw
           namespace: {{ .Release.Namespace }}
