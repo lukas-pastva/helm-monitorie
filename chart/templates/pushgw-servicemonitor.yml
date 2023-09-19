@@ -14,7 +14,7 @@ metadata:
 spec:
   endpoints:
     - honorLabels: true
-      path: /{{ include "helmMonitorie.name" . }}/metrics
+      path: /{{ .Values.pushgw.uri }}/metrics
       port: http
   namespaceSelector:
     matchNames:
