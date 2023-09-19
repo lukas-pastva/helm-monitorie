@@ -35,7 +35,7 @@ data:
     provisioning = /etc/grafana/provisioning
     [server]
     domain = localhost
-    root_url = https://{{ .Values.grafana.domain }}{{ .Values.grafana.uri }}
+    root_url = https://{{ .Values.grafana.domain }}/{{ .Values.grafana.uri }}
     [users]
     default_theme = light
 kind: ConfigMap

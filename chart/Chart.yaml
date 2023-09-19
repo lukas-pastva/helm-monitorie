@@ -22,4 +22,4 @@ name: helm-monitorie
 sources:
   - https://github.com/lukas-pastva/helm-monitorie
 type: application
-version: 0.1.38
+version: 0.1.39
