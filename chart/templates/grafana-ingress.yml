@@ -25,4 +25,4 @@ metadata:
 spec:
   stripPrefix:
     prefixes:
-      - {{ .Values.grafana.uri }}
+      - /{{ .Values.grafana.uri }}
