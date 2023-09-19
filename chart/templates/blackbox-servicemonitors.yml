@@ -12,7 +12,7 @@ metadata:
     entity: dashboard-devops
     helm.sh/chart: {{ include "helmMonitorie.name" $ }}-{{ $.Chart.Version }}
     release: prometheus-{{ include "helmMonitorie.name" $ }}
-  name: blackbox
+  name: blackbox-{{ $item_name }}
   namespace: {{ $.Release.Namespace }}
 spec:
   endpoints:
