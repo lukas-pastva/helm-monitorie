@@ -1,0 +1,46 @@
+{{- range $item_name, $item := .Values.blackbox }}
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app.kubernetes.io/instance: blackbox
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: blackbox
+    app.kubernetes.io/version: {{ .Chart.Version }}
+    argocd.argoproj.io/instance: blackbox
+    entity: dashboard-devops
+    helm.sh/chart: {{ include "helmMonitorie.name" . }}-{{ .Chart.Version }}
+    release: prometheus-{{ include "helmMonitorie.name" . }}
+  name: blackbox
+  namespace: {{ .Release.Namespace }}
+spec:
+  endpoints:
+    - interval: 300s
+      metricRelabelings:
+        - replacement: {{ $item.url | quote }}
+          sourceLabels:
+            - instance
+          targetLabel: instance
+        - replacement: {{ $item_name }}
+          sourceLabels:
+            - target
+          targetLabel: target
+      params:
+        module:
+          - http_2xx
+        target:
+          - {{ $item.url | quote }}
+      path: /probe
+      port: http
+      scheme: http
+      scrapeTimeout: 30s
+  jobLabel: sys-monitoring-blackbox
+  namespaceSelector:
+    matchNames:
+      - sys-monitoring
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: sys-monitoring-blackbox
+      app.kubernetes.io/name: prometheus-blackbox-exporter
+  {{- end }}
