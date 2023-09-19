@@ -2997,7 +2997,7 @@ data:
       "timepicker": {},
       "timezone": "",
       "title": "Dashboard",
-      "uid": "{{ include "helmMonitorie.name" . }}",
+      "uid": "{{ include "helmMonitorie.name" . | sha256sum | trunc 8 }}",
       "version": 1,
       "weekStart": ""
     }
