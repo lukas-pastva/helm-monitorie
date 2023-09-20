@@ -19,8 +19,7 @@ data:
     client_id = {{ .Values.grafana.clientId }}
     client_secret = {{ .Values.grafana.clientSecret }}
     enabled = true
-    scopes = https://www.googleapis.com/auth/userinfo.profile
-    https://www.googleapis.com/auth/userinfo.email
+    scopes = https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email
     token_url = https://accounts.google.com/o/oauth2/token
     [dashboards]
     default_home_dashboard_path = /etc/grafana/provisioning/dashboards/default.json
@@ -34,7 +33,7 @@ data:
     plugins = /var/lib/grafana/plugins
     provisioning = /etc/grafana/provisioning
     [server]
-    domain = localhost
+    domain = {{ .Values.grafana.domain }}
     root_url = https://{{ .Values.grafana.domain }}/{{ .Values.grafana.uri }}
     [users]
     default_theme = light
