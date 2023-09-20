@@ -44,8 +44,8 @@ spec:
       cpu: 500m
       memory: 500Mi
     requests:
-      cpu: 150m
-      memory: 200Mi
+      cpu: 100m
+      memory: 100Mi
   retention: 10d
   routePrefix: /
   ruleNamespaceSelector: {}
