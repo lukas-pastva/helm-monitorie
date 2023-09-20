@@ -29,8 +29,8 @@ spec:
       cpu: 300m
       memory: 300Mi
     requests:
-      cpu: 50m
-      memory: 50Mi
+      cpu: 30m
+      memory: 30Mi
   retention: 120h
   routePrefix: /
   securityContext:

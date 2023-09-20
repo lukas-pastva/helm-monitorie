@@ -61,8 +61,8 @@ spec:
               cpu: 200m
               memory: 150Mi
             requests:
-              cpu: 70m
-              memory: 100Mi
+              cpu: 30m
+              memory: 30Mi
           volumeMounts:
             - mountPath: /etc/grafana/grafana.ini
               name: grafana

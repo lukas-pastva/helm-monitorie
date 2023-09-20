@@ -54,8 +54,8 @@ spec:
               cpu: 200m
               memory: 200Mi
             requests:
-              cpu: 50m
-              memory: 50Mi
+              cpu: 30m
+              memory: 30Mi
           volumeMounts:
             - mountPath: /data
               name: storage-volume
