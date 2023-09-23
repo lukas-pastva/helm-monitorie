@@ -1,3 +1,4 @@
+{{ if eq .Values.grafana.dashboard "system" -}}
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -3001,3 +3002,4 @@ data:
       "version": 1,
       "weekStart": ""
     }
+{{ end }}

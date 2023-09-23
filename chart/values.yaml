@@ -7,6 +7,7 @@ grafana:
   clientSecret: ""
   uri: ""
   domain: ""
+  dashboard: "system"
 pushgw:
   domain: ""
   uri: ""
