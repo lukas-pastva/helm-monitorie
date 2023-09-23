@@ -1,4 +1,4 @@
-{{ if eq .Values.grafana.dashboard "hetzner" -}}
+{{ if eq .Values.grafana.dashboard "telegram" -}}
 ---
 apiVersion: v1
 kind: ConfigMap
