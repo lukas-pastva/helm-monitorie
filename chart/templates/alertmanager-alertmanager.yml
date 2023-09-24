@@ -40,4 +40,3 @@ spec:
     runAsUser: 1000
   serviceAccountName: alertmanager
   version: v0.25.0
-  secretName: alertmanager-{{ include "helmMonitorie.name" . }}-alertmanager
