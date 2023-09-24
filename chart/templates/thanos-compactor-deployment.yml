@@ -86,11 +86,11 @@ spec:
             timeoutSeconds: 30
           resources:
             limits:
-              cpu: 200m
+              cpu: 100m
               memory: 200Mi
-#            requests:
-#              cpu: 30m
-#              memory: 30Mi
+            requests:
+              cpu: 30m
+              memory: 30Mi
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
