@@ -1,4 +1,5 @@
 nameOverride: ""
+slackWebHook: ""
 grafana:
   adminPassword: ""
   adminUsername: ""
@@ -18,3 +19,9 @@ prometheus:
 blackbox:
 #  google:
 #    url: https://google.com
+#mail:
+#  username: "user@mail.domain.com"
+#  password: "five-stars"
+#  sender: "user@mail.domain.com"
+#  url: "mail.domain.com:587"
+#  receiver: "user@mail.domain.com"
