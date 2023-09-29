@@ -2,6 +2,15 @@ apiVersion: v1
 data:
   blackbox.yaml: |
     modules:
+      https_probe:
+        prober: http
+        timeout: 10s
+        http:
+          method: GET
+          valid_http_versions: [HTTP/1.1, HTTP/2]
+          valid_status_codes: []
+          tls_config:
+            insecure_skip_verify: false
       http_2xx:
         http:
           follow_redirects: true

@@ -19,6 +19,7 @@ prometheus:
 blackbox:
 #  google:
 #    url: https://google.com
+#    module: http_2xx | https_probe
 #mail:
 #  username: "user@mail.domain.com"
 #  password: "five-stars"

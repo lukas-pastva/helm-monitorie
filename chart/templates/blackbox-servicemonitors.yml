@@ -28,7 +28,7 @@ spec:
           targetLabel: target
       params:
         module:
-          - http_2xx
+          - {{ $item.module }}
         target:
           - {{ $item.url | quote }}
       path: /probe
