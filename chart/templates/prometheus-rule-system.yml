@@ -19,8 +19,8 @@ spec:
           labels:
             severity: critical
           annotations:
-            title: "Certificate Expiry Alert for {{ $labels.instance }}"
-            description: "The SSL certificate for {{ $labels.instance }} is expiring in less than 24 hours."
+            title: "Certificate Expiry Alert"
+            description: "The SSL certificate is expiring in less than 24 hours."
         - alert: HeartBeat
           annotations:
             description: There are no new metrics in monitoring for {{ include "helmMonitorie.name" . }}.
