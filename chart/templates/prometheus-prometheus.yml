@@ -17,7 +17,7 @@ spec:
   alerting:
     alertmanagers:
       - apiVersion: v2
-        name: alertmanager
+        name: {{ include "helmMonitorie.name" . }}
         namespace: {{ .Release.Namespace }}
         pathPrefix: /
         port: http-web
