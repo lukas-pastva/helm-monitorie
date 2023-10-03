@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/instance: prometheus
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: {{ include "helmMonitorie.name" . }}
-    app.kubernetes.io/version: {{ .Chart.Version }}
+    app.kubernetes.io/version: 1.0
     argocd.argoproj.io/instance: {{ include "helmMonitorie.name" . }}
     chart: {{ include "helmMonitorie.name" . }}-{{ .Chart.Version }}
     heritage: Helm

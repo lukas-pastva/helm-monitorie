@@ -5,7 +5,7 @@ metadata:
     app.kubernetes.io/instance: grafana
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: grafana
-    app.kubernetes.io/version: {{ .Chart.Version }}
+    app.kubernetes.io/version: 1.0
     argocd.argoproj.io/instance: grafana
     helm.sh/chart: {{ include "helmMonitorie.name" . }}-{{ .Chart.Version }}
   name: grafana
