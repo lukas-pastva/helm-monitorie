@@ -23,7 +23,7 @@ spec:
         app.kubernetes.io/instance: pushgw
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/name: prometheus-pushgateway
-            helm.sh/chart: {{ include "helmMonitorie.name" . }}-{{ .Chart.Version }}
+        helm.sh/chart: {{ include "helmMonitorie.name" . }}-{{ .Chart.Version }}
     spec:
       containers:
         - args:
