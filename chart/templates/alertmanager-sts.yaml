@@ -125,10 +125,10 @@ spec:
         - name: config-out
           secret:
             defaultMode: 420
-            secretName: alertmanager-{{ include "helmMonitorie.name" . }}-web-config
+            secretName: alertmanager-{{ include "helmMonitorie.name" . }}
         - name: web-config
           secret:
             defaultMode: 420
-            secretName: alertmanager-{{ include "helmMonitorie.name" . }}-web-config
+            secretName: alertmanager-{{ include "helmMonitorie.name" . }}
   updateStrategy:
     type: RollingUpdate
