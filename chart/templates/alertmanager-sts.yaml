@@ -1,0 +1,134 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: {{ include "helmMonitorie.name" . }}-alertmanager
+    app.kubernetes.io/instance: {{ include "helmMonitorie.name" . }}
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: {{ include "helmMonitorie.name" . }}
+    argocd.argoproj.io/instance: {{ include "helmMonitorie.name" . }}
+    chart: {{ include "helmMonitorie.name" . }}-{{ .Chart.Version }}
+    heritage: Helm
+    release: {{ include "helmMonitorie.name" . }}
+  name: alertmanager-{{ include "helmMonitorie.name" . }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  podManagementPolicy: Parallel
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      alertmanager: {{ include "helmMonitorie.name" . }}
+      app.kubernetes.io/instance: {{ include "helmMonitorie.name" . }}
+      app.kubernetes.io/managed-by: prometheus-operator
+      app.kubernetes.io/name: alertmanager
+  serviceName: alertmanager-operated
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container: alertmanager
+      labels:
+        alertmanager: {{ include "helmMonitorie.name" . }}
+        app.kubernetes.io/instance: {{ include "helmMonitorie.name" . }}
+        app.kubernetes.io/managed-by: prometheus-operator
+        app.kubernetes.io/name: alertmanager
+        app.kubernetes.io/version: 0.25.0
+    spec:
+      containers:
+        - args:
+            - '--config.file=/etc/alertmanager/config_out/alertmanager.env.yaml'
+            - '--storage.path=/alertmanager'
+            - '--data.retention=120h'
+            - '--cluster.listen-address='
+            - '--web.listen-address=:9093'
+            - >-
+              --web.external-url=http://alertmanager.{{ .Release.Namespace }}:9093
+            - '--web.route-prefix=/'
+            - >-
+              --cluster.peer=alertmanager-{{ include "helmMonitorie.name" . }}-0.alertmanager-operated:9094
+            - '--cluster.reconnect-timeout=5m'
+            - '--web.config.file=/etc/alertmanager/web_config/web-config.yaml'
+          env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: status.podIP
+          image: 'quay.io/prometheus/alertmanager:v0.25.0'
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            failureThreshold: 10
+            httpGet:
+              path: /-/healthy
+              port: http-web
+              scheme: HTTP
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 3
+          name: alertmanager
+          ports:
+            - containerPort: 9093
+              name: http-web
+              protocol: TCP
+            - containerPort: 9094
+              name: mesh-tcp
+              protocol: TCP
+            - containerPort: 9094
+              name: mesh-udp
+              protocol: UDP
+          readinessProbe:
+            failureThreshold: 10
+            httpGet:
+              path: /-/ready
+              port: http-web
+              scheme: HTTP
+            initialDelaySeconds: 3
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 3
+          resources:
+            limits:
+              cpu: 200m
+              memory: 200Mi
+            requests:
+              cpu: 30m
+              memory: 30Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            readOnlyRootFilesystem: true
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: FallbackToLogsOnError
+          volumeMounts:
+            - name: config-out
+              mountPath: /etc/alertmanager/config_out/alertmanager.env.yaml
+              readOnly: true
+              subPath: alertmanager.env.yaml
+            - name: web-config
+              mountPath: /etc/alertmanager/web_config/web-config.yaml
+              readOnly: true
+              subPath: web-config.yaml
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        fsGroup: 2000
+        runAsGroup: 2000
+        runAsNonRoot: true
+        runAsUser: 1000
+      serviceAccount: alertmanager
+      serviceAccountName: alertmanager
+      terminationGracePeriodSeconds: 120
+      volumes:
+        - name: config-out
+          secret:
+            defaultMode: 420
+            secretName: alertmanager-{{ include "helmMonitorie.name" . }}-web-config
+        - name: web-config
+          secret:
+            defaultMode: 420
+            secretName: alertmanager-{{ include "helmMonitorie.name" . }}-web-config
+  updateStrategy:
+    type: RollingUpdate
