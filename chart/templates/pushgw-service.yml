@@ -6,7 +6,6 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: prometheus-pushgateway
     argocd.argoproj.io/instance: pushgw
-    helm.sh/chart: {{ include "helmMonitorie.name" . }}-{{ .Chart.Version }}
   name: pushgw
   namespace: {{ .Release.Namespace }}
 spec:

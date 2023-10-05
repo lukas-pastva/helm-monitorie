@@ -7,7 +7,6 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: thanos
     argocd.argoproj.io/instance: thanos
-    helm.sh/chart: {{ include "helmMonitorie.name" . }}-{{ .Chart.Version }}
   name: thanos-query
   namespace: {{ .Release.Namespace }}
 spec:
@@ -26,7 +25,6 @@ spec:
         app.kubernetes.io/instance: thanos
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/name: thanos
-        helm.sh/chart: {{ include "helmMonitorie.name" . }}-{{ .Chart.Version }}
     spec:
       affinity:
         nodeAffinity: null
