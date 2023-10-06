@@ -103,13 +103,11 @@ spec:
           terminationMessagePolicy: FallbackToLogsOnError
           volumeMounts:
             - name: config-out
-              mountPath: /etc/alertmanager/config_out/alertmanager.env.yaml
+              mountPath: /etc/alertmanager/config_out
               readOnly: true
-              subPath: alertmanager.env.yaml
             - name: web-config
-              mountPath: /etc/alertmanager/web_config/web-config.yaml
+              mountPath: /etc/alertmanager/web_config
               readOnly: true
-              subPath: web-config.yaml
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
