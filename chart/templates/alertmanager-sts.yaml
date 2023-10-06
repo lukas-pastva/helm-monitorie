@@ -104,9 +104,6 @@ spec:
             - name: config-out
               mountPath: /etc/alertmanager/config_out
               readOnly: true
-            - name: web-config
-              mountPath: /etc/alertmanager/web_config
-              readOnly: true
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
