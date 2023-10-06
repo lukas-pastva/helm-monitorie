@@ -46,7 +46,6 @@ spec:
             - >-
               --cluster.peer=alertmanager-{{ include "helmMonitorie.name" . }}-0.alertmanager-operated:9094
             - '--cluster.reconnect-timeout=5m'
-            - '--web.config.file=/etc/alertmanager/web_config/alertmanager.yaml'
           env:
             - name: POD_IP
               valueFrom:
