@@ -7,7 +7,6 @@
 #    app.kubernetes.io/managed-by: Helm
 #    app.kubernetes.io/part-of: {{ include "helmMonitorie.name" . }}
 #    argocd.argoproj.io/instance: {{ include "helmMonitorie.name" . }}
-#    chart: {{ include "helmMonitorie.name" . }}-{{ .Chart.Version }}
 #    heritage: Helm
 #    release: {{ include "helmMonitorie.name" . }}
 #  name: {{ include "helmMonitorie.name" . }}
