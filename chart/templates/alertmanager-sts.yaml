@@ -35,7 +35,7 @@ spec:
     spec:
       containers:
         - args:
-            - '--config.file=/etc/alertmanager/config_out/alertmanager.yaml'
+            - '--config.file=/etc/alertmanager/config/alertmanager.yaml'
             - '--storage.path=/alertmanager'
             - '--data.retention=120h'
             - '--cluster.listen-address='
@@ -101,7 +101,7 @@ spec:
           terminationMessagePolicy: FallbackToLogsOnError
           volumeMounts:
             - name: config-out
-              mountPath: /etc/alertmanager/config_out
+              mountPath: /etc/alertmanager/config
               readOnly: true
       dnsPolicy: ClusterFirst
       restartPolicy: Always
