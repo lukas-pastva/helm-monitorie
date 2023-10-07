@@ -104,7 +104,7 @@ spec:
                 /etc/prometheus/rules/
               name: rules
             - mountPath: >-
-                /etc/prometheus/config_out/prometheus.env.yaml
+                /etc/prometheus/config_out/
               name: prometheus
         - args:
             - sidecar
