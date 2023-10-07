@@ -16,7 +16,6 @@ spec:
       app.kubernetes.io/component: storegateway
       app.kubernetes.io/instance: thanos
       app.kubernetes.io/name: thanos
-  #serviceName: thanos-storegateway
   template:
     metadata:
       labels:

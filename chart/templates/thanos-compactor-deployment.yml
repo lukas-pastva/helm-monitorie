@@ -20,8 +20,6 @@ spec:
     type: Recreate
   template:
     metadata:
-      annotations:
-        checksum/objstore-configuration: 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
       labels:
         app.kubernetes.io/component: compactor
         app.kubernetes.io/instance: thanos

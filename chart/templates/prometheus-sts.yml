@@ -7,7 +7,6 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: {{ include "helmMonitorie.name" . }}
     argocd.argoproj.io/instance: {{ include "helmMonitorie.name" . }}
-    heritage: Helm
     release: {{ include "helmMonitorie.name" . }}
   name: prometheus-{{ include "helmMonitorie.name" . }}
   namespace: {{ include "helmMonitorie.name" . }}

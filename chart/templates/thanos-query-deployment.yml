@@ -97,4 +97,3 @@ spec:
           volumeMounts: null
       securityContext:
         fsGroup: 1001
-      volumes: null
