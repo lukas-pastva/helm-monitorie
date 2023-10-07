@@ -104,8 +104,11 @@ spec:
             - mountPath: /prometheus
               name: prometheus-{{ include "helmMonitorie.name" . }}-db
             - mountPath: >-
-                /etc/prometheus/rules/rule-system
-              name: rule-system
+                /etc/prometheus/rules/
+              name: rules
+            - mountPath: >-
+                /etc/prometheus/config_out/prometheus.env.yaml
+              name: prometheus
         - args:
             - sidecar
             - '--prometheus.url=http://127.0.0.1:9090/'
@@ -162,8 +165,12 @@ spec:
           name: config-out
         - configMap:
             defaultMode: 420
-            name: rule-system
-          name: rule-system
+            name: rules
+          name: rules
+        - configMap:
+            defaultMode: 420
+            name: prometheus
+          name: prometheus
         - emptyDir: {}
           name: prometheus-{{ include "helmMonitorie.name" . }}-db
   updateStrategy:
