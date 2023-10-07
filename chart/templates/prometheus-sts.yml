@@ -98,9 +98,6 @@ spec:
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: FallbackToLogsOnError
           volumeMounts:
-            - mountPath: /etc/prometheus/config_out
-              name: config-out
-              readOnly: true
             - mountPath: /prometheus
               name: prometheus-{{ include "helmMonitorie.name" . }}-db
             - mountPath: >-
