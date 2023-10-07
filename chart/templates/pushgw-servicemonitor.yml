@@ -1,23 +1,23 @@
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  labels:
-    app.kubernetes.io/instance: pushgw
-    app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/name: prometheus-pushgateway
-    argocd.argoproj.io/instance: pushgw
-    release: {{ include "helmMonitorie.name" . }}
-  name: pushgw
-  namespace: {{ .Release.Namespace }}
-spec:
-  endpoints:
-    - honorLabels: true
-      path: /{{ .Values.pushgw.uri }}/metrics
-      port: http
-  namespaceSelector:
-    matchNames:
-      - {{ .Release.Namespace }}
-  selector:
-    matchLabels:
-      app.kubernetes.io/instance: pushgw
-      app.kubernetes.io/name: prometheus-pushgateway
+#apiVersion: monitoring.coreos.com/v1
+#kind: ServiceMonitor
+#metadata:
+#  labels:
+#    app.kubernetes.io/instance: pushgw
+#    app.kubernetes.io/managed-by: Helm
+#    app.kubernetes.io/name: prometheus-pushgateway
+#    argocd.argoproj.io/instance: pushgw
+#    release: {{ include "helmMonitorie.name" . }}
+#  name: pushgw
+#  namespace: {{ .Release.Namespace }}
+#spec:
+#  endpoints:
+#    - honorLabels: true
+#      path: /{{ .Values.pushgw.uri }}/metrics
+#      port: http
+#  namespaceSelector:
+#    matchNames:
+#      - {{ .Release.Namespace }}
+#  selector:
+#    matchLabels:
+#      app.kubernetes.io/instance: pushgw
+#      app.kubernetes.io/name: prometheus-pushgateway
