@@ -23,7 +23,7 @@ data:
             namespaces:
               names:
                 - {{ include "helmMonitorie.name" . }}
-        metrics_path: /{{ Values.pushgw.uri }}/metrics
+        metrics_path: /{{ .Values.pushgw.uri }}/metrics
         relabel_configs:
           - source_labels:
               - job
