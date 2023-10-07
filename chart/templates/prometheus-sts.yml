@@ -39,7 +39,7 @@ spec:
             - '--web.console.templates=/etc/prometheus/consoles'
             - '--web.console.libraries=/etc/prometheus/console_libraries'
             - '--storage.tsdb.retention.time=10d'
-            - '--config.file=/etc/prometheus/config_out/prometheus.env.yaml'
+            - '--config.file=/etc/prometheus/config_out/prometheus.yaml'
             - '--storage.tsdb.path=/prometheus'
             - '--web.enable-lifecycle'
             - >-

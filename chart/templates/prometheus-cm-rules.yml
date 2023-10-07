@@ -7,7 +7,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
 data:
-  rule-system.json: |-
+  rule-system.yaml: |-
     groups:
       - name: dashboard
         rules:

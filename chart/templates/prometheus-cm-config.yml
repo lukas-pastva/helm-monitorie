@@ -6,7 +6,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
 data:
-  prometheus.env.yaml: |-
+  prometheus.yaml: |-
     global:
       evaluation_interval: 30s
       scrape_interval: 30s
