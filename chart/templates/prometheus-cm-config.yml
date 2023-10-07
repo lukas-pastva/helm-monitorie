@@ -17,7 +17,7 @@ data:
       - /etc/prometheus/rules/*.yaml
     scrape_configs:
       {{- range $item_name, $item := .Values.blackbox }}
-      - job_name: serviceMonitor/{{ include "helmMonitorie.name" . }}/blackbox-{{ $item_name }}/0
+      - job_name: serviceMonitor/{{ include "helmMonitorie.name" $ }}/blackbox-{{ $item_name }}/0
         honor_labels: false
         kubernetes_sd_configs:
           - role: endpoints
