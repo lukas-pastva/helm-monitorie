@@ -1,0 +1,170 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: {{ include "helmMonitorie.name" . }}-prometheus
+    app.kubernetes.io/instance: {{ include "helmMonitorie.name" . }}
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: {{ include "helmMonitorie.name" . }}
+    argocd.argoproj.io/instance: {{ include "helmMonitorie.name" . }}
+    heritage: Helm
+    release: {{ include "helmMonitorie.name" . }}
+  name: prometheus-{{ include "helmMonitorie.name" . }}
+  namespace: {{ include "helmMonitorie.name" . }}
+spec:
+  podManagementPolicy: Parallel
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: {{ include "helmMonitorie.name" . }}
+      app.kubernetes.io/managed-by: prometheus-operator
+      app.kubernetes.io/name: prometheus
+      prometheus: {{ include "helmMonitorie.name" . }}
+  serviceName: prometheus-operated
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container: prometheus
+      labels:
+        app.kubernetes.io/instance: {{ include "helmMonitorie.name" . }}
+        app.kubernetes.io/managed-by: prometheus-operator
+        app.kubernetes.io/name: prometheus
+        app.kubernetes.io/version: 2.40.5
+        prometheus: {{ include "helmMonitorie.name" . }}
+    spec:
+      automountServiceAccountToken: true
+      containers:
+        - args:
+            - '--web.console.templates=/etc/prometheus/consoles'
+            - '--web.console.libraries=/etc/prometheus/console_libraries'
+            - '--storage.tsdb.retention.time=10d'
+            - '--config.file=/etc/prometheus/config_out/prometheus.env.yaml'
+            - '--storage.tsdb.path=/prometheus'
+            - '--web.enable-lifecycle'
+            - >-
+              --web.external-url=http://prometheus.{{ .Release.Namespace }}:9090
+            - '--web.route-prefix=/'
+            - '--no-storage.tsdb.wal-compression'
+            - '--storage.tsdb.max-block-duration=2h'
+            - '--storage.tsdb.min-block-duration=2h'
+          image: 'quay.io/prometheus/prometheus:v2.40.5'
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /-/healthy
+              port: http-web
+              scheme: HTTP
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 3
+          name: prometheus
+          ports:
+            - containerPort: 9090
+              name: http-web
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /-/ready
+              port: http-web
+              scheme: HTTP
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 3
+          resources:
+            limits:
+              cpu: 400m
+              memory: 400Mi
+            requests:
+              cpu: 30m
+              memory: 30Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            readOnlyRootFilesystem: true
+          startupProbe:
+            failureThreshold: 60
+            httpGet:
+              path: /-/ready
+              port: http-web
+              scheme: HTTP
+            periodSeconds: 15
+            successThreshold: 1
+            timeoutSeconds: 3
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: FallbackToLogsOnError
+          volumeMounts:
+            - mountPath: /etc/prometheus/config_out
+              name: config-out
+              readOnly: true
+            - mountPath: /prometheus
+              name: prometheus-{{ include "helmMonitorie.name" . }}-db
+            - mountPath: >-
+                /etc/prometheus/rules/rule-system
+              name: rule-system
+        - args:
+            - sidecar
+            - '--prometheus.url=http://127.0.0.1:9090/'
+            - >-
+              --prometheus.http-client={"tls_config":
+              {"insecure_skip_verify":true}}
+            - '--grpc-address=:10901'
+            - '--http-address=:10902'
+            - '--objstore.config=$(OBJSTORE_CONFIG)'
+            - '--tsdb.path=/prometheus'
+            - '--log.level=info'
+            - '--log.format=logfmt'
+          env:
+            - name: OBJSTORE_CONFIG
+              valueFrom:
+                secretKeyRef:
+                  key: objstore.yml
+                  name: thanos-objectstorage
+          image: 'quay.io/thanos/thanos:v0.32.2'
+          imagePullPolicy: IfNotPresent
+          name: thanos-sidecar
+          ports:
+            - containerPort: 10902
+              name: http
+              protocol: TCP
+            - containerPort: 10901
+              name: grpc
+              protocol: TCP
+          resources: {}
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            readOnlyRootFilesystem: true
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: FallbackToLogsOnError
+          volumeMounts:
+            - mountPath: /prometheus
+              name: prometheus-{{ include "helmMonitorie.name" . }}-db
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        fsGroup: 2000
+        runAsGroup: 2000
+        runAsNonRoot: true
+        runAsUser: 1000
+      serviceAccount: prometheus
+      serviceAccountName: prometheus
+      terminationGracePeriodSeconds: 600
+      volumes:
+        - emptyDir: {}
+          name: config-out
+        - configMap:
+            defaultMode: 420
+            name: rule-system
+          name: rule-system
+        - emptyDir: {}
+          name: prometheus-{{ include "helmMonitorie.name" . }}-db
+  updateStrategy:
+    type: RollingUpdate
