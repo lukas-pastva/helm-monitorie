@@ -1,0 +1,70 @@
+{{ if eq .Values.prometheus.rulesSystemEnabled true -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rule-system
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    argocd.argoproj.io/sync-options: Replace=true
+data:
+  rule-system.json: |-
+    groups:
+      - name: dashboard
+        rules:
+          - alert: CertificateExpirySoon
+            expr: probe_ssl_earliest_cert_expiry - time() < 86400
+            for: 10m
+            labels:
+              severity: critical
+            annotations:
+              title: "Certificate Expiry Alert"
+              description: "The SSL certificate is expiring in less than 24 hours."
+          - alert: HeartBeat
+            annotations:
+              description: There are no new metrics in monitoring for {{ include "helmMonitorie.name" . }}.
+              summary: There are no new metrics in monitoring for {{ include "helmMonitorie.name" . }}.
+            expr: conveior_hwHeartbeat{entity="{{ include "helmMonitorie.name" . }}"} == conveior_hwHeartbeat{entity="{{ include "helmMonitorie.name" . }}"} offset 5m
+            for: 15m
+            labels:
+              severity: warning
+          - alert: DiskUsage
+            annotations:
+              description: There is one disk with capacity used higher than 90% {{ "{{" }} $value }} for {{ include "helmMonitorie.name" . }}.
+              summary: There is one disk with capacity used higher than 90% {{ "{{" }} $value }} for {{ include "helmMonitorie.name" . }}.
+            expr: conveior_hwDisk{entity="{{ include "helmMonitorie.name" . }}"} > 90
+            for: 1m
+            labels:
+              severity: warning
+          - alert: NoSWAP
+            annotations:
+              description: There is SWAP not enabled or too low for {{ include "helmMonitorie.name" . }}.
+              summary: There is SWAP not enabled or too low for {{ include "helmMonitorie.name" . }}.
+            expr: conveior_hwSwap{entity="{{ include "helmMonitorie.name" . }}",label_name="total"} < 524288000
+            for: 1m
+            labels:
+              severity: warning
+          - alert: HighSwapUsage
+            annotations:
+              description: High Swap Usage Detected {{ include "helmMonitorie.name" . }}.
+              summary: High Swap Usage Detected {{ include "helmMonitorie.name" . }}.
+            expr: conveior_hwSwap{entity="{{ include "helmMonitorie.name" . }}",label_name="used"} / conveior_hwSwap{entity="{{ include "helmMonitorie.name" . }}",label_name="total"} > 0.80
+            for: 1m
+            labels:
+              severity: warning
+          - alert: ContainerDown
+            annotations:
+              description: There is docker container {{ "{{" }} $value }} down for {{ include "helmMonitorie.name" . }}.
+              summary: There is docker container {{ "{{" }} $value }} down for {{ include "helmMonitorie.name" . }}.
+            expr: conveior_dockerContainer{entity="{{ include "helmMonitorie.name" . }}"} > 2
+            for: 1m
+            labels:
+              severity: warning
+          - alert: ElasticSearchIndices
+            annotations:
+              description: There are {{ "{{" }} $value }} Elasticsearch red indices for {{ include "helmMonitorie.name" . }}.
+              summary: There are {{ "{{" }} $value }} Elasticsearch red indices for {{ include "helmMonitorie.name" . }}.
+            expr: conveior_elasticsearch{entity="{{ include "helmMonitorie.name" . }}",label_name="red"} > 0
+            for: 1m
+            labels:
+              severity: warning
+  {{ end }}
