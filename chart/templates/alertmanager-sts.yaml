@@ -99,6 +99,8 @@ spec:
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: FallbackToLogsOnError
           volumeMounts:
+            - mountPath: /alertmanager
+              name: alertmanager
             - name: config-out
               mountPath: /etc/alertmanager/config
               readOnly: true
@@ -114,6 +116,8 @@ spec:
       serviceAccountName: alertmanager
       terminationGracePeriodSeconds: 120
       volumes:
+        - emptyDir: {}
+          name: alertmanager
         - name: config-out
           secret:
             defaultMode: 420
