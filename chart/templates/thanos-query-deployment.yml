@@ -51,7 +51,7 @@ spec:
             - >-
               --endpoint=dnssrv+_grpc._tcp.thanos-storegateway.{{ .Release.Namespace }}.svc.cluster.local
             - >-
-              --endpoint=dnssrv+_grpc._tcp.thanos-discovery.{{ .Release.Namespace }}.svc.cluster.local:10901
+              --endpoint=dnssrv+_grpc._tcp.prometheus.{{ .Release.Namespace }}.svc.cluster.local:10901
           image: 'docker.io/bitnami/thanos:0.30.1-scratch-r0'
           imagePullPolicy: IfNotPresent
           livenessProbe:

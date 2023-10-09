@@ -1,20 +1,20 @@
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    app.kubernetes.io/instance: pushgw
-    app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/name: prometheus-pushgateway
-    argocd.argoproj.io/instance: pushgw
-  name: pushgw
-  namespace: {{ .Release.Namespace }}
-spec:
-  ports:
-    - name: http
-      port: 9091
-      protocol: TCP
-      targetPort: 9091
-  selector:
-    app.kubernetes.io/instance: pushgw
-    app.kubernetes.io/name: prometheus-pushgateway
-  type: ClusterIP
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  labels:
+#    app.kubernetes.io/instance: pushgw
+#    app.kubernetes.io/managed-by: Helm
+#    app.kubernetes.io/name: prometheus-pushgateway
+#    argocd.argoproj.io/instance: pushgw
+#  name: pushgw
+#  namespace: {{ .Release.Namespace }}
+#spec:
+#  ports:
+#    - name: http
+#      port: 9091
+#      protocol: TCP
+#      targetPort: 9091
+#  selector:
+#    app.kubernetes.io/instance: pushgw
+#    app.kubernetes.io/name: prometheus-pushgateway
+#  type: ClusterIP

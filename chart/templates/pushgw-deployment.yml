@@ -1,66 +1,66 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
-    app.kubernetes.io/instance: pushgw
-    app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/name: pushgateway
-    argocd.argoproj.io/instance: pushgw
-  name: pushgw
-  namespace: {{ .Release.Namespace }}
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app.kubernetes.io/instance: pushgw
-      app.kubernetes.io/name: prometheus-pushgateway
-  strategy:
-    type: Recreate
-  template:
-    metadata:
-      labels:
-        app.kubernetes.io/instance: pushgw
-        app.kubernetes.io/managed-by: Helm
-        app.kubernetes.io/name: prometheus-pushgateway
-    spec:
-      containers:
-        - args:
-            - '--web.route-prefix=/{{ .Values.pushgw.uri }}'
-          image: 'quay.io/prometheus/pushgateway:v1.6.0'
-          imagePullPolicy: IfNotPresent
-          livenessProbe:
-            httpGet:
-              path: /{{ .Values.pushgw.uri }}/-/healthy
-              port: 9091
-            initialDelaySeconds: 10
-            timeoutSeconds: 10
-          name: pushgateway
-          ports:
-            - containerPort: 9091
-              name: metrics
-              protocol: TCP
-          readinessProbe:
-            httpGet:
-              path: /{{ .Values.pushgw.uri }}/-/ready
-              port: 9091
-            initialDelaySeconds: 10
-            timeoutSeconds: 10
-          resources:
-            limits:
-              cpu: 100m
-              memory: 100Mi
-            requests:
-              cpu: 30m
-              memory: 30Mi
-          volumeMounts:
-            - mountPath: /data
-              name: storage-volume
-              subPath: ''
-      securityContext:
-        fsGroup: 65534
-        runAsNonRoot: true
-        runAsUser: 65534
-      serviceAccountName: pushgw
-      volumes:
-        - emptyDir: {}
-          name: storage-volume
+#apiVersion: apps/v1
+#kind: Deployment
+#metadata:
+#  labels:
+#    app.kubernetes.io/instance: pushgw
+#    app.kubernetes.io/managed-by: Helm
+#    app.kubernetes.io/name: pushgateway
+#    argocd.argoproj.io/instance: pushgw
+#  name: pushgw
+#  namespace: {{ .Release.Namespace }}
+#spec:
+#  replicas: 1
+#  selector:
+#    matchLabels:
+#      app.kubernetes.io/instance: pushgw
+#      app.kubernetes.io/name: prometheus-pushgateway
+#  strategy:
+#    type: Recreate
+#  template:
+#    metadata:
+#      labels:
+#        app.kubernetes.io/instance: pushgw
+#        app.kubernetes.io/managed-by: Helm
+#        app.kubernetes.io/name: prometheus-pushgateway
+#    spec:
+#      containers:
+#        - args:
+#            - '--web.route-prefix=/{{ .Values.pushgw.uri }}'
+#          image: 'quay.io/prometheus/pushgateway:v1.6.0'
+#          imagePullPolicy: IfNotPresent
+#          livenessProbe:
+#            httpGet:
+#              path: /{{ .Values.pushgw.uri }}/-/healthy
+#              port: 9091
+#            initialDelaySeconds: 10
+#            timeoutSeconds: 10
+#          name: pushgateway
+#          ports:
+#            - containerPort: 9091
+#              name: metrics
+#              protocol: TCP
+#          readinessProbe:
+#            httpGet:
+#              path: /{{ .Values.pushgw.uri }}/-/ready
+#              port: 9091
+#            initialDelaySeconds: 10
+#            timeoutSeconds: 10
+#          resources:
+#            limits:
+#              cpu: 100m
+#              memory: 100Mi
+#            requests:
+#              cpu: 30m
+#              memory: 30Mi
+#          volumeMounts:
+#            - mountPath: /data
+#              name: storage-volume
+#              subPath: ''
+#      securityContext:
+#        fsGroup: 65534
+#        runAsNonRoot: true
+#        runAsUser: 65534
+#      serviceAccountName: pushgw
+#      volumes:
+#        - emptyDir: {}
+#          name: storage-volume
