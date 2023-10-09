@@ -117,6 +117,7 @@ spec:
             - '--tsdb.path=/prometheus'
             - '--log.level=info'
             - '--log.format=logfmt'
+            - '--web.enable-remote-write-receiver'
           env:
             - name: OBJSTORE_CONFIG
               valueFrom:
