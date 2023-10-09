@@ -16,7 +16,7 @@ data:
     rule_files:
       - /etc/prometheus/rules/*.yaml
     remote_write:
-    - url: "http://prometheus.{{ .Release.Namespace }}.svc.cluster.local:9090/{{ .Values.pushgw.ingressUri }}"
+      - url: "http://prometheus.{{ .Release.Namespace }}.svc.cluster.local:9090/api/v1/write"
     scrape_configs:
       {{- range $item_name, $item := .Values.blackbox }}
       - job_name: serviceMonitor/{{ include "helmMonitorie.name" $ }}/blackbox-{{ $item_name }}/0
