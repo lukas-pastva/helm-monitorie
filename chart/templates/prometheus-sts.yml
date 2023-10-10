@@ -37,6 +37,7 @@ spec:
         - args:
             - '--web.console.templates=/etc/prometheus/consoles'
             - '--web.console.libraries=/etc/prometheus/console_libraries'
+            - '--web.enable-remote-write-receiver'
             - '--storage.tsdb.retention.time=10d'
             - '--config.file=/etc/prometheus/config_out/prometheus.yaml'
             - '--storage.tsdb.path=/prometheus'
@@ -117,7 +118,6 @@ spec:
             - '--tsdb.path=/prometheus'
             - '--log.level=info'
             - '--log.format=logfmt'
-            - '--web.enable-remote-write-receiver'
           env:
             - name: OBJSTORE_CONFIG
               valueFrom:
