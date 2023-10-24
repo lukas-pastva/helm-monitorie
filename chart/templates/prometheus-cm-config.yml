@@ -9,7 +9,7 @@ data:
   prometheus.yaml: |-
     global:
       evaluation_interval: 30s
-      scrape_interval: 30s
+      scrape_interval: {{ .Values.scrapeInterval }}
       external_labels:
         prometheus: {{ include "helmMonitorie.name" . }}/{{ include "helmMonitorie.name" . }}
         prometheus_replica: prometheus-{{ include "helmMonitorie.name" . }}-0
@@ -24,7 +24,6 @@ data:
             namespaces:
               names:
                 - sys-monitoring
-        scrape_interval: 300s
         scrape_timeout: 30s
         metrics_path: /probe
         params:

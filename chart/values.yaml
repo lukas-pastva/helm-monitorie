@@ -1,3 +1,4 @@
+scrapeInterval: "300s"
 nameOverride: ""
 slackWebHook: ""
 grafana:
