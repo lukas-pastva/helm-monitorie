@@ -123,7 +123,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "conveior_dockerContainer{entity=\"{{ include "helmMonitorie.name" . }}\",label_name=\"$container\"}[30s]",
+              "expr": "conveior_dockerContainer{entity=\"{{ include "helmMonitorie.name" . }}\",label_name=\"$container\"}[{{ .Values.scrapeInterval }}]",
               "instant": true,
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": false,
