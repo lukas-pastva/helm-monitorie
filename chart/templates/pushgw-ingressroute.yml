@@ -1,0 +1,38 @@
+{{ if eq .Values.ingressType "traefik" }}
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: pushgw
+  namespace: {{ .Release.Namespace }}
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`{{ .Values.pushgw.domain }}`) && PathPrefix(`/{{ .Values.pushgw.ingressUri }}`)
+      middlewares:
+        - name: pushgw
+          namespace: {{ .Release.Namespace }}
+      services:
+        - name: pushgw
+          port: 9091
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: pushgw
+  namespace: {{ .Release.Namespace }}
+spec:
+  basicAuth:
+    secret: pushgw
+---
+apiVersion: v1
+data:
+  users: {{ .Values.pushgw.auth }}
+kind: Secret
+metadata:
+  name: pushgw
+  namespace: {{ .Release.Namespace }}
+type: Opaque
+{{ end }}

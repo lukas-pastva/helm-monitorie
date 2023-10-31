@@ -1,36 +1,33 @@
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: pushgw
-  namespace: {{ .Release.Namespace }}
-spec:
-  entryPoints:
-    - websecure
-  routes:
-    - kind: Rule
-      match: Host(`{{ .Values.pushgw.domain }}`) && PathPrefix(`/{{ .Values.pushgw.ingressUri }}`)
-      middlewares:
-        - name: pushgw
-          namespace: {{ .Release.Namespace }}
-      services:
-        - name: pushgw
-          port: 9091
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: pushgw
-  namespace: {{ .Release.Namespace }}
-spec:
-  basicAuth:
-    secret: pushgw
+{{ if eq .Values.ingressType "nginx" }}
 ---
 apiVersion: v1
 data:
-  users: {{ .Values.pushgw.auth }}
+  auth: {{ .Values.pushgw.auth }}
 kind: Secret
 metadata:
   name: pushgw
   namespace: {{ .Release.Namespace }}
 type: Opaque
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pushgw
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    nginx.ingress.kubernetes.io/auth-type: basic
+    nginx.ingress.kubernetes.io/auth-secret: pushgw
+    nginx.ingress.kubernetes.io/auth-realm: "Authentication Required"
+spec:
+  rules:
+    - host: {{ .Values.pushgw.domain }}
+      http:
+        paths:
+          - backend:
+              service:
+                name: pushgw
+                port:
+                  number: 9091
+            path: /{{ .Values.pushgw.ingressUri }}
+            pathType: Prefix
+{{ end }}
