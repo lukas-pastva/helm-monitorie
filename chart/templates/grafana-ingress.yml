@@ -1,28 +1,20 @@
+{{ if eq .Values.ingressType "nginx" }}
 ---
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
   name: grafana
   namespace: {{ .Release.Namespace }}
 spec:
-  entryPoints:
-    - websecure
-  routes:
-    - kind: Rule
-      match: Host(`{{ .Values.grafana.domain }}`) && PathPrefix(`/{{ .Values.grafana.uri }}`)
-      middlewares:
-        - name: grafana
-          namespace: {{ .Release.Namespace }}
-      services:
-        - name: grafana
-          port: 80
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: grafana
-  namespace: {{ .Release.Namespace }}
-spec:
-  stripPrefix:
-    prefixes:
-      - /{{ .Values.grafana.uri }}
+  rules:
+    - host: {{ .Values.grafana.domain }}
+      http:
+        paths:
+          - backend:
+              service:
+                name: grafana
+                port:
+                  number: 80
+            path: {{ .Values.grafana.uri }}
+            pathType: Prefix
+{{ end }}

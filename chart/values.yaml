@@ -1,3 +1,4 @@
+ingressType: nginx #traefik
 scrapeInterval: "300s"
 nameOverride: ""
 slackWebHook: ""
