@@ -55,7 +55,6 @@ spec:
               port: 3000
           resources:
             limits:
-              cpu: 200m
               memory: 150Mi
             requests:
               cpu: 30m
