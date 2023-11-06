@@ -53,8 +53,8 @@ data:
               severity: warning
           - alert: ContainerDown
             annotations:
-              description: There is docker container {{ "{{" }} $value }} down for {{ include "helmMonitorie.name" . }}.
-              summary: There is docker container {{ "{{" }} $value }} down for {{ include "helmMonitorie.name" . }}.
+              description: There is container down for {{ include "helmMonitorie.name" . }}.
+              summary: There is container down for {{ include "helmMonitorie.name" . }}.
             expr: conveior_dockerContainer{entity="{{ include "helmMonitorie.name" . }}"} > 2
             for: 1m
             labels:
