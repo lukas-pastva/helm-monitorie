@@ -1783,7 +1783,7 @@ data:
             "type": "prometheus",
             "uid": "P5DCFC7561CCDE821"
           },
-          "description": "Sum of size of Docker containers in last 5 minutes",
+          "description": "Sum of size of containers in last 5 minutes",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -1843,7 +1843,7 @@ data:
               "refId": "A"
             }
           ],
-          "title": "Docker containers size",
+          "title": "Containers size",
           "type": "stat"
         },
         {
@@ -1851,7 +1851,7 @@ data:
             "type": "prometheus",
             "uid": "P5DCFC7561CCDE821"
           },
-          "description": "Sum of network load of all Docker containers in last 5 minutes",
+          "description": "Sum of network load of all containers in last 5 minutes",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -1993,7 +1993,7 @@ data:
             "type": "prometheus",
             "uid": "P5DCFC7561CCDE821"
           },
-          "description": "Docker containers",
+          "description": "Containers",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -2086,7 +2086,7 @@ data:
             "type": "prometheus",
             "uid": "P5DCFC7561CCDE821"
           },
-          "description": "Docker containers",
+          "description": "Containers",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -2489,7 +2489,7 @@ data:
                   "refId": "A"
                 }
               ],
-              "title": "Docker containers start up time",
+              "title": "Containers start up time",
               "type": "timeseries"
             },
             {
@@ -2586,7 +2586,7 @@ data:
                   "refId": "A"
                 }
               ],
-              "title": "Docker containers size",
+              "title": "Containers size",
               "type": "timeseries"
             },
             {
@@ -2653,7 +2653,7 @@ data:
                   "refId": "A"
                 }
               ],
-              "title": "Docker containers size",
+              "title": "Containers size",
               "type": "piechart"
             },
             {
@@ -2918,7 +2918,7 @@ data:
               "type": "piechart"
             }
           ],
-          "title": "Docker, DB, Logs",
+          "title": "Containers, DB, Logs",
           "type": "row"
         }
       ],
