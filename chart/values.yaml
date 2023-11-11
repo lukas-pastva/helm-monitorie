@@ -16,8 +16,15 @@ pushgw:
   uri: ""
   auth: ""
 prometheus:
-  rulesSystemEnabled: false
-  rulesRempEnabled: false
+  rulesSystem:
+    enabled: true
+    disableCertificateExpirySoon: true
+    disableHeartBeat: true
+    disableDiskUsage: true
+    disableNoSWAP: true
+    disableHighSwapUsage: true
+    disableContainerDown: true
+    disableElasticSearchIndices: true
 blackbox:
 #  google:
 #    url: https://google.com
