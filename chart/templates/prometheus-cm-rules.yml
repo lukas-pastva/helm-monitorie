@@ -11,7 +11,7 @@ data:
     groups:
       - name: dashboard
         rules:
-  {{- if .Values.prometheus.rulesSystem.disableCertificateExpirySoon }}
+  {{- if .Values.prometheus.rulesSystem.enableCertificateExpirySoon }}
           - alert: CertificateExpirySoon
             expr: probe_ssl_earliest_cert_expiry - time() < 86400
             for: 10m
@@ -21,7 +21,7 @@ data:
               title: "Certificate Expiry Alert"
               description: "The SSL certificate is expiring in less than 24 hours."
   {{- end  }}
-  {{- if .Values.prometheus.rulesSystem.disableHeartBeat }}
+  {{- if .Values.prometheus.rulesSystem.enableHeartBeat }}
           - alert: HeartBeat
             annotations:
               description: There are no new metrics in monitoring for {{ include "helmMonitorie.name" . }}.
@@ -31,7 +31,7 @@ data:
             labels:
               severity: warning
   {{- end  }}
-  {{- if .Values.prometheus.rulesSystem.disableDiskUsage }}
+  {{- if .Values.prometheus.rulesSystem.enableDiskUsage }}
           - alert: DiskUsage
             annotations:
               description: There is one disk with capacity used higher than 90% {{ "{{" }} $value }} for {{ include "helmMonitorie.name" . }}.
@@ -41,7 +41,7 @@ data:
             labels:
               severity: warning
   {{- end  }}
-  {{- if .Values.prometheus.rulesSystem.disableNoSWAP }}
+  {{- if .Values.prometheus.rulesSystem.enableNoSWAP }}
           - alert: NoSWAP
             annotations:
               description: There is SWAP not enabled or too low for {{ include "helmMonitorie.name" . }}.
@@ -51,7 +51,7 @@ data:
             labels:
               severity: warning
   {{- end  }}
-  {{- if .Values.prometheus.rulesSystem.disableHighSwapUsage }}
+  {{- if .Values.prometheus.rulesSystem.enableHighSwapUsage }}
           - alert: HighSwapUsage
             annotations:
               description: High Swap Usage Detected {{ include "helmMonitorie.name" . }}.
@@ -61,7 +61,7 @@ data:
             labels:
               severity: warning
   {{- end  }}
-  {{- if .Values.prometheus.rulesSystem.disableContainerDown }}
+  {{- if .Values.prometheus.rulesSystem.enableContainerDown }}
           - alert: ContainerDown
             annotations:
               description: There is container down for {{ include "helmMonitorie.name" . }}.
@@ -71,7 +71,7 @@ data:
             labels:
               severity: warning
   {{- end  }}
-  {{- if .Values.prometheus.rulesSystem.disableElasticSearchIndices }}
+  {{- if .Values.prometheus.rulesSystem.enableElasticSearchIndices }}
           - alert: ElasticSearchIndices
             annotations:
               description: There are {{ "{{" }} $value }} Elasticsearch red indices for {{ include "helmMonitorie.name" . }}.

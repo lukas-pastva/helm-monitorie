@@ -18,13 +18,13 @@ pushgw:
 prometheus:
   rulesSystem:
     enabled: true
-    disableCertificateExpirySoon: true
-    disableHeartBeat: true
-    disableDiskUsage: true
-    disableNoSWAP: true
-    disableHighSwapUsage: true
-    disableContainerDown: true
-    disableElasticSearchIndices: true
+    enableCertificateExpirySoon: true
+    enableHeartBeat: true
+    enableDiskUsage: true
+    enableNoSWAP: true
+    enableHighSwapUsage: true
+    enableContainerDown: true
+    enableElasticSearchIndices: true
 blackbox:
 #  google:
 #    url: https://google.com
