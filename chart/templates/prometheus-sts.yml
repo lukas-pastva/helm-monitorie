@@ -7,8 +7,6 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: {{ include "helmMonitorie.name" . }}
     argocd.argoproj.io/instance: {{ include "helmMonitorie.name" . }}
-    checksum-config: {{ include (print $.Template.BasePath "/prometheus-cm-config.yml") . | sha256sum | trimSuffix "-" | trunc 63 }}
-    checksum-rules: {{ include (print $.Template.BasePath "/prometheus-cm-rules.yml") . | sha256sum | trimSuffix "-" | trunc 63 }}
     release: {{ include "helmMonitorie.name" . }}
   name: prometheus-{{ include "helmMonitorie.name" . }}
   namespace: {{ include "helmMonitorie.name" . }}
@@ -33,6 +31,8 @@ spec:
         app.kubernetes.io/name: prometheus
         app.kubernetes.io/version: 2.40.5
         prometheus: {{ include "helmMonitorie.name" . }}
+        checksum-config: {{ include (print $.Template.BasePath "/prometheus-cm-config.yml") . | sha256sum | trimSuffix "-" | trunc 63 }}
+        checksum-rules: {{ include (print $.Template.BasePath "/prometheus-cm-rules.yml") . | sha256sum | trimSuffix "-" | trunc 63 }}
     spec:
       automountServiceAccountToken: true
       containers:
