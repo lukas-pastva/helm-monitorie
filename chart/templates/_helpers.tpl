@@ -2,7 +2,7 @@
 Expand the name of the chart.
 */}}
 {{- define "helmMonitorie.name" -}}
-{{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- default .Chart.Name .Values.nameOverride | trimSuffix "-" | trunc 63 }}
 {{- end }}
 
 {{/*
