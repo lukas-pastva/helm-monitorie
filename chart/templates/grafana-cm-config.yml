@@ -35,7 +35,6 @@ data:
     [server]
     domain = {{ .Values.grafana.domain }}
     root_url = https://{{ .Values.grafana.domain }}/{{ .Values.grafana.uri }}
-    serve_from_sub_path = true
     [users]
     default_theme = light
 kind: ConfigMap
