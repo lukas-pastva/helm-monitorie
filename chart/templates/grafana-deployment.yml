@@ -36,7 +36,7 @@ spec:
               value: /var/lib/grafana/plugins
             - name: GF_PATHS_PROVISIONING
               value: /etc/grafana/provisioning
-          image: 'grafana/grafana:10.0.5'
+          image: 'grafana/grafana:10.2.2'
           livenessProbe:
             failureThreshold: 10
             httpGet:
