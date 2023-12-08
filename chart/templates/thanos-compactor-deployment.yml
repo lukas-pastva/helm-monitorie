@@ -102,5 +102,8 @@ spec:
         - name: objstore-config
           secret:
             secretName: secret
+            items:
+              - key: "objstore.yml"
+                path: "objstore.yml"
         - emptyDir: {}
           name: data
