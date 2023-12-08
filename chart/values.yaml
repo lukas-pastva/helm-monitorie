@@ -34,8 +34,12 @@ blackbox:
 #  url: "mail.domain.com:587"
 #  receiver: "user@mail.domain.com"
 
+# we support two types, secrets in this values.yaml
+# but safe way is using Hashicorp Vault
 secrets:
+
 #  type: vault
+
   type: helm
   slackWebHook: ""
   grafanaAdminPassword: ""
