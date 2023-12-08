@@ -39,11 +39,13 @@ blackbox:
 secrets:
 
 #  type: vault
+#  vaultUrl: "http://sys-vault.sys-vault.svc.cluster.local:8200"
+#  tokenName: vault-{{ .Values.nameOverride }}-token
 
-  type: helm
-  slackWebHook: ""
-  grafanaAdminPassword: ""
-  grafanaClientSecret: ""
-  thanosS3SecretKey: ""
-  mailPassword: ""
-  pushGwAuth: ""
+#  type: helm
+#  slackWebHook: ""
+#  grafanaAdminPassword: ""
+#  grafanaClientSecret: ""
+#  thanosS3SecretKey: ""
+#  mailPassword: ""
+#  pushGwAuth: ""
