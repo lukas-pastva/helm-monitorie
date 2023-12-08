@@ -63,7 +63,7 @@ spec:
               cpu: 30m
               memory: 30Mi
           volumeMounts:
-            - mountPath: /etc/grafana/grafana.ini
+            - mountPath: /etc/grafana
               name: grafana-ini
             - mountPath: /etc/grafana/provisioning/datasources/datasources.yaml
               name: grafana
