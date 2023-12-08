@@ -17,7 +17,7 @@ data:
     api_url = https://www.googleapis.com/oauth2/v1/userinfo
     auth_url = https://accounts.google.com/o/oauth2/auth
     client_id = {{ .Values.grafana.clientId }}
-    client_secret = {{ .Values.grafana.clientSecret }}
+    client_secret = {{ .Values.secrets.grafanaClientSecret }}
     enabled = true
     scopes = https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email
     token_url = https://accounts.google.com/o/oauth2/token

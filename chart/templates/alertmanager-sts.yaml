@@ -120,6 +120,11 @@ spec:
         - name: config-out
           secret:
             defaultMode: 420
-            secretName: alertmanager-{{ include "helmMonitorie.name" . }}
+            secretName: secret
+            items:
+              - key: "alertmanager.yaml"
+                path: "alertmanager.yaml"
+              - key: "slack.tmpl"
+                path: "slack.tmpl"
   updateStrategy:
     type: RollingUpdate

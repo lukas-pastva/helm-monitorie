@@ -1,20 +1,19 @@
-ingressType: nginx #traefik
 scrapeInterval: "300s"
 nameOverride: ""
-slackWebHook: ""
 grafana:
-  adminPassword: ""
   adminUsername: ""
   allowedDomains: ""
   clientId: ""
-  clientSecret: ""
   uri: ""
   domain: ""
   dashboard: "system"
 pushgw:
   domain: ""
   uri: ""
-  auth: ""
+#thanos:
+#  s3Bucket: bucket-name
+#  s3AccessKey: ASDF
+#  s3Endpoint: "s3.com"
 prometheus:
   rulesSystem:
     enabled: true
@@ -31,7 +30,16 @@ blackbox:
 #    module: http_2xx | https_probe
 #mail:
 #  username: "user@mail.domain.com"
-#  password: "five-stars"
 #  sender: "user@mail.domain.com"
 #  url: "mail.domain.com:587"
 #  receiver: "user@mail.domain.com"
+
+secrets:
+#  type: vault
+  type: helm
+  slackWebHook: ""
+  grafanaAdminPassword: ""
+  grafanaClientSecret: ""
+  thanosS3SecretKey: ""
+  mailPassword: ""
+  pushGwAuth: ""

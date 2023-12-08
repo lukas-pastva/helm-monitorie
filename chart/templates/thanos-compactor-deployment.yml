@@ -101,6 +101,6 @@ spec:
       volumes:
         - name: objstore-config
           secret:
-            secretName: thanos-objectstorage
+            secretName: secret
         - emptyDir: {}
           name: data
