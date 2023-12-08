@@ -40,6 +40,7 @@ secrets:
 
 #  type: vault
 #  vaultUrl: "http://sys-vault.sys-vault.svc.cluster.local:8200"
+#  vaultPath: "secrets/monitoring"
 #  tokenName: vault-{{ .Values.nameOverride }}-token
 
 #  type: helm
