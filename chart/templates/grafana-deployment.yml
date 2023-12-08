@@ -65,9 +65,8 @@ spec:
           volumeMounts:
             - mountPath: /etc/grafana
               name: grafana-ini
-            - mountPath: /etc/grafana/provisioning/datasources/datasources.yaml
-              name: grafana
-              subPath: datasources.yaml
+            - mountPath: /etc/grafana/provisioning/datasources/
+              name: grafana-datasource
             - mountPath: /etc/grafana/provisioning/dashboards
               name: grafana-dashboard
       enableServiceLinks: true
@@ -86,6 +85,12 @@ spec:
             items:
               - key: "grafana.ini"
                 path: "grafana.ini"
+        - name: grafana-datasource
+          secret:
+            secretName: secret
+            items:
+              - key: "datasources.yaml"
+                path: "datasources.yaml"
         - configMap:
             name: grafana-dashboard
           name: grafana-dashboard
