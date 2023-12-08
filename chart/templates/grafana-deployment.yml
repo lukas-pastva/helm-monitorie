@@ -27,7 +27,10 @@ spec:
             - name: GF_SECURITY_ADMIN_USER
               value: {{ .Values.grafana.adminUsername }}
             - name: GF_SECURITY_ADMIN_PASSWORD
-              value: {{ .Values.secrets.grafanaAdminPassword }}
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: GRAFANA_PASSWORD
             - name: GF_PATHS_DATA
               value: /var/lib/grafana/
             - name: GF_PATHS_LOGS
@@ -61,8 +64,7 @@ spec:
               memory: 30Mi
           volumeMounts:
             - mountPath: /etc/grafana/grafana.ini
-              name: grafana
-              subPath: grafana.ini
+              name: grafana-ini
             - mountPath: /etc/grafana/provisioning/datasources/datasources.yaml
               name: grafana
               subPath: datasources.yaml
@@ -78,6 +80,12 @@ spec:
         - configMap:
             name: grafana
           name: grafana
+        - name: grafana-ini
+          secret:
+            secretName: secret
+            items:
+              - key: "grafana.ini"
+                path: "grafana.ini"
         - configMap:
             name: grafana-dashboard
           name: grafana-dashboard
