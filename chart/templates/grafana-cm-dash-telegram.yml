@@ -111,7 +111,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "conveior_dockerContainer{entity=\"{{ include "helmMonitorie.name" $root }}\",label_name=\"$container\"}[{{ .Values.scrapeInterval }}]",
+              "expr": "conveior_dockerContainer{entity=\"{{ include "helmMonitorie.name" $root }}\",label_name=\"$container\"}[{{ $.Values.scrapeInterval }}]",
               "instant": true,
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": false,
