@@ -126,7 +126,7 @@ spec:
             items:
               - key: "alertmanager.yaml"
                 path: "alertmanager.yaml"
-        - name: config
+        - name: alertmanager-slack-template
           secret:
             secretName: alertmanager-slack-template
   updateStrategy:
