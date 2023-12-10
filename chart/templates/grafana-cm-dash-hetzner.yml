@@ -1,4 +1,5 @@
-{{- range .Values.grafana.dashboards }}
+{{- $root := . }}
+  {{- range .Values.grafana.dashboards }}
   {{- if eq . "hetzner" }}
 ---
 apiVersion: v1

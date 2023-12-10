@@ -1,3 +1,4 @@
+{{- $root := . }}
 {{- range .Values.grafana.dashboards }}
   {{- if eq . "node-exporter" }}
 ---
