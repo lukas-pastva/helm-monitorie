@@ -5,8 +5,8 @@ grafana:
   clientId: ""
   uri: ""
   domain: ""
-  dashboards:
-    - system
+#  dashboards:
+#    system:
 pushgw:
   domain: ""
   uri: ""
