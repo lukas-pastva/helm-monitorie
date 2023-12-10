@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{- range $index, $value := .Values.grafana.dashboards }}{{- if eq $index 0 }}name: "grafana-dashboard"{{- else }}name: "fe"{{- end }}{{- end }}
+  name: {{- range $index, $value := .Values.grafana.dashboards }}{{- if eq $index 0 }}"grafana-dashboard"{{- else }}"fe"{{- end }}{{- end }}
   namespace: {{ .Release.Namespace }}
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
