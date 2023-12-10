@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: grafana-datasource
+  namespace: {{ .Release.Namespace }}
+type: Opaque
+data:
+  datasources.yaml: |
+    apiVersion: 1
+    datasources:
+    - access: proxy
+      name: Thanos
+      type: prometheus
+      uid: P5DCFC7561CCDE821
+      url: http://thanos-query:9090

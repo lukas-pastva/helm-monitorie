@@ -100,9 +100,12 @@ spec:
           volumeMounts:
             - mountPath: /alertmanager
               name: alertmanager
-            - name: config-out
-              mountPath: /etc/alertmanager/config
-              readOnly: true
+            - name: alertmanager-config
+              mountPath: /etc/alertmanager/config/alertmanager.yaml
+              subPath: alertmanager.yaml
+            - name: alertmanager-slack-template
+              mountPath: /etc/alertmanager/config/slack.tmpl
+              subPath: slack.tmpl
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
@@ -117,14 +120,14 @@ spec:
       volumes:
         - emptyDir: {}
           name: alertmanager
-        - name: config-out
+        - name: alertmanager-config
           secret:
-            defaultMode: 420
             secretName: secret
             items:
               - key: "alertmanager.yaml"
                 path: "alertmanager.yaml"
-              - key: "slack.tmpl"
-                path: "slack.tmpl"
+        - name: config
+          secret:
+            secretName: alertmanager-slack-template
   updateStrategy:
     type: RollingUpdate

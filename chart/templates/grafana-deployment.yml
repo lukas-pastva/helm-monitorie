@@ -87,7 +87,7 @@ spec:
                 path: "grafana.ini"
         - name: grafana-datasource
           secret:
-            secretName: secret
+            secretName: grafana-datasource
             items:
               - key: "datasources.yaml"
                 path: "datasources.yaml"
