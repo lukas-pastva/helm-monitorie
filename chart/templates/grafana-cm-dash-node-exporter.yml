@@ -1,5 +1,5 @@
 {{- range .Values.grafana.dashboards }}
-  {{- if eq . "hetzner" }}
+  {{- if eq . "node-exporter" }}
 ---
 apiVersion: v1
 kind: ConfigMap

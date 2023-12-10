@@ -1,5 +1,5 @@
 {{- range .Values.grafana.dashboards }}
-  {{- if eq . "hetzner" }}
+  {{- if eq . "system" }}
 ---
 apiVersion: v1
 kind: ConfigMap
