@@ -1,7 +1,7 @@
 scrapeInterval: "300s"
 nameOverride: ""
 grafana:
-  adminUsername: ""
+  adminUsername: "admin"
   clientId: ""
   uri: ""
   domain: ""
@@ -33,20 +33,19 @@ blackbox:
 # we support two types, secrets in this values.yaml
 # but safe way is using Hashicorp Vault
 secrets:
-
 #  type: vault
 #  vaultUrl: "http://sys-vault.sys-vault.svc.cluster.local:8200"
 #  vaultPath: "secrets/monitoring"
 #  tokenName: vault-{{ .Values.nameOverride }}-token
 
-  type: helm
-  slackWebHook: ""
-  grafanaAdminPassword: ""
-  grafanaClientSecret: ""
-  grafanaAllowedDomains: "grafana.com"
-  thanosS3Bucket: ""
-  thanosS3Endpoint: ""
-  thanosS3AccessKey: ""
-  thanosS3SecretKey: ""
-  mailPassword: ""
-  pushGwAuth: ""
+#  type: helm
+#  slackWebHook: ""
+#  grafanaAdminPassword: ""
+#  grafanaClientSecret: ""
+#  grafanaAllowedDomains: "grafana.com"
+#  thanosS3Bucket: ""
+#  thanosS3Endpoint: ""
+#  thanosS3AccessKey: ""
+#  thanosS3SecretKey: ""
+#  mailPassword: ""
+#  pushGwAuth: ""
