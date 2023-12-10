@@ -1,10 +1,11 @@
-{{- if contains "wp" .Values.grafana.dashboards }}
+{{- range .Values.grafana.dashboards }}
+  {{- if eq . "hetzner" }}
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{- range $index, $value := .Values.grafana.dashboards }}{{- if eq $index 0 }}"grafana-dashboard"{{- else }}"wp"{{- end }}{{- end }}
-  namespace: {{ .Release.Namespace }}
+  name: {{- range $index, $value := $.Values.grafana.dashboards }}{{- if eq $index 0 }} "grafana-dashboard"{{- else }} "wp"{{- end }}{{- end }}
+  namespace: {{ $.Release.Namespace }}
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
 data:
@@ -3002,4 +3003,5 @@ data:
       "version": 1,
       "weekStart": ""
     }
+  {{ end }}
 {{ end }}

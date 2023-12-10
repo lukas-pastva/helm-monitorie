@@ -1,10 +1,11 @@
-{{- if contains "fe" .Values.grafana.dashboards }}
+{{- range .Values.grafana.dashboards }}
+  {{- if eq . "fe" }}
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{- range $index, $value := .Values.grafana.dashboards }}{{- if eq $index 0 }}"grafana-dashboard"{{- else }}"fe"{{- end }}{{- end }}
-  namespace: {{ .Release.Namespace }}
+  name: {{- range $index, $value := $.Values.grafana.dashboards }}{{- if eq $index 0 }} "grafana-dashboard"{{- else }} "fe"{{- end }}{{- end }}
+  namespace: {{ $.Release.Namespace }}
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
 data:
@@ -3361,5 +3362,5 @@ data:
       "version": 1,
       "weekStart": ""
     }
-
+  {{ end }}
 {{ end }}
