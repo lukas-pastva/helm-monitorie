@@ -4,7 +4,7 @@ metadata:
   name: alertmanager-slack-template
   namespace: {{ .Release.Namespace }}
 type: Opaque
-data:
+stringData:
   slack.tmpl: |-
     {{ "{{" }} define "cluster" }}{{ "{{" }} .ExternalURL | reReplaceAll ".*alertmanager\\.(.*)" "$1" }}{{ "{{" }} end }}
     {{ "{{" }} define "slack.default.text" }}

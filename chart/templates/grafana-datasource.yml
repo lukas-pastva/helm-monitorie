@@ -4,8 +4,8 @@ metadata:
   name: grafana-datasource
   namespace: {{ .Release.Namespace }}
 type: Opaque
-data:
-  datasources.yaml: |
+stringData:
+  datasources.yaml: |-
     apiVersion: 1
     datasources:
     - access: proxy
