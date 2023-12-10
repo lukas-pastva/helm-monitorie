@@ -28,7 +28,7 @@ data:
         metrics_path: /probe
         params:
           module:
-            - {{ $item.module }}
+            - {{ default "http_2xx" $item.module }}
           target:
             - {{ $item.url }}
         scheme: http
