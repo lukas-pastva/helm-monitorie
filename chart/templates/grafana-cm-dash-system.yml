@@ -5,7 +5,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{- $first := true }}{{- range $key, $value := $.Values.grafana.dashboards }}{{- if $first }}{{- $first = false }} "grafana-dashboard"{{- else }} "system"{{- end }}{{- end }}
+  name: {{ $value }}
   namespace: {{ $.Release.Namespace }}
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
