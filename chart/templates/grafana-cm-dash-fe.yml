@@ -1,9 +1,9 @@
-{{ if eq .Values.grafana.dashboard "fe" -}}
+{{- if contains "fe" .Values.grafana.dashboards }}
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: grafana-dashboard
+  name: {{- range $index, $value := .Values.grafana.dashboards }}{{- if eq $index 0 }}name: "grafana-dashboard"{{- else }}name: "fe"{{- end }}{{- end }}
   namespace: {{ .Release.Namespace }}
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
