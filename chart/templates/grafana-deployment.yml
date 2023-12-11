@@ -70,32 +70,32 @@ spec:
 
 {{- if or (eq .Values.grafana.dashboards.feEnabled "default") (eq .Values.grafana.dashboards.feEnabled "true") }}
             - name: dashboard-fe
-              mountPath: /etc/config/{{- if eq .Values.grafana.dashboards.feEnabled "default" }}default.json{{ else }}dashboard-fe.json{{ end }}
+              mountPath: /etc/grafana/provisioning/dashboards/{{- if eq .Values.grafana.dashboards.feEnabled "default" }}default.json{{ else }}dashboard-fe.json{{ end }}
               subPath: dashboard-fe.json
 {{ end }}
 {{- if or (eq .Values.grafana.dashboards.nodeExporterEnabled "default") (eq .Values.grafana.dashboards.nodeExporterEnabled "true") }}
             - name: dashboard-node-exporter
-              mountPath: /etc/config/{{- if eq .Values.grafana.dashboards.nodeExporterEnabled "default" }}default.json{{ else }}dashboard-node-exporter.json{{ end }}
+              mountPath: /etc/grafana/provisioning/dashboards/{{- if eq .Values.grafana.dashboards.nodeExporterEnabled "default" }}default.json{{ else }}dashboard-node-exporter.json{{ end }}
               subPath: dashboard-node-exporter.json
 {{ end }}
 {{- if or (eq .Values.grafana.dashboards.rempEnabled "default") (eq .Values.grafana.dashboards.rempEnabled "true") }}
             - name: dashboard-remp
-              mountPath: /etc/config/{{- if eq .Values.grafana.dashboards.rempEnabled "default" }}default.json{{ else }}dashboard-remp.json{{ end }}
+              mountPath: /etc/grafana/provisioning/dashboards/{{- if eq .Values.grafana.dashboards.rempEnabled "default" }}default.json{{ else }}dashboard-remp.json{{ end }}
               subPath: dashboard-remp.json
 {{ end }}
 {{- if or (eq .Values.grafana.dashboards.systemEnabled "default") (eq .Values.grafana.dashboards.systemEnabled "true") }}
             - name: dashboard-system
-              mountPath: /etc/config/{{- if eq .Values.grafana.dashboards.systemEnabled "default" }}default.json{{ else }}dashboard-system.json{{ end }}
+              mountPath: /etc/grafana/provisioning/dashboards/{{- if eq .Values.grafana.dashboards.systemEnabled "default" }}default.json{{ else }}dashboard-system.json{{ end }}
               subPath: dashboard-system.json
 {{ end }}
 {{- if or (eq .Values.grafana.dashboards.telegramEnabled "default") (eq .Values.grafana.dashboards.telegramEnabled "true") }}
             - name: dashboard-telegram
-              mountPath: /etc/config/{{- if eq .Values.grafana.dashboards.telegramEnabled "default" }}default.json{{ else }}dashboard-telegram.json{{ end }}
+              mountPath: /etc/grafana/provisioning/dashboards/{{- if eq .Values.grafana.dashboards.telegramEnabled "default" }}default.json{{ else }}dashboard-telegram.json{{ end }}
               subPath: dashboard-telegram.json
 {{ end }}
 {{- if or (eq .Values.grafana.dashboards.wpEnabled "default") (eq .Values.grafana.dashboards.wpEnabled "true") }}
             - name: dashboard-wp
-              mountPath: /etc/config/{{- if eq .Values.grafana.dashboards.wpEnabled "default" }}default.json{{ else }}dashboard-wp.json{{ end }}
+              mountPath: /etc/grafana/provisioning/dashboards/{{- if eq .Values.grafana.dashboards.wpEnabled "default" }}default.json{{ else }}dashboard-wp.json{{ end }}
               subPath: dashboard-wp.json
 {{ end }}
       enableServiceLinks: true
