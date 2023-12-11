@@ -676,7 +676,7 @@ data:
       "timepicker": {},
       "timezone": "",
       "title": "Hetzner Cloud Servers",
-      "uid": "hetzner",
+      "uid": "{{ include "helmMonitorie.name" $root | sha256sum | trunc 8 }}",
       "version": 3,
       "description": "Dashboard for listing information about servers in the Hetzner Cloud using metrics from https://promhippie.github.io/hcloud_exporter/"
     }

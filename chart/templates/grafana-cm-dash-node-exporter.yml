@@ -23817,7 +23817,7 @@ data:
       },
       "timezone": "browser",
       "title": "Node Exporter Full",
-      "uid": "rYdddlPWk",
+      "uid": "{{ include "helmMonitorie.name" $root | sha256sum | trunc 8 }}",
       "version": 1,
       "weekStart": ""
     }
