@@ -8,7 +8,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
 data:
-  nodeExporter.json: |-
+  dashboard-node-exporter.json: |-
     {
       "annotations": {
         "list": [

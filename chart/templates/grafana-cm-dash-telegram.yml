@@ -8,7 +8,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
 data:
-  telegram.json: |-
+  dashboard-telegram.json: |-
     {
       "annotations": {
         "list": [

@@ -8,7 +8,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
 data:
-  fe.json: |-
+  dashboard-fe.json: |-
     {
       "annotations": {
         "list": [
