@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: dashboard-fe
+  name: dashboardFe
   namespace: {{ $.Release.Namespace }}
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
