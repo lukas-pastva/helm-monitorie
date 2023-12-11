@@ -1,16 +1,14 @@
-{{- $root := . }}
-{{- range $key, $value := .Values.grafana.dashboards }}
-  {{- if eq $key "telegram" }}
+{{- if or (eq .Values.grafana.dashboards.telegramEnabled "default") (eq .Values.grafana.dashboards.telegramEnabled "true") }}
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ $value }}
+  name: dashboard-telegram
   namespace: {{ $.Release.Namespace }}
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
 data:
-  default.json: |-
+  telegram.json: |-
     {
       "annotations": {
         "list": [
@@ -111,7 +109,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "conveior_dockerContainer{entity=\"{{ include "helmMonitorie.name" $root }}\",label_name=\"$container\"}[{{ $.Values.scrapeInterval }}]",
+              "expr": "conveior_dockerContainer{entity=\"{{ include "helmMonitorie.name" . }}\",label_name=\"$container\"}[{{ .Values.scrapeInterval }}]",
               "instant": true,
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": false,
@@ -199,7 +197,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "conveior_hwCpu{entity=\"{{ include "helmMonitorie.name" $root }}\"}[30s]",
+              "expr": "conveior_hwCpu{entity=\"{{ include "helmMonitorie.name" . }}\"}[30s]",
               "instant": true,
               "legendFormat": "__auto",
               "range": false,
@@ -267,7 +265,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "conveior_hwRam{entity=\"{{ include "helmMonitorie.name" $root }}\",label_name=\"used\"}[30s]",
+              "expr": "conveior_hwRam{entity=\"{{ include "helmMonitorie.name" . }}\",label_name=\"used\"}[30s]",
               "instant": true,
               "legendFormat": "__auto",
               "range": false,
@@ -335,7 +333,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "conveior_hwSwap{entity=\"{{ include "helmMonitorie.name" $root }}\",label_name=\"used\"}[30s]",
+              "expr": "conveior_hwSwap{entity=\"{{ include "helmMonitorie.name" . }}\",label_name=\"used\"}[30s]",
               "instant": true,
               "legendFormat": "__auto",
               "range": false,
@@ -407,7 +405,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "conveior_hwDisk{entity=\"{{ include "helmMonitorie.name" $root }}\",label_name=\"overlay\"}[30s]",
+              "expr": "conveior_hwDisk{entity=\"{{ include "helmMonitorie.name" . }}\",label_name=\"overlay\"}[30s]",
               "instant": true,
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": false,
@@ -506,7 +504,7 @@ data:
                 "uid": "P5DCFC7561CCDE821"
               },
               "editorMode": "code",
-              "expr": "conveior_hwCpu{entity=\"{{ include "helmMonitorie.name" $root }}\"}",
+              "expr": "conveior_hwCpu{entity=\"{{ include "helmMonitorie.name" . }}\"}",
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": true,
               "refId": "A"
@@ -603,7 +601,7 @@ data:
                 "uid": "P5DCFC7561CCDE821"
               },
               "editorMode": "code",
-              "expr": "conveior_hwRam{entity=\"{{ include "helmMonitorie.name" $root }}\"}",
+              "expr": "conveior_hwRam{entity=\"{{ include "helmMonitorie.name" . }}\"}",
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": true,
               "refId": "A"
@@ -700,7 +698,7 @@ data:
                 "uid": "P5DCFC7561CCDE821"
               },
               "editorMode": "code",
-              "expr": "conveior_hwSwap{entity=\"{{ include "helmMonitorie.name" $root }}\"}",
+              "expr": "conveior_hwSwap{entity=\"{{ include "helmMonitorie.name" . }}\"}",
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": true,
               "refId": "A"
@@ -793,7 +791,7 @@ data:
                 "uid": "P5DCFC7561CCDE821"
               },
               "editorMode": "code",
-              "expr": "conveior_hwDisk{entity=\"{{ include "helmMonitorie.name" $root }}\"}",
+              "expr": "conveior_hwDisk{entity=\"{{ include "helmMonitorie.name" . }}\"}",
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": true,
               "refId": "A"
@@ -863,7 +861,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "conveior_hwCpuProcess{entity=\"{{ include "helmMonitorie.name" $root }}\"}[30s]",
+              "expr": "conveior_hwCpuProcess{entity=\"{{ include "helmMonitorie.name" . }}\"}[30s]",
               "instant": true,
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": false,
@@ -931,7 +929,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "conveior_hwRamProcess{entity=\"{{ include "helmMonitorie.name" $root }}\"}[30s]",
+              "expr": "conveior_hwRamProcess{entity=\"{{ include "helmMonitorie.name" . }}\"}[30s]",
               "instant": true,
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": false,
@@ -999,7 +997,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "conveior_hwProcess{entity=\"{{ include "helmMonitorie.name" $root }}\",label_name=\"conveior\"}[30s]",
+              "expr": "conveior_hwProcess{entity=\"{{ include "helmMonitorie.name" . }}\",label_name=\"conveior\"}[30s]",
               "instant": true,
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": false,
@@ -1067,7 +1065,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "conveior_hwBoot{entity=\"{{ include "helmMonitorie.name" $root }}\"}[30s]",
+              "expr": "conveior_hwBoot{entity=\"{{ include "helmMonitorie.name" . }}\"}[30s]",
               "instant": true,
               "legendFormat": "__auto",
               "range": false,
@@ -1166,7 +1164,7 @@ data:
                 "uid": "P5DCFC7561CCDE821"
               },
               "editorMode": "code",
-              "expr": "conveior_hwCpuProcess{entity=\"{{ include "helmMonitorie.name" $root }}\"}",
+              "expr": "conveior_hwCpuProcess{entity=\"{{ include "helmMonitorie.name" . }}\"}",
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": true,
               "refId": "A"
@@ -1263,7 +1261,7 @@ data:
                 "uid": "P5DCFC7561CCDE821"
               },
               "editorMode": "code",
-              "expr": "conveior_hwRamProcess{entity=\"{{ include "helmMonitorie.name" $root }}\"}",
+              "expr": "conveior_hwRamProcess{entity=\"{{ include "helmMonitorie.name" . }}\"}",
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": true,
               "refId": "A"
@@ -1356,7 +1354,7 @@ data:
                 "uid": "P5DCFC7561CCDE821"
               },
               "editorMode": "code",
-              "expr": "conveior_hwProcess{entity=\"{{ include "helmMonitorie.name" $root }}\"}",
+              "expr": "conveior_hwProcess{entity=\"{{ include "helmMonitorie.name" . }}\"}",
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": true,
               "refId": "A"
@@ -1422,7 +1420,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" $root }}\",query_name=\"conveior_mysql_global_wait_timeout\"}[30s]",
+              "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\",query_name=\"conveior_mysql_global_wait_timeout\"}[30s]",
               "instant": true,
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": false,
@@ -1490,7 +1488,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" $root }}\",query_name=\"conveior_mysql_global_interactive_timeout\"}[30s]",
+              "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\",query_name=\"conveior_mysql_global_interactive_timeout\"}[30s]",
               "instant": true,
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": false,
@@ -1558,7 +1556,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" $root }}\",query_name=\"conveior_mysql_local_wait_timeout\"}[30s]",
+              "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\",query_name=\"conveior_mysql_local_wait_timeout\"}[30s]",
               "instant": true,
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": false,
@@ -1626,7 +1624,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" $root }}\",query_name=\"conveior_mysql_local_interactive_timeout\"}[30s]",
+              "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\",query_name=\"conveior_mysql_local_interactive_timeout\"}[30s]",
               "instant": true,
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": false,
@@ -1694,7 +1692,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "sum(conveior_sql_query{entity=\"{{ include "helmMonitorie.name" $root }}\",query_name=\"conveior_sqlSleeperProcess\"})",
+              "expr": "sum(conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\",query_name=\"conveior_sqlSleeperProcess\"})",
               "instant": true,
               "legendFormat": "{{ "{{" }}pod}}",
               "range": false,
@@ -1762,7 +1760,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "sum(conveior_hwDockerSize{entity=\"{{ include "helmMonitorie.name" $root }}\"})",
+              "expr": "sum(conveior_hwDockerSize{entity=\"{{ include "helmMonitorie.name" . }}\"})",
               "instant": true,
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": false,
@@ -1833,7 +1831,7 @@ data:
                 "uid": "P5DCFC7561CCDE821"
               },
               "editorMode": "code",
-              "expr": "sum(conveior_hwNetwork{entity=\"{{ include "helmMonitorie.name" $root }}\"})",
+              "expr": "sum(conveior_hwNetwork{entity=\"{{ include "helmMonitorie.name" . }}\"})",
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": true,
               "refId": "A"
@@ -1904,7 +1902,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "conveior_elasticsearch{entity=\"{{ include "helmMonitorie.name" $root }}\"}[30s]",
+              "expr": "conveior_elasticsearch{entity=\"{{ include "helmMonitorie.name" . }}\"}[30s]",
               "instant": true,
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": false,
@@ -1999,7 +1997,7 @@ data:
                 "uid": "P5DCFC7561CCDE821"
               },
               "editorMode": "code",
-              "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" $root }}\",query_name=\"conveior_sqlSleeperProcess\"}",
+              "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\",query_name=\"conveior_sqlSleeperProcess\"}",
               "legendFormat": "{{ "{{" }}pod}}",
               "range": true,
               "refId": "A"
@@ -2092,7 +2090,7 @@ data:
                 "uid": "P5DCFC7561CCDE821"
               },
               "editorMode": "code",
-              "expr": "conveior_hwDockerSize{entity=\"{{ include "helmMonitorie.name" $root }}\"}",
+              "expr": "conveior_hwDockerSize{entity=\"{{ include "helmMonitorie.name" . }}\"}",
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": true,
               "refId": "A"
@@ -2183,7 +2181,7 @@ data:
                 "uid": "P5DCFC7561CCDE821"
               },
               "editorMode": "code",
-              "expr": "conveior_hwNetwork{entity=\"{{ include "helmMonitorie.name" $root }}\",query_name=\"tx\"}",
+              "expr": "conveior_hwNetwork{entity=\"{{ include "helmMonitorie.name" . }}\",query_name=\"tx\"}",
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": true,
               "refId": "A"
@@ -2194,7 +2192,7 @@ data:
                 "uid": "P5DCFC7561CCDE821"
               },
               "editorMode": "code",
-              "expr": "conveior_hwNetwork{entity=\"{{ include "helmMonitorie.name" $root }}\",query_name=\"rx\"}*(-1)",
+              "expr": "conveior_hwNetwork{entity=\"{{ include "helmMonitorie.name" . }}\",query_name=\"rx\"}*(-1)",
               "hide": false,
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": true,
@@ -2300,7 +2298,7 @@ data:
                 "uid": "P5DCFC7561CCDE821"
               },
               "editorMode": "code",
-              "expr": "conveior_elasticsearch{entity=\"{{ include "helmMonitorie.name" $root }}\"}",
+              "expr": "conveior_elasticsearch{entity=\"{{ include "helmMonitorie.name" . }}\"}",
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": true,
               "refId": "A"
@@ -2412,7 +2410,7 @@ data:
                 "uid": "P5DCFC7561CCDE821"
               },
               "editorMode": "code",
-              "expr": "conveior_hwDockerLs{entity=\"{{ include "helmMonitorie.name" $root }}\"}*1000",
+              "expr": "conveior_hwDockerLs{entity=\"{{ include "helmMonitorie.name" . }}\"}*1000",
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": true,
               "refId": "A"
@@ -2509,7 +2507,7 @@ data:
                 "uid": "P5DCFC7561CCDE821"
               },
               "editorMode": "code",
-              "expr": "conveior_hwDockerSize{entity=\"{{ include "helmMonitorie.name" $root }}\"}",
+              "expr": "conveior_hwDockerSize{entity=\"{{ include "helmMonitorie.name" . }}\"}",
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": true,
               "refId": "A"
@@ -2575,7 +2573,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "conveior_hwDockerSize{entity=\"{{ include "helmMonitorie.name" $root }}\"}[30s]",
+              "expr": "conveior_hwDockerSize{entity=\"{{ include "helmMonitorie.name" . }}\"}[30s]",
               "instant": true,
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": false,
@@ -2672,7 +2670,7 @@ data:
                 "uid": "P5DCFC7561CCDE821"
               },
               "editorMode": "code",
-              "expr": "conveior_hwHeartbeat{entity=\"{{ include "helmMonitorie.name" $root }}\"}*1000",
+              "expr": "conveior_hwHeartbeat{entity=\"{{ include "helmMonitorie.name" . }}\"}*1000",
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": true,
               "refId": "A"
@@ -2769,7 +2767,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" $root }}\", query_name=\"conveior_dbSize\"}",
+              "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_dbSize\"}",
               "instant": false,
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": true,
@@ -2836,7 +2834,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" $root }}\", query_name=\"conveior_dbSize\"}[30s]",
+              "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_dbSize\"}[30s]",
               "instant": true,
               "legendFormat": "{{ "{{" }}label_name}}",
               "range": false,
@@ -2867,7 +2865,7 @@ data:
               "type": "prometheus",
               "uid": "P5DCFC7561CCDE821"
             },
-            "definition": "label_values(conveior_dockerContainer{entity=\"{{ include "helmMonitorie.name" $root }}\"}, label_name)",
+            "definition": "label_values(conveior_dockerContainer{entity=\"{{ include "helmMonitorie.name" . }}\"}, label_name)",
             "hide": 0,
             "includeAll": true,
             "label": "container",
@@ -2875,7 +2873,7 @@ data:
             "name": "container",
             "options": [],
             "query": {
-              "query": "label_values(conveior_dockerContainer{entity=\"{{ include "helmMonitorie.name" $root }}\"}, label_name)",
+              "query": "label_values(conveior_dockerContainer{entity=\"{{ include "helmMonitorie.name" . }}\"}, label_name)",
               "refId": "StandardVariableQuery"
             },
             "refresh": 1,
@@ -2893,9 +2891,8 @@ data:
       "timepicker": {},
       "timezone": "",
       "title": "Dashboard",
-      "uid": "{{ include "helmMonitorie.name" $root | sha256sum | trunc 8 }}",
+      "uid": "telegram",
       "version": 1,
       "weekStart": ""
     }
-  {{ end }}
 {{ end }}

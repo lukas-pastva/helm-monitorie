@@ -1,16 +1,14 @@
-{{- $root := . }}
-{{- range $key, $value := .Values.grafana.dashboards }}
-  {{- if eq $key "node-exporter" }}
+{{- if or (eq .Values.grafana.dashboards.nodeExporterEnabled "default") (eq .Values.grafana.dashboards.nodeExporterEnabled "true") }}
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ $value }}
+  name: dashboard-nodeExporter
   namespace: {{ $.Release.Namespace }}
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
 data:
-  default.json: |-
+  nodeExporter.json: |-
     {
       "annotations": {
         "list": [
@@ -23817,9 +23815,8 @@ data:
       },
       "timezone": "browser",
       "title": "Node Exporter Full",
-      "uid": "{{ include "helmMonitorie.name" $root | sha256sum | trunc 8 }}",
+      "uid": "node-exporter",
       "version": 1,
       "weekStart": ""
     }
-  {{ end }}
 {{ end }}

@@ -1,16 +1,14 @@
-{{- $root := . }}
-{{- range $key, $value := .Values.grafana.dashboards }}
-  {{- if eq $key "fe" }}
+{{- if or (eq .Values.grafana.dashboards.feEnabled "default") (eq .Values.grafana.dashboards.feEnabled "true") }}
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ $value }}
+  name: dashboard-fe
   namespace: {{ $.Release.Namespace }}
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
 data:
-  default.json: |-
+  fe.json: |-
     {
       "annotations": {
         "list": [
@@ -3359,9 +3357,8 @@ data:
       "timepicker": {},
       "timezone": "",
       "title": "Dashboard",
-      "uid": "{{ include "helmMonitorie.name" $root | sha256sum | trunc 8 }}",
+      "uid": "fe",
       "version": 1,
       "weekStart": ""
     }
-  {{ end }}
 {{ end }}

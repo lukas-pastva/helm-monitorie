@@ -2,11 +2,15 @@ scrapeInterval: "300s"
 nameOverride: ""
 grafana:
   adminUsername: "admin"
-  clientId: ""
   uri: ""
   domain: ""
-#  dashboards:
-#    system:
+  dashboards:
+    feEnabled: "false"
+    nodeExporterEnabled: "false"
+    rempEnabled: "false"
+    systemEnabled: "false"
+    telegramEnabled: "false"
+    wpEnabled: "false"
 pushgw:
   domain: ""
   uri: ""
