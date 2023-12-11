@@ -2886,3 +2886,4 @@ dashboard-telegram.json: |-
     "version": 1,
     "weekStart": ""
   }
+{{ end }}

@@ -2993,3 +2993,4 @@ dashboard-wp.json: |-
     "version": 1,
     "weekStart": ""
   }
+{{ end }}
