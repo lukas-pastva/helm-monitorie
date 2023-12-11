@@ -70,33 +70,33 @@ spec:
 
 {{- if or (eq .Values.grafana.dashboards.feEnabled "default") (eq .Values.grafana.dashboards.feEnabled "true") }}
             - name: grafana-dashboard
-              mountPath: /etc/grafana/provisioning/dashboards/dashboardFe.json
-              subPath: {{- if eq .Values.grafana.dashboards.feEnabled "default" }} default.json{{ else }} dashboardFe.json{{ end }}
+              mountPath: /etc/grafana/provisioning/dashboards/dashboard-fe.json
+              subPath: {{- if eq .Values.grafana.dashboards.feEnabled "default" }} default.json{{ else }} dashboard-fe.json{{ end }}
 {{ end }}
 {{- if or (eq .Values.grafana.dashboards.nodeExporterEnabled "default") (eq .Values.grafana.dashboards.nodeExporterEnabled "true") }}
             - name: grafana-dashboard
-              mountPath: /etc/grafana/provisioning/dashboards/dashboardNodeExporter.json
-              subPath: {{- if eq .Values.grafana.dashboards.feEnabled "default" }} default.json{{ else }} dashboardNodeExporter.json{{ end }}
+              mountPath: /etc/grafana/provisioning/dashboards/dashboard-node-exporter.json
+              subPath: {{- if eq .Values.grafana.dashboards.feEnabled "default" }} default.json{{ else }} dashboard-node-exporter.json{{ end }}
 {{ end }}
 {{- if or (eq .Values.grafana.dashboards.rempEnabled "default") (eq .Values.grafana.dashboards.rempEnabled "true") }}
             - name: grafana-dashboard
-              mountPath: /etc/grafana/provisioning/dashboards/dashboardRemp.json
-              subPath: {{- if eq .Values.grafana.dashboards.feEnabled "default" }} default.json{{ else }} dashboardRemp.json{{ end }}
+              mountPath: /etc/grafana/provisioning/dashboards/dashboard-remp.json
+              subPath: {{- if eq .Values.grafana.dashboards.feEnabled "default" }} default.json{{ else }} dashboard-remp.json{{ end }}
 {{ end }}
 {{- if or (eq .Values.grafana.dashboards.systemEnabled "default") (eq .Values.grafana.dashboards.systemEnabled "true") }}
             - name: grafana-dashboard
-              mountPath: /etc/grafana/provisioning/dashboards/dashboardSystem.json
-              subPath: {{- if eq .Values.grafana.dashboards.feEnabled "default" }} default.json{{ else }} dashboardSystem.json{{ end }}
+              mountPath: /etc/grafana/provisioning/dashboards/dashboard-system.json
+              subPath: {{- if eq .Values.grafana.dashboards.feEnabled "default" }} default.json{{ else }} dashboard-system.json{{ end }}
 {{ end }}
 {{- if or (eq .Values.grafana.dashboards.telegramEnabled "default") (eq .Values.grafana.dashboards.telegramEnabled "true") }}
             - name: grafana-dashboard
-              mountPath: /etc/grafana/provisioning/dashboards/dashboardTelegram.json
-              subPath: {{- if eq .Values.grafana.dashboards.feEnabled "default" }} default.json{{ else }} dashboardTelegram.json{{ end }}
+              mountPath: /etc/grafana/provisioning/dashboards/dashboard-telegram.json
+              subPath: {{- if eq .Values.grafana.dashboards.feEnabled "default" }} default.json{{ else }} dashboard-telegram.json{{ end }}
 {{ end }}
 {{- if or (eq .Values.grafana.dashboards.wpEnabled "default") (eq .Values.grafana.dashboards.wpEnabled "true") }}
             - name: grafana-dashboard
-              mountPath: /etc/grafana/provisioning/dashboards/dashboardWp.json
-              subPath: {{- if eq .Values.grafana.dashboards.feEnabled "default" }} default.json{{ else }} dashboardWp.json{{ end }}
+              mountPath: /etc/grafana/provisioning/dashboards/dashboard-wp.json
+              subPath: {{- if eq .Values.grafana.dashboards.feEnabled "default" }} default.json{{ else }} dashboard-wp.json{{ end }}
 {{ end }}
 
 
@@ -127,25 +127,25 @@ spec:
             sources:
 {{- if or (eq .Values.grafana.dashboards.feEnabled "default") (eq .Values.grafana.dashboards.feEnabled "true") }}
               - configMap:
-                  name: dashboardFe
+                  name: dashboard-fe
 {{ end }}
 {{- if or (eq .Values.grafana.dashboards.nodeExporterEnabled "default") (eq .Values.grafana.dashboards.nodeExporterEnabled "true") }}
               - configMap:
-                  name: dashboardNodeExporter
+                  name: dashboard-node-exporter
 {{ end }}
 {{- if or (eq .Values.grafana.dashboards.rempEnabled "default") (eq .Values.grafana.dashboards.rempEnabled "true") }}
               - configMap:
-                  name: dashboardRemp
+                  name: dashboard-remp
 {{ end }}
 {{- if or (eq .Values.grafana.dashboards.systemEnabled "default") (eq .Values.grafana.dashboards.systemEnabled "true") }}
               - configMap:
-                  name: dashboardSystem
+                  name: dashboard-system
 {{ end }}
 {{- if or (eq .Values.grafana.dashboards.telegramEnabled "default") (eq .Values.grafana.dashboards.telegramEnabled "true") }}
               - configMap:
-                  name: dashboardTelegram
+                  name: dashboard-telegram
 {{ end }}
 {{- if or (eq .Values.grafana.dashboards.wpEnabled "default") (eq .Values.grafana.dashboards.wpEnabled "true") }}
               - configMap:
-                  name: dashboardWp
+                  name: dashboard-wp
 {{ end }}
