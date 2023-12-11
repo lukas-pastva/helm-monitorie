@@ -95,31 +95,27 @@ spec:
           configMap:
             name: grafana-dashboards
             items:
-              - key: file1.conf
-                path: file1.conf
-              - key: file2.conf
-                path: file2.conf
 {{- if or (eq .Values.grafana.dashboards.feEnabled "default") (eq .Values.grafana.dashboards.feEnabled "true") }}
               - key: dashboard-fe.json
-                path: {{- if eq .Values.grafana.dashboards.feEnabled "default" }}default.json{{ else }}dashboard-fe.json{{ end }}
+                path: {{- if eq .Values.grafana.dashboards.feEnabled "default" }} default.json{{ else }} dashboard-fe.json{{ end }}
 {{ end }}
 {{- if or (eq .Values.grafana.dashboards.nodeExporterEnabled "default") (eq .Values.grafana.dashboards.nodeExporterEnabled "true") }}
               - key: dashboard-node-exporter.json
-                path: {{- if eq .Values.grafana.dashboards.nodeExporterEnabled "default" }}default.json{{ else }}dashboard-node-exporter.json{{ end }}
+                path: {{- if eq .Values.grafana.dashboards.nodeExporterEnabled "default" }} default.json{{ else }} dashboard-node-exporter.json{{ end }}
 {{ end }}
 {{- if or (eq .Values.grafana.dashboards.rempEnabled "default") (eq .Values.grafana.dashboards.rempEnabled "true") }}
               - key: dashboard-remp.json
-                path: {{- if eq .Values.grafana.dashboards.rempEnabled "default" }}default.json{{ else }}dashboard-remp.json{{ end }}
+                path: {{- if eq .Values.grafana.dashboards.rempEnabled "default" }} default.json{{ else }} dashboard-remp.json{{ end }}
 {{ end }}
 {{- if or (eq .Values.grafana.dashboards.systemEnabled "default") (eq .Values.grafana.dashboards.systemEnabled "true") }}
               - key: dashboard-system.json
-                path: {{- if eq .Values.grafana.dashboards.systemEnabled "default" }}default.json{{ else }}dashboard-system.json{{ end }}
+                path: {{- if eq .Values.grafana.dashboards.systemEnabled "default" }} default.json{{ else }} dashboard-system.json{{ end }}
 {{ end }}
 {{- if or (eq .Values.grafana.dashboards.telegramEnabled "default") (eq .Values.grafana.dashboards.telegramEnabled "true") }}
               - key: dashboard-telegram.json
-                path: {{- if eq .Values.grafana.dashboards.telegramEnabled "default" }}default.json{{ else }}dashboard-telegram.json{{ end }}
+                path: {{- if eq .Values.grafana.dashboards.telegramEnabled "default" }} default.json{{ else }} dashboard-telegram.json{{ end }}
 {{ end }}
 {{- if or (eq .Values.grafana.dashboards.wpEnabled "default") (eq .Values.grafana.dashboards.wpEnabled "true") }}
               - key: dashboard-wp.json
-                path: {{- if eq .Values.grafana.dashboards.wpEnabled "default" }}default.json{{ else }}dashboard-wp.json{{ end }}
+                path: {{- if eq .Values.grafana.dashboards.wpEnabled "default" }} default.json{{ else }} dashboard-wp.json{{ end }}
 {{ end }}
