@@ -95,6 +95,8 @@ spec:
           configMap:
             name: grafana-dashboards
             items:
+              - key: dashboards.yaml
+                path: dashboards.yaml
 {{- if or (eq .Values.grafana.dashboards.feEnabled "default") (eq .Values.grafana.dashboards.feEnabled "true") }}
               - key: dashboard-fe.json
                 path: {{- if eq .Values.grafana.dashboards.feEnabled "default" }} default.json{{ else }} dashboard-fe.json{{ end }}

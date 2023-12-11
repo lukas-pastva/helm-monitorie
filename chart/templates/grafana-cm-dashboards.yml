@@ -7,6 +7,18 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
 data:
+  dashboards.yaml: |-
+    apiVersion: 1
+  
+    providers:
+      - name: 'default'
+        orgId: 1
+        folder: ''
+        type: file
+        disableDeletion: false
+        editable: true
+        options:
+          path: /etc/grafana/provisioning/dashboards/
 {{- if or (eq .Values.grafana.dashboards.feEnabled "default") (eq .Values.grafana.dashboards.feEnabled "true") }}
   {{ include "grafana-cm-dash-fe" $ | nindent 2 }}
 {{ end }}
