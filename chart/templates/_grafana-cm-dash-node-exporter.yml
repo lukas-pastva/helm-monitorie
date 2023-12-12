@@ -1149,7 +1149,7 @@ dashboard-node-exporter.json: |-
                 "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs'} * 100) / node_filesystem_size_bytes{device!~'rootfs'})",
                 "format": "time_series",
                 "intervalFactor": 1,
-                "legendFormat": "{{mountpoint}}",
+                "legendFormat": "{{ "{{" }}mountpoint}}",
                 "refId": "A",
                 "step": 240
               }
@@ -1802,7 +1802,7 @@ dashboard-node-exporter.json: |-
                 "expr": "node_filesystem_size_bytes{device!~'rootfs'} - node_filesystem_avail_bytes{device!~'rootfs'}",
                 "format": "time_series",
                 "intervalFactor": 1,
-                "legendFormat": "{{mountpoint}}",
+                "legendFormat": "{{ "{{" }}mountpoint}}",
                 "refId": "A",
                 "step": 240
               }
@@ -9477,7 +9477,7 @@ dashboard-node-exporter.json: |-
                 "hide": false,
                 "interval": "",
                 "intervalFactor": 1,
-                "legendFormat": "Current {{ name }} in {{ type }}",
+                "legendFormat": "Current {{ "{{" }} name }} in {{ "{{" }} type }}",
                 "refId": "A",
                 "step": 240
               },
@@ -9490,7 +9490,7 @@ dashboard-node-exporter.json: |-
                 "format": "time_series",
                 "interval": "",
                 "intervalFactor": 1,
-                "legendFormat": "Max {{ name }} in {{ type }}",
+                "legendFormat": "Max {{ "{{" }} name }} in {{ "{{" }} type }}",
                 "refId": "B",
                 "step": 240
               }
@@ -9924,7 +9924,7 @@ dashboard-node-exporter.json: |-
                 "expr": "node_disk_io_now",
                 "interval": "",
                 "intervalFactor": 4,
-                "legendFormat": "{{device}} - IO now",
+                "legendFormat": "{{ "{{" }}device}} - IO now",
                 "refId": "A",
                 "step": 240
               }
@@ -10058,7 +10058,7 @@ dashboard-node-exporter.json: |-
                 "format": "time_series",
                 "hide": false,
                 "intervalFactor": 1,
-                "legendFormat": "{{mountpoint}} - Available",
+                "legendFormat": "{{ "{{" }}mountpoint}} - Available",
                 "metric": "",
                 "refId": "A",
                 "step": 240
@@ -10072,7 +10072,7 @@ dashboard-node-exporter.json: |-
                 "format": "time_series",
                 "hide": true,
                 "intervalFactor": 1,
-                "legendFormat": "{{mountpoint}} - Free",
+                "legendFormat": "{{ "{{" }}mountpoint}} - Free",
                 "refId": "B",
                 "step": 240
               },
@@ -10085,7 +10085,7 @@ dashboard-node-exporter.json: |-
                 "format": "time_series",
                 "hide": true,
                 "intervalFactor": 1,
-                "legendFormat": "{{mountpoint}} - Size",
+                "legendFormat": "{{ "{{" }}mountpoint}} - Size",
                 "refId": "C",
                 "step": 240
               }
@@ -10192,7 +10192,7 @@ dashboard-node-exporter.json: |-
                 "format": "time_series",
                 "hide": false,
                 "intervalFactor": 1,
-                "legendFormat": "{{mountpoint}} - Free file nodes",
+                "legendFormat": "{{ "{{" }}mountpoint}} - Free file nodes",
                 "refId": "A",
                 "step": 240
               }
@@ -10417,7 +10417,7 @@ dashboard-node-exporter.json: |-
                 "format": "time_series",
                 "hide": false,
                 "intervalFactor": 1,
-                "legendFormat": "{{mountpoint}} - File nodes total",
+                "legendFormat": "{{ "{{" }}mountpoint}} - File nodes total",
                 "refId": "A",
                 "step": 240
               }
@@ -10540,7 +10540,7 @@ dashboard-node-exporter.json: |-
                 "expr": "node_filesystem_readonly{device!~'rootfs'}",
                 "format": "time_series",
                 "intervalFactor": 1,
-                "legendFormat": "{{mountpoint}} - ReadOnly",
+                "legendFormat": "{{ "{{" }}mountpoint}} - ReadOnly",
                 "refId": "A",
                 "step": 240
               },
@@ -10553,7 +10553,7 @@ dashboard-node-exporter.json: |-
                 "format": "time_series",
                 "interval": "",
                 "intervalFactor": 1,
-                "legendFormat": "{{mountpoint}} - Device error",
+                "legendFormat": "{{ "{{" }}mountpoint}} - Device error",
                 "refId": "B",
                 "step": 240
               }
@@ -10685,7 +10685,7 @@ dashboard-node-exporter.json: |-
                 "expr": "node_arp_entries",
                 "format": "time_series",
                 "intervalFactor": 1,
-                "legendFormat": "{{ device }} - ARP entries",
+                "legendFormat": "{{ "{{" }} device }} - ARP entries",
                 "refId": "A",
                 "step": 240
               }
@@ -10928,7 +10928,7 @@ dashboard-node-exporter.json: |-
                 "expr": "node_network_speed_bytes",
                 "format": "time_series",
                 "intervalFactor": 1,
-                "legendFormat": "{{ device }} - Speed",
+                "legendFormat": "{{ "{{" }} device }} - Speed",
                 "refId": "A",
                 "step": 240
               }
@@ -11034,7 +11034,7 @@ dashboard-node-exporter.json: |-
                 "expr": "node_network_mtu_bytes",
                 "format": "time_series",
                 "intervalFactor": 1,
-                "legendFormat": "{{ device }} - Bytes",
+                "legendFormat": "{{ "{{" }} device }} - Bytes",
                 "refId": "A",
                 "step": 240
               }
@@ -11139,7 +11139,7 @@ dashboard-node-exporter.json: |-
                 "expr": "node_network_up{operstate=\"up\",job=\"$job\"}",
                 "format": "time_series",
                 "intervalFactor": 1,
-                "legendFormat": "{{interface}} - Operational state UP",
+                "legendFormat": "{{ "{{" }}interface}} - Operational state UP",
                 "refId": "A",
                 "step": 240
               },
@@ -11151,7 +11151,7 @@ dashboard-node-exporter.json: |-
                 "expr": "node_network_carrier",
                 "format": "time_series",
                 "instant": false,
-                "legendFormat": "{{device}} - Physical link state",
+                "legendFormat": "{{ "{{" }}device}} - Physical link state",
                 "refId": "B"
               }
             ],
@@ -11256,7 +11256,7 @@ dashboard-node-exporter.json: |-
                 "expr": "node_network_transmit_queue_length",
                 "format": "time_series",
                 "intervalFactor": 1,
-                "legendFormat": "{{ device }} -   Interface transmit queue length",
+                "legendFormat": "{{ "{{" }} device }} -   Interface transmit queue length",
                 "refId": "A",
                 "step": 240
               }
@@ -12236,7 +12236,7 @@ dashboard-node-exporter.json: |-
                 "hide": false,
                 "interval": "",
                 "intervalFactor": 1,
-                "legendFormat": "{{collector}} - Scrape duration",
+                "legendFormat": "{{ "{{" }}collector}} - Scrape duration",
                 "refId": "A",
                 "step": 240
               }
@@ -12366,7 +12366,7 @@ dashboard-node-exporter.json: |-
                 "hide": false,
                 "interval": "",
                 "intervalFactor": 1,
-                "legendFormat": "{{collector}} - Scrape success",
+                "legendFormat": "{{ "{{" }}collector}} - Scrape success",
                 "refId": "A",
                 "step": 240
               },
@@ -12380,7 +12380,7 @@ dashboard-node-exporter.json: |-
                 "hide": false,
                 "interval": "",
                 "intervalFactor": 1,
-                "legendFormat": "{{collector}} - Scrape textfile error (1 = true)",
+                "legendFormat": "{{ "{{" }}collector}} - Scrape textfile error (1 = true)",
                 "refId": "B",
                 "step": 240
               }
