@@ -101,9 +101,10 @@ dashboard-remp.json: |-
           "text": {
             "valueSize": 11
           },
-          "textMode": "name"
+          "textMode": "name",
+          "wideLayout": true
         },
-        "pluginVersion": "9.3.1",
+        "pluginVersion": "10.2.2",
         "repeat": "container",
         "repeatDirection": "h",
         "targets": [
@@ -114,7 +115,7 @@ dashboard-remp.json: |-
             },
             "editorMode": "code",
             "exemplar": false,
-            "expr": "conveior_dockerContainer{entity=\"{{ include "helmMonitorie.name" . }}\",label_name=\"$container\"}[{{ .Values.scrapeInterval }}]",
+            "expr": "conveior_dockerContainer{entity=\"{{ include "helmMonitorie.name" . }}\",label_name=\"$container\"}[300s]",
             "instant": true,
             "legendFormat": "{{ "{{" }}label_name}}",
             "range": false,
@@ -190,9 +191,10 @@ dashboard-remp.json: |-
           "text": {
             "valueSize": 11
           },
-          "textMode": "name"
+          "textMode": "name",
+          "wideLayout": true
         },
-        "pluginVersion": "9.3.1",
+        "pluginVersion": "10.2.2",
         "repeat": "url",
         "repeatDirection": "h",
         "targets": [
@@ -213,7 +215,7 @@ dashboard-remp.json: |-
         "type": "stat"
       },
       {
-        "collapsed": false,
+        "collapsed": true,
         "datasource": {
           "type": "mysql",
           "uid": "P211906C1C32DB77E"
@@ -225,955 +227,970 @@ dashboard-remp.json: |-
           "y": 5
         },
         "id": 85,
-        "panels": [],
+        "panels": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P5DCFC7561CCDE821"
+            },
+            "description": "Payments in 12 months [in EUR]",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "fixedColor": "super-light-blue",
+                  "mode": "fixed"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisGridShow": false,
+                  "axisLabel": "",
+                  "axisPlacement": "hidden",
+                  "axisSoftMin": 0,
+                  "fillOpacity": 80,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineWidth": 1,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "dark-blue",
+                      "value": null
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 5,
+              "w": 6,
+              "x": 0,
+              "y": 6
+            },
+            "id": 79,
+            "options": {
+              "barRadius": 0.05,
+              "barWidth": 0.94,
+              "fullHighlight": false,
+              "groupWidth": 1,
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": false
+              },
+              "orientation": "auto",
+              "showValue": "auto",
+              "stacking": "none",
+              "text": {},
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              },
+              "xTickLabelRotation": 0,
+              "xTickLabelSpacing": 100
+            },
+            "pluginVersion": "8.5.2",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P5DCFC7561CCDE821"
+                },
+                "editorMode": "code",
+                "exemplar": false,
+                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlPaymentYear\"}[30s]",
+                "format": "time_series",
+                "instant": true,
+                "legendFormat": "{{ "{{" }}label_name}}",
+                "range": false,
+                "refId": "A"
+              }
+            ],
+            "title": "Payments in 12 months [in EUR]",
+            "type": "barchart"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P5DCFC7561CCDE821"
+            },
+            "description": "Total payments in last 30 days [in EUR]",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "fixedColor": "super-light-blue",
+                  "mode": "fixed"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "hidden",
+                  "axisSoftMin": 0,
+                  "fillOpacity": 80,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineWidth": 1,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "dark-blue",
+                      "value": null
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 5,
+              "w": 18,
+              "x": 6,
+              "y": 6
+            },
+            "id": 107,
+            "options": {
+              "barRadius": 0.05,
+              "barWidth": 0.94,
+              "fullHighlight": false,
+              "groupWidth": 1,
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": false
+              },
+              "orientation": "auto",
+              "showValue": "auto",
+              "stacking": "none",
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              },
+              "xTickLabelRotation": 0,
+              "xTickLabelSpacing": 100
+            },
+            "pluginVersion": "8.5.2",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P5DCFC7561CCDE821"
+                },
+                "editorMode": "code",
+                "exemplar": false,
+                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlPaymentMonth\"}[30s]",
+                "instant": true,
+                "legendFormat": "{{ "{{" }}label_name}}",
+                "range": false,
+                "refId": "A"
+              }
+            ],
+            "title": "Total payments in last 30 days [in EUR]",
+            "type": "barchart"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P5DCFC7561CCDE821"
+            },
+            "description": "Successful payments last 7 days",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "fixedColor": "super-light-red",
+                  "mode": "fixed"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "hidden",
+                  "axisSoftMin": 0,
+                  "fillOpacity": 80,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineWidth": 1,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    }
+                  ]
+                },
+                "unit": "percent"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 5,
+              "w": 6,
+              "x": 0,
+              "y": 11
+            },
+            "id": 104,
+            "options": {
+              "barRadius": 0.05,
+              "barWidth": 0.94,
+              "fullHighlight": false,
+              "groupWidth": 1,
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": false
+              },
+              "orientation": "auto",
+              "showValue": "always",
+              "stacking": "none",
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              },
+              "xTickLabelRotation": 0,
+              "xTickLabelSpacing": 100
+            },
+            "pluginVersion": "8.5.2",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P5DCFC7561CCDE821"
+                },
+                "editorMode": "code",
+                "exemplar": false,
+                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlPaymentWeekFailed\"}[30s]",
+                "format": "time_series",
+                "instant": true,
+                "legendFormat": "{{ "{{" }}label_name}}",
+                "range": false,
+                "refId": "A"
+              }
+            ],
+            "title": "Successful payments last 7 days",
+            "type": "barchart"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P5DCFC7561CCDE821"
+            },
+            "description": "Successful payments last 24 hours",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "fixedColor": "super-light-red",
+                  "mode": "fixed"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisGridShow": false,
+                  "axisLabel": "",
+                  "axisPlacement": "hidden",
+                  "axisSoftMin": 0,
+                  "fillOpacity": 80,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineWidth": 1,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    }
+                  ]
+                },
+                "unit": "percent"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 5,
+              "w": 14,
+              "x": 6,
+              "y": 11
+            },
+            "id": 110,
+            "options": {
+              "barRadius": 0.05,
+              "barWidth": 0.94,
+              "fullHighlight": false,
+              "groupWidth": 1,
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": false
+              },
+              "orientation": "auto",
+              "showValue": "auto",
+              "stacking": "none",
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              },
+              "xTickLabelRotation": 0,
+              "xTickLabelSpacing": 100
+            },
+            "pluginVersion": "8.5.2",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P5DCFC7561CCDE821"
+                },
+                "editorMode": "code",
+                "exemplar": false,
+                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlPaymentDayFailed\"}[30s]",
+                "instant": true,
+                "legendFormat": "{{ "{{" }}label_name}}",
+                "range": false,
+                "refId": "A"
+              }
+            ],
+            "title": "Successful payments last 24 hours",
+            "type": "barchart"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P5DCFC7561CCDE821"
+            },
+            "description": "Successful payments last hour",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "fixedColor": "super-light-red",
+                  "mode": "fixed"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "hidden",
+                  "axisSoftMin": 0,
+                  "fillOpacity": 80,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineWidth": 1,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    }
+                  ]
+                },
+                "unit": "percent"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 5,
+              "w": 4,
+              "x": 20,
+              "y": 11
+            },
+            "id": 98,
+            "options": {
+              "barRadius": 0.05,
+              "barWidth": 0.94,
+              "fullHighlight": false,
+              "groupWidth": 1,
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": false
+              },
+              "orientation": "auto",
+              "showValue": "auto",
+              "stacking": "none",
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              },
+              "xTickLabelRotation": 0,
+              "xTickLabelSpacing": 200
+            },
+            "pluginVersion": "8.5.2",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P5DCFC7561CCDE821"
+                },
+                "editorMode": "code",
+                "exemplar": false,
+                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlPaymentHourFailed\"}[30s]",
+                "instant": true,
+                "legendFormat": "{{ "{{" }}label_name}}",
+                "range": false,
+                "refId": "A"
+              }
+            ],
+            "title": "Successful payments last hour",
+            "type": "barchart"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P5DCFC7561CCDE821"
+            },
+            "description": "Successful payments on gateway last 7 days",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "fixedColor": "super-light-purple",
+                  "mode": "fixed"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "hidden",
+                  "axisSoftMin": 0,
+                  "fillOpacity": 80,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineWidth": 1,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    }
+                  ]
+                },
+                "unit": "percent"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 5,
+              "w": 6,
+              "x": 0,
+              "y": 16
+            },
+            "id": 99,
+            "options": {
+              "barRadius": 0.05,
+              "barWidth": 0.94,
+              "fullHighlight": false,
+              "groupWidth": 1,
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": false
+              },
+              "orientation": "vertical",
+              "showValue": "auto",
+              "stacking": "none",
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              },
+              "xTickLabelRotation": 0,
+              "xTickLabelSpacing": 100
+            },
+            "pluginVersion": "8.5.2",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P5DCFC7561CCDE821"
+                },
+                "editorMode": "code",
+                "exemplar": false,
+                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlPaymentGatewayWeekFailed\"}[30s]",
+                "instant": true,
+                "legendFormat": "{{ "{{" }}label_name}}",
+                "range": false,
+                "refId": "A"
+              }
+            ],
+            "title": "Successful payments on gateway last 7 days",
+            "type": "barchart"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P5DCFC7561CCDE821"
+            },
+            "description": "Successful payments on gateway last 24 hours",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "fixedColor": "super-light-purple",
+                  "mode": "fixed"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "hidden",
+                  "axisSoftMin": 0,
+                  "fillOpacity": 80,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineWidth": 1,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    }
+                  ]
+                },
+                "unit": "percent"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 5,
+              "w": 14,
+              "x": 6,
+              "y": 16
+            },
+            "id": 100,
+            "options": {
+              "barRadius": 0.05,
+              "barWidth": 0.94,
+              "fullHighlight": false,
+              "groupWidth": 1,
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": false
+              },
+              "orientation": "auto",
+              "showValue": "auto",
+              "stacking": "none",
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              },
+              "xTickLabelRotation": 0,
+              "xTickLabelSpacing": 100
+            },
+            "pluginVersion": "8.5.2",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P5DCFC7561CCDE821"
+                },
+                "editorMode": "code",
+                "exemplar": false,
+                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlPaymentGatewayDayFailed\"}[30s]",
+                "instant": true,
+                "legendFormat": "{{ "{{" }}label_name}}",
+                "range": false,
+                "refId": "A"
+              }
+            ],
+            "title": "Successful payments on gateway last 24 hours",
+            "type": "barchart"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P5DCFC7561CCDE821"
+            },
+            "description": "Succ. payments on gw last hour",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "fixedColor": "super-light-purple",
+                  "mode": "fixed"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "hidden",
+                  "axisSoftMax": 100,
+                  "axisSoftMin": 0,
+                  "fillOpacity": 80,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineWidth": 1,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    }
+                  ]
+                },
+                "unit": "percent"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 5,
+              "w": 4,
+              "x": 20,
+              "y": 16
+            },
+            "id": 106,
+            "options": {
+              "barRadius": 0.05,
+              "barWidth": 0.94,
+              "fullHighlight": false,
+              "groupWidth": 1,
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": false
+              },
+              "orientation": "auto",
+              "showValue": "auto",
+              "stacking": "none",
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              },
+              "xTickLabelRotation": 0,
+              "xTickLabelSpacing": 0
+            },
+            "pluginVersion": "8.5.2",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P5DCFC7561CCDE821"
+                },
+                "editorMode": "code",
+                "exemplar": false,
+                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlPaymentGatewayHourFailed\"}[30s]",
+                "instant": true,
+                "legendFormat": "{{ "{{" }}label_name}}",
+                "range": false,
+                "refId": "A"
+              }
+            ],
+            "title": "Succ. payments on gw last hour",
+            "type": "barchart"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P5DCFC7561CCDE821"
+            },
+            "description": "Mail queue (s)",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "fixed"
+                },
+                "custom": {
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisGridShow": false,
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "axisSoftMin": 0,
+                  "fillOpacity": 80,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineWidth": 1,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "min": 2,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red"
+                    }
+                  ]
+                },
+                "unit": "s"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 5,
+              "w": 6,
+              "x": 0,
+              "y": 21
+            },
+            "id": 109,
+            "options": {
+              "barRadius": 0.05,
+              "barWidth": 0.94,
+              "groupWidth": 1,
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": false
+              },
+              "orientation": "vertical",
+              "showValue": "auto",
+              "stacking": "none",
+              "text": {},
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              },
+              "xTickLabelRotation": 0,
+              "xTickLabelSpacing": 200
+            },
+            "pluginVersion": "8.5.2",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P5DCFC7561CCDE821"
+                },
+                "editorMode": "code",
+                "exemplar": false,
+                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlMailQueing\"}[30s]",
+                "instant": true,
+                "legendFormat": "{{ "{{" }}label_name}}",
+                "range": false,
+                "refId": "A"
+              }
+            ],
+            "title": "Mail queue (s)",
+            "type": "barchart"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P5DCFC7561CCDE821"
+            },
+            "description": "Successful login attempts",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "fixedColor": "#0f9b9b",
+                  "mode": "fixed"
+                },
+                "custom": {
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisGridShow": false,
+                  "axisLabel": "",
+                  "axisPlacement": "hidden",
+                  "axisSoftMin": 0,
+                  "fillOpacity": 80,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineWidth": 1,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red"
+                    }
+                  ]
+                },
+                "unit": "percent"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 5,
+              "w": 18,
+              "x": 6,
+              "y": 21
+            },
+            "id": 103,
+            "options": {
+              "barRadius": 0.05,
+              "barWidth": 0.94,
+              "groupWidth": 1,
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": false
+              },
+              "orientation": "auto",
+              "showValue": "auto",
+              "stacking": "none",
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              },
+              "xTickLabelRotation": 0,
+              "xTickLabelSpacing": 100
+            },
+            "pluginVersion": "8.5.2",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P5DCFC7561CCDE821"
+                },
+                "editorMode": "code",
+                "exemplar": false,
+                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_loginAttempts\"}[30s]",
+                "instant": true,
+                "legendFormat": "{{ "{{" }}label_name}}",
+                "range": false,
+                "refId": "A"
+              }
+            ],
+            "title": "Successful login attempts",
+            "type": "barchart"
+          }
+        ],
         "title": "Business - overall data (beta testing)",
         "type": "row"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "P5DCFC7561CCDE821"
-        },
-        "description": "Payments in 12 months [in EUR]",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "fixedColor": "super-light-blue",
-              "mode": "fixed"
-            },
-            "custom": {
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisGridShow": false,
-              "axisLabel": "",
-              "axisPlacement": "hidden",
-              "axisSoftMin": 0,
-              "fillOpacity": 80,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineWidth": 1,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "dark-blue",
-                  "value": null
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 5,
-          "w": 6,
-          "x": 0,
-          "y": 6
-        },
-        "id": 79,
-        "options": {
-          "barRadius": 0.05,
-          "barWidth": 0.94,
-          "groupWidth": 1,
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": false
-          },
-          "orientation": "auto",
-          "showValue": "auto",
-          "stacking": "none",
-          "text": {},
-          "tooltip": {
-            "mode": "single",
-            "sort": "none"
-          },
-          "xTickLabelRotation": 0,
-          "xTickLabelSpacing": 100
-        },
-        "pluginVersion": "8.5.2",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlPaymentYear\"}[30s]",
-            "format": "time_series",
-            "instant": true,
-            "legendFormat": "{{ "{{" }}label_name}}",
-            "range": false,
-            "refId": "A"
-          }
-        ],
-        "title": "Payments in 12 months [in EUR]",
-        "type": "barchart"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "P5DCFC7561CCDE821"
-        },
-        "description": "Total payments in last 30 days [in EUR]",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "fixedColor": "super-light-blue",
-              "mode": "fixed"
-            },
-            "custom": {
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "hidden",
-              "axisSoftMin": 0,
-              "fillOpacity": 80,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineWidth": 1,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "dark-blue",
-                  "value": null
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 5,
-          "w": 18,
-          "x": 6,
-          "y": 6
-        },
-        "id": 107,
-        "options": {
-          "barRadius": 0.05,
-          "barWidth": 0.94,
-          "groupWidth": 1,
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": false
-          },
-          "orientation": "auto",
-          "showValue": "auto",
-          "stacking": "none",
-          "tooltip": {
-            "mode": "single",
-            "sort": "none"
-          },
-          "xTickLabelRotation": 0,
-          "xTickLabelSpacing": 100
-        },
-        "pluginVersion": "8.5.2",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlPaymentMonth\"}[30s]",
-            "instant": true,
-            "legendFormat": "{{ "{{" }}label_name}}",
-            "range": false,
-            "refId": "A"
-          }
-        ],
-        "title": "Total payments in last 30 days [in EUR]",
-        "type": "barchart"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "P5DCFC7561CCDE821"
-        },
-        "description": "Successful payments last 7 days",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "fixedColor": "super-light-red",
-              "mode": "fixed"
-            },
-            "custom": {
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "hidden",
-              "axisSoftMin": 0,
-              "fillOpacity": 80,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineWidth": 1,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "red",
-                  "value": null
-                }
-              ]
-            },
-            "unit": "percent"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 5,
-          "w": 6,
-          "x": 0,
-          "y": 11
-        },
-        "id": 104,
-        "options": {
-          "barRadius": 0.05,
-          "barWidth": 0.94,
-          "groupWidth": 1,
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": false
-          },
-          "orientation": "auto",
-          "showValue": "always",
-          "stacking": "none",
-          "tooltip": {
-            "mode": "single",
-            "sort": "none"
-          },
-          "xTickLabelRotation": 0,
-          "xTickLabelSpacing": 100
-        },
-        "pluginVersion": "8.5.2",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlPaymentWeekFailed\"}[30s]",
-            "format": "time_series",
-            "instant": true,
-            "legendFormat": "{{ "{{" }}label_name}}",
-            "range": false,
-            "refId": "A"
-          }
-        ],
-        "title": "Successful payments last 7 days",
-        "type": "barchart"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "P5DCFC7561CCDE821"
-        },
-        "description": "Successful payments last 24 hours",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "fixedColor": "super-light-red",
-              "mode": "fixed"
-            },
-            "custom": {
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisGridShow": false,
-              "axisLabel": "",
-              "axisPlacement": "hidden",
-              "axisSoftMin": 0,
-              "fillOpacity": 80,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineWidth": 1,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "red",
-                  "value": null
-                }
-              ]
-            },
-            "unit": "percent"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 5,
-          "w": 14,
-          "x": 6,
-          "y": 11
-        },
-        "id": 110,
-        "options": {
-          "barRadius": 0.05,
-          "barWidth": 0.94,
-          "groupWidth": 1,
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": false
-          },
-          "orientation": "auto",
-          "showValue": "auto",
-          "stacking": "none",
-          "tooltip": {
-            "mode": "single",
-            "sort": "none"
-          },
-          "xTickLabelRotation": 0,
-          "xTickLabelSpacing": 100
-        },
-        "pluginVersion": "8.5.2",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlPaymentDayFailed\"}[30s]",
-            "instant": true,
-            "legendFormat": "{{ "{{" }}label_name}}",
-            "range": false,
-            "refId": "A"
-          }
-        ],
-        "title": "Successful payments last 24 hours",
-        "type": "barchart"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "P5DCFC7561CCDE821"
-        },
-        "description": "Successful payments last hour",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "fixedColor": "super-light-red",
-              "mode": "fixed"
-            },
-            "custom": {
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "hidden",
-              "axisSoftMin": 0,
-              "fillOpacity": 80,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineWidth": 1,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "red",
-                  "value": null
-                }
-              ]
-            },
-            "unit": "percent"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 5,
-          "w": 4,
-          "x": 20,
-          "y": 11
-        },
-        "id": 98,
-        "options": {
-          "barRadius": 0.05,
-          "barWidth": 0.94,
-          "groupWidth": 1,
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": false
-          },
-          "orientation": "auto",
-          "showValue": "auto",
-          "stacking": "none",
-          "tooltip": {
-            "mode": "single",
-            "sort": "none"
-          },
-          "xTickLabelRotation": 0,
-          "xTickLabelSpacing": 200
-        },
-        "pluginVersion": "8.5.2",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlPaymentHourFailed\"}[30s]",
-            "instant": true,
-            "legendFormat": "{{ "{{" }}label_name}}",
-            "range": false,
-            "refId": "A"
-          }
-        ],
-        "title": "Successful payments last hour",
-        "type": "barchart"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "P5DCFC7561CCDE821"
-        },
-        "description": "Successful payments on gateway last 7 days",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "fixedColor": "super-light-purple",
-              "mode": "fixed"
-            },
-            "custom": {
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "hidden",
-              "axisSoftMin": 0,
-              "fillOpacity": 80,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineWidth": 1,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "red",
-                  "value": null
-                }
-              ]
-            },
-            "unit": "percent"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 5,
-          "w": 6,
-          "x": 0,
-          "y": 16
-        },
-        "id": 99,
-        "options": {
-          "barRadius": 0.05,
-          "barWidth": 0.94,
-          "groupWidth": 1,
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": false
-          },
-          "orientation": "vertical",
-          "showValue": "auto",
-          "stacking": "none",
-          "tooltip": {
-            "mode": "single",
-            "sort": "none"
-          },
-          "xTickLabelRotation": 0,
-          "xTickLabelSpacing": 100
-        },
-        "pluginVersion": "8.5.2",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlPaymentGatewayWeekFailed\"}[30s]",
-            "instant": true,
-            "legendFormat": "{{ "{{" }}label_name}}",
-            "range": false,
-            "refId": "A"
-          }
-        ],
-        "title": "Successful payments on gateway last 7 days",
-        "type": "barchart"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "P5DCFC7561CCDE821"
-        },
-        "description": "Successful payments on gateway last 24 hours",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "fixedColor": "super-light-purple",
-              "mode": "fixed"
-            },
-            "custom": {
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "hidden",
-              "axisSoftMin": 0,
-              "fillOpacity": 80,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineWidth": 1,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "red",
-                  "value": null
-                }
-              ]
-            },
-            "unit": "percent"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 5,
-          "w": 14,
-          "x": 6,
-          "y": 16
-        },
-        "id": 100,
-        "options": {
-          "barRadius": 0.05,
-          "barWidth": 0.94,
-          "groupWidth": 1,
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": false
-          },
-          "orientation": "auto",
-          "showValue": "auto",
-          "stacking": "none",
-          "tooltip": {
-            "mode": "single",
-            "sort": "none"
-          },
-          "xTickLabelRotation": 0,
-          "xTickLabelSpacing": 100
-        },
-        "pluginVersion": "8.5.2",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlPaymentGatewayDayFailed\"}[30s]",
-            "instant": true,
-            "legendFormat": "{{ "{{" }}label_name}}",
-            "range": false,
-            "refId": "A"
-          }
-        ],
-        "title": "Successful payments on gateway last 24 hours",
-        "type": "barchart"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "P5DCFC7561CCDE821"
-        },
-        "description": "Succ. payments on gw last hour",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "fixedColor": "super-light-purple",
-              "mode": "fixed"
-            },
-            "custom": {
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "hidden",
-              "axisSoftMax": 100,
-              "axisSoftMin": 0,
-              "fillOpacity": 80,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineWidth": 1,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "red",
-                  "value": null
-                }
-              ]
-            },
-            "unit": "percent"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 5,
-          "w": 4,
-          "x": 20,
-          "y": 16
-        },
-        "id": 106,
-        "options": {
-          "barRadius": 0.05,
-          "barWidth": 0.94,
-          "groupWidth": 1,
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": false
-          },
-          "orientation": "auto",
-          "showValue": "auto",
-          "stacking": "none",
-          "tooltip": {
-            "mode": "single",
-            "sort": "none"
-          },
-          "xTickLabelRotation": 0,
-          "xTickLabelSpacing": 0
-        },
-        "pluginVersion": "8.5.2",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlPaymentGatewayHourFailed\"}[30s]",
-            "instant": true,
-            "legendFormat": "{{ "{{" }}label_name}}",
-            "range": false,
-            "refId": "A"
-          }
-        ],
-        "title": "Succ. payments on gw last hour",
-        "type": "barchart"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "P5DCFC7561CCDE821"
-        },
-        "description": "Mail queue (s)",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "fixed"
-            },
-            "custom": {
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisGridShow": false,
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "axisSoftMin": 0,
-              "fillOpacity": 80,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineWidth": 1,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "min": 2,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "red",
-                  "value": null
-                }
-              ]
-            },
-            "unit": "s"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 5,
-          "w": 6,
-          "x": 0,
-          "y": 21
-        },
-        "id": 109,
-        "options": {
-          "barRadius": 0.05,
-          "barWidth": 0.94,
-          "groupWidth": 1,
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": false
-          },
-          "orientation": "vertical",
-          "showValue": "auto",
-          "stacking": "none",
-          "text": {},
-          "tooltip": {
-            "mode": "single",
-            "sort": "none"
-          },
-          "xTickLabelRotation": 0,
-          "xTickLabelSpacing": 200
-        },
-        "pluginVersion": "8.5.2",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlMailQueing\"}[30s]",
-            "instant": true,
-            "legendFormat": "{{ "{{" }}label_name}}",
-            "range": false,
-            "refId": "A"
-          }
-        ],
-        "title": "Mail queue (s)",
-        "type": "barchart"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "P5DCFC7561CCDE821"
-        },
-        "description": "Successful login attempts",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "fixedColor": "#0f9b9b",
-              "mode": "fixed"
-            },
-            "custom": {
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisGridShow": false,
-              "axisLabel": "",
-              "axisPlacement": "hidden",
-              "axisSoftMin": 0,
-              "fillOpacity": 80,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineWidth": 1,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "red",
-                  "value": null
-                }
-              ]
-            },
-            "unit": "percent"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 5,
-          "w": 18,
-          "x": 6,
-          "y": 21
-        },
-        "id": 103,
-        "options": {
-          "barRadius": 0.05,
-          "barWidth": 0.94,
-          "groupWidth": 1,
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": false
-          },
-          "orientation": "auto",
-          "showValue": "auto",
-          "stacking": "none",
-          "tooltip": {
-            "mode": "single",
-            "sort": "none"
-          },
-          "xTickLabelRotation": 0,
-          "xTickLabelSpacing": 100
-        },
-        "pluginVersion": "8.5.2",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_loginAttempts\"}[30s]",
-            "instant": true,
-            "legendFormat": "{{ "{{" }}label_name}}",
-            "range": false,
-            "refId": "A"
-          }
-        ],
-        "title": "Successful login attempts",
-        "type": "barchart"
       },
       {
         "collapsed": true,
@@ -1185,7 +1202,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 26
+          "y": 6
         },
         "id": 83,
         "panels": [
@@ -1473,7 +1490,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 27
+          "y": 7
         },
         "id": 71,
         "panels": [],
@@ -1513,7 +1530,7 @@ dashboard-remp.json: |-
           "h": 2,
           "w": 6,
           "x": 0,
-          "y": 28
+          "y": 8
         },
         "id": 9,
         "options": {
@@ -1531,9 +1548,10 @@ dashboard-remp.json: |-
           "text": {
             "valueSize": 20
           },
-          "textMode": "auto"
+          "textMode": "auto",
+          "wideLayout": true
         },
-        "pluginVersion": "9.3.1",
+        "pluginVersion": "10.2.2",
         "targets": [
           {
             "datasource": {
@@ -1581,7 +1599,7 @@ dashboard-remp.json: |-
           "h": 2,
           "w": 6,
           "x": 6,
-          "y": 28
+          "y": 8
         },
         "id": 30,
         "options": {
@@ -1599,9 +1617,10 @@ dashboard-remp.json: |-
           "text": {
             "valueSize": 20
           },
-          "textMode": "auto"
+          "textMode": "auto",
+          "wideLayout": true
         },
-        "pluginVersion": "9.3.1",
+        "pluginVersion": "10.2.2",
         "targets": [
           {
             "datasource": {
@@ -1649,7 +1668,7 @@ dashboard-remp.json: |-
           "h": 2,
           "w": 6,
           "x": 12,
-          "y": 28
+          "y": 8
         },
         "id": 45,
         "options": {
@@ -1667,9 +1686,10 @@ dashboard-remp.json: |-
           "text": {
             "valueSize": 20
           },
-          "textMode": "auto"
+          "textMode": "auto",
+          "wideLayout": true
         },
-        "pluginVersion": "9.3.1",
+        "pluginVersion": "10.2.2",
         "targets": [
           {
             "datasource": {
@@ -1721,7 +1741,7 @@ dashboard-remp.json: |-
           "h": 2,
           "w": 6,
           "x": 18,
-          "y": 28
+          "y": 8
         },
         "id": 31,
         "options": {
@@ -1739,9 +1759,10 @@ dashboard-remp.json: |-
           "text": {
             "valueSize": 20
           },
-          "textMode": "auto"
+          "textMode": "auto",
+          "wideLayout": true
         },
-        "pluginVersion": "9.3.1",
+        "pluginVersion": "10.2.2",
         "targets": [
           {
             "datasource": {
@@ -1772,6 +1793,7 @@ dashboard-remp.json: |-
               "mode": "palette-classic"
             },
             "custom": {
+              "axisBorderShow": false,
               "axisCenteredZero": false,
               "axisColorMode": "text",
               "axisLabel": "",
@@ -1787,6 +1809,7 @@ dashboard-remp.json: |-
                 "tooltip": false,
                 "viz": false
               },
+              "insertNulls": false,
               "lineInterpolation": "smooth",
               "lineWidth": 1,
               "pointSize": 3,
@@ -1825,7 +1848,7 @@ dashboard-remp.json: |-
           "h": 5,
           "w": 6,
           "x": 0,
-          "y": 30
+          "y": 10
         },
         "id": 32,
         "options": {
@@ -1869,6 +1892,7 @@ dashboard-remp.json: |-
               "mode": "palette-classic"
             },
             "custom": {
+              "axisBorderShow": false,
               "axisCenteredZero": false,
               "axisColorMode": "text",
               "axisLabel": "",
@@ -1884,6 +1908,7 @@ dashboard-remp.json: |-
                 "tooltip": false,
                 "viz": false
               },
+              "insertNulls": false,
               "lineInterpolation": "smooth",
               "lineWidth": 1,
               "pointSize": 3,
@@ -1922,7 +1947,7 @@ dashboard-remp.json: |-
           "h": 5,
           "w": 6,
           "x": 6,
-          "y": 30
+          "y": 10
         },
         "id": 33,
         "options": {
@@ -1966,11 +1991,11 @@ dashboard-remp.json: |-
               "mode": "palette-classic"
             },
             "custom": {
+              "axisBorderShow": false,
               "axisCenteredZero": false,
               "axisColorMode": "text",
               "axisLabel": "",
               "axisPlacement": "auto",
-              "axisSoftMax": 100,
               "axisSoftMin": 0,
               "barAlignment": 0,
               "drawStyle": "line",
@@ -1981,6 +2006,7 @@ dashboard-remp.json: |-
                 "tooltip": false,
                 "viz": false
               },
+              "insertNulls": false,
               "lineInterpolation": "smooth",
               "lineWidth": 1,
               "pointSize": 3,
@@ -2019,7 +2045,7 @@ dashboard-remp.json: |-
           "h": 5,
           "w": 6,
           "x": 12,
-          "y": 30
+          "y": 10
         },
         "id": 46,
         "options": {
@@ -2063,6 +2089,7 @@ dashboard-remp.json: |-
               "mode": "palette-classic"
             },
             "custom": {
+              "axisBorderShow": false,
               "axisCenteredZero": false,
               "axisColorMode": "text",
               "axisLabel": "",
@@ -2078,6 +2105,7 @@ dashboard-remp.json: |-
                 "tooltip": false,
                 "viz": false
               },
+              "insertNulls": false,
               "lineInterpolation": "smooth",
               "lineWidth": 1,
               "pointSize": 3,
@@ -2112,7 +2140,7 @@ dashboard-remp.json: |-
           "h": 5,
           "w": 6,
           "x": 18,
-          "y": 30
+          "y": 10
         },
         "id": 34,
         "options": {
@@ -2150,7 +2178,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 35
+          "y": 15
         },
         "id": 308,
         "panels": [
@@ -3656,7 +3684,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 36
+          "y": 16
         },
         "id": 40,
         "panels": [
@@ -3706,8 +3734,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     },
                     {
                       "color": "red",
@@ -3803,8 +3830,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     },
                     {
                       "color": "red",
@@ -3966,8 +3992,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     },
                     {
                       "color": "red",
@@ -4062,8 +4087,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     },
                     {
                       "color": "red",
@@ -4191,7 +4215,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 37
+          "y": 17
         },
         "id": 332,
         "panels": [
@@ -4277,8 +4301,7 @@ dashboard-remp.json: |-
       }
     ],
     "refresh": "5m",
-    "schemaVersion": 37,
-    "style": "dark",
+    "schemaVersion": 38,
     "tags": [],
     "templating": {
       "list": [
@@ -4292,68 +4315,68 @@ dashboard-remp.json: |-
               "$__all"
             ]
           },
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "definition": "label_values(conveior_dockerContainer{entity=\"{{ include "helmMonitorie.name" . }}\"}, label_name)",
-            "hide": 0,
-            "includeAll": true,
-            "label": "container",
-            "multi": true,
-            "name": "container",
-            "options": [],
-            "query": {
-              "query": "label_values(conveior_dockerContainer{entity=\"{{ include "helmMonitorie.name" . }}\"}, label_name)",
-              "refId": "StandardVariableQuery"
-            },
-            "refresh": 1,
-            "regex": "",
-            "skipUrlSync": false,
-            "sort": 0,
-            "type": "query"
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P5DCFC7561CCDE821"
           },
-          {
-            "current": {
-              "selected": true,
-              "text": [
-                "All"
-              ],
-              "value": [
-                "$__all"
-              ]
-            },
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "definition": "label_values(probe_success{prometheus=\"{{ include "helmMonitorie.name" . }}/{{ include "helmMonitorie.name" . }}\"}, instance)",
-            "hide": 2,
-            "includeAll": true,
-            "multi": true,
-            "name": "url",
-            "options": [],
-            "query": {
-              "query": "label_values(probe_success{prometheus=\"{{ include "helmMonitorie.name" . }}/{{ include "helmMonitorie.name" . }}\"}, instance)",
-              "refId": "StandardVariableQuery"
-            },
-            "refresh": 1,
-            "regex": "",
-            "skipUrlSync": false,
-            "sort": 0,
-            "type": "query"
-          }
-        ]
-      },
-      "time": {
-        "from": "now-3h",
-        "to": "now"
-      },
-      "timepicker": {},
-      "timezone": "",
-      "title": "Dashboard",
-      "uid": "remp",
-      "version": 1,
-      "weekStart": ""
-    }
+          "definition": "label_values(conveior_dockerContainer{entity=\"{{ include "helmMonitorie.name" . }}\"}, label_name)",
+          "hide": 0,
+          "includeAll": true,
+          "label": "container",
+          "multi": true,
+          "name": "container",
+          "options": [],
+          "query": {
+            "query": "label_values(conveior_dockerContainer{entity=\"{{ include "helmMonitorie.name" . }}\"}, label_name)",
+            "refId": "StandardVariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": [
+              "All"
+            ],
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P5DCFC7561CCDE821"
+          },
+          "definition": "label_values(probe_success{prometheus=\"{{ include "helmMonitorie.name" . }}/{{ include "helmMonitorie.name" . }}\"}, instance)",
+          "hide": 2,
+          "includeAll": true,
+          "multi": true,
+          "name": "url",
+          "options": [],
+          "query": {
+            "query": "label_values(probe_success{prometheus=\"{{ include "helmMonitorie.name" . }}/{{ include "helmMonitorie.name" . }}\"}, instance)",
+            "refId": "StandardVariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-24h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Dashboard",
+    "uid": "remp",
+    "version": 1,
+    "weekStart": ""
+  }
 {{ end }}
