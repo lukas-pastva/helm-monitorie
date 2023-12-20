@@ -46,7 +46,7 @@ data:
             annotations:
               description: There is SWAP not enabled or too low for {{ include "helmMonitorie.name" . }}.
               summary: There is SWAP not enabled or too low for {{ include "helmMonitorie.name" . }}.
-            expr: conveior_hwSwap{entity="{{ include "helmMonitorie.name" . }}",label_name="total"} < 524288000
+            expr: (conveior_hwSwap{entity="{{ include "helmMonitorie.name" . }}",label_name="total"} or on() vector(0)) < 524288000
             for: 1m
             labels:
               severity: warning
