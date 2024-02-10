@@ -6,7 +6,6 @@ metadata:
     app.kubernetes.io/instance: {{ include "helmMonitorie.name" . }}
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: {{ include "helmMonitorie.name" . }}
-    argocd.argoproj.io/instance: {{ include "helmMonitorie.name" . }}
     release: {{ include "helmMonitorie.name" . }}
   name: alertmanager-{{ include "helmMonitorie.name" . }}
   namespace: {{ .Release.Namespace }}

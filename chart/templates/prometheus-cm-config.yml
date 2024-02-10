@@ -3,8 +3,6 @@ kind: ConfigMap
 metadata:
   name: prometheus
   namespace: {{ .Release.Namespace }}
-  annotations:
-    argocd.argoproj.io/sync-options: Replace=true
 data:
   prometheus.yaml: |-
     global:

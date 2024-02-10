@@ -4,8 +4,6 @@ kind: ConfigMap
 metadata:
   name: rules
   namespace: {{ .Release.Namespace }}
-  annotations:
-    argocd.argoproj.io/sync-options: Replace=true
 data:
   rule-system.yaml: |-
     groups:

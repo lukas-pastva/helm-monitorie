@@ -14,6 +14,13 @@ grafana:
 pushgw:
   domain: ""
   uri: ""
+  ingressUri: ""
+loki:
+  enabled: false
+  path_prefix: /var/loki
+  domain: ""
+  uri: ""
+  ingressUri: ""
 prometheus:
   rulesSystem:
     enabled: true
@@ -53,3 +60,4 @@ secrets:
 #  thanosS3SecretKey: ""
 #  mailPassword: ""
 #  pushGwAuth: ""
+#  lokiAuth: ""
