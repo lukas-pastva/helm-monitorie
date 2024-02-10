@@ -1,0 +1,63 @@
+{{ if eq .Values.loki.enabled true -}}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: loki
+  namespace: {{ .Release.Namespace }}
+data:
+  config.yaml: |
+    auth_enabled: true
+    common:
+      compactor_address: '{{ include "helmMonitorie.name" . }}'
+      path_prefix: {{ .Values.loki.path_prefix }}
+      replication_factor: 3
+      storage:
+        s3:
+          bucketnames: chunks
+          insecure: false
+          s3forcepathstyle: true
+    frontend:
+      scheduler_address: ""
+    frontend_worker:
+      scheduler_address: ""
+    index_gateway:
+      mode: ring
+    limits_config:
+      enforce_metric_name: false
+      max_cache_freshness_per_query: 10m
+      reject_old_samples: true
+      reject_old_samples_max_age: 168h
+      split_queries_by_interval: 15m
+    memberlist:
+      join_members:
+      - loki-memberlist
+    query_range:
+      align_queries_with_step: true
+    ruler:
+      storage:
+        s3:
+          bucketnames: ruler
+          insecure: false
+          s3forcepathstyle: false
+        type: s3
+    runtime_config:
+      file: /etc/loki/runtime-config/runtime-config.yaml
+    schema_config:
+      configs:
+      - from: "2022-01-11"
+        index:
+          period: 24h
+          prefix: loki_index_
+        object_store: s3
+        schema: v12
+        store: boltdb-shipper
+    server:
+      grpc_listen_port: 9095
+      http_listen_port: 3100
+    storage_config:
+      hedging:
+        at: 250ms
+        max_per_second: 20
+        up_to: 3
+{{ end }}

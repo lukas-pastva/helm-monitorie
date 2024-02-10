@@ -1,0 +1,23 @@
+{{ if eq .Values.loki.enabled true -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: loki
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    nginx.ingress.kubernetes.io/auth-type: basic
+    nginx.ingress.kubernetes.io/auth-secret: secretLoki
+    nginx.ingress.kubernetes.io/auth-realm: "Authentication Required"
+spec:
+  rules:
+    - host: {{ .Values.loki.domain }}
+      http:
+        paths:
+          - backend:
+              service:
+                name: loki
+                port:
+                  number: 3100
+            path: /{{ .Values.loki.ingressUri }}
+            pathType: Prefix
+{{ end }}

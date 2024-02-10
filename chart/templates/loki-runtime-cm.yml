@@ -1,0 +1,10 @@
+{{ if eq .Values.loki.enabled true -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: loki-runtime-cm
+  namespace: {{ .Release.Namespace }}
+data:
+  runtime-config.yaml: |
+    {}
+{{ end }}
