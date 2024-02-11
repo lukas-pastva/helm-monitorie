@@ -9,9 +9,7 @@ data:
   config.yaml: |
     auth_enabled: false
     common:
-      compactor_address: '{{ include "helmMonitorie.name" . }}'
       path_prefix: {{ .Values.loki.path_prefix }}
-      replication_factor: 1
       storage:
         s3:
           access_key_id: ${S3_LOKI_ACCESS_KEY_ID}
@@ -20,35 +18,12 @@ data:
           insecure: false
           s3forcepathstyle: true
           secret_access_key: ${S3_LOKI_SECRET_ACCESS_KEY}
-    frontend:
-      scheduler_address: ""
-    frontend_worker:
-      scheduler_address: ""
-    index_gateway:
-      mode: ring
     limits_config:
       enforce_metric_name: false
       max_cache_freshness_per_query: 10m
       reject_old_samples: true
       reject_old_samples_max_age: 168h
       split_queries_by_interval: 15m
-    memberlist:
-      join_members:
-        - '127.0.0.1'
-    query_range:
-      align_queries_with_step: true
-    ruler:
-      storage:
-        s3:
-          access_key_id: ${S3_LOKI_ACCESS_KEY_ID}
-          bucketnames: loki-{{ include "helmMonitorie.name" . }}
-          endpoint: ${S3_LOKI_ENDPOINT}
-          insecure: false
-          s3forcepathstyle: true
-          secret_access_key: ${S3_LOKI_SECRET_ACCESS_KEY}
-        type: s3
-    runtime_config:
-      file: /etc/loki/runtime-config/runtime-config.yaml
     schema_config:
       configs:
       - from: "2022-01-11"
@@ -62,8 +37,13 @@ data:
       grpc_listen_port: 9095
       http_listen_port: 3100
     storage_config:
-      hedging:
-        at: 250ms
-        max_per_second: 20
-        up_to: 3
-{{ end }}
+      aws:
+        s3: s3://${S3_LOKI_ACCESS_KEY_ID}:${S3_LOKI_SECRET_ACCESS_KEY}@${S3_LOKI_ENDPOINT}/loki-{{ include "helmMonitorie.name" . }}
+      boltdb_shipper:
+        active_index_directory: /data/loki/index
+        cache_location: /data/loki/index_cache
+        cache_ttl: 24h
+        shared_store: s3
+    runtime_config:
+      file: /etc/loki/runtime-config/runtime-config.yaml
+  {{ end }}
