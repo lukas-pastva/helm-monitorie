@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/instance: loki
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: loki
-  name: loki
+  name: loki-headless
   namespace: {{ .Release.Namespace }}
 spec:
   ports:
@@ -14,10 +14,6 @@ spec:
       port: 3100
       protocol: TCP
       targetPort: http-metrics
-    - name: grpc
-      port: 9095
-      protocol: TCP
-      targetPort: grpc
   selector:
     app.kubernetes.io/instance: loki
     app.kubernetes.io/name: loki
