@@ -10,10 +10,18 @@ metadata:
   namespace: {{ .Release.Namespace }}
 spec:
   ports:
-    - name: http
+    - name: http-metrics
       port: 3100
       protocol: TCP
-      targetPort: 3100
+      targetPort: http-metrics
+    - name: grpc
+      port: 9095
+      protocol: TCP
+      targetPort: grpc
+    - name: tcp
+      port: 7946
+      protocol: TCP
+      targetPort: http-memberlist
   selector:
     app.kubernetes.io/instance: loki
     app.kubernetes.io/name: loki

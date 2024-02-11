@@ -14,9 +14,12 @@ data:
       replication_factor: 3
       storage:
         s3:
-          bucketnames: chunks
+          access_key_id: ${S3_LOKI_ACCESS_KEY_ID}
+          bucketnames: loki-chunks
+          endpoint: ${S3_LOKI_ENDPOINT}
           insecure: false
           s3forcepathstyle: true
+          secret_access_key: ${S3_LOKI_SECRET_ACCESS_KEY}
     frontend:
       scheduler_address: ""
     frontend_worker:
@@ -37,9 +40,12 @@ data:
     ruler:
       storage:
         s3:
-          bucketnames: ruler
+          access_key_id: ${S3_LOKI_ACCESS_KEY_ID}
+          bucketnames: loki-ruler
+          endpoint: ${S3_LOKI_ENDPOINT}
           insecure: false
-          s3forcepathstyle: false
+          s3forcepathstyle: true
+          secret_access_key: ${S3_LOKI_SECRET_ACCESS_KEY}
         type: s3
     runtime_config:
       file: /etc/loki/runtime-config/runtime-config.yaml
