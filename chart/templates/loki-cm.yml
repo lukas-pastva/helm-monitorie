@@ -7,7 +7,7 @@ metadata:
   namespace: {{ .Release.Namespace }}
 data:
   config.yaml: |
-    auth_enabled: true
+    auth_enabled: false
     common:
       compactor_address: '{{ include "helmMonitorie.name" . }}'
       path_prefix: {{ .Values.loki.path_prefix }}
