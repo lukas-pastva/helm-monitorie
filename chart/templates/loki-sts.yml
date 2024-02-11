@@ -46,17 +46,17 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: endpoint
-                  name: vault-sys-monitoring
+                  name: secret
             - name: S3_LOKI_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
                   key: accessKeyID
-                  name: vault-sys-monitoring
+                  name: secret
             - name: S3_LOKI_SECRET_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
                   key: secretAccessKey
-                  name: vault-sys-monitoring
+                  name: secret
           image: 'docker.io/grafana/loki:2.9.0'
           imagePullPolicy: IfNotPresent
           name: loki
