@@ -9,7 +9,14 @@ stringData:
     apiVersion: 1
     datasources:
     - access: proxy
-      name: Thanos
+      name: Prometheus
       type: prometheus
       uid: P5DCFC7561CCDE821
       url: http://thanos-query:9090
+    - name: Loki
+      access: proxy
+      editable: false
+      orgId: 1
+      type: loki
+      url: http://loki.{{ include "helmMonitorie.name" . }}.svc.cluster.local/{{ include "helmMonitorie.name" . }}:3100
+      version: 1
