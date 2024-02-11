@@ -38,7 +38,7 @@ spec:
           - '-config.file=/etc/loki/config/config.yaml'
           - '-target=all'
           - '-config.expand-env=true'
-          - '-server.path-prefix=/{{ .Values.loki.path_prefix }}'
+          - '-server.path-prefix={{ .Values.loki.path_prefix }}'
           env:
             - name: S3_LOKI_ENDPOINT
               valueFrom:
@@ -71,7 +71,7 @@ spec:
           readinessProbe:
             failureThreshold: 3
             httpGet:
-              path: /ready
+              path: {{ .Values.loki.path_prefix }}/ready
               port: http-metrics
               scheme: HTTP
             initialDelaySeconds: 30
@@ -97,7 +97,7 @@ spec:
               name: config
             - mountPath: /etc/loki/runtime-config
               name: runtime-config
-            - mountPath: /{{ .Values.loki.path_prefix }}
+            - mountPath: {{ .Values.loki.path_prefix }}
               name: storage
       enableServiceLinks: true
       securityContext:
