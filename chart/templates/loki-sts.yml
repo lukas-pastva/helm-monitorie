@@ -71,7 +71,7 @@ spec:
           readinessProbe:
             failureThreshold: 3
             httpGet:
-              path: {{ .Values.loki.path_prefix }}/ready
+              path: {{ .Values.loki.path_prefix }}ready
               port: http-metrics
               scheme: HTTP
             initialDelaySeconds: 30
