@@ -38,6 +38,7 @@ spec:
           - '-config.file=/etc/loki/config/config.yaml'
           - '-target=all'
           - '-config.expand-env=true'
+          - '-server.path-prefix=/{{ .Values.loki.path_prefix }}'
           env:
             - name: S3_LOKI_ENDPOINT
               valueFrom:
