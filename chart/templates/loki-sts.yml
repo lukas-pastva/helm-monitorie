@@ -45,17 +45,17 @@ spec:
             - name: S3_LOKI_ENDPOINT
               valueFrom:
                 secretKeyRef:
-                  key: endpoint
+                  key: S3_LOKI_ENDPOINT
                   name: secret
             - name: S3_LOKI_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
-                  key: accessKeyID
+                  key: S3_LOKI_ACCESS_KEY_ID
                   name: secret
             - name: S3_LOKI_SECRET_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
-                  key: secretAccessKey
+                  key: S3_LOKI_SECRET_ACCESS_KEY
                   name: secret
           image: 'docker.io/grafana/loki:2.9.0'
           imagePullPolicy: IfNotPresent

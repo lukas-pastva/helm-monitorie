@@ -61,3 +61,6 @@ secrets:
 #  mailPassword: ""
 #  pushGwAuth: ""
 #  lokiAuth: ""
+#  lokiS3Endpoint: ""
+#  lokiS3AccessKey: ""
+#  lokiS3SecretKey: ""
