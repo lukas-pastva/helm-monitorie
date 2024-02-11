@@ -9,9 +9,6 @@ metadata:
   name: loki
   namespace: {{ .Release.Namespace }}
 spec:
-  persistentVolumeClaimRetentionPolicy:
-    whenDeleted: Delete
-    whenScaled: Delete
   podManagementPolicy: Parallel
   replicas: 1
   revisionHistoryLimit: 10
@@ -99,7 +96,7 @@ spec:
               name: config
             - mountPath: /etc/loki/runtime-config
               name: runtime-config
-            - mountPath: /var/loki
+            - mountPath: /{{ .Values.loki.path_prefix }}
               name: storage
       enableServiceLinks: true
       securityContext:

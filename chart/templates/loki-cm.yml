@@ -10,7 +10,7 @@ data:
     auth_enabled: true
     common:
       compactor_address: '{{ include "helmMonitorie.name" . }}'
-      path_prefix: {{ .Values.loki.path_prefix }}
+      path_prefix: /{{ .Values.loki.path_prefix }}
       replication_factor: 3
       storage:
         s3:
