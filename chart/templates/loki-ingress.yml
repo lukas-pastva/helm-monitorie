@@ -6,7 +6,7 @@ metadata:
   namespace: {{ .Release.Namespace }}
   annotations:
     nginx.ingress.kubernetes.io/auth-type: basic
-    nginx.ingress.kubernetes.io/auth-secret: secretLoki
+    nginx.ingress.kubernetes.io/auth-secret: secret-loki
     nginx.ingress.kubernetes.io/auth-realm: "Authentication Required"
 spec:
   rules:
