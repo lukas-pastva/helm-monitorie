@@ -11,7 +11,7 @@ data:
     common:
       compactor_address: '{{ include "helmMonitorie.name" . }}'
       path_prefix: {{ .Values.loki.path_prefix }}
-      replication_factor: 3
+      replication_factor: 1
       storage:
         s3:
           access_key_id: ${S3_LOKI_ACCESS_KEY_ID}
@@ -34,7 +34,7 @@ data:
       split_queries_by_interval: 15m
     memberlist:
       join_members:
-      - loki-memberlist
+        - '127.0.0.1'
     query_range:
       align_queries_with_step: true
     ruler:
