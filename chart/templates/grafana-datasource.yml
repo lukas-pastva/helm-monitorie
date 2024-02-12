@@ -18,5 +18,5 @@ stringData:
       editable: false
       orgId: 1
       type: loki
-      url: http://loki.{{ include "helmMonitorie.name" . }}.svc.cluster.local:3100/{{ include "helmMonitorie.name" . }}
+      url: http://loki:3100/{{ include "helmMonitorie.name" . }}
       version: 1
