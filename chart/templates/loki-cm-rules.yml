@@ -16,5 +16,5 @@ data:
             sum(count_over_time({level="ERROR"}[1m]))
         - record: loki_rate
           expr: |
-            sum(count_over_time({}[1m]))
-{{ end }}
+            sum(count_over_time({job=~".+"}[1m]))
+  {{ end }}
