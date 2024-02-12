@@ -23,6 +23,7 @@ spec:
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/name: loki
         checksum-config: {{ include (print $.Template.BasePath "/loki-cm.yml") . | sha256sum | trimSuffix "-" | trunc 63 }}
+        checksum-config-runtime: {{ include (print $.Template.BasePath "/loki-runtime-cm.yml") . | sha256sum | trimSuffix "-" | trunc 63 }}
     spec:
       affinity:
         podAntiAffinity:
@@ -98,7 +99,7 @@ spec:
               name: config
             - mountPath: /etc/loki/runtime-config
               name: runtime-config
-            - mountPath: {{ .Values.loki.path_prefix }}
+            - mountPath: /data
               name: storage
       enableServiceLinks: true
       securityContext:
