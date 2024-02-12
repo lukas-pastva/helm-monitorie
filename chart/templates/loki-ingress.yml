@@ -1,5 +1,5 @@
 {{ if eq .Values.loki.enabled true -}}
-  {{ if eq .Values.loki.ingressUri -}}
+  {{ if .Values.loki.ingressUri -}}
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
