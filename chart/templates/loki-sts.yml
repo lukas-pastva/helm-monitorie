@@ -99,7 +99,7 @@ spec:
               name: config
             - mountPath: /etc/loki/runtime-config
               name: runtime-config
-            - mountPath: {{ .Values.loki.path_prefix }}
+            - mountPath: /var/loki
               name: storage
       enableServiceLinks: true
       securityContext:
