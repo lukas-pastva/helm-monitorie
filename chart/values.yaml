@@ -16,10 +16,8 @@ pushgw:
   uri: ""
   ingressUri: ""
 loki:
-  enabled: false
-  path_prefix: /
+  enabled: true
   domain: ""
-  uri: ""
   ingressUri: ""
 prometheus:
   rulesSystem:
