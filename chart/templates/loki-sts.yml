@@ -41,7 +41,7 @@ spec:
           - '-config.file=/etc/loki/config/config.yaml'
           - '-target=all'
           - '-config.expand-env=true'
-          - '-server.path-prefix={{ .Values.loki.path_prefix }}'
+          - '-server.path-prefix=/'
           env:
             - name: S3_LOKI_ENDPOINT
               valueFrom:
@@ -74,7 +74,7 @@ spec:
           readinessProbe:
             failureThreshold: 3
             httpGet:
-              path: {{ .Values.loki.path_prefix }}ready
+              path: /ready
               port: http-metrics
               scheme: HTTP
             initialDelaySeconds: 30
