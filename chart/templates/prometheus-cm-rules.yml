@@ -90,7 +90,7 @@ data:
               description: "There are {{ "{{" }} $value }} Loki errors for {{ include "helmMonitorie.name" . }}."
   {{- end  }}
   {{- if .Values.prometheus.rulesSystem.enableLokiHighErrors }}
-          - alert: LokiErrors
+          - alert: LokiErrorsHigh
             expr: rate(loki_error_rate[5m]) > 5
             for: 5m
             labels:

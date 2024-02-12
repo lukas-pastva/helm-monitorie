@@ -17,4 +17,19 @@ data:
         - record: loki_rate
           expr: |
             sum(count_over_time({job=~".+"}[1m]))
+  {{- if .Values.prometheus.rulesSystem.enableLokiHighErrors }}
+    - name: alert-rules
+      limit: 10
+      interval: 5m
+      rules:
+      - alert: LokiErrorsHigh
+        expr: |
+          sum by(job) (count_over_time({level="ERROR"}[5m])) > 0
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          description: "There are too many Loki high errors for {{ include "helmMonitorie.name" . }}."
+          summary: "There are too many Loki high errors for {{ include "helmMonitorie.name" . }}."
   {{ end }}
+{{ end }}
