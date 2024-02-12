@@ -24,7 +24,7 @@ spec:
         app.kubernetes.io/name: loki
         checksum-config: {{ include (print $.Template.BasePath "/loki-cm.yml") . | sha256sum | trimSuffix "-" | trunc 63 }}
         checksum-config-runtime: {{ include (print $.Template.BasePath "/loki-cm-runtime.yml") . | sha256sum | trimSuffix "-" | trunc 63 }}
-        checksum-config-rules: {{ include (print $.Template.BasePath "/loki-cm-cules.yml") . | sha256sum | trimSuffix "-" | trunc 63 }}
+        checksum-config-rules: {{ include (print $.Template.BasePath "/loki-cm-rules.yml") . | sha256sum | trimSuffix "-" | trunc 63 }}
     spec:
       affinity:
         podAntiAffinity:
