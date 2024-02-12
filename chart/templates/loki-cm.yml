@@ -36,6 +36,18 @@ data:
     query_range:
       align_queries_with_step: true
     ruler:
+      alertmanager_url: http://alertmanager-operated:9093
+      remote_write:
+        client:
+          url: http://prometheus:9090/api/v1/write
+        enabled: true
+      rule_path: /rules
+      storage:
+        local:
+          directory: /rules
+        type: local
+      wal:
+        dir: /tmp/ruler-wal
       storage:
         s3:
           access_key_id: ${S3_LOKI_ACCESS_KEY_ID}

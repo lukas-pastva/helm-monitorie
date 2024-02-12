@@ -31,6 +31,8 @@ prometheus:
     enableHighSwapUsage: true
     enableContainerDown: true
     enableElasticSearchIndices: true
+    enableLokiErrors: true
+    enableLokiHighErrors: true
 blackbox:
 #  google:
 #    url: https://google.com

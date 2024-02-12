@@ -79,4 +79,24 @@ data:
             labels:
               severity: warning
   {{- end  }}
+  {{- if .Values.prometheus.rulesSystem.enableLokiErrors }}
+          - alert: LokiErrors
+            expr: rate(loki_error_rate[1m]) > 1
+            for: 1m
+            labels:
+              severity: info
+            annotations:
+              summary: "There are {{ "{{" }} $value }} Loki errors for {{ include "helmMonitorie.name" . }}."
+              description: "There are {{ "{{" }} $value }} Loki errors for {{ include "helmMonitorie.name" . }}."
+  {{- end  }}
+  {{- if .Values.prometheus.rulesSystem.enableLokiHighErrors }}
+          - alert: LokiErrors
+            expr: rate(loki_error_rate[5m]) > 5
+            for: 5m
+            labels:
+              severity: warning
+            annotations:
+              summary: "There are {{ "{{" }} $value }} Loki high errors for {{ include "helmMonitorie.name" . }}."
+              description: "There are {{ "{{" }} $value }} Loki high errors for {{ include "helmMonitorie.name" . }}."
+  {{- end  }}
   {{ end }}

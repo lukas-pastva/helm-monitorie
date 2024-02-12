@@ -23,7 +23,8 @@ spec:
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/name: loki
         checksum-config: {{ include (print $.Template.BasePath "/loki-cm.yml") . | sha256sum | trimSuffix "-" | trunc 63 }}
-        checksum-config-runtime: {{ include (print $.Template.BasePath "/loki-runtime-cm.yml") . | sha256sum | trimSuffix "-" | trunc 63 }}
+        checksum-config-runtime: {{ include (print $.Template.BasePath "/loki-cm-runtime.yml") . | sha256sum | trimSuffix "-" | trunc 63 }}
+        checksum-config-rules: {{ include (print $.Template.BasePath "/loki-cm-cules.yml") . | sha256sum | trimSuffix "-" | trunc 63 }}
     spec:
       affinity:
         podAntiAffinity:
@@ -97,6 +98,8 @@ spec:
               name: tmp
             - mountPath: /etc/loki/config
               name: config
+            - mountPath: /rules/fake
+              name: loki-rules
             - mountPath: /etc/loki/runtime-config
               name: runtime-config
             - mountPath: /var/loki
@@ -119,6 +122,13 @@ spec:
                 path: config.yaml
             name: loki
           name: config
+        - configMap:
+            defaultMode: 420
+            items:
+              - key: rules.yml
+                path: rules.yml
+            name: loki-rules
+          name: loki-rules
         - configMap:
             defaultMode: 420
             name: loki-runtime-cm

@@ -48,6 +48,7 @@ spec:
             - '--no-storage.tsdb.wal-compression'
             - '--storage.tsdb.max-block-duration=2h'
             - '--storage.tsdb.min-block-duration=2h'
+            - '--web.enable-remote-write-receiver'
           image: 'quay.io/prometheus/prometheus:v2.40.5'
           imagePullPolicy: IfNotPresent
           livenessProbe:
