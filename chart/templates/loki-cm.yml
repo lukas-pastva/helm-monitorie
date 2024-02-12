@@ -42,21 +42,12 @@ data:
           url: http://prometheus:9090/api/v1/write
         enabled: true
       rule_path: /rules
+      wal:
+        dir: /tmp/ruler-wal
       storage:
         local:
           directory: /rules
         type: local
-      wal:
-        dir: /tmp/ruler-wal
-      storage:
-        s3:
-          access_key_id: ${S3_LOKI_ACCESS_KEY_ID}
-          bucketnames: loki-{{ include "helmMonitorie.name" . }}
-          endpoint: ${S3_LOKI_ENDPOINT}
-          insecure: false
-          s3forcepathstyle: true
-          secret_access_key: ${S3_LOKI_SECRET_ACCESS_KEY}
-        type: s3
     runtime_config:
       file: /etc/loki/runtime-config/runtime-config.yaml
     schema_config:
