@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: alertmanager-slack-template
+  namespace: {{ .Release.Namespace }}
+type: Opaque
+stringData:
+  slack.tmpl: |-
+    {{ "{{" }} define "cluster" }}{{ "{{" }} .ExternalURL | reReplaceAll ".*alertmanager\\.(.*)" "$1" }}{{ "{{" }} end }}
+    {{ "{{" }} define "slack.default.text" }}
+    {{ "{{" }}- $root := . -}}
+    {{ "{{" }} range .Alerts }}
+      `{{ "{{" }} .Labels.label_name }}/{{ "{{" }} .Labels.alertname }}/{{ "{{" }} .Labels.severity }}` *{{ "{{" }} .Annotations.summary }}*
+    {{ "{{" }} end }}
+    {{ "{{" }} end }}
