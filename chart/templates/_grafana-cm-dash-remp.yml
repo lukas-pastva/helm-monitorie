@@ -127,7 +127,7 @@ dashboard-remp.json: |-
         "type": "stat"
       },
       {
-        "collapsed": false,
+        "collapsed": true,
         "gridPos": {
           "h": 1,
           "w": 24,
@@ -135,88 +135,89 @@ dashboard-remp.json: |-
           "y": 3
         },
         "id": 284,
-        "panels": [],
-        "title": "URL monitoring (blue = up, red = down)",
-        "type": "row"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "P5DCFC7561CCDE821"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "red",
-                  "value": null
-                },
-                {
-                  "color": "semi-dark-orange",
-                  "value": 1
-                },
-                {
-                  "color": "blue",
-                  "value": 1
-                }
-              ]
-            },
-            "unitScale": true
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 1,
-          "w": 12,
-          "x": 0,
-          "y": 4
-        },
-        "id": 211,
-        "maxPerRow": 6,
-        "options": {
-          "colorMode": "background",
-          "graphMode": "area",
-          "justifyMode": "center",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showPercentChange": false,
-          "text": {
-            "valueSize": 11
-          },
-          "textMode": "name",
-          "wideLayout": true
-        },
-        "pluginVersion": "10.3.1",
-        "repeat": "url",
-        "repeatDirection": "h",
-        "targets": [
+        "panels": [
           {
             "datasource": {
               "type": "prometheus",
               "uid": "P5DCFC7561CCDE821"
             },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "probe_success{instance=~\"$url\"}",
-            "instant": true,
-            "legendFormat": "{{ "{{" }}instance}}",
-            "range": false,
-            "refId": "A"
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "thresholds"
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    },
+                    {
+                      "color": "semi-dark-orange",
+                      "value": 1
+                    },
+                    {
+                      "color": "blue",
+                      "value": 1
+                    }
+                  ]
+                },
+                "unitScale": true
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 1,
+              "w": 12,
+              "x": 0,
+              "y": 4
+            },
+            "id": 211,
+            "maxPerRow": 6,
+            "options": {
+              "colorMode": "background",
+              "graphMode": "area",
+              "justifyMode": "center",
+              "orientation": "auto",
+              "reduceOptions": {
+                "calcs": [
+                  "lastNotNull"
+                ],
+                "fields": "",
+                "values": false
+              },
+              "showPercentChange": false,
+              "text": {
+                "valueSize": 11
+              },
+              "textMode": "name",
+              "wideLayout": true
+            },
+            "pluginVersion": "10.3.1",
+            "repeat": "url",
+            "repeatDirection": "h",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P5DCFC7561CCDE821"
+                },
+                "editorMode": "code",
+                "exemplar": false,
+                "expr": "probe_success{instance=~\"$url\"}",
+                "instant": true,
+                "legendFormat": "{{ "{{" }}instance}}",
+                "range": false,
+                "refId": "A"
+              }
+            ],
+            "type": "stat"
           }
         ],
-        "type": "stat"
+        "title": "URL monitoring (blue = up, red = down)",
+        "type": "row"
       },
       {
         "collapsed": true,
@@ -228,7 +229,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 5
+          "y": 4
         },
         "id": 85,
         "panels": [
@@ -1198,7 +1199,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 6
+          "y": 5
         },
         "id": 83,
         "panels": [
@@ -1486,7 +1487,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 7
+          "y": 6
         },
         "id": 71,
         "panels": [],
@@ -1527,7 +1528,7 @@ dashboard-remp.json: |-
           "h": 2,
           "w": 6,
           "x": 0,
-          "y": 8
+          "y": 7
         },
         "id": 9,
         "options": {
@@ -1598,7 +1599,7 @@ dashboard-remp.json: |-
           "h": 2,
           "w": 6,
           "x": 6,
-          "y": 8
+          "y": 7
         },
         "id": 30,
         "options": {
@@ -1669,7 +1670,7 @@ dashboard-remp.json: |-
           "h": 2,
           "w": 6,
           "x": 12,
-          "y": 8
+          "y": 7
         },
         "id": 45,
         "options": {
@@ -1744,7 +1745,7 @@ dashboard-remp.json: |-
           "h": 2,
           "w": 6,
           "x": 18,
-          "y": 8
+          "y": 7
         },
         "id": 31,
         "options": {
@@ -1853,7 +1854,7 @@ dashboard-remp.json: |-
           "h": 5,
           "w": 6,
           "x": 0,
-          "y": 10
+          "y": 9
         },
         "id": 32,
         "options": {
@@ -1953,7 +1954,7 @@ dashboard-remp.json: |-
           "h": 5,
           "w": 6,
           "x": 6,
-          "y": 10
+          "y": 9
         },
         "id": 33,
         "options": {
@@ -2052,7 +2053,7 @@ dashboard-remp.json: |-
           "h": 5,
           "w": 6,
           "x": 12,
-          "y": 10
+          "y": 9
         },
         "id": 46,
         "options": {
@@ -2148,7 +2149,7 @@ dashboard-remp.json: |-
           "h": 5,
           "w": 6,
           "x": 18,
-          "y": 10
+          "y": 9
         },
         "id": 34,
         "options": {
@@ -2186,7 +2187,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 15
+          "y": 14
         },
         "id": 308,
         "panels": [
@@ -3692,7 +3693,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 16
+          "y": 15
         },
         "id": 40,
         "panels": [
@@ -4223,7 +4224,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 17
+          "y": 16
         },
         "id": 332,
         "panels": [
@@ -4233,12 +4234,13 @@ dashboard-remp.json: |-
               "uid": "P8E80F9AEF21F6940"
             },
             "gridPos": {
-              "h": 12,
-              "w": 24,
+              "h": 6,
+              "w": 12,
               "x": 0,
-              "y": 18
+              "y": 17
             },
             "id": 356,
+            "maxPerRow": 2,
             "options": {
               "dedupStrategy": "none",
               "enableLogDetails": false,
@@ -4249,6 +4251,8 @@ dashboard-remp.json: |-
               "sortOrder": "Descending",
               "wrapLogMessage": false
             },
+            "repeat": "loki_file",
+            "repeatDirection": "h",
             "targets": [
               {
                 "datasource": {
@@ -4256,12 +4260,12 @@ dashboard-remp.json: |-
                   "uid": "P8E80F9AEF21F6940"
                 },
                 "editorMode": "code",
-                "expr": "{job=\"$loki\"} |= ``",
+                "expr": "{job=\"$loki\", filename=~\"$loki_file\"} |= ``",
                 "queryType": "range",
                 "refId": "A"
               }
             ],
-            "title": "Logs: $loki",
+            "title": "Logs: $loki_file",
             "type": "logs"
           }
         ],
@@ -4354,7 +4358,7 @@ dashboard-remp.json: |-
           "definition": "",
           "hide": 0,
           "includeAll": true,
-          "label": "Loki",
+          "label": "Loki job",
           "multi": true,
           "name": "loki",
           "options": [],
@@ -4362,6 +4366,39 @@ dashboard-remp.json: |-
             "label": "job",
             "refId": "LokiVariableQueryEditor-VariableQuery",
             "stream": "",
+            "type": 1
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": [
+              "All"
+            ],
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "loki",
+            "uid": "P8E80F9AEF21F6940"
+          },
+          "definition": "",
+          "hide": 0,
+          "includeAll": true,
+          "label": "Loki file",
+          "multi": true,
+          "name": "loki_file",
+          "options": [],
+          "query": {
+            "label": "filename",
+            "refId": "LokiVariableQueryEditor-VariableQuery",
+            "stream": "{job=\"$loki\"}",
             "type": 1
           },
           "refresh": 1,
@@ -4382,5 +4419,5 @@ dashboard-remp.json: |-
     "uid": "remp",
     "version": 1,
     "weekStart": ""
-  }
+  } 
 {{ end }}
