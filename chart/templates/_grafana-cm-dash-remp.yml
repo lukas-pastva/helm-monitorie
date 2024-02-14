@@ -31,19 +31,6 @@ dashboard-remp.json: |-
     "liveNow": false,
     "panels": [
       {
-        "collapsed": false,
-        "gridPos": {
-          "h": 1,
-          "w": 24,
-          "x": 0,
-          "y": 0
-        },
-        "id": 260,
-        "panels": [],
-        "title": "Monitoring of Containers (blue = up, yellow = down but non critical, red = down, critical)",
-        "type": "row"
-      },
-      {
         "datasource": {
           "type": "prometheus",
           "uid": "P5DCFC7561CCDE821"
@@ -83,7 +70,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 2,
           "x": 0,
-          "y": 1
+          "y": 0
         },
         "id": 119,
         "maxPerRow": 12,
@@ -127,97 +114,83 @@ dashboard-remp.json: |-
         "type": "stat"
       },
       {
-        "collapsed": true,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "P5DCFC7561CCDE821"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                },
+                {
+                  "color": "semi-dark-orange",
+                  "value": 1
+                },
+                {
+                  "color": "blue",
+                  "value": 1
+                }
+              ]
+            },
+            "unitScale": true
+          },
+          "overrides": []
+        },
         "gridPos": {
           "h": 1,
-          "w": 24,
+          "w": 12,
           "x": 0,
-          "y": 3
+          "y": 2
         },
-        "id": 284,
-        "panels": [
+        "id": 211,
+        "maxPerRow": 6,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "valueSize": 11
+          },
+          "textMode": "name",
+          "wideLayout": true
+        },
+        "pluginVersion": "10.3.1",
+        "repeat": "url",
+        "repeatDirection": "h",
+        "targets": [
           {
             "datasource": {
               "type": "prometheus",
               "uid": "P5DCFC7561CCDE821"
             },
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "thresholds"
-                },
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "red",
-                      "value": null
-                    },
-                    {
-                      "color": "semi-dark-orange",
-                      "value": 1
-                    },
-                    {
-                      "color": "blue",
-                      "value": 1
-                    }
-                  ]
-                },
-                "unitScale": true
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 1,
-              "w": 12,
-              "x": 0,
-              "y": 4
-            },
-            "id": 211,
-            "maxPerRow": 6,
-            "options": {
-              "colorMode": "background",
-              "graphMode": "area",
-              "justifyMode": "center",
-              "orientation": "auto",
-              "reduceOptions": {
-                "calcs": [
-                  "lastNotNull"
-                ],
-                "fields": "",
-                "values": false
-              },
-              "showPercentChange": false,
-              "text": {
-                "valueSize": 11
-              },
-              "textMode": "name",
-              "wideLayout": true
-            },
-            "pluginVersion": "10.3.1",
-            "repeat": "url",
-            "repeatDirection": "h",
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "P5DCFC7561CCDE821"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "probe_success{instance=~\"$url\"}",
-                "instant": true,
-                "legendFormat": "{{ "{{" }}instance}}",
-                "range": false,
-                "refId": "A"
-              }
-            ],
-            "type": "stat"
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "probe_success{instance=~\"$url\"}",
+            "instant": true,
+            "legendFormat": "{{ "{{" }}instance}}",
+            "range": false,
+            "refId": "A"
           }
         ],
-        "title": "URL monitoring (blue = up, red = down)",
-        "type": "row"
+        "type": "stat"
       },
       {
         "collapsed": true,
@@ -229,7 +202,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 4
+          "y": 3
         },
         "id": 85,
         "panels": [
@@ -274,10 +247,12 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "dark-blue"
+                      "color": "dark-blue",
+                      "value": null
                     }
                   ]
-                }
+                },
+                "unitScale": true
               },
               "overrides": []
             },
@@ -285,7 +260,7 @@ dashboard-remp.json: |-
               "h": 5,
               "w": 6,
               "x": 0,
-              "y": 6
+              "y": 4
             },
             "id": 79,
             "options": {
@@ -370,10 +345,12 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "dark-blue"
+                      "color": "dark-blue",
+                      "value": null
                     }
                   ]
-                }
+                },
+                "unitScale": true
               },
               "overrides": []
             },
@@ -381,7 +358,7 @@ dashboard-remp.json: |-
               "h": 5,
               "w": 18,
               "x": 6,
-              "y": 6
+              "y": 4
             },
             "id": 107,
             "options": {
@@ -464,11 +441,13 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "red"
+                      "color": "red",
+                      "value": null
                     }
                   ]
                 },
-                "unit": "percent"
+                "unit": "percent",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -476,7 +455,7 @@ dashboard-remp.json: |-
               "h": 5,
               "w": 6,
               "x": 0,
-              "y": 11
+              "y": 9
             },
             "id": 104,
             "options": {
@@ -561,11 +540,13 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "red"
+                      "color": "red",
+                      "value": null
                     }
                   ]
                 },
-                "unit": "percent"
+                "unit": "percent",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -573,7 +554,7 @@ dashboard-remp.json: |-
               "h": 5,
               "w": 14,
               "x": 6,
-              "y": 11
+              "y": 9
             },
             "id": 110,
             "options": {
@@ -656,11 +637,13 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "red"
+                      "color": "red",
+                      "value": null
                     }
                   ]
                 },
-                "unit": "percent"
+                "unit": "percent",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -668,7 +651,7 @@ dashboard-remp.json: |-
               "h": 5,
               "w": 4,
               "x": 20,
-              "y": 11
+              "y": 9
             },
             "id": 98,
             "options": {
@@ -751,11 +734,13 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "red"
+                      "color": "red",
+                      "value": null
                     }
                   ]
                 },
-                "unit": "percent"
+                "unit": "percent",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -763,7 +748,7 @@ dashboard-remp.json: |-
               "h": 5,
               "w": 6,
               "x": 0,
-              "y": 16
+              "y": 14
             },
             "id": 99,
             "options": {
@@ -846,11 +831,13 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "red"
+                      "color": "red",
+                      "value": null
                     }
                   ]
                 },
-                "unit": "percent"
+                "unit": "percent",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -858,7 +845,7 @@ dashboard-remp.json: |-
               "h": 5,
               "w": 14,
               "x": 6,
-              "y": 16
+              "y": 14
             },
             "id": 100,
             "options": {
@@ -942,11 +929,13 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "red"
+                      "color": "red",
+                      "value": null
                     }
                   ]
                 },
-                "unit": "percent"
+                "unit": "percent",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -954,7 +943,7 @@ dashboard-remp.json: |-
               "h": 5,
               "w": 4,
               "x": 20,
-              "y": 16
+              "y": 14
             },
             "id": 106,
             "options": {
@@ -1009,6 +998,7 @@ dashboard-remp.json: |-
                   "mode": "fixed"
                 },
                 "custom": {
+                  "axisBorderShow": false,
                   "axisCenteredZero": false,
                   "axisColorMode": "text",
                   "axisGridShow": false,
@@ -1036,11 +1026,13 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "red"
+                      "color": "red",
+                      "value": null
                     }
                   ]
                 },
-                "unit": "s"
+                "unit": "s",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -1048,12 +1040,13 @@ dashboard-remp.json: |-
               "h": 5,
               "w": 6,
               "x": 0,
-              "y": 21
+              "y": 19
             },
             "id": 109,
             "options": {
               "barRadius": 0.05,
               "barWidth": 0.94,
+              "fullHighlight": false,
               "groupWidth": 1,
               "legend": {
                 "calcs": [],
@@ -1104,6 +1097,7 @@ dashboard-remp.json: |-
                   "mode": "fixed"
                 },
                 "custom": {
+                  "axisBorderShow": false,
                   "axisCenteredZero": false,
                   "axisColorMode": "text",
                   "axisGridShow": false,
@@ -1131,11 +1125,13 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "red"
+                      "color": "red",
+                      "value": null
                     }
                   ]
                 },
-                "unit": "percent"
+                "unit": "percent",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -1143,12 +1139,13 @@ dashboard-remp.json: |-
               "h": 5,
               "w": 18,
               "x": 6,
-              "y": 21
+              "y": 19
             },
             "id": 103,
             "options": {
               "barRadius": 0.05,
               "barWidth": 0.94,
+              "fullHighlight": false,
               "groupWidth": 1,
               "legend": {
                 "calcs": [],
@@ -1199,7 +1196,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 5
+          "y": 4
         },
         "id": 83,
         "panels": [
@@ -1214,6 +1211,7 @@ dashboard-remp.json: |-
                   "mode": "thresholds"
                 },
                 "custom": {
+                  "axisBorderShow": false,
                   "axisCenteredZero": false,
                   "axisColorMode": "text",
                   "axisLabel": "",
@@ -1239,10 +1237,12 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "dark-blue"
+                      "color": "dark-blue",
+                      "value": null
                     }
                   ]
-                }
+                },
+                "unitScale": true
               },
               "overrides": []
             },
@@ -1250,12 +1250,13 @@ dashboard-remp.json: |-
               "h": 5,
               "w": 8,
               "x": 0,
-              "y": 43
+              "y": 5
             },
             "id": 236,
             "options": {
               "barRadius": 0.05,
               "barWidth": 0.94,
+              "fullHighlight": false,
               "groupWidth": 1,
               "legend": {
                 "calcs": [],
@@ -1304,6 +1305,7 @@ dashboard-remp.json: |-
                   "mode": "fixed"
                 },
                 "custom": {
+                  "axisBorderShow": false,
                   "axisCenteredZero": false,
                   "axisColorMode": "text",
                   "axisLabel": "",
@@ -1330,10 +1332,12 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "dark-blue"
+                      "color": "dark-blue",
+                      "value": null
                     }
                   ]
-                }
+                },
+                "unitScale": true
               },
               "overrides": []
             },
@@ -1341,12 +1345,13 @@ dashboard-remp.json: |-
               "h": 5,
               "w": 16,
               "x": 8,
-              "y": 43
+              "y": 5
             },
             "id": 108,
             "options": {
               "barRadius": 0.05,
               "barWidth": 0.94,
+              "fullHighlight": false,
               "groupWidth": 1,
               "legend": {
                 "calcs": [],
@@ -1394,6 +1399,7 @@ dashboard-remp.json: |-
                   "mode": "palette-classic"
                 },
                 "custom": {
+                  "axisBorderShow": false,
                   "axisCenteredZero": false,
                   "axisColorMode": "text",
                   "axisLabel": "",
@@ -1407,6 +1413,7 @@ dashboard-remp.json: |-
                     "tooltip": false,
                     "viz": false
                   },
+                  "insertNulls": false,
                   "lineInterpolation": "linear",
                   "lineWidth": 2,
                   "pointSize": 5,
@@ -1428,10 +1435,12 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "dark-blue"
+                      "color": "dark-blue",
+                      "value": null
                     }
                   ]
-                }
+                },
+                "unitScale": true
               },
               "overrides": []
             },
@@ -1439,7 +1448,7 @@ dashboard-remp.json: |-
               "h": 5,
               "w": 8,
               "x": 0,
-              "y": 48
+              "y": 10
             },
             "id": 86,
             "options": {
@@ -1487,7 +1496,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 6
+          "y": 5
         },
         "id": 71,
         "panels": [],
@@ -1528,7 +1537,7 @@ dashboard-remp.json: |-
           "h": 2,
           "w": 6,
           "x": 0,
-          "y": 7
+          "y": 6
         },
         "id": 9,
         "options": {
@@ -1599,7 +1608,7 @@ dashboard-remp.json: |-
           "h": 2,
           "w": 6,
           "x": 6,
-          "y": 7
+          "y": 6
         },
         "id": 30,
         "options": {
@@ -1670,7 +1679,7 @@ dashboard-remp.json: |-
           "h": 2,
           "w": 6,
           "x": 12,
-          "y": 7
+          "y": 6
         },
         "id": 45,
         "options": {
@@ -1745,7 +1754,7 @@ dashboard-remp.json: |-
           "h": 2,
           "w": 6,
           "x": 18,
-          "y": 7
+          "y": 6
         },
         "id": 31,
         "options": {
@@ -1854,7 +1863,7 @@ dashboard-remp.json: |-
           "h": 5,
           "w": 6,
           "x": 0,
-          "y": 9
+          "y": 8
         },
         "id": 32,
         "options": {
@@ -1954,7 +1963,7 @@ dashboard-remp.json: |-
           "h": 5,
           "w": 6,
           "x": 6,
-          "y": 9
+          "y": 8
         },
         "id": 33,
         "options": {
@@ -2053,7 +2062,7 @@ dashboard-remp.json: |-
           "h": 5,
           "w": 6,
           "x": 12,
-          "y": 9
+          "y": 8
         },
         "id": 46,
         "options": {
@@ -2149,7 +2158,7 @@ dashboard-remp.json: |-
           "h": 5,
           "w": 6,
           "x": 18,
-          "y": 9
+          "y": 8
         },
         "id": 34,
         "options": {
@@ -2187,7 +2196,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 14
+          "y": 13
         },
         "id": 308,
         "panels": [
@@ -2207,7 +2216,8 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "text"
+                      "color": "text",
+                      "value": null
                     },
                     {
                       "color": "red",
@@ -2215,7 +2225,8 @@ dashboard-remp.json: |-
                     }
                   ]
                 },
-                "unit": "percent"
+                "unit": "percent",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -2223,7 +2234,7 @@ dashboard-remp.json: |-
               "h": 2,
               "w": 6,
               "x": 0,
-              "y": 52
+              "y": 14
             },
             "id": 91,
             "options": {
@@ -2238,12 +2249,14 @@ dashboard-remp.json: |-
                 "fields": "",
                 "values": false
               },
+              "showPercentChange": false,
               "text": {
                 "valueSize": 20
               },
-              "textMode": "auto"
+              "textMode": "auto",
+              "wideLayout": true
             },
-            "pluginVersion": "9.3.1",
+            "pluginVersion": "10.3.1",
             "targets": [
               {
                 "datasource": {
@@ -2278,11 +2291,13 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "text"
+                      "color": "text",
+                      "value": null
                     }
                   ]
                 },
-                "unit": "percent"
+                "unit": "percent",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -2290,7 +2305,7 @@ dashboard-remp.json: |-
               "h": 2,
               "w": 6,
               "x": 6,
-              "y": 52
+              "y": 14
             },
             "id": 93,
             "options": {
@@ -2305,12 +2320,14 @@ dashboard-remp.json: |-
                 "fields": "",
                 "values": false
               },
+              "showPercentChange": false,
               "text": {
                 "valueSize": 20
               },
-              "textMode": "auto"
+              "textMode": "auto",
+              "wideLayout": true
             },
-            "pluginVersion": "9.3.1",
+            "pluginVersion": "10.3.1",
             "targets": [
               {
                 "datasource": {
@@ -2345,11 +2362,13 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "text"
+                      "color": "text",
+                      "value": null
                     }
                   ]
                 },
-                "unit": "string"
+                "unit": "string",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -2357,7 +2376,7 @@ dashboard-remp.json: |-
               "h": 2,
               "w": 6,
               "x": 12,
-              "y": 52
+              "y": 14
             },
             "id": 67,
             "options": {
@@ -2372,12 +2391,14 @@ dashboard-remp.json: |-
                 "fields": "",
                 "values": false
               },
+              "showPercentChange": false,
               "text": {
                 "valueSize": 20
               },
-              "textMode": "auto"
+              "textMode": "auto",
+              "wideLayout": true
             },
-            "pluginVersion": "9.3.1",
+            "pluginVersion": "10.3.1",
             "targets": [
               {
                 "datasource": {
@@ -2412,11 +2433,13 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "text"
+                      "color": "text",
+                      "value": null
                     }
                   ]
                 },
-                "unit": "dateTimeAsIso"
+                "unit": "dateTimeAsIso",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -2424,7 +2447,7 @@ dashboard-remp.json: |-
               "h": 3,
               "w": 6,
               "x": 18,
-              "y": 52
+              "y": 14
             },
             "id": 68,
             "options": {
@@ -2439,12 +2462,14 @@ dashboard-remp.json: |-
                 "fields": "",
                 "values": false
               },
+              "showPercentChange": false,
               "text": {
                 "valueSize": 20
               },
-              "textMode": "auto"
+              "textMode": "auto",
+              "wideLayout": true
             },
-            "pluginVersion": "9.3.1",
+            "pluginVersion": "10.3.1",
             "targets": [
               {
                 "datasource": {
@@ -2475,6 +2500,7 @@ dashboard-remp.json: |-
                   "mode": "palette-classic"
                 },
                 "custom": {
+                  "axisBorderShow": false,
                   "axisCenteredZero": false,
                   "axisColorMode": "text",
                   "axisLabel": "",
@@ -2490,6 +2516,7 @@ dashboard-remp.json: |-
                     "tooltip": false,
                     "viz": false
                   },
+                  "insertNulls": false,
                   "lineInterpolation": "smooth",
                   "lineWidth": 1,
                   "pointSize": 3,
@@ -2511,7 +2538,8 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green"
+                      "color": "green",
+                      "value": null
                     },
                     {
                       "color": "red",
@@ -2519,7 +2547,8 @@ dashboard-remp.json: |-
                     }
                   ]
                 },
-                "unit": "percent"
+                "unit": "percent",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -2527,7 +2556,7 @@ dashboard-remp.json: |-
               "h": 5,
               "w": 6,
               "x": 0,
-              "y": 54
+              "y": 16
             },
             "id": 92,
             "options": {
@@ -2571,6 +2600,7 @@ dashboard-remp.json: |-
                   "mode": "palette-classic"
                 },
                 "custom": {
+                  "axisBorderShow": false,
                   "axisCenteredZero": false,
                   "axisColorMode": "text",
                   "axisLabel": "",
@@ -2586,6 +2616,7 @@ dashboard-remp.json: |-
                     "tooltip": false,
                     "viz": false
                   },
+                  "insertNulls": false,
                   "lineInterpolation": "smooth",
                   "lineWidth": 1,
                   "pointSize": 3,
@@ -2607,7 +2638,8 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green"
+                      "color": "green",
+                      "value": null
                     },
                     {
                       "color": "red",
@@ -2615,7 +2647,8 @@ dashboard-remp.json: |-
                     }
                   ]
                 },
-                "unit": "percent"
+                "unit": "percent",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -2623,7 +2656,7 @@ dashboard-remp.json: |-
               "h": 5,
               "w": 6,
               "x": 6,
-              "y": 54
+              "y": 16
             },
             "id": 94,
             "options": {
@@ -2667,6 +2700,7 @@ dashboard-remp.json: |-
                   "mode": "palette-classic"
                 },
                 "custom": {
+                  "axisBorderShow": false,
                   "axisCenteredZero": false,
                   "axisColorMode": "text",
                   "axisLabel": "",
@@ -2682,6 +2716,7 @@ dashboard-remp.json: |-
                     "tooltip": false,
                     "viz": false
                   },
+                  "insertNulls": false,
                   "lineInterpolation": "smooth",
                   "lineWidth": 1,
                   "pointSize": 3,
@@ -2703,11 +2738,13 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green"
+                      "color": "green",
+                      "value": null
                     }
                   ]
                 },
-                "unit": "string"
+                "unit": "string",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -2715,7 +2752,7 @@ dashboard-remp.json: |-
               "h": 5,
               "w": 6,
               "x": 12,
-              "y": 54
+              "y": 16
             },
             "id": 66,
             "options": {
@@ -2763,11 +2800,13 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "text"
+                      "color": "text",
+                      "value": null
                     }
                   ]
                 },
-                "unit": "s"
+                "unit": "s",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -2775,7 +2814,7 @@ dashboard-remp.json: |-
               "h": 2,
               "w": 3,
               "x": 18,
-              "y": 55
+              "y": 17
             },
             "id": 111,
             "options": {
@@ -2790,12 +2829,14 @@ dashboard-remp.json: |-
                 "fields": "",
                 "values": false
               },
+              "showPercentChange": false,
               "text": {
                 "valueSize": 20
               },
-              "textMode": "auto"
+              "textMode": "auto",
+              "wideLayout": true
             },
-            "pluginVersion": "9.3.1",
+            "pluginVersion": "10.3.1",
             "targets": [
               {
                 "datasource": {
@@ -2830,11 +2871,13 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "text"
+                      "color": "text",
+                      "value": null
                     }
                   ]
                 },
-                "unit": "s"
+                "unit": "s",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -2842,7 +2885,7 @@ dashboard-remp.json: |-
               "h": 2,
               "w": 3,
               "x": 21,
-              "y": 55
+              "y": 17
             },
             "id": 112,
             "options": {
@@ -2857,12 +2900,14 @@ dashboard-remp.json: |-
                 "fields": "",
                 "values": false
               },
+              "showPercentChange": false,
               "text": {
                 "valueSize": 20
               },
-              "textMode": "auto"
+              "textMode": "auto",
+              "wideLayout": true
             },
-            "pluginVersion": "9.3.1",
+            "pluginVersion": "10.3.1",
             "targets": [
               {
                 "datasource": {
@@ -2897,11 +2942,13 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "text"
+                      "color": "text",
+                      "value": null
                     }
                   ]
                 },
-                "unit": "s"
+                "unit": "s",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -2909,7 +2956,7 @@ dashboard-remp.json: |-
               "h": 2,
               "w": 3,
               "x": 18,
-              "y": 57
+              "y": 19
             },
             "id": 115,
             "options": {
@@ -2924,12 +2971,14 @@ dashboard-remp.json: |-
                 "fields": "",
                 "values": false
               },
+              "showPercentChange": false,
               "text": {
                 "valueSize": 20
               },
-              "textMode": "auto"
+              "textMode": "auto",
+              "wideLayout": true
             },
-            "pluginVersion": "9.3.1",
+            "pluginVersion": "10.3.1",
             "targets": [
               {
                 "datasource": {
@@ -2964,11 +3013,13 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "text"
+                      "color": "text",
+                      "value": null
                     }
                   ]
                 },
-                "unit": "s"
+                "unit": "s",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -2976,7 +3027,7 @@ dashboard-remp.json: |-
               "h": 2,
               "w": 3,
               "x": 21,
-              "y": 57
+              "y": 19
             },
             "id": 116,
             "options": {
@@ -2991,12 +3042,14 @@ dashboard-remp.json: |-
                 "fields": "",
                 "values": false
               },
+              "showPercentChange": false,
               "text": {
                 "valueSize": 20
               },
-              "textMode": "auto"
+              "textMode": "auto",
+              "wideLayout": true
             },
-            "pluginVersion": "9.3.1",
+            "pluginVersion": "10.3.1",
             "targets": [
               {
                 "datasource": {
@@ -3031,11 +3084,13 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "text"
+                      "color": "text",
+                      "value": null
                     }
                   ]
                 },
-                "unit": "none"
+                "unit": "none",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -3043,7 +3098,7 @@ dashboard-remp.json: |-
               "h": 2,
               "w": 6,
               "x": 0,
-              "y": 59
+              "y": 21
             },
             "id": 113,
             "options": {
@@ -3058,12 +3113,14 @@ dashboard-remp.json: |-
                 "fields": "",
                 "values": false
               },
+              "showPercentChange": false,
               "text": {
                 "valueSize": 20
               },
-              "textMode": "auto"
+              "textMode": "auto",
+              "wideLayout": true
             },
-            "pluginVersion": "9.3.1",
+            "pluginVersion": "10.3.1",
             "targets": [
               {
                 "datasource": {
@@ -3098,11 +3155,13 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "text"
+                      "color": "text",
+                      "value": null
                     }
                   ]
                 },
-                "unit": "bytes"
+                "unit": "bytes",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -3110,7 +3169,7 @@ dashboard-remp.json: |-
               "h": 2,
               "w": 6,
               "x": 6,
-              "y": 59
+              "y": 21
             },
             "id": 49,
             "options": {
@@ -3125,12 +3184,14 @@ dashboard-remp.json: |-
                 "fields": "",
                 "values": false
               },
+              "showPercentChange": false,
               "text": {
                 "valueSize": 20
               },
-              "textMode": "auto"
+              "textMode": "auto",
+              "wideLayout": true
             },
-            "pluginVersion": "9.3.1",
+            "pluginVersion": "10.3.1",
             "targets": [
               {
                 "datasource": {
@@ -3165,7 +3226,8 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "text"
+                      "color": "text",
+                      "value": null
                     },
                     {
                       "color": "semi-dark-red",
@@ -3173,7 +3235,8 @@ dashboard-remp.json: |-
                     }
                   ]
                 },
-                "unit": "binBps"
+                "unit": "binBps",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -3181,7 +3244,7 @@ dashboard-remp.json: |-
               "h": 2,
               "w": 6,
               "x": 12,
-              "y": 59
+              "y": 21
             },
             "id": 47,
             "options": {
@@ -3196,12 +3259,14 @@ dashboard-remp.json: |-
                 "fields": "",
                 "values": false
               },
+              "showPercentChange": false,
               "text": {
                 "valueSize": 20
               },
-              "textMode": "auto"
+              "textMode": "auto",
+              "wideLayout": true
             },
-            "pluginVersion": "9.3.1",
+            "pluginVersion": "10.3.1",
             "targets": [
               {
                 "datasource": {
@@ -3234,7 +3299,8 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "text"
+                      "color": "text",
+                      "value": null
                     },
                     {
                       "color": "semi-dark-red",
@@ -3242,7 +3308,8 @@ dashboard-remp.json: |-
                     }
                   ]
                 },
-                "unit": "none"
+                "unit": "none",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -3250,7 +3317,7 @@ dashboard-remp.json: |-
               "h": 2,
               "w": 6,
               "x": 18,
-              "y": 59
+              "y": 21
             },
             "id": 164,
             "options": {
@@ -3265,12 +3332,14 @@ dashboard-remp.json: |-
                 "fields": "",
                 "values": false
               },
+              "showPercentChange": false,
               "text": {
                 "valueSize": 20
               },
-              "textMode": "auto"
+              "textMode": "auto",
+              "wideLayout": true
             },
-            "pluginVersion": "9.3.1",
+            "pluginVersion": "10.3.1",
             "targets": [
               {
                 "datasource": {
@@ -3301,6 +3370,7 @@ dashboard-remp.json: |-
                   "mode": "palette-classic"
                 },
                 "custom": {
+                  "axisBorderShow": false,
                   "axisCenteredZero": false,
                   "axisColorMode": "text",
                   "axisLabel": "",
@@ -3316,6 +3386,7 @@ dashboard-remp.json: |-
                     "tooltip": false,
                     "viz": false
                   },
+                  "insertNulls": false,
                   "lineInterpolation": "smooth",
                   "lineWidth": 1,
                   "pointSize": 3,
@@ -3337,11 +3408,13 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green"
+                      "color": "green",
+                      "value": null
                     }
                   ]
                 },
-                "unit": "none"
+                "unit": "none",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -3349,7 +3422,7 @@ dashboard-remp.json: |-
               "h": 5,
               "w": 6,
               "x": 0,
-              "y": 61
+              "y": 23
             },
             "id": 114,
             "options": {
@@ -3393,6 +3466,7 @@ dashboard-remp.json: |-
                   "mode": "palette-classic"
                 },
                 "custom": {
+                  "axisBorderShow": false,
                   "axisCenteredZero": false,
                   "axisColorMode": "text",
                   "axisLabel": "",
@@ -3408,6 +3482,7 @@ dashboard-remp.json: |-
                     "tooltip": false,
                     "viz": false
                   },
+                  "insertNulls": false,
                   "lineInterpolation": "smooth",
                   "lineWidth": 1,
                   "pointSize": 3,
@@ -3429,11 +3504,13 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green"
+                      "color": "green",
+                      "value": null
                     }
                   ]
                 },
-                "unit": "bytes"
+                "unit": "bytes",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -3441,7 +3518,7 @@ dashboard-remp.json: |-
               "h": 5,
               "w": 6,
               "x": 6,
-              "y": 61
+              "y": 23
             },
             "id": 50,
             "options": {
@@ -3485,6 +3562,7 @@ dashboard-remp.json: |-
                   "mode": "palette-classic"
                 },
                 "custom": {
+                  "axisBorderShow": false,
                   "axisCenteredZero": true,
                   "axisColorMode": "text",
                   "axisLabel": "",
@@ -3498,6 +3576,7 @@ dashboard-remp.json: |-
                     "tooltip": false,
                     "viz": false
                   },
+                  "insertNulls": false,
                   "lineInterpolation": "linear",
                   "lineWidth": 1,
                   "pointSize": 5,
@@ -3519,11 +3598,13 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green"
+                      "color": "green",
+                      "value": null
                     }
                   ]
                 },
-                "unit": "Bps"
+                "unit": "Bps",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -3531,7 +3612,7 @@ dashboard-remp.json: |-
               "h": 5,
               "w": 6,
               "x": 12,
-              "y": 61
+              "y": 23
             },
             "id": 48,
             "options": {
@@ -3587,6 +3668,7 @@ dashboard-remp.json: |-
                   "mode": "palette-classic"
                 },
                 "custom": {
+                  "axisBorderShow": false,
                   "axisCenteredZero": false,
                   "axisColorMode": "text",
                   "axisLabel": "",
@@ -3600,6 +3682,7 @@ dashboard-remp.json: |-
                     "tooltip": false,
                     "viz": false
                   },
+                  "insertNulls": false,
                   "lineInterpolation": "linear",
                   "lineWidth": 2,
                   "pointSize": 5,
@@ -3631,7 +3714,8 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green"
+                      "color": "green",
+                      "value": null
                     },
                     {
                       "color": "#EAB839",
@@ -3639,7 +3723,8 @@ dashboard-remp.json: |-
                     }
                   ]
                 },
-                "unit": "none"
+                "unit": "none",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -3647,7 +3732,7 @@ dashboard-remp.json: |-
               "h": 5,
               "w": 6,
               "x": 18,
-              "y": 61
+              "y": 23
             },
             "id": 165,
             "options": {
@@ -3693,7 +3778,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 15
+          "y": 14
         },
         "id": 40,
         "panels": [
@@ -3709,6 +3794,7 @@ dashboard-remp.json: |-
                   "mode": "palette-classic"
                 },
                 "custom": {
+                  "axisBorderShow": false,
                   "axisCenteredZero": false,
                   "axisColorMode": "text",
                   "axisLabel": "",
@@ -3722,6 +3808,7 @@ dashboard-remp.json: |-
                     "tooltip": false,
                     "viz": false
                   },
+                  "insertNulls": false,
                   "lineInterpolation": "smooth",
                   "lineWidth": 1,
                   "pointSize": 3,
@@ -3743,7 +3830,8 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green"
+                      "color": "green",
+                      "value": null
                     },
                     {
                       "color": "red",
@@ -3751,7 +3839,8 @@ dashboard-remp.json: |-
                     }
                   ]
                 },
-                "unit": "dateTimeAsSystem"
+                "unit": "dateTimeAsSystem",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -3759,7 +3848,7 @@ dashboard-remp.json: |-
               "h": 6,
               "w": 12,
               "x": 0,
-              "y": 37
+              "y": 15
             },
             "id": 25,
             "options": {
@@ -3804,6 +3893,7 @@ dashboard-remp.json: |-
                   "mode": "palette-classic"
                 },
                 "custom": {
+                  "axisBorderShow": false,
                   "axisCenteredZero": false,
                   "axisColorMode": "text",
                   "axisLabel": "",
@@ -3818,6 +3908,7 @@ dashboard-remp.json: |-
                     "tooltip": false,
                     "viz": false
                   },
+                  "insertNulls": false,
                   "lineInterpolation": "smooth",
                   "lineWidth": 1,
                   "pointSize": 3,
@@ -3839,7 +3930,8 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green"
+                      "color": "green",
+                      "value": null
                     },
                     {
                       "color": "red",
@@ -3847,7 +3939,8 @@ dashboard-remp.json: |-
                     }
                   ]
                 },
-                "unit": "bytes"
+                "unit": "bytes",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -3855,7 +3948,7 @@ dashboard-remp.json: |-
               "h": 6,
               "w": 8,
               "x": 12,
-              "y": 37
+              "y": 15
             },
             "id": 35,
             "options": {
@@ -3907,7 +4000,8 @@ dashboard-remp.json: |-
                   }
                 },
                 "mappings": [],
-                "unit": "bytes"
+                "unit": "bytes",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -3915,7 +4009,7 @@ dashboard-remp.json: |-
               "h": 6,
               "w": 4,
               "x": 20,
-              "y": 37
+              "y": 15
             },
             "id": 36,
             "options": {
@@ -3967,6 +4061,7 @@ dashboard-remp.json: |-
                   "mode": "palette-classic"
                 },
                 "custom": {
+                  "axisBorderShow": false,
                   "axisCenteredZero": false,
                   "axisColorMode": "text",
                   "axisLabel": "",
@@ -3980,6 +4075,7 @@ dashboard-remp.json: |-
                     "tooltip": false,
                     "viz": false
                   },
+                  "insertNulls": false,
                   "lineInterpolation": "smooth",
                   "lineWidth": 1,
                   "pointSize": 3,
@@ -4001,7 +4097,8 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green"
+                      "color": "green",
+                      "value": null
                     },
                     {
                       "color": "red",
@@ -4009,7 +4106,8 @@ dashboard-remp.json: |-
                     }
                   ]
                 },
-                "unit": "dateTimeAsSystem"
+                "unit": "dateTimeAsSystem",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -4017,7 +4115,7 @@ dashboard-remp.json: |-
               "h": 6,
               "w": 12,
               "x": 0,
-              "y": 43
+              "y": 21
             },
             "id": 188,
             "options": {
@@ -4062,6 +4160,7 @@ dashboard-remp.json: |-
                   "mode": "palette-classic"
                 },
                 "custom": {
+                  "axisBorderShow": false,
                   "axisCenteredZero": false,
                   "axisColorMode": "text",
                   "axisLabel": "",
@@ -4075,6 +4174,7 @@ dashboard-remp.json: |-
                     "tooltip": false,
                     "viz": false
                   },
+                  "insertNulls": false,
                   "lineInterpolation": "smooth",
                   "lineWidth": 1,
                   "pointSize": 3,
@@ -4096,7 +4196,8 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green"
+                      "color": "green",
+                      "value": null
                     },
                     {
                       "color": "red",
@@ -4104,7 +4205,8 @@ dashboard-remp.json: |-
                     }
                   ]
                 },
-                "unit": "bytes"
+                "unit": "bytes",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -4112,7 +4214,7 @@ dashboard-remp.json: |-
               "h": 6,
               "w": 8,
               "x": 12,
-              "y": 43
+              "y": 21
             },
             "id": 57,
             "options": {
@@ -4166,7 +4268,8 @@ dashboard-remp.json: |-
                   }
                 },
                 "mappings": [],
-                "unit": "bytes"
+                "unit": "bytes",
+                "unitScale": true
               },
               "overrides": []
             },
@@ -4174,7 +4277,7 @@ dashboard-remp.json: |-
               "h": 6,
               "w": 4,
               "x": 20,
-              "y": 43
+              "y": 21
             },
             "id": 58,
             "options": {
@@ -4224,7 +4327,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 16
+          "y": 15
         },
         "id": 332,
         "panels": [
@@ -4234,10 +4337,10 @@ dashboard-remp.json: |-
               "uid": "P8E80F9AEF21F6940"
             },
             "gridPos": {
-              "h": 6,
-              "w": 12,
+              "h": 4,
+              "w": 24,
               "x": 0,
-              "y": 17
+              "y": 16
             },
             "id": 356,
             "maxPerRow": 2,
@@ -4260,18 +4363,178 @@ dashboard-remp.json: |-
                   "uid": "P8E80F9AEF21F6940"
                 },
                 "editorMode": "code",
-                "expr": "{job=\"$loki\", filename=~\"$loki_file\"} |= ``",
+                "expr": "{job=\"crm-crm\", filename=~\"$loki_file_crm\"} |= ``",
                 "queryType": "range",
                 "refId": "A"
               }
             ],
-            "title": "Logs: $loki_file",
+            "title": "Logs: $loki_file_crm",
             "type": "logs"
           }
         ],
         "repeat": "loki",
         "repeatDirection": "h",
-        "title": "Logging $loki",
+        "title": "Logs: crm-crm",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 16
+        },
+        "id": 380,
+        "panels": [
+          {
+            "datasource": {
+              "type": "loki",
+              "uid": "P8E80F9AEF21F6940"
+            },
+            "gridPos": {
+              "h": 4,
+              "w": 24,
+              "x": 0,
+              "y": 17
+            },
+            "id": 379,
+            "maxPerRow": 2,
+            "options": {
+              "dedupStrategy": "none",
+              "enableLogDetails": false,
+              "prettifyLogMessage": false,
+              "showCommonLabels": false,
+              "showLabels": false,
+              "showTime": false,
+              "sortOrder": "Descending",
+              "wrapLogMessage": false
+            },
+            "repeat": "loki_file_remp_beam",
+            "repeatDirection": "v",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "loki",
+                  "uid": "P8E80F9AEF21F6940"
+                },
+                "editorMode": "code",
+                "expr": "{job=\"remp-beam\", filename=~\"$loki_file_remp_beam\"} |= ``",
+                "queryType": "range",
+                "refId": "A"
+              }
+            ],
+            "title": "Logs: $loki_file_remp_beam",
+            "type": "logs"
+          }
+        ],
+        "title": "Logs: remp-beam",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 17
+        },
+        "id": 408,
+        "panels": [
+          {
+            "datasource": {
+              "type": "loki",
+              "uid": "P8E80F9AEF21F6940"
+            },
+            "gridPos": {
+              "h": 4,
+              "w": 24,
+              "x": 0,
+              "y": 12
+            },
+            "id": 435,
+            "maxPerRow": 2,
+            "options": {
+              "dedupStrategy": "none",
+              "enableLogDetails": false,
+              "prettifyLogMessage": false,
+              "showCommonLabels": false,
+              "showLabels": false,
+              "showTime": false,
+              "sortOrder": "Descending",
+              "wrapLogMessage": false
+            },
+            "repeatDirection": "v",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "loki",
+                  "uid": "P8E80F9AEF21F6940"
+                },
+                "editorMode": "code",
+                "expr": "{job=\"remp-campaign\", filename=~\"$loki_file_remp_beam\"} |= ``",
+                "queryType": "range",
+                "refId": "A"
+              }
+            ],
+            "title": "Logs: $loki_file_remp_campaign",
+            "type": "logs"
+          }
+        ],
+        "title": "Logs: remp-campaign",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 18
+        },
+        "id": 407,
+        "panels": [
+          {
+            "datasource": {
+              "type": "loki",
+              "uid": "P8E80F9AEF21F6940"
+            },
+            "gridPos": {
+              "h": 4,
+              "w": 24,
+              "x": 0,
+              "y": 13
+            },
+            "id": 436,
+            "maxPerRow": 2,
+            "options": {
+              "dedupStrategy": "none",
+              "enableLogDetails": false,
+              "prettifyLogMessage": false,
+              "showCommonLabels": false,
+              "showLabels": false,
+              "showTime": false,
+              "sortOrder": "Descending",
+              "wrapLogMessage": false
+            },
+            "repeatDirection": "v",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "loki",
+                  "uid": "P8E80F9AEF21F6940"
+                },
+                "editorMode": "code",
+                "expr": "{job=\"remp-mailer\", filename=~\"$loki_file_remp_beam\"} |= ``",
+                "queryType": "range",
+                "refId": "A"
+              }
+            ],
+            "title": "Logs: $loki_file_remp_mailer",
+            "type": "logs"
+          }
+        ],
+        "title": "Logs: remp-mailer",
         "type": "row"
       }
     ],
@@ -4295,7 +4558,7 @@ dashboard-remp.json: |-
             "uid": "P5DCFC7561CCDE821"
           },
           "definition": "label_values(conveior_dockerContainer{entity=\"{{ include "helmMonitorie.name" . }}\"}, label_name)",
-          "hide": 0,
+          "hide": 2,
           "includeAll": true,
           "label": "container",
           "multi": true,
@@ -4356,16 +4619,16 @@ dashboard-remp.json: |-
             "uid": "P8E80F9AEF21F6940"
           },
           "definition": "",
-          "hide": 0,
+          "hide": 2,
           "includeAll": true,
-          "label": "Loki job",
+          "label": "loki_file_crm",
           "multi": true,
-          "name": "loki",
+          "name": "loki_file_crm",
           "options": [],
           "query": {
-            "label": "job",
+            "label": "filename",
             "refId": "LokiVariableQueryEditor-VariableQuery",
-            "stream": "",
+            "stream": "{job=\"crm-crm\"}",
             "type": 1
           },
           "refresh": 1,
@@ -4389,16 +4652,82 @@ dashboard-remp.json: |-
             "uid": "P8E80F9AEF21F6940"
           },
           "definition": "",
-          "hide": 0,
+          "hide": 2,
           "includeAll": true,
-          "label": "Loki file",
+          "label": "loki_file_remp_beam",
           "multi": true,
-          "name": "loki_file",
+          "name": "loki_file_remp_beam",
           "options": [],
           "query": {
             "label": "filename",
             "refId": "LokiVariableQueryEditor-VariableQuery",
-            "stream": "{job=\"$loki\"}",
+            "stream": "{job=\"remp-beam\"}",
+            "type": 1
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": [
+              "All"
+            ],
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "loki",
+            "uid": "P8E80F9AEF21F6940"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": true,
+          "label": "loki_file_remp_campaign",
+          "multi": true,
+          "name": "loki_file_remp_campaign",
+          "options": [],
+          "query": {
+            "label": "filename",
+            "refId": "LokiVariableQueryEditor-VariableQuery",
+            "stream": "{job=\"remp-campaign\"}",
+            "type": 1
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": [
+              "All"
+            ],
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "loki",
+            "uid": "P8E80F9AEF21F6940"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": true,
+          "label": "loki_file_remp_mailer",
+          "multi": true,
+          "name": "loki_file_remp_mailer",
+          "options": [],
+          "query": {
+            "label": "filename",
+            "refId": "LokiVariableQueryEditor-VariableQuery",
+            "stream": "{job=\"remp-mailer\"}",
             "type": 1
           },
           "refresh": 1,
@@ -4419,5 +4748,5 @@ dashboard-remp.json: |-
     "uid": "remp",
     "version": 1,
     "weekStart": ""
-  } 
+  }
 {{ end }}
