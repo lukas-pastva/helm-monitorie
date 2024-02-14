@@ -127,6 +127,6 @@ spec:
                 path: "alertmanager.yaml"
         - name: alertmanager-slack-template
           secret:
-            secretName: alertmanager-slack-template
+            secretName: secret
   updateStrategy:
     type: RollingUpdate
