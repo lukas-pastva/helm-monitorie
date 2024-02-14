@@ -32,8 +32,8 @@ data:
   {{- if .Values.prometheus.rulesSystem.enableDiskUsage }}
           - alert: DiskUsage
             annotations:
-              description: There is one disk with capacity used higher than 90% {{ "{{" }} $value }} for {{ include "helmMonitorie.name" . }}.
-              summary: There is one disk with capacity used higher than 90% {{ "{{" }} $value }} for {{ include "helmMonitorie.name" . }}.
+              description: Disk with capacity used higher than 90% {{ "{{" }} $value }} for {{ include "helmMonitorie.name" . }}.
+              summary: Disk with capacity used higher than 90% {{ "{{" }} $value }} for {{ include "helmMonitorie.name" . }}.
             expr: conveior_hwDisk{entity="{{ include "helmMonitorie.name" . }}"} > 90
             for: 1m
             labels:
@@ -42,8 +42,8 @@ data:
   {{- if .Values.prometheus.rulesSystem.enableNoSWAP }}
           - alert: NoSWAP
             annotations:
-              description: There is SWAP not enabled or too low for {{ include "helmMonitorie.name" . }}.
-              summary: There is SWAP not enabled or too low for {{ include "helmMonitorie.name" . }}.
+              description: SWAP not enabled or too low for {{ include "helmMonitorie.name" . }}.
+              summary: SWAP not enabled or too low for {{ include "helmMonitorie.name" . }}.
             expr: (conveior_hwSwap{entity="{{ include "helmMonitorie.name" . }}",label_name="total"} or on() vector(0)) < 524288000
             for: 1m
             labels:
@@ -62,8 +62,8 @@ data:
   {{- if .Values.prometheus.rulesSystem.enableContainerDown }}
           - alert: ContainerDown
             annotations:
-              description: There is container down for {{ include "helmMonitorie.name" . }}.
-              summary: There is container down for {{ include "helmMonitorie.name" . }}.
+              description: Container down for {{ include "helmMonitorie.name" . }}.
+              summary: Container down for {{ include "helmMonitorie.name" . }}.
             expr: conveior_dockerContainer{entity="{{ include "helmMonitorie.name" . }}"} > 2
             for: 1m
             labels:
