@@ -35,7 +35,7 @@ data:
               description: Disk with capacity used higher than 90% {{ "{{" }} $value }} for {{ include "helmMonitorie.name" . }}.
               summary: Disk with capacity used higher than 90% {{ "{{" }} $value }} for {{ include "helmMonitorie.name" . }}.
             expr: conveior_hwDisk{entity="{{ include "helmMonitorie.name" . }}"} > 90
-            for: 1m
+            for: 5m
             labels:
               severity: warning
   {{- end  }}
@@ -45,7 +45,7 @@ data:
               description: SWAP not enabled or too low for {{ include "helmMonitorie.name" . }}.
               summary: SWAP not enabled or too low for {{ include "helmMonitorie.name" . }}.
             expr: (conveior_hwSwap{entity="{{ include "helmMonitorie.name" . }}",label_name="total"} or on() vector(0)) < 524288000
-            for: 1m
+            for: 5m
             labels:
               severity: warning
   {{- end  }}
@@ -55,7 +55,7 @@ data:
               description: High Swap Usage Detected {{ include "helmMonitorie.name" . }}.
               summary: High Swap Usage Detected {{ include "helmMonitorie.name" . }}.
             expr: conveior_hwSwap{entity="{{ include "helmMonitorie.name" . }}",label_name="used"} / conveior_hwSwap{entity="{{ include "helmMonitorie.name" . }}",label_name="total"} > 0.80
-            for: 1m
+            for: 5m
             labels:
               severity: warning
   {{- end  }}
@@ -65,7 +65,7 @@ data:
               description: Container down for {{ include "helmMonitorie.name" . }}.
               summary: Container down for {{ include "helmMonitorie.name" . }}.
             expr: conveior_dockerContainer{entity="{{ include "helmMonitorie.name" . }}"} > 2
-            for: 1m
+            for: 5m
             labels:
               severity: warning
   {{- end  }}
@@ -75,14 +75,14 @@ data:
               description: There are {{ "{{" }} $value }} Elasticsearch red indices for {{ include "helmMonitorie.name" . }}.
               summary: There are {{ "{{" }} $value }} Elasticsearch red indices for {{ include "helmMonitorie.name" . }}.
             expr: conveior_elasticsearch{entity="{{ include "helmMonitorie.name" . }}",label_name="red"} > 0
-            for: 1m
+            for: 5m
             labels:
               severity: warning
   {{- end  }}
   {{- if .Values.prometheus.rulesSystem.enableLokiErrors }}
           - alert: LokiErrors
             expr: rate(loki_error_rate[1m]) > 1
-            for: 1m
+            for: 5m
             labels:
               severity: info
             annotations:
@@ -92,7 +92,7 @@ data:
   {{- if .Values.prometheus.rulesSystem.enableLokiHighErrors }}
           - alert: LokiErrorsHigh
             expr: rate(loki_error_rate[5m]) > 5
-            for: 5m
+            for: 15m
             labels:
               severity: warning
             annotations:

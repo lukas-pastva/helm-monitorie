@@ -10,6 +10,6 @@ stringData:
     {{ "{{" }} define "slack.default.text" }}
     {{ "{{" }}- $root := . -}}
     {{ "{{" }} range .Alerts }}
-      `{{ "{{" }} .Labels.label_name }}/{{ "{{" }} .Labels.alertname }}/{{ "{{" }} .Labels.severity }}` *{{ "{{" }} .Annotations.summary }}*
+      `{{ "{{" }} .Labels.alertname }}/{{ "{{" }} .Labels.label_name }}/{{ "{{" }} .Labels.severity }}` *{{ "{{" }} .Annotations.summary }}*
     {{ "{{" }} end }}
     {{ "{{" }} end }}
