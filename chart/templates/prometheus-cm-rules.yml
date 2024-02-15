@@ -22,8 +22,8 @@ data:
   {{- if .Values.prometheus.rulesSystem.enableHeartBeat }}
           - alert: HeartBeat
             annotations:
-              description: There are no new metrics in monitoring for {{ include "helmMonitorie.name" . }}.
-              summary: There are no new metrics in monitoring for {{ include "helmMonitorie.name" . }}.
+              description: "{{ include "helmMonitorie.name" . }} - missing metrics"
+              summary: "{{ include "helmMonitorie.name" . }} - missing metrics"
             expr: conveior_hwHeartbeat{entity="{{ include "helmMonitorie.name" . }}"} == conveior_hwHeartbeat{entity="{{ include "helmMonitorie.name" . }}"} offset 5m
             for: 15m
             labels:
@@ -32,8 +32,8 @@ data:
   {{- if .Values.prometheus.rulesSystem.enableDiskUsage }}
           - alert: DiskUsage
             annotations:
-              description: Disk with capacity used higher than 90% {{ "{{" }} $value }} for {{ include "helmMonitorie.name" . }}.
-              summary: Disk with capacity used higher than 90% {{ "{{" }} $value }} for {{ include "helmMonitorie.name" . }}.
+              description: "{{ include "helmMonitorie.name" . }} - disk usage > 90% ({{ "{{" }} $value }})"
+              summary: "{{ include "helmMonitorie.name" . }} - disk usage > 90% ({{ "{{" }} $value }})"
             expr: conveior_hwDisk{entity="{{ include "helmMonitorie.name" . }}"} > 90
             for: 5m
             labels:
@@ -42,8 +42,8 @@ data:
   {{- if .Values.prometheus.rulesSystem.enableNoSWAP }}
           - alert: NoSWAP
             annotations:
-              description: SWAP not enabled or too low for {{ include "helmMonitorie.name" . }}.
-              summary: SWAP not enabled or too low for {{ include "helmMonitorie.name" . }}.
+              description: "{{ include "helmMonitorie.name" . }} - no SWAP"
+              summary: "{{ include "helmMonitorie.name" . }} - no SWAP"
             expr: (conveior_hwSwap{entity="{{ include "helmMonitorie.name" . }}",label_name="total"} or on() vector(0)) < 524288000
             for: 5m
             labels:
@@ -52,8 +52,8 @@ data:
   {{- if .Values.prometheus.rulesSystem.enableHighSwapUsage }}
           - alert: HighSwapUsage
             annotations:
-              description: High Swap Usage Detected {{ include "helmMonitorie.name" . }}.
-              summary: High Swap Usage Detected {{ include "helmMonitorie.name" . }}.
+              description: "{{ include "helmMonitorie.name" . }} - High Swap Usage"
+              summary: "{{ include "helmMonitorie.name" . }} - High Swap Usage"
             expr: conveior_hwSwap{entity="{{ include "helmMonitorie.name" . }}",label_name="used"} / conveior_hwSwap{entity="{{ include "helmMonitorie.name" . }}",label_name="total"} > 0.80
             for: 5m
             labels:
@@ -62,8 +62,8 @@ data:
   {{- if .Values.prometheus.rulesSystem.enableContainerDown }}
           - alert: ContainerDown
             annotations:
-              description: Container down for {{ include "helmMonitorie.name" . }}.
-              summary: Container down for {{ include "helmMonitorie.name" . }}.
+              description: "{{ include "helmMonitorie.name" . }} - container down"
+              summary: "{{ include "helmMonitorie.name" . }} - container down"
             expr: conveior_dockerContainer{entity="{{ include "helmMonitorie.name" . }}"} > 2
             for: 5m
             labels:
@@ -72,8 +72,8 @@ data:
   {{- if .Values.prometheus.rulesSystem.enableElasticSearchIndices }}
           - alert: ElasticSearchIndices
             annotations:
-              description: There are {{ "{{" }} $value }} Elasticsearch red indices for {{ include "helmMonitorie.name" . }}.
-              summary: There are {{ "{{" }} $value }} Elasticsearch red indices for {{ include "helmMonitorie.name" . }}.
+              description: "{{ include "helmMonitorie.name" . }} - Elastic red indices ({{ "{{" }} $value }})"
+              summary: "{{ include "helmMonitorie.name" . }} - Elastic red indices ({{ "{{" }} $value }})"
             expr: conveior_elasticsearch{entity="{{ include "helmMonitorie.name" . }}",label_name="red"} > 0
             for: 5m
             labels:
@@ -86,8 +86,8 @@ data:
             labels:
               severity: info
             annotations:
-              summary: "There are {{ "{{" }} $value }} Loki errors for {{ include "helmMonitorie.name" . }}."
-              description: "There are {{ "{{" }} $value }} Loki errors for {{ include "helmMonitorie.name" . }}."
+              summary: "{{ include "helmMonitorie.name" . }} - Loki errors ({{ "{{" }} $value }})"
+              description: "{{ include "helmMonitorie.name" . }} - Loki errors ({{ "{{" }} $value }})"
   {{- end  }}
   {{- if .Values.prometheus.rulesSystem.enableLokiHighErrors }}
           - alert: LokiErrorsHigh
@@ -96,7 +96,7 @@ data:
             labels:
               severity: warning
             annotations:
-              summary: "There are {{ "{{" }} $value }} Loki high errors for {{ include "helmMonitorie.name" . }}."
-              description: "There are {{ "{{" }} $value }} Loki high errors for {{ include "helmMonitorie.name" . }}."
+              summary: "{{ include "helmMonitorie.name" . }} - Loki errors ({{ "{{" }} $value }})"
+              description: "{{ include "helmMonitorie.name" . }} - Loki errors ({{ "{{" }} $value }})"
   {{- end  }}
   {{ end }}
