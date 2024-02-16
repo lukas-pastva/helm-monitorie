@@ -28,7 +28,6 @@ spec:
         app.kubernetes.io/instance: {{ include "helmMonitorie.name" . }}
         app.kubernetes.io/managed-by: prometheus-operator
         app.kubernetes.io/name: prometheus
-        app.kubernetes.io/version: 2.40.5
         prometheus: {{ include "helmMonitorie.name" . }}
         checksum-config: {{ include (print $.Template.BasePath "/prometheus-cm-config.yml") . | sha256sum | trimSuffix "-" | trunc 63 }}
         checksum-rules: {{ include (print $.Template.BasePath "/prometheus-cm-rules.yml") . | sha256sum | trimSuffix "-" | trunc 63 }}
