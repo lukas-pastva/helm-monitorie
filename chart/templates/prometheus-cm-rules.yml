@@ -32,8 +32,8 @@ data:
   {{- if .Values.prometheus.rulesSystem.enableDiskUsage }}
           - alert: DiskUsage
             annotations:
-              description: "{{ include "helmMonitorie.name" . }} - disk usage > 90% ({{ "{{" }} $value }})"
-              summary: "{{ include "helmMonitorie.name" . }} - disk usage > 90% ({{ "{{" }} $value }})"
+              description: "{{ include "helmMonitorie.name" . }} - usage ({{ "{{" }} $value }}%)"
+              summary: "{{ include "helmMonitorie.name" . }} - usage ({{ "{{" }} $value }}%)"
             expr: conveior_hwDisk{entity="{{ include "helmMonitorie.name" . }}"} > 90
             for: 5m
             labels:
@@ -42,8 +42,8 @@ data:
   {{- if .Values.prometheus.rulesSystem.enableNoSWAP }}
           - alert: NoSWAP
             annotations:
-              description: "{{ include "helmMonitorie.name" . }} - no SWAP"
-              summary: "{{ include "helmMonitorie.name" . }} - no SWAP"
+              description: "{{ include "helmMonitorie.name" . }}"
+              summary: "{{ include "helmMonitorie.name" . }}"
             expr: (conveior_hwSwap{entity="{{ include "helmMonitorie.name" . }}",label_name="total"} or on() vector(0)) < 524288000
             for: 5m
             labels:
@@ -62,8 +62,8 @@ data:
   {{- if .Values.prometheus.rulesSystem.enableContainerDown }}
           - alert: ContainerDown
             annotations:
-              description: "{{ include "helmMonitorie.name" . }} - container down"
-              summary: "{{ include "helmMonitorie.name" . }} - container down"
+              description: "{{ include "helmMonitorie.name" . }}"
+              summary: "{{ include "helmMonitorie.name" . }}"
             expr: conveior_dockerContainer{entity="{{ include "helmMonitorie.name" . }}"} > 2
             for: 5m
             labels:
