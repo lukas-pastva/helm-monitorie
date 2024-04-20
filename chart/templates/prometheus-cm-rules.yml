@@ -99,4 +99,7 @@ data:
               summary: "{{ include "helmMonitorie.name" . }} - Loki errors ({{ "{{" }} $value }})"
               description: "{{ include "helmMonitorie.name" . }} - Loki errors ({{ "{{" }} $value }})"
   {{- end  }}
+  {{- if .Values.prometheus.extraRules }}
+  {{- toYaml .Values.prometheus.extraRules | nindent 10 }}
+  {{- end }}
   {{ end }}
