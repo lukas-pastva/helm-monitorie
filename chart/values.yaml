@@ -64,3 +64,5 @@ secrets:
 #  lokiS3Endpoint: ""
 #  lokiS3AccessKey: ""
 #  lokiS3SecretKey: ""
+
+extraObjects: []
