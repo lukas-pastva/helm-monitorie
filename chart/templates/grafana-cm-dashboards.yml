@@ -1,4 +1,3 @@
----
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -9,7 +8,6 @@ metadata:
 data:
   dashboards.yaml: |-
     apiVersion: 1
-  
     providers:
       - name: 'default'
         orgId: 1
@@ -19,27 +17,19 @@ data:
         editable: true
         options:
           path: /etc/grafana/provisioning/dashboards/
-{{- if or (eq .Values.grafana.dashboards.feEnabled "default") (eq .Values.grafana.dashboards.feEnabled "true") }}
-  {{ include "grafana-cm-dash-fe" $ | nindent 2 }}
-{{ end }}
-{{- if or (eq .Values.grafana.dashboards.nodeExporterEnabled "default") (eq .Values.grafana.dashboards.nodeExporterEnabled "true") }}
-  {{ include "grafana-cm-dash-node-exporter" $ | nindent 2 }}
-{{ end }}
 {{- if or (eq .Values.grafana.dashboards.rempEnabled "default") (eq .Values.grafana.dashboards.rempEnabled "true") }}
-  {{ include "grafana-cm-dash-remp" $ | nindent 2 }}
-{{ end }}
-{{- if or (eq .Values.grafana.dashboards.systemEnabled "default") (eq .Values.grafana.dashboards.systemEnabled "true") }}
-  {{ include "grafana-cm-dash-system" $ | nindent 2 }}
-{{ end }}
-{{- if or (eq .Values.grafana.dashboards.telegramEnabled "default") (eq .Values.grafana.dashboards.telegramEnabled "true") }}
-  {{ include "grafana-cm-dash-telegram" $ | nindent 2 }}
+    {{ include "grafana-cm-dash-remp" $ | nindent 4 }}
 {{ end }}
 {{- if or (eq .Values.grafana.dashboards.wpEnabled "default") (eq .Values.grafana.dashboards.wpEnabled "true") }}
-  {{ include "grafana-cm-dash-wp" $ | nindent 2 }}
+    {{ include "grafana-cm-dash-wp" $ | nindent 4 }}
 {{ end }}
 
+{{- define "grafana-cm-dash-wp" -}}
+dashboard-wp.json: |-
+{{ .Files.Get "files/dashboard-wp.json" | nindent 2 }}
+{{- end }}
 
 {{- define "grafana-cm-dash-remp" -}}
-dashboard-wp.json: |-
+dashboard-remp.json: |-
 {{ .Files.Get "files/dashboard-remp.json" | nindent 2 }}
 {{- end }}
