@@ -23,7 +23,7 @@ data:
 {{ end }}
 {{- define "grafana-cm-dash-fe" -}}
 dashboard-fe.json: |-
-  {{ .Files.Get "files/dashboard-fe.json" | indent 2 }}
+  {{ .Files.Get "files/_dashboard-fe.json" | indent 2 }}
 {{- end }}
 
 {{- if or (eq .Values.grafana.dashboards.nodeExporterEnabled "default") (eq .Values.grafana.dashboards.nodeExporterEnabled "true") }}
@@ -31,7 +31,7 @@ dashboard-fe.json: |-
 {{ end }}
 {{- define "grafana-cm-dash-node-exporter" -}}
 dashboard-node-exporter.json: |-
-  {{ .Files.Get "files/dashboard-node-exporter.json" | indent 2 }}
+  {{ .Files.Get "files/_dashboard-node-exporter.json" | indent 2 }}
 {{- end }}
 
 {{- if or (eq .Values.grafana.dashboards.rempEnabled "default") (eq .Values.grafana.dashboards.rempEnabled "true") }}
@@ -39,7 +39,7 @@ dashboard-node-exporter.json: |-
 {{ end }}
 {{- define "grafana-cm-dash-remp" -}}
 dashboard-remp.json: |-
-  {{ .Files.Get "files/dashboard-remp.json" | indent 2 }}
+  {{ .Files.Get "files/_dashboard-remp.json" | indent 2 }}
 {{- end }}
 
 {{- if or (eq .Values.grafana.dashboards.systemEnabled "default") (eq .Values.grafana.dashboards.systemEnabled "true") }}
@@ -47,7 +47,7 @@ dashboard-remp.json: |-
 {{ end }}
 {{- define "grafana-cm-dash-system" -}}
 dashboard-system.json: |-
-  {{ .Files.Get "files/dashboard-system.json" | indent 2 }}
+  {{ .Files.Get "files/_dashboard-system.json" | indent 2 }}
 {{- end }}
 
 {{- if or (eq .Values.grafana.dashboards.telegramEnabled "default") (eq .Values.grafana.dashboards.telegramEnabled "true") }}
@@ -55,7 +55,7 @@ dashboard-system.json: |-
 {{ end }}
 {{- define "grafana-cm-dash-telegram" -}}
 dashboard-telegram.json: |-
-  {{ .Files.Get "files/dashboard-telegram.json" | indent 2 }}
+  {{ .Files.Get "files/_dashboard-telegram.json" | indent 2 }}
 {{- end }}
 
 {{- if or (eq .Values.grafana.dashboards.wpEnabled "default") (eq .Values.grafana.dashboards.wpEnabled "true") }}
@@ -63,5 +63,5 @@ dashboard-telegram.json: |-
 {{ end }}
 {{- define "grafana-cm-dash-wp" -}}
 dashboard-wp.json: |-
-  {{ .Files.Get "files/dashboard-wp.json" | indent 2 }}
+  {{ .Files.Get "files/_dashboard-wp.json" | indent 2 }}
 {{- end }}
