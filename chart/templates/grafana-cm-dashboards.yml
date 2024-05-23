@@ -40,5 +40,6 @@ data:
 
 
 {{- define "grafana-cm-dash-remp" -}}
+dashboard-wp.json: |-
 {{ .Files.Get "files/dashboard-remp.json" | nindent 2 }}
 {{- end }}
