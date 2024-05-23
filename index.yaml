@@ -11,7 +11,36 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.878274+02:00"
+    created: "2024-05-23T15:58:53.525184+02:00"
+    description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
+    digest: c91d8840803d299e90329ccdeb2b67e17b07aceb5d5d6029880e7490ad0ebbb5
+    home: https://github.com/lukas-pastva/helm-monitorie
+    keywords:
+    - thanos
+    - prometheus
+    - pushgw
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: info@lukaspastva.sk
+      name: lukas-pastva
+    name: helm-monitorie
+    sources:
+    - https://github.com/lukas-pastva/helm-monitorie
+    type: application
+    urls:
+    - https://lukas-pastva.github.io/helm-monitorie/helm-monitorie-0.5.29.tgz
+    version: 0.5.29
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/lukas-pastva/helm-monitorie
+        - name: Upstream Project
+          url: https://github.com/lukas-pastva/helm-monitorie
+      artifacthub.io/operator: "true"
+    apiVersion: v2
+    appVersion: v1.1
+    created: "2024-05-23T15:58:53.523882+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: fb14cd4c87b058eb9faab9695cdaae150553212e56a6c0ac68e5fdcf9be1e13a
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -40,7 +69,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.876415+02:00"
+    created: "2024-05-23T15:58:53.522038+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: 96e9a24ce7d8d5f5be89242f596ec56e4e3184f4882c3a83255b855504109e7e
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -69,7 +98,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.873323+02:00"
+    created: "2024-05-23T15:58:53.520104+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: dcc0349451f182bb11e41d16e7a9be19b84bbaca755154c97f559ac9b7e4eb03
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -98,7 +127,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.871225+02:00"
+    created: "2024-05-23T15:58:53.518333+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: bf88d5ad7ab535e87aa2a3e16ab72ad8940a16102da4b4ad5a40925eade6a902
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -127,7 +156,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.868809+02:00"
+    created: "2024-05-23T15:58:53.516183+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: 5e5ad19658aa9152751278bc6ca9c576ddefe01bc44d9dafc33c7ef9a7f279c2
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -156,7 +185,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.866238+02:00"
+    created: "2024-05-23T15:58:53.514525+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: 6eeba72f00d863f72b6589a421a0065aaa886b809ccc9c419b0279d7ea418d55
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -185,7 +214,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.864343+02:00"
+    created: "2024-05-23T15:58:53.512651+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: 222f9008a97fe3a150654628aa0571371fce1b1624770859160deed12a968ba2
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -214,7 +243,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.862562+02:00"
+    created: "2024-05-23T15:58:53.510866+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: 9e93a7ef0d23db1405f707c307b8f8f11deb9e31aa90b950cd9b09c328b174ff
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -243,7 +272,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.860622+02:00"
+    created: "2024-05-23T15:58:53.508861+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: 3cabc4f36c2eb3ab3e273c630f866236a2f045bbe91ce63b48d4b76320cc62ae
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -272,7 +301,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.856712+02:00"
+    created: "2024-05-23T15:58:53.504622+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: 641617e98a704ee8fc0edd7ab3b7a65ac8c5c149e1428dc0f970d415707d2b29
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -301,7 +330,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.85447+02:00"
+    created: "2024-05-23T15:58:53.502798+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: 7d75e23944e8e45b94dfbc486bdb4751a374ca3e92b1c69afdf8ac05d7c98627
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -330,7 +359,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.852619+02:00"
+    created: "2024-05-23T15:58:53.50065+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: 444be92708b2386211bb4b50ac785881cacd9b309ade383e26b97da47f42f088
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -359,7 +388,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.850499+02:00"
+    created: "2024-05-23T15:58:53.498378+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: 6b7b5ab1178320e3c6d071a66e172f99dee3bf216b41a05d43a52d388d7e2f98
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -388,7 +417,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.848427+02:00"
+    created: "2024-05-23T15:58:53.496491+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: 74e4e3a1db26f861b7f216293b6f80e51c27d70a46f4e12c63d0525023057e3a
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -417,7 +446,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.846539+02:00"
+    created: "2024-05-23T15:58:53.493925+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: feb95ba64dc02a1784f12b715dffa7c0f16507e49a020774ecf4349ac5fbc67b
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -446,7 +475,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.844202+02:00"
+    created: "2024-05-23T15:58:53.491926+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: dab42d65b098b9eff6dcd72bcf4796bd57ea82086c331877511705fad9b67d48
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -475,7 +504,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.842251+02:00"
+    created: "2024-05-23T15:58:53.489414+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: 0a1ab0b3b58334a259265df1fb0012b2a1bfc186a22fa1820ef9e4f46af43a24
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -504,7 +533,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.839705+02:00"
+    created: "2024-05-23T15:58:53.486097+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: 8f357b6f79b9f306d1ebe2ed84d7c9b17af3dad54ca677b5bfc1871082a4d899
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -533,7 +562,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.893956+02:00"
+    created: "2024-05-23T15:58:53.535852+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: f1fabd71f6461d1c338b4d44278ba677c3e098a3ed4b0d73fa464cac4f6229f0
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -562,7 +591,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.892382+02:00"
+    created: "2024-05-23T15:58:53.53422+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: b1a6b06818643787762ec684a23baeb289a4eae2453cc194b542e80af2f64aa9
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -591,7 +620,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.889814+02:00"
+    created: "2024-05-23T15:58:53.532933+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: 1c2c2d687a0ac753e7dde49403efd7ccdaa2e90367d0fb8479c679308313a551
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -620,7 +649,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.888217+02:00"
+    created: "2024-05-23T15:58:53.531364+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: b574e0736e1ec124f9d942a287902020b6799ee2149cf72d69780d09b595f18a
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -649,7 +678,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.885613+02:00"
+    created: "2024-05-23T15:58:53.530055+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: 823fd717b285d9f32a9e1b33c7358b1a36f7b77ccb980f382aa90d3c1c7f4adf
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -678,7 +707,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.883736+02:00"
+    created: "2024-05-23T15:58:53.52832+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: 4e68596e428486af14285fc1dd849d0e030ee3c2173c8486ac3445db7805c1b6
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -707,7 +736,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.88136+02:00"
+    created: "2024-05-23T15:58:53.526991+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: 021b1cc5613736765df812a4475ca899493830fd2c6a03e67a0e1bf88f436486
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -736,7 +765,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.858432+02:00"
+    created: "2024-05-23T15:58:53.506835+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: b00e865d516042e011e0aafd33e4ec784d4bff2dc2a0ed8465d794331d34c652
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -765,7 +794,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v1.1
-    created: "2024-05-23T15:53:19.837939+02:00"
+    created: "2024-05-23T15:58:53.483907+02:00"
     description: helm-monitorie is all-in-one for kube-prometheus-stack, thanos, pushgw
     digest: cbead8f93c162a2a33a34f78167fb53f3adaf21ae6b9bfed56b6b24f97f4331b
     home: https://github.com/lukas-pastva/helm-monitorie
@@ -784,4 +813,4 @@ entries:
     urls:
     - https://lukas-pastva.github.io/helm-monitorie/helm-monitorie-0.5.1.tgz
     version: 0.5.1
-generated: "2024-05-23T15:53:19.834865+02:00"
+generated: "2024-05-23T15:58:53.478675+02:00"

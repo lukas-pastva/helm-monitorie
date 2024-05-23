@@ -26,10 +26,10 @@ data:
 
 {{- define "grafana-cm-dash-wp" -}}
 dashboard-wp.json: |-
-  {{ .Files.Get "files/dashboard-wp.json" | nindent 2 }}
+  {{ .Files.Get "files/dashboard-wp.json" | nindent 2 | quote }}
 {{- end }}
 
 {{- define "grafana-cm-dash-remp" -}}
 dashboard-remp.json: |-
-  {{ .Files.Get "files/dashboard-remp.json" | nindent 2 }}
+  {{ .Files.Get "files/dashboard-remp.json" | nindent 2 | quote }}
 {{- end }}
