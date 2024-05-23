@@ -98,9 +98,9 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "conveior_dockerContainer{entity=\"$entity\",label_name=\"$container\"}[xxx .Values.scrapeInterval }}]",
+          "expr": "conveior_dockerContainer{entity=\"$entity\",label_name=\"$container\"}[{{ "{{" }} .Values.scrapeInterval }}]",
           "instant": true,
-          "legendFormat": "xxxlabel_name}}",
+          "legendFormat": "{{ "{{" }}label_name}}",
           "range": false,
           "refId": "A"
         }
@@ -176,7 +176,7 @@
           "exemplar": false,
           "expr": "probe_success{instance=~\"$url\"}",
           "instant": true,
-          "legendFormat": "xxxinstance}}",
+          "legendFormat": "{{ "{{" }}instance}}",
           "range": false,
           "refId": "A"
         }
@@ -472,7 +472,7 @@
           "exemplar": false,
           "expr": "conveior_hwDisk{entity=\"$entity\",label_name=\"overlay\"}[30s]",
           "instant": true,
-          "legendFormat": "xxxlabel_name}}",
+          "legendFormat": "{{ "{{" }}label_name}}",
           "range": false,
           "refId": "A"
         }
@@ -570,7 +570,7 @@
           },
           "editorMode": "code",
           "expr": "conveior_hwCpu{entity=\"$entity\"}",
-          "legendFormat": "xxxlabel_name}}",
+          "legendFormat": "{{ "{{" }}label_name}}",
           "range": true,
           "refId": "A"
         }
@@ -667,7 +667,7 @@
           },
           "editorMode": "code",
           "expr": "conveior_hwRam{entity=\"$entity\"}",
-          "legendFormat": "xxxlabel_name}}",
+          "legendFormat": "{{ "{{" }}label_name}}",
           "range": true,
           "refId": "A"
         }
@@ -764,7 +764,7 @@
           },
           "editorMode": "code",
           "expr": "conveior_hwSwap{entity=\"$entity\"}",
-          "legendFormat": "xxxlabel_name}}",
+          "legendFormat": "{{ "{{" }}label_name}}",
           "range": true,
           "refId": "A"
         }
@@ -857,7 +857,7 @@
           },
           "editorMode": "code",
           "expr": "conveior_hwDisk{entity=\"$entity\"}",
-          "legendFormat": "xxxlabel_name}}",
+          "legendFormat": "{{ "{{" }}label_name}}",
           "range": true,
           "refId": "A"
         }
@@ -928,7 +928,7 @@
           "exemplar": false,
           "expr": "conveior_hwCpuProcess{entity=\"$entity\"}[30s]",
           "instant": true,
-          "legendFormat": "xxxlabel_name}}",
+          "legendFormat": "{{ "{{" }}label_name}}",
           "range": false,
           "refId": "A"
         }
@@ -996,7 +996,7 @@
           "exemplar": false,
           "expr": "conveior_hwRamProcess{entity=\"$entity\"}[30s]",
           "instant": true,
-          "legendFormat": "xxxlabel_name}}",
+          "legendFormat": "{{ "{{" }}label_name}}",
           "range": false,
           "refId": "A"
         }
@@ -1064,7 +1064,7 @@
           "exemplar": false,
           "expr": "conveior_hwProcess{entity=\"$entity\",label_name=\"conveior\"}[30s]",
           "instant": true,
-          "legendFormat": "xxxlabel_name}}",
+          "legendFormat": "{{ "{{" }}label_name}}",
           "range": false,
           "refId": "A"
         }
@@ -1230,7 +1230,7 @@
           },
           "editorMode": "code",
           "expr": "conveior_hwCpuProcess{entity=\"$entity\"}",
-          "legendFormat": "xxxlabel_name}}",
+          "legendFormat": "{{ "{{" }}label_name}}",
           "range": true,
           "refId": "A"
         }
@@ -1327,7 +1327,7 @@
           },
           "editorMode": "code",
           "expr": "conveior_hwRamProcess{entity=\"$entity\"}",
-          "legendFormat": "xxxlabel_name}}",
+          "legendFormat": "{{ "{{" }}label_name}}",
           "range": true,
           "refId": "A"
         }
@@ -1420,7 +1420,7 @@
           },
           "editorMode": "code",
           "expr": "conveior_hwProcess{entity=\"$entity\"}",
-          "legendFormat": "xxxlabel_name}}",
+          "legendFormat": "{{ "{{" }}label_name}}",
           "range": true,
           "refId": "A"
         }
@@ -1487,7 +1487,7 @@
           "exemplar": false,
           "expr": "conveior_sql_query{entity=\"$entity\",query_name=\"conveior_mysql_global_wait_timeout\"}[30s]",
           "instant": true,
-          "legendFormat": "xxxlabel_name}}",
+          "legendFormat": "{{ "{{" }}label_name}}",
           "range": false,
           "refId": "A"
         }
@@ -1555,7 +1555,7 @@
           "exemplar": false,
           "expr": "conveior_sql_query{entity=\"$entity\",query_name=\"conveior_mysql_global_interactive_timeout\"}[30s]",
           "instant": true,
-          "legendFormat": "xxxlabel_name}}",
+          "legendFormat": "{{ "{{" }}label_name}}",
           "range": false,
           "refId": "A"
         }
@@ -1623,7 +1623,7 @@
           "exemplar": false,
           "expr": "conveior_sql_query{entity=\"$entity\",query_name=\"conveior_mysql_local_wait_timeout\"}[30s]",
           "instant": true,
-          "legendFormat": "xxxlabel_name}}",
+          "legendFormat": "{{ "{{" }}label_name}}",
           "range": false,
           "refId": "A"
         }
@@ -1691,7 +1691,7 @@
           "exemplar": false,
           "expr": "conveior_sql_query{entity=\"$entity\",query_name=\"conveior_mysql_local_interactive_timeout\"}[30s]",
           "instant": true,
-          "legendFormat": "xxxlabel_name}}",
+          "legendFormat": "{{ "{{" }}label_name}}",
           "range": false,
           "refId": "A"
         }
@@ -1759,7 +1759,7 @@
           "exemplar": false,
           "expr": "sum(conveior_sql_query{entity=\"$entity\",query_name=\"conveior_sqlSleeperProcess\"})",
           "instant": true,
-          "legendFormat": "xxxpod}}",
+          "legendFormat": "{{ "{{" }}pod}}",
           "range": false,
           "refId": "A"
         }
@@ -1827,7 +1827,7 @@
           "exemplar": false,
           "expr": "sum(conveior_hwDockerSize{entity=\"$entity\"})",
           "instant": true,
-          "legendFormat": "xxxlabel_name}}",
+          "legendFormat": "{{ "{{" }}label_name}}",
           "range": false,
           "refId": "A"
         }
@@ -1897,7 +1897,7 @@
           },
           "editorMode": "code",
           "expr": "sum(conveior_hwNetwork{entity=\"$entity\"})",
-          "legendFormat": "xxxlabel_name}}",
+          "legendFormat": "{{ "{{" }}label_name}}",
           "range": true,
           "refId": "A"
         }
@@ -1969,7 +1969,7 @@
           "exemplar": false,
           "expr": "conveior_elasticsearch{entity=\"$entity\"}[30s]",
           "instant": true,
-          "legendFormat": "xxxlabel_name}}",
+          "legendFormat": "{{ "{{" }}label_name}}",
           "range": false,
           "refId": "A"
         }
@@ -2063,7 +2063,7 @@
           },
           "editorMode": "code",
           "expr": "conveior_sql_query{entity=\"$entity\",query_name=\"conveior_sqlSleeperProcess\"}",
-          "legendFormat": "xxxpod}}",
+          "legendFormat": "{{ "{{" }}pod}}",
           "range": true,
           "refId": "A"
         }
@@ -2156,7 +2156,7 @@
           },
           "editorMode": "code",
           "expr": "conveior_hwDockerSize{entity=\"$entity\"}",
-          "legendFormat": "xxxlabel_name}}",
+          "legendFormat": "{{ "{{" }}label_name}}",
           "range": true,
           "refId": "A"
         }
@@ -2247,7 +2247,7 @@
           },
           "editorMode": "code",
           "expr": "conveior_hwNetwork{entity=\"$entity\",query_name=\"tx\"}",
-          "legendFormat": "xxxlabel_name}}",
+          "legendFormat": "{{ "{{" }}label_name}}",
           "range": true,
           "refId": "A"
         },
@@ -2259,7 +2259,7 @@
           "editorMode": "code",
           "expr": "conveior_hwNetwork{entity=\"$entity\",query_name=\"rx\"}*(-1)",
           "hide": false,
-          "legendFormat": "xxxlabel_name}}",
+          "legendFormat": "{{ "{{" }}label_name}}",
           "range": true,
           "refId": "B"
         }
@@ -2364,7 +2364,7 @@
           },
           "editorMode": "code",
           "expr": "conveior_elasticsearch{entity=\"$entity\"}",
-          "legendFormat": "xxxlabel_name}}",
+          "legendFormat": "{{ "{{" }}label_name}}",
           "range": true,
           "refId": "A"
         }
@@ -2473,7 +2473,7 @@
               },
               "editorMode": "code",
               "expr": "conveior_hwDockerLs{entity=\"$entity\"}*1000",
-              "legendFormat": "xxxlabel_name}}",
+              "legendFormat": "{{ "{{" }}label_name}}",
               "range": true,
               "refId": "A"
             }
@@ -2570,7 +2570,7 @@
               },
               "editorMode": "code",
               "expr": "conveior_hwDockerSize{entity=\"$entity\"}",
-              "legendFormat": "xxxlabel_name}}",
+              "legendFormat": "{{ "{{" }}label_name}}",
               "range": true,
               "refId": "A"
             }
@@ -2637,7 +2637,7 @@
               "exemplar": false,
               "expr": "conveior_hwDockerSize{entity=\"$entity\"}[30s]",
               "instant": true,
-              "legendFormat": "xxxlabel_name}}",
+              "legendFormat": "{{ "{{" }}label_name}}",
               "range": false,
               "refId": "A"
             }
@@ -2733,7 +2733,7 @@
               },
               "editorMode": "code",
               "expr": "conveior_hwHeartbeat{entity=\"$entity\"}*1000",
-              "legendFormat": "xxxjob}}",
+              "legendFormat": "{{ "{{" }}job}}",
               "range": true,
               "refId": "A"
             }
@@ -2831,7 +2831,7 @@
               "exemplar": false,
               "expr": "conveior_sql_query{entity=\"$entity\", query_name=\"conveior_dbSize\"}",
               "instant": false,
-              "legendFormat": "xxxlabel_name}}",
+              "legendFormat": "{{ "{{" }}label_name}}",
               "range": true,
               "refId": "A"
             }
@@ -2898,7 +2898,7 @@
               "exemplar": false,
               "expr": "conveior_sql_query{entity=\"$entity\", query_name=\"conveior_dbSize\"}[30s]",
               "instant": true,
-              "legendFormat": "xxxlabel_name}}",
+              "legendFormat": "{{ "{{" }}label_name}}",
               "range": false,
               "refId": "A"
             }

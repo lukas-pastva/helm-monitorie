@@ -1,4 +1,0 @@
-{{- define "grafana-cm-dash-wp" -}}
-dashboard-wp.json: |-
-
-{{ end }}
