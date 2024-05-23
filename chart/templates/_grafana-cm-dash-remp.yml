@@ -26,7 +26,7 @@ dashboard-remp.json: |-
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 1,
+    "id": 2,
     "links": [],
     "liveNow": false,
     "panels": [
@@ -41,7 +41,7 @@ dashboard-remp.json: |-
               "mode": "thresholds"
             },
             "mappings": [],
-            "thresholds": 
+            "thresholds": {
               "mode": "absolute",
               "steps": [
                 {
@@ -104,9 +104,9 @@ dashboard-remp.json: |-
             },
             "editorMode": "code",
             "exemplar": false,
-            "expr": "conveior_dockerContainer{entity=\"{{ include "helmMonitorie.name" . }}\",label_name=\"$container\"}[300s]",
+            "expr": "conveior_dockerContainer{entity=\"$entity\",label_name=\"$container\"}[300s]",
             "instant": true,
-            "legendFormat": "{{ "{{" }}label_name}}",
+            "legendFormat": "{{label_name}}",
             "range": false,
             "refId": "A"
           }
@@ -185,7 +185,7 @@ dashboard-remp.json: |-
             "exemplar": false,
             "expr": "probe_success{instance=~\"$url\"}",
             "instant": true,
-            "legendFormat": "{{ "{{" }}instance}}",
+            "legendFormat": "{{instance}}",
             "range": false,
             "refId": "A"
           }
@@ -293,10 +293,10 @@ dashboard-remp.json: |-
                 },
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlPaymentYear\"}[300s]",
+                "expr": "conveior_sql_query{entity=\"$entity\", query_name=\"conveior_sqlPaymentYear\"}[300s]",
                 "format": "time_series",
                 "instant": true,
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "legendFormat": "{{label_name}}",
                 "range": false,
                 "refId": "A"
               }
@@ -389,9 +389,9 @@ dashboard-remp.json: |-
                 },
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlPaymentMonth\"}[300s]",
+                "expr": "conveior_sql_query{entity=\"$entity\", query_name=\"conveior_sqlPaymentMonth\"}[300s]",
                 "instant": true,
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "legendFormat": "{{label_name}}",
                 "range": false,
                 "refId": "A"
               }
@@ -485,10 +485,10 @@ dashboard-remp.json: |-
                 },
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlPaymentWeekFailed\"}[300s]",
+                "expr": "conveior_sql_query{entity=\"$entity\", query_name=\"conveior_sqlPaymentWeekFailed\"}[300s]",
                 "format": "time_series",
                 "instant": true,
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "legendFormat": "{{label_name}}",
                 "range": false,
                 "refId": "A"
               }
@@ -583,9 +583,9 @@ dashboard-remp.json: |-
                 },
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlPaymentDayFailed\"}[300s]",
+                "expr": "conveior_sql_query{entity=\"$entity\", query_name=\"conveior_sqlPaymentDayFailed\"}[300s]",
                 "instant": true,
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "legendFormat": "{{label_name}}",
                 "range": false,
                 "refId": "A"
               }
@@ -679,9 +679,9 @@ dashboard-remp.json: |-
                 },
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlPaymentHourFailed\"}[300s]",
+                "expr": "conveior_sql_query{entity=\"$entity\", query_name=\"conveior_sqlPaymentHourFailed\"}[300s]",
                 "instant": true,
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "legendFormat": "{{label_name}}",
                 "range": false,
                 "refId": "A"
               }
@@ -775,9 +775,9 @@ dashboard-remp.json: |-
                 },
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlPaymentGatewayWeekFailed\"}[300s]",
+                "expr": "conveior_sql_query{entity=\"$entity\", query_name=\"conveior_sqlPaymentGatewayWeekFailed\"}[300s]",
                 "instant": true,
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "legendFormat": "{{label_name}}",
                 "range": false,
                 "refId": "A"
               }
@@ -871,9 +871,9 @@ dashboard-remp.json: |-
                 },
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlPaymentGatewayDayFailed\"}[300s]",
+                "expr": "conveior_sql_query{entity=\"$entity\", query_name=\"conveior_sqlPaymentGatewayDayFailed\"}[300s]",
                 "instant": true,
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "legendFormat": "{{label_name}}",
                 "range": false,
                 "refId": "A"
               }
@@ -968,9 +968,9 @@ dashboard-remp.json: |-
                 },
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlPaymentGatewayHourFailed\"}[300s]",
+                "expr": "conveior_sql_query{entity=\"$entity\", query_name=\"conveior_sqlPaymentGatewayHourFailed\"}[300s]",
                 "instant": true,
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "legendFormat": "{{label_name}}",
                 "range": false,
                 "refId": "A"
               }
@@ -1065,9 +1065,9 @@ dashboard-remp.json: |-
                 },
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_sqlMailQueing\"}[300s]",
+                "expr": "conveior_sql_query{entity=\"$entity\", query_name=\"conveior_sqlMailQueing\"}[300s]",
                 "instant": true,
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "legendFormat": "{{label_name}}",
                 "range": false,
                 "refId": "A"
               }
@@ -1162,9 +1162,9 @@ dashboard-remp.json: |-
                 },
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_loginAttempts\"}[300s]",
+                "expr": "conveior_sql_query{entity=\"$entity\", query_name=\"conveior_loginAttempts\"}[300s]",
                 "instant": true,
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "legendFormat": "{{label_name}}",
                 "range": false,
                 "refId": "A"
               }
@@ -1272,9 +1272,9 @@ dashboard-remp.json: |-
                 },
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "conveior_sql_query{query_name=\"conveior_sqlUserYear\",entity=\"{{ include "helmMonitorie.name" . }}\"}[300s]",
+                "expr": "conveior_sql_query{query_name=\"conveior_sqlUserYear\",entity=\"$entity\"}[300s]",
                 "instant": true,
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "legendFormat": "{{label_name}}",
                 "range": false,
                 "refId": "A"
               }
@@ -1366,9 +1366,9 @@ dashboard-remp.json: |-
                 },
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\",query_name=\"conveior_sqlUserMonth\"}[300s]",
+                "expr": "conveior_sql_query{entity=\"$entity\",query_name=\"conveior_sqlUserMonth\"}[300s]",
                 "instant": true,
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "legendFormat": "{{label_name}}",
                 "range": false,
                 "refId": "A"
               }
@@ -1459,9 +1459,9 @@ dashboard-remp.json: |-
                 },
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "conveior_sql_query{query_name=\"conveior_sqlPayment5m\",entity=\"{{ include "helmMonitorie.name" . }}\"}",
+                "expr": "conveior_sql_query{query_name=\"conveior_sqlPayment5m\",entity=\"$entity\"}",
                 "instant": false,
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "legendFormat": "{{label_name}}",
                 "range": true,
                 "refId": "A"
               }
@@ -1555,7 +1555,7 @@ dashboard-remp.json: |-
             },
             "editorMode": "code",
             "exemplar": false,
-            "expr": "conveior_hwCpu{entity=\"{{ include "helmMonitorie.name" . }}\"}[300s]",
+            "expr": "conveior_hwCpu{entity=\"$entity\"}[300s]",
             "instant": true,
             "legendFormat": "__auto",
             "range": false,
@@ -1626,7 +1626,7 @@ dashboard-remp.json: |-
             },
             "editorMode": "code",
             "exemplar": false,
-            "expr": "conveior_hwRam{entity=\"{{ include "helmMonitorie.name" . }}\",label_name=\"used\"}[300s]",
+            "expr": "conveior_hwRam{entity=\"$entity\",label_name=\"used\"}[300s]",
             "instant": true,
             "legendFormat": "__auto",
             "range": false,
@@ -1697,7 +1697,7 @@ dashboard-remp.json: |-
             },
             "editorMode": "code",
             "exemplar": false,
-            "expr": "conveior_hwSwap{entity=\"{{ include "helmMonitorie.name" . }}\",label_name=\"used\"}[300s]",
+            "expr": "conveior_hwSwap{entity=\"$entity\",label_name=\"used\"}[300s]",
             "instant": true,
             "legendFormat": "__auto",
             "range": false,
@@ -1772,9 +1772,9 @@ dashboard-remp.json: |-
             },
             "editorMode": "code",
             "exemplar": false,
-            "expr": "conveior_hwDisk{entity=\"{{ include "helmMonitorie.name" . }}\",label_name=\"overlay\"}[300s]",
+            "expr": "conveior_hwDisk{entity=\"$entity\",label_name=\"overlay\"}[300s]",
             "instant": true,
-            "legendFormat": "{{ "{{" }}label_name}}",
+            "legendFormat": "{{label_name}}",
             "range": false,
             "refId": "A"
           }
@@ -1874,8 +1874,8 @@ dashboard-remp.json: |-
               "uid": "P5DCFC7561CCDE821"
             },
             "editorMode": "code",
-            "expr": "conveior_hwCpu{entity=\"{{ include "helmMonitorie.name" . }}\"}",
-            "legendFormat": "{{ "{{" }}label_name}}",
+            "expr": "conveior_hwCpu{entity=\"$entity\"}",
+            "legendFormat": "{{label_name}}",
             "range": true,
             "refId": "A"
           }
@@ -1974,8 +1974,8 @@ dashboard-remp.json: |-
               "uid": "P5DCFC7561CCDE821"
             },
             "editorMode": "code",
-            "expr": "conveior_hwRam{entity=\"{{ include "helmMonitorie.name" . }}\"}",
-            "legendFormat": "{{ "{{" }}label_name}}",
+            "expr": "conveior_hwRam{entity=\"$entity\"}",
+            "legendFormat": "{{label_name}}",
             "range": true,
             "refId": "A"
           }
@@ -2073,8 +2073,8 @@ dashboard-remp.json: |-
               "uid": "P5DCFC7561CCDE821"
             },
             "editorMode": "code",
-            "expr": "conveior_hwSwap{entity=\"{{ include "helmMonitorie.name" . }}\"}",
-            "legendFormat": "{{ "{{" }}label_name}}",
+            "expr": "conveior_hwSwap{entity=\"$entity\"}",
+            "legendFormat": "{{label_name}}",
             "range": true,
             "refId": "A"
           }
@@ -2169,8 +2169,8 @@ dashboard-remp.json: |-
               "uid": "P5DCFC7561CCDE821"
             },
             "editorMode": "code",
-            "expr": "conveior_hwDisk{entity=\"{{ include "helmMonitorie.name" . }}\"}",
-            "legendFormat": "{{ "{{" }}label_name}}",
+            "expr": "conveior_hwDisk{entity=\"$entity\"}",
+            "legendFormat": "{{label_name}}",
             "range": true,
             "refId": "A"
           }
@@ -2251,9 +2251,9 @@ dashboard-remp.json: |-
                 },
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "conveior_hwCpuProcess{entity=\"{{ include "helmMonitorie.name" . }}\"}[300s]",
+                "expr": "conveior_hwCpuProcess{entity=\"$entity\"}[300s]",
                 "instant": true,
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "legendFormat": "{{label_name}}",
                 "range": false,
                 "refId": "A"
               }
@@ -2321,9 +2321,9 @@ dashboard-remp.json: |-
                 },
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "conveior_hwRamProcess{entity=\"{{ include "helmMonitorie.name" . }}\"}[300s]",
+                "expr": "conveior_hwRamProcess{entity=\"$entity\"}[300s]",
                 "instant": true,
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "legendFormat": "{{label_name}}",
                 "range": false,
                 "refId": "A"
               }
@@ -2391,9 +2391,9 @@ dashboard-remp.json: |-
                 },
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "conveior_hwProcess{entity=\"{{ include "helmMonitorie.name" . }}\",label_name=\"conveior\"}[300s]",
+                "expr": "conveior_hwProcess{entity=\"$entity\",label_name=\"conveior\"}[300s]",
                 "instant": true,
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "legendFormat": "{{label_name}}",
                 "range": false,
                 "refId": "A"
               }
@@ -2461,7 +2461,7 @@ dashboard-remp.json: |-
                 },
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "conveior_hwBoot{entity=\"{{ include "helmMonitorie.name" . }}\"}[300s]",
+                "expr": "conveior_hwBoot{entity=\"$entity\"}[300s]",
                 "instant": true,
                 "legendFormat": "__auto",
                 "range": false,
@@ -2562,8 +2562,8 @@ dashboard-remp.json: |-
                   "uid": "P5DCFC7561CCDE821"
                 },
                 "editorMode": "code",
-                "expr": "conveior_hwCpuProcess{entity=\"{{ include "helmMonitorie.name" . }}\"}",
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "expr": "conveior_hwCpuProcess{entity=\"$entity\"}",
+                "legendFormat": "{{label_name}}",
                 "range": true,
                 "refId": "A"
               }
@@ -2661,8 +2661,8 @@ dashboard-remp.json: |-
                   "uid": "P5DCFC7561CCDE821"
                 },
                 "editorMode": "code",
-                "expr": "conveior_hwRamProcess{entity=\"{{ include "helmMonitorie.name" . }}\"}",
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "expr": "conveior_hwRamProcess{entity=\"$entity\"}",
+                "legendFormat": "{{label_name}}",
                 "range": true,
                 "refId": "A"
               }
@@ -2756,8 +2756,8 @@ dashboard-remp.json: |-
                   "uid": "P5DCFC7561CCDE821"
                 },
                 "editorMode": "code",
-                "expr": "conveior_hwProcess{entity=\"{{ include "helmMonitorie.name" . }}\"}",
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "expr": "conveior_hwProcess{entity=\"$entity\"}",
+                "legendFormat": "{{label_name}}",
                 "range": true,
                 "refId": "A"
               }
@@ -2824,9 +2824,9 @@ dashboard-remp.json: |-
                 },
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\",query_name=\"conveior_mysql_global_wait_timeout\"}[300s]",
+                "expr": "conveior_sql_query{entity=\"$entity\",query_name=\"conveior_mysql_global_wait_timeout\"}[300s]",
                 "instant": true,
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "legendFormat": "{{label_name}}",
                 "range": false,
                 "refId": "A"
               }
@@ -2894,9 +2894,9 @@ dashboard-remp.json: |-
                 },
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\",query_name=\"conveior_mysql_global_interactive_timeout\"}[300s]",
+                "expr": "conveior_sql_query{entity=\"$entity\",query_name=\"conveior_mysql_global_interactive_timeout\"}[300s]",
                 "instant": true,
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "legendFormat": "{{label_name}}",
                 "range": false,
                 "refId": "A"
               }
@@ -2964,9 +2964,9 @@ dashboard-remp.json: |-
                 },
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\",query_name=\"conveior_mysql_local_wait_timeout\"}[300s]",
+                "expr": "conveior_sql_query{entity=\"$entity\",query_name=\"conveior_mysql_local_wait_timeout\"}[300s]",
                 "instant": true,
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "legendFormat": "{{label_name}}",
                 "range": false,
                 "refId": "A"
               }
@@ -3034,9 +3034,9 @@ dashboard-remp.json: |-
                 },
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\",query_name=\"conveior_mysql_local_interactive_timeout\"}[300s]",
+                "expr": "conveior_sql_query{entity=\"$entity\",query_name=\"conveior_mysql_local_interactive_timeout\"}[300s]",
                 "instant": true,
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "legendFormat": "{{label_name}}",
                 "range": false,
                 "refId": "A"
               }
@@ -3104,9 +3104,9 @@ dashboard-remp.json: |-
                 },
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "sum(conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\",query_name=\"conveior_sqlSleeperProcess\"})",
+                "expr": "sum(conveior_sql_query{entity=\"$entity\",query_name=\"conveior_sqlSleeperProcess\"})",
                 "instant": true,
-                "legendFormat": "{{ "{{" }}pod}}",
+                "legendFormat": "{{pod}}",
                 "range": false,
                 "refId": "A"
               }
@@ -3174,9 +3174,9 @@ dashboard-remp.json: |-
                 },
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "sum(conveior_hwDockerSize{entity=\"{{ include "helmMonitorie.name" . }}\"})",
+                "expr": "sum(conveior_hwDockerSize{entity=\"$entity\"})",
                 "instant": true,
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "legendFormat": "{{label_name}}",
                 "range": false,
                 "refId": "A"
               }
@@ -3247,8 +3247,8 @@ dashboard-remp.json: |-
                   "uid": "P5DCFC7561CCDE821"
                 },
                 "editorMode": "code",
-                "expr": "sum(conveior_hwNetwork{entity=\"{{ include "helmMonitorie.name" . }}\"})",
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "expr": "sum(conveior_hwNetwork{entity=\"$entity\"})",
+                "legendFormat": "{{label_name}}",
                 "range": true,
                 "refId": "A"
               }
@@ -3320,9 +3320,9 @@ dashboard-remp.json: |-
                 },
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "conveior_elasticsearch{entity=\"{{ include "helmMonitorie.name" . }}\"}[300s]",
+                "expr": "conveior_elasticsearch{entity=\"$entity\"}[300s]",
                 "instant": true,
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "legendFormat": "{{label_name}}",
                 "range": false,
                 "refId": "A"
               }
@@ -3417,8 +3417,8 @@ dashboard-remp.json: |-
                   "uid": "P5DCFC7561CCDE821"
                 },
                 "editorMode": "code",
-                "expr": "conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\",query_name=\"conveior_sqlSleeperProcess\"}",
-                "legendFormat": "{{ "{{" }}pod}}",
+                "expr": "conveior_sql_query{entity=\"$entity\",query_name=\"conveior_sqlSleeperProcess\"}",
+                "legendFormat": "{{pod}}",
                 "range": true,
                 "refId": "A"
               }
@@ -3512,8 +3512,8 @@ dashboard-remp.json: |-
                   "uid": "P5DCFC7561CCDE821"
                 },
                 "editorMode": "code",
-                "expr": "conveior_hwDockerSize{entity=\"{{ include "helmMonitorie.name" . }}\"}",
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "expr": "conveior_hwDockerSize{entity=\"$entity\"}",
+                "legendFormat": "{{label_name}}",
                 "range": true,
                 "refId": "A"
               }
@@ -3605,8 +3605,8 @@ dashboard-remp.json: |-
                   "uid": "P5DCFC7561CCDE821"
                 },
                 "editorMode": "code",
-                "expr": "conveior_hwNetwork{entity=\"{{ include "helmMonitorie.name" . }}\",query_name=\"tx\"}",
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "expr": "conveior_hwNetwork{entity=\"$entity\",query_name=\"tx\"}",
+                "legendFormat": "{{label_name}}",
                 "range": true,
                 "refId": "A"
               },
@@ -3616,9 +3616,9 @@ dashboard-remp.json: |-
                   "uid": "P5DCFC7561CCDE821"
                 },
                 "editorMode": "code",
-                "expr": "conveior_hwNetwork{entity=\"{{ include "helmMonitorie.name" . }}\",query_name=\"rx\"}*(-1)",
+                "expr": "conveior_hwNetwork{entity=\"$entity\",query_name=\"rx\"}*(-1)",
                 "hide": false,
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "legendFormat": "{{label_name}}",
                 "range": true,
                 "refId": "B"
               }
@@ -3724,8 +3724,8 @@ dashboard-remp.json: |-
                   "uid": "P5DCFC7561CCDE821"
                 },
                 "editorMode": "code",
-                "expr": "conveior_elasticsearch{entity=\"{{ include "helmMonitorie.name" . }}\"}",
-                "legendFormat": "{{ "{{" }}label_name}}",
+                "expr": "conveior_elasticsearch{entity=\"$entity\"}",
+                "legendFormat": "{{label_name}}",
                 "range": true,
                 "refId": "A"
               }
@@ -3737,7 +3737,7 @@ dashboard-remp.json: |-
         "type": "row"
       },
       {
-        "collapsed": false,
+        "collapsed": true,
         "datasource": {
           "type": "mysql",
           "uid": "P211906C1C32DB77E"
@@ -3749,712 +3749,541 @@ dashboard-remp.json: |-
           "y": 14
         },
         "id": 40,
-        "panels": [],
+        "panels": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P5DCFC7561CCDE821"
+            },
+            "description": "",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "smooth",
+                  "lineWidth": 1,
+                  "pointSize": 3,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": true,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "dateTimeAsSystem",
+                "unitScale": true
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 6,
+              "w": 12,
+              "x": 0,
+              "y": 15
+            },
+            "id": 25,
+            "options": {
+              "legend": {
+                "calcs": [
+                  "lastNotNull"
+                ],
+                "displayMode": "table",
+                "placement": "right",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "multi",
+                "sort": "none"
+              }
+            },
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P5DCFC7561CCDE821"
+                },
+                "editorMode": "code",
+                "expr": "conveior_hwDockerLs{entity=\"$entity\"}*1000",
+                "legendFormat": "{{label_name}}",
+                "range": true,
+                "refId": "A"
+              }
+            ],
+            "title": "Containers start up time",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P5DCFC7561CCDE821"
+            },
+            "description": "",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "axisSoftMin": 0,
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "smooth",
+                  "lineWidth": 1,
+                  "pointSize": 3,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": true,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "bytes",
+                "unitScale": true
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 6,
+              "w": 8,
+              "x": 12,
+              "y": 15
+            },
+            "id": 35,
+            "options": {
+              "legend": {
+                "calcs": [
+                  "lastNotNull"
+                ],
+                "displayMode": "list",
+                "placement": "right",
+                "showLegend": false
+              },
+              "tooltip": {
+                "mode": "multi",
+                "sort": "none"
+              }
+            },
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P5DCFC7561CCDE821"
+                },
+                "editorMode": "code",
+                "expr": "conveior_hwDockerSize{entity=\"$entity\"}",
+                "legendFormat": "{{label_name}}",
+                "range": true,
+                "refId": "A"
+              }
+            ],
+            "title": "Containers size",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P5DCFC7561CCDE821"
+            },
+            "description": "",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  }
+                },
+                "mappings": [],
+                "unit": "bytes",
+                "unitScale": true
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 6,
+              "w": 4,
+              "x": 20,
+              "y": 15
+            },
+            "id": 36,
+            "options": {
+              "legend": {
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": false
+              },
+              "pieType": "donut",
+              "reduceOptions": {
+                "calcs": [
+                  "lastNotNull"
+                ],
+                "fields": "",
+                "values": false
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P5DCFC7561CCDE821"
+                },
+                "editorMode": "code",
+                "exemplar": false,
+                "expr": "topk(10,conveior_hwDockerSize{entity=\"$entity\"})",
+                "instant": true,
+                "legendFormat": "{{label_name}}",
+                "range": false,
+                "refId": "A"
+              }
+            ],
+            "title": "10 biggest containers",
+            "type": "piechart"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P5DCFC7561CCDE821"
+            },
+            "description": "",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "smooth",
+                  "lineWidth": 1,
+                  "pointSize": 3,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": true,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "dateTimeAsSystem",
+                "unitScale": true
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 6,
+              "w": 12,
+              "x": 0,
+              "y": 21
+            },
+            "id": 188,
+            "options": {
+              "legend": {
+                "calcs": [
+                  "lastNotNull"
+                ],
+                "displayMode": "table",
+                "placement": "right",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "multi",
+                "sort": "none"
+              }
+            },
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P5DCFC7561CCDE821"
+                },
+                "editorMode": "code",
+                "expr": "conveior_hwHeartbeat{entity=\"$entity\"}*1000",
+                "legendFormat": "{{job}}",
+                "range": true,
+                "refId": "A"
+              }
+            ],
+            "title": "Heartbeat",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P5DCFC7561CCDE821"
+            },
+            "description": "",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "smooth",
+                  "lineWidth": 1,
+                  "pointSize": 3,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": true,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "bytes",
+                "unitScale": true
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 6,
+              "w": 8,
+              "x": 12,
+              "y": 21
+            },
+            "id": 57,
+            "options": {
+              "legend": {
+                "calcs": [
+                  "lastNotNull"
+                ],
+                "displayMode": "list",
+                "placement": "right",
+                "showLegend": false
+              },
+              "tooltip": {
+                "mode": "multi",
+                "sort": "none"
+              }
+            },
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P5DCFC7561CCDE821"
+                },
+                "editorMode": "code",
+                "exemplar": false,
+                "expr": "topk(20, conveior_sql_query{entity=\"$entity\", query_name=\"conveior_dbSize\"})",
+                "instant": false,
+                "legendFormat": "{{label_name}}",
+                "range": true,
+                "refId": "A"
+              }
+            ],
+            "title": "20 biggest DB tables",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P5DCFC7561CCDE821"
+            },
+            "description": "",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  }
+                },
+                "mappings": [],
+                "unit": "bytes",
+                "unitScale": true
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 6,
+              "w": 4,
+              "x": 20,
+              "y": 21
+            },
+            "id": 58,
+            "options": {
+              "legend": {
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": false
+              },
+              "pieType": "donut",
+              "reduceOptions": {
+                "calcs": [
+                  "lastNotNull"
+                ],
+                "fields": "",
+                "values": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P5DCFC7561CCDE821"
+                },
+                "editorMode": "code",
+                "exemplar": false,
+                "expr": "topk(10, conveior_sql_query{entity=\"$entity\", query_name=\"conveior_dbSize\"})",
+                "instant": true,
+                "legendFormat": "{{label_name}}",
+                "range": false,
+                "refId": "A"
+              }
+            ],
+            "title": "10 biggest DB tables",
+            "type": "piechart"
+          }
+        ],
         "title": "Containers, Database tables",
         "type": "row"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "P5DCFC7561CCDE821"
-        },
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineInterpolation": "smooth",
-              "lineWidth": 1,
-              "pointSize": 3,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": true,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "dateTimeAsSystem",
-            "unitScale": true
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 6,
-          "w": 8,
-          "x": 0,
-          "y": 15
-        },
-        "id": 25,
-        "options": {
-          "legend": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "displayMode": "table",
-            "placement": "right",
-            "showLegend": true
-          },
-          "tooltip": {
-            "mode": "multi",
-            "sort": "none"
-          }
-        },
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "editorMode": "code",
-            "expr": "conveior_hwDockerLs{entity=\"{{ include "helmMonitorie.name" . }}\"}*1000",
-            "legendFormat": "{{ "{{" }}label_name}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Containers start up time",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "P5DCFC7561CCDE821"
-        },
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "axisSoftMin": 0,
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineInterpolation": "smooth",
-              "lineWidth": 1,
-              "pointSize": 3,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": true,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "bytes",
-            "unitScale": true
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 6,
-          "w": 5,
-          "x": 8,
-          "y": 15
-        },
-        "id": 35,
-        "options": {
-          "legend": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "displayMode": "list",
-            "placement": "right",
-            "showLegend": false
-          },
-          "tooltip": {
-            "mode": "multi",
-            "sort": "none"
-          }
-        },
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "editorMode": "code",
-            "expr": "conveior_hwDockerSize{entity=\"{{ include "helmMonitorie.name" . }}\"}",
-            "legendFormat": "{{ "{{" }}label_name}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Containers size",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "P5DCFC7561CCDE821"
-        },
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              }
-            },
-            "mappings": [],
-            "unit": "bytes",
-            "unitScale": true
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 6,
-          "w": 3,
-          "x": 13,
-          "y": 15
-        },
-        "id": 36,
-        "options": {
-          "legend": {
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": false
-          },
-          "pieType": "donut",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "tooltip": {
-            "mode": "single",
-            "sort": "none"
-          }
-        },
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "topk(10,conveior_hwDockerSize{entity=\"{{ include "helmMonitorie.name" . }}\"})",
-            "instant": true,
-            "legendFormat": "{{ "{{" }}label_name}}",
-            "range": false,
-            "refId": "A"
-          }
-        ],
-        "title": "10 biggest containers",
-        "type": "piechart"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "P5DCFC7561CCDE821"
-        },
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "axisSoftMin": 0,
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineInterpolation": "smooth",
-              "lineWidth": 1,
-              "pointSize": 3,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": true,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "bytes",
-            "unitScale": true
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 6,
-          "w": 5,
-          "x": 16,
-          "y": 15
-        },
-        "id": 459,
-        "options": {
-          "legend": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "displayMode": "list",
-            "placement": "right",
-            "showLegend": false
-          },
-          "tooltip": {
-            "mode": "multi",
-            "sort": "none"
-          }
-        },
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "editorMode": "code",
-            "expr": "conveior_hwDockerVolumeSize{entity=\"{{ include "helmMonitorie.name" . }}\"}",
-            "legendFormat": "{{ "{{" }}label_name}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Volume size",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "P5DCFC7561CCDE821"
-        },
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              }
-            },
-            "mappings": [],
-            "unit": "bytes",
-            "unitScale": true
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 6,
-          "w": 3,
-          "x": 21,
-          "y": 15
-        },
-        "id": 460,
-        "options": {
-          "legend": {
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": false
-          },
-          "pieType": "donut",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "tooltip": {
-            "mode": "single",
-            "sort": "none"
-          }
-        },
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "topk(10,conveior_hwDockerVolumeSize{entity=\"{{ include "helmMonitorie.name" . }}\"})",
-            "instant": true,
-            "legendFormat": "{{ "{{" }}label_name}}",
-            "range": false,
-            "refId": "A"
-          }
-        ],
-        "title": "10 biggest volumes",
-        "type": "piechart"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "P5DCFC7561CCDE821"
-        },
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineInterpolation": "smooth",
-              "lineWidth": 1,
-              "pointSize": 3,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": true,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "dateTimeAsSystem",
-            "unitScale": true
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 6,
-          "w": 8,
-          "x": 0,
-          "y": 21
-        },
-        "id": 188,
-        "options": {
-          "legend": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "displayMode": "table",
-            "placement": "right",
-            "showLegend": true
-          },
-          "tooltip": {
-            "mode": "multi",
-            "sort": "none"
-          }
-        },
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "editorMode": "code",
-            "expr": "conveior_hwHeartbeat{entity=\"{{ include "helmMonitorie.name" . }}\"}*1000",
-            "legendFormat": "{{ "{{" }}job}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Heartbeat",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "P5DCFC7561CCDE821"
-        },
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineInterpolation": "smooth",
-              "lineWidth": 1,
-              "pointSize": 3,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": true,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "bytes",
-            "unitScale": true
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 6,
-          "w": 12,
-          "x": 8,
-          "y": 21
-        },
-        "id": 57,
-        "options": {
-          "legend": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "displayMode": "list",
-            "placement": "right",
-            "showLegend": false
-          },
-          "tooltip": {
-            "mode": "multi",
-            "sort": "none"
-          }
-        },
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "topk(20, conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_dbSize\"})",
-            "instant": false,
-            "legendFormat": "{{ "{{" }}label_name}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "20 biggest DB tables",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "P5DCFC7561CCDE821"
-        },
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              }
-            },
-            "mappings": [],
-            "unit": "bytes",
-            "unitScale": true
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 6,
-          "w": 4,
-          "x": 20,
-          "y": 21
-        },
-        "id": 58,
-        "options": {
-          "legend": {
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": false
-          },
-          "pieType": "donut",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": true
-          },
-          "tooltip": {
-            "mode": "single",
-            "sort": "none"
-          }
-        },
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "topk(10, conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_dbSize\"})",
-            "instant": true,
-            "legendFormat": "{{ "{{" }}label_name}}",
-            "range": false,
-            "refId": "A"
-          }
-        ],
-        "title": "10 biggest DB tables",
-        "type": "piechart"
       },
       {
         "collapsed": true,
@@ -4462,7 +4291,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 27
+          "y": 15
         },
         "id": 332,
         "panels": [
@@ -4518,7 +4347,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 28
+          "y": 16
         },
         "id": 380,
         "panels": [
@@ -4572,7 +4401,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 29
+          "y": 17
         },
         "id": 408,
         "panels": [
@@ -4625,7 +4454,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 30
+          "y": 18
         },
         "id": 407,
         "panels": [
@@ -4692,7 +4521,7 @@ dashboard-remp.json: |-
             "type": "prometheus",
             "uid": "P5DCFC7561CCDE821"
           },
-          "definition": "label_values(conveior_dockerContainer{entity=\"{{ include "helmMonitorie.name" . }}\"}, label_name)",
+          "definition": "label_values(conveior_dockerContainer{entity=\"$entity\"}, label_name)",
           "hide": 2,
           "includeAll": true,
           "label": "container",
@@ -4700,7 +4529,7 @@ dashboard-remp.json: |-
           "name": "container",
           "options": [],
           "query": {
-            "query": "label_values(conveior_dockerContainer{entity=\"{{ include "helmMonitorie.name" . }}\"}, label_name)",
+            "query": "label_values(conveior_dockerContainer{entity=\"$entity\"}, label_name)",
             "refId": "StandardVariableQuery"
           },
           "refresh": 1,
@@ -4723,14 +4552,14 @@ dashboard-remp.json: |-
             "type": "prometheus",
             "uid": "P5DCFC7561CCDE821"
           },
-          "definition": "label_values(probe_success{prometheus=\"{{ include "helmMonitorie.name" . }}/{{ include "helmMonitorie.name" . }}\"}, instance)",
+          "definition": "label_values(probe_success{prometheus=\"$entity/$entity\"}, instance)",
           "hide": 2,
           "includeAll": true,
           "multi": true,
           "name": "url",
           "options": [],
           "query": {
-            "query": "label_values(probe_success{prometheus=\"{{ include "helmMonitorie.name" . }}/{{ include "helmMonitorie.name" . }}\"}, instance)",
+            "query": "label_values(probe_success{prometheus=\"$entity/$entity\"}, instance)",
             "refId": "StandardVariableQuery"
           },
           "refresh": 1,
@@ -4820,7 +4649,6 @@ dashboard-remp.json: |-
             "uid": "P8E80F9AEF21F6940"
           },
           "definition": "",
-          "error": {},
           "hide": 2,
           "includeAll": true,
           "label": "loki_file_remp_campaign",
@@ -4865,6 +4693,34 @@ dashboard-remp.json: |-
             "refId": "LokiVariableQueryEditor-VariableQuery",
             "stream": "{job=\"remp-mailer\"}",
             "type": 1
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": [
+              "All"
+            ],
+            "value": [
+              "$__all"
+            ]
+          },
+          "definition": "label_values(conveior_hwCpu,entity)",
+          "hide": 2,
+          "includeAll": true,
+          "label": "entity",
+          "multi": true,
+          "name": "entity",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values(conveior_hwCpu,entity)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
           },
           "refresh": 1,
           "regex": "",

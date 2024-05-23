@@ -37,3 +37,8 @@ data:
 {{- if or (eq .Values.grafana.dashboards.wpEnabled "default") (eq .Values.grafana.dashboards.wpEnabled "true") }}
   {{ include "grafana-cm-dash-wp" $ | nindent 2 }}
 {{ end }}
+
+
+{{- define "grafana-cm-dash-remp" -}}
+{{ .Files.Get "files/dashboard-remp.json" | nindent 2 }}
+{{- end }}
