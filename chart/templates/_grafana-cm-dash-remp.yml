@@ -41,7 +41,7 @@ dashboard-remp.json: |-
               "mode": "thresholds"
             },
             "mappings": [],
-            "thresholds": {
+            "thresholds": 
               "mode": "absolute",
               "steps": [
                 {
@@ -247,8 +247,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "dark-blue",
-                      "value": null
+                      "color": "dark-blue"
                     }
                   ]
                 },
@@ -345,8 +344,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "dark-blue",
-                      "value": null
+                      "color": "dark-blue"
                     }
                   ]
                 },
@@ -441,8 +439,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "red",
-                      "value": null
+                      "color": "red"
                     }
                   ]
                 },
@@ -540,8 +537,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "red",
-                      "value": null
+                      "color": "red"
                     }
                   ]
                 },
@@ -637,8 +633,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "red",
-                      "value": null
+                      "color": "red"
                     }
                   ]
                 },
@@ -734,8 +729,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "red",
-                      "value": null
+                      "color": "red"
                     }
                   ]
                 },
@@ -831,8 +825,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "red",
-                      "value": null
+                      "color": "red"
                     }
                   ]
                 },
@@ -929,8 +922,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "red",
-                      "value": null
+                      "color": "red"
                     }
                   ]
                 },
@@ -1026,8 +1018,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "red",
-                      "value": null
+                      "color": "red"
                     }
                   ]
                 },
@@ -1125,8 +1116,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "red",
-                      "value": null
+                      "color": "red"
                     }
                   ]
                 },
@@ -1237,8 +1227,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "dark-blue",
-                      "value": null
+                      "color": "dark-blue"
                     }
                   ]
                 },
@@ -1332,8 +1321,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "dark-blue",
-                      "value": null
+                      "color": "dark-blue"
                     }
                   ]
                 },
@@ -1435,8 +1423,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "dark-blue",
-                      "value": null
+                      "color": "dark-blue"
                     }
                   ]
                 },
@@ -2216,8 +2203,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "text",
-                      "value": null
+                      "color": "text"
                     },
                     {
                       "color": "red",
@@ -2291,8 +2277,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "text",
-                      "value": null
+                      "color": "text"
                     }
                   ]
                 },
@@ -2362,8 +2347,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "text",
-                      "value": null
+                      "color": "text"
                     }
                   ]
                 },
@@ -2433,8 +2417,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "text",
-                      "value": null
+                      "color": "text"
                     }
                   ]
                 },
@@ -2538,8 +2521,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     },
                     {
                       "color": "red",
@@ -2638,8 +2620,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     },
                     {
                       "color": "red",
@@ -2738,8 +2719,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     }
                   ]
                 },
@@ -2800,8 +2780,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "text",
-                      "value": null
+                      "color": "text"
                     }
                   ]
                 },
@@ -2871,8 +2850,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "text",
-                      "value": null
+                      "color": "text"
                     }
                   ]
                 },
@@ -2942,8 +2920,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "text",
-                      "value": null
+                      "color": "text"
                     }
                   ]
                 },
@@ -3013,8 +2990,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "text",
-                      "value": null
+                      "color": "text"
                     }
                   ]
                 },
@@ -3084,8 +3060,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "text",
-                      "value": null
+                      "color": "text"
                     }
                   ]
                 },
@@ -3155,8 +3130,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "text",
-                      "value": null
+                      "color": "text"
                     }
                   ]
                 },
@@ -3226,8 +3200,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "text",
-                      "value": null
+                      "color": "text"
                     },
                     {
                       "color": "semi-dark-red",
@@ -3299,8 +3272,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "text",
-                      "value": null
+                      "color": "text"
                     },
                     {
                       "color": "semi-dark-red",
@@ -3408,8 +3380,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     }
                   ]
                 },
@@ -3504,8 +3475,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     }
                   ]
                 },
@@ -3598,8 +3568,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     }
                   ]
                 },
@@ -3714,8 +3683,7 @@ dashboard-remp.json: |-
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     },
                     {
                       "color": "#EAB839",
@@ -3769,7 +3737,7 @@ dashboard-remp.json: |-
         "type": "row"
       },
       {
-        "collapsed": true,
+        "collapsed": false,
         "datasource": {
           "type": "mysql",
           "uid": "P211906C1C32DB77E"
@@ -3781,545 +3749,712 @@ dashboard-remp.json: |-
           "y": 14
         },
         "id": 40,
-        "panels": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "description": "",
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "palette-classic"
-                },
-                "custom": {
-                  "axisBorderShow": false,
-                  "axisCenteredZero": false,
-                  "axisColorMode": "text",
-                  "axisLabel": "",
-                  "axisPlacement": "auto",
-                  "barAlignment": 0,
-                  "drawStyle": "line",
-                  "fillOpacity": 0,
-                  "gradientMode": "none",
-                  "hideFrom": {
-                    "legend": false,
-                    "tooltip": false,
-                    "viz": false
-                  },
-                  "insertNulls": false,
-                  "lineInterpolation": "smooth",
-                  "lineWidth": 1,
-                  "pointSize": 3,
-                  "scaleDistribution": {
-                    "type": "linear"
-                  },
-                  "showPoints": "auto",
-                  "spanNulls": true,
-                  "stacking": {
-                    "group": "A",
-                    "mode": "none"
-                  },
-                  "thresholdsStyle": {
-                    "mode": "off"
-                  }
-                },
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green",
-                      "value": null
-                    },
-                    {
-                      "color": "red",
-                      "value": 80
-                    }
-                  ]
-                },
-                "unit": "dateTimeAsSystem",
-                "unitScale": true
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 6,
-              "w": 12,
-              "x": 0,
-              "y": 15
-            },
-            "id": 25,
-            "options": {
-              "legend": {
-                "calcs": [
-                  "lastNotNull"
-                ],
-                "displayMode": "table",
-                "placement": "right",
-                "showLegend": true
-              },
-              "tooltip": {
-                "mode": "multi",
-                "sort": "none"
-              }
-            },
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "P5DCFC7561CCDE821"
-                },
-                "editorMode": "code",
-                "expr": "conveior_hwDockerLs{entity=\"{{ include "helmMonitorie.name" . }}\"}*1000",
-                "legendFormat": "{{ "{{" }}label_name}}",
-                "range": true,
-                "refId": "A"
-              }
-            ],
-            "title": "Containers start up time",
-            "type": "timeseries"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "description": "",
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "palette-classic"
-                },
-                "custom": {
-                  "axisBorderShow": false,
-                  "axisCenteredZero": false,
-                  "axisColorMode": "text",
-                  "axisLabel": "",
-                  "axisPlacement": "auto",
-                  "axisSoftMin": 0,
-                  "barAlignment": 0,
-                  "drawStyle": "line",
-                  "fillOpacity": 0,
-                  "gradientMode": "none",
-                  "hideFrom": {
-                    "legend": false,
-                    "tooltip": false,
-                    "viz": false
-                  },
-                  "insertNulls": false,
-                  "lineInterpolation": "smooth",
-                  "lineWidth": 1,
-                  "pointSize": 3,
-                  "scaleDistribution": {
-                    "type": "linear"
-                  },
-                  "showPoints": "auto",
-                  "spanNulls": true,
-                  "stacking": {
-                    "group": "A",
-                    "mode": "none"
-                  },
-                  "thresholdsStyle": {
-                    "mode": "off"
-                  }
-                },
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green",
-                      "value": null
-                    },
-                    {
-                      "color": "red",
-                      "value": 80
-                    }
-                  ]
-                },
-                "unit": "bytes",
-                "unitScale": true
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 6,
-              "w": 8,
-              "x": 12,
-              "y": 15
-            },
-            "id": 35,
-            "options": {
-              "legend": {
-                "calcs": [
-                  "lastNotNull"
-                ],
-                "displayMode": "list",
-                "placement": "right",
-                "showLegend": false
-              },
-              "tooltip": {
-                "mode": "multi",
-                "sort": "none"
-              }
-            },
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "P5DCFC7561CCDE821"
-                },
-                "editorMode": "code",
-                "expr": "conveior_hwDockerSize{entity=\"{{ include "helmMonitorie.name" . }}\"}",
-                "legendFormat": "{{ "{{" }}label_name}}",
-                "range": true,
-                "refId": "A"
-              }
-            ],
-            "title": "Containers size",
-            "type": "timeseries"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "description": "",
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "palette-classic"
-                },
-                "custom": {
-                  "hideFrom": {
-                    "legend": false,
-                    "tooltip": false,
-                    "viz": false
-                  }
-                },
-                "mappings": [],
-                "unit": "bytes",
-                "unitScale": true
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 6,
-              "w": 4,
-              "x": 20,
-              "y": 15
-            },
-            "id": 36,
-            "options": {
-              "legend": {
-                "displayMode": "list",
-                "placement": "bottom",
-                "showLegend": false
-              },
-              "pieType": "donut",
-              "reduceOptions": {
-                "calcs": [
-                  "lastNotNull"
-                ],
-                "fields": "",
-                "values": false
-              },
-              "tooltip": {
-                "mode": "single",
-                "sort": "none"
-              }
-            },
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "P5DCFC7561CCDE821"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "topk(10,conveior_hwDockerSize{entity=\"{{ include "helmMonitorie.name" . }}\"})",
-                "instant": true,
-                "legendFormat": "{{ "{{" }}label_name}}",
-                "range": false,
-                "refId": "A"
-              }
-            ],
-            "title": "10 biggest containers",
-            "type": "piechart"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "description": "",
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "palette-classic"
-                },
-                "custom": {
-                  "axisBorderShow": false,
-                  "axisCenteredZero": false,
-                  "axisColorMode": "text",
-                  "axisLabel": "",
-                  "axisPlacement": "auto",
-                  "barAlignment": 0,
-                  "drawStyle": "line",
-                  "fillOpacity": 0,
-                  "gradientMode": "none",
-                  "hideFrom": {
-                    "legend": false,
-                    "tooltip": false,
-                    "viz": false
-                  },
-                  "insertNulls": false,
-                  "lineInterpolation": "smooth",
-                  "lineWidth": 1,
-                  "pointSize": 3,
-                  "scaleDistribution": {
-                    "type": "linear"
-                  },
-                  "showPoints": "auto",
-                  "spanNulls": true,
-                  "stacking": {
-                    "group": "A",
-                    "mode": "none"
-                  },
-                  "thresholdsStyle": {
-                    "mode": "off"
-                  }
-                },
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green",
-                      "value": null
-                    },
-                    {
-                      "color": "red",
-                      "value": 80
-                    }
-                  ]
-                },
-                "unit": "dateTimeAsSystem",
-                "unitScale": true
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 6,
-              "w": 12,
-              "x": 0,
-              "y": 21
-            },
-            "id": 188,
-            "options": {
-              "legend": {
-                "calcs": [
-                  "lastNotNull"
-                ],
-                "displayMode": "table",
-                "placement": "right",
-                "showLegend": true
-              },
-              "tooltip": {
-                "mode": "multi",
-                "sort": "none"
-              }
-            },
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "P5DCFC7561CCDE821"
-                },
-                "editorMode": "code",
-                "expr": "conveior_hwHeartbeat{entity=\"{{ include "helmMonitorie.name" . }}\"}*1000",
-                "legendFormat": "{{ "{{" }}job}}",
-                "range": true,
-                "refId": "A"
-              }
-            ],
-            "title": "Heartbeat",
-            "type": "timeseries"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "description": "",
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "palette-classic"
-                },
-                "custom": {
-                  "axisBorderShow": false,
-                  "axisCenteredZero": false,
-                  "axisColorMode": "text",
-                  "axisLabel": "",
-                  "axisPlacement": "auto",
-                  "barAlignment": 0,
-                  "drawStyle": "line",
-                  "fillOpacity": 0,
-                  "gradientMode": "none",
-                  "hideFrom": {
-                    "legend": false,
-                    "tooltip": false,
-                    "viz": false
-                  },
-                  "insertNulls": false,
-                  "lineInterpolation": "smooth",
-                  "lineWidth": 1,
-                  "pointSize": 3,
-                  "scaleDistribution": {
-                    "type": "linear"
-                  },
-                  "showPoints": "auto",
-                  "spanNulls": true,
-                  "stacking": {
-                    "group": "A",
-                    "mode": "none"
-                  },
-                  "thresholdsStyle": {
-                    "mode": "off"
-                  }
-                },
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green",
-                      "value": null
-                    },
-                    {
-                      "color": "red",
-                      "value": 80
-                    }
-                  ]
-                },
-                "unit": "bytes",
-                "unitScale": true
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 6,
-              "w": 8,
-              "x": 12,
-              "y": 21
-            },
-            "id": 57,
-            "options": {
-              "legend": {
-                "calcs": [
-                  "lastNotNull"
-                ],
-                "displayMode": "list",
-                "placement": "right",
-                "showLegend": false
-              },
-              "tooltip": {
-                "mode": "multi",
-                "sort": "none"
-              }
-            },
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "P5DCFC7561CCDE821"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "topk(20, conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_dbSize\"})",
-                "instant": false,
-                "legendFormat": "{{ "{{" }}label_name}}",
-                "range": true,
-                "refId": "A"
-              }
-            ],
-            "title": "20 biggest DB tables",
-            "type": "timeseries"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P5DCFC7561CCDE821"
-            },
-            "description": "",
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "palette-classic"
-                },
-                "custom": {
-                  "hideFrom": {
-                    "legend": false,
-                    "tooltip": false,
-                    "viz": false
-                  }
-                },
-                "mappings": [],
-                "unit": "bytes",
-                "unitScale": true
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 6,
-              "w": 4,
-              "x": 20,
-              "y": 21
-            },
-            "id": 58,
-            "options": {
-              "legend": {
-                "displayMode": "list",
-                "placement": "bottom",
-                "showLegend": false
-              },
-              "pieType": "donut",
-              "reduceOptions": {
-                "calcs": [
-                  "lastNotNull"
-                ],
-                "fields": "",
-                "values": true
-              },
-              "tooltip": {
-                "mode": "single",
-                "sort": "none"
-              }
-            },
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "P5DCFC7561CCDE821"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "topk(10, conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_dbSize\"})",
-                "instant": true,
-                "legendFormat": "{{ "{{" }}label_name}}",
-                "range": false,
-                "refId": "A"
-              }
-            ],
-            "title": "10 biggest DB tables",
-            "type": "piechart"
-          }
-        ],
+        "panels": [],
         "title": "Containers, Database tables",
         "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "P5DCFC7561CCDE821"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "smooth",
+              "lineWidth": 1,
+              "pointSize": 3,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "dateTimeAsSystem",
+            "unitScale": true
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 8,
+          "x": 0,
+          "y": 15
+        },
+        "id": 25,
+        "options": {
+          "legend": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "displayMode": "table",
+            "placement": "right",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P5DCFC7561CCDE821"
+            },
+            "editorMode": "code",
+            "expr": "conveior_hwDockerLs{entity=\"{{ include "helmMonitorie.name" . }}\"}*1000",
+            "legendFormat": "{{ "{{" }}label_name}}",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Containers start up time",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "P5DCFC7561CCDE821"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "axisSoftMin": 0,
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "smooth",
+              "lineWidth": 1,
+              "pointSize": 3,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "bytes",
+            "unitScale": true
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 5,
+          "x": 8,
+          "y": 15
+        },
+        "id": 35,
+        "options": {
+          "legend": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "displayMode": "list",
+            "placement": "right",
+            "showLegend": false
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P5DCFC7561CCDE821"
+            },
+            "editorMode": "code",
+            "expr": "conveior_hwDockerSize{entity=\"{{ include "helmMonitorie.name" . }}\"}",
+            "legendFormat": "{{ "{{" }}label_name}}",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Containers size",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "P5DCFC7561CCDE821"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "mappings": [],
+            "unit": "bytes",
+            "unitScale": true
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 3,
+          "x": 13,
+          "y": 15
+        },
+        "id": 36,
+        "options": {
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "pieType": "donut",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P5DCFC7561CCDE821"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "topk(10,conveior_hwDockerSize{entity=\"{{ include "helmMonitorie.name" . }}\"})",
+            "instant": true,
+            "legendFormat": "{{ "{{" }}label_name}}",
+            "range": false,
+            "refId": "A"
+          }
+        ],
+        "title": "10 biggest containers",
+        "type": "piechart"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "P5DCFC7561CCDE821"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "axisSoftMin": 0,
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "smooth",
+              "lineWidth": 1,
+              "pointSize": 3,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "bytes",
+            "unitScale": true
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 5,
+          "x": 16,
+          "y": 15
+        },
+        "id": 459,
+        "options": {
+          "legend": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "displayMode": "list",
+            "placement": "right",
+            "showLegend": false
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P5DCFC7561CCDE821"
+            },
+            "editorMode": "code",
+            "expr": "conveior_hwDockerVolumeSize{entity=\"{{ include "helmMonitorie.name" . }}\"}",
+            "legendFormat": "{{ "{{" }}label_name}}",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Volume size",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "P5DCFC7561CCDE821"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "mappings": [],
+            "unit": "bytes",
+            "unitScale": true
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 3,
+          "x": 21,
+          "y": 15
+        },
+        "id": 460,
+        "options": {
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "pieType": "donut",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P5DCFC7561CCDE821"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "topk(10,conveior_hwDockerVolumeSize{entity=\"{{ include "helmMonitorie.name" . }}\"})",
+            "instant": true,
+            "legendFormat": "{{ "{{" }}label_name}}",
+            "range": false,
+            "refId": "A"
+          }
+        ],
+        "title": "10 biggest volumes",
+        "type": "piechart"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "P5DCFC7561CCDE821"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "smooth",
+              "lineWidth": 1,
+              "pointSize": 3,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "dateTimeAsSystem",
+            "unitScale": true
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 8,
+          "x": 0,
+          "y": 21
+        },
+        "id": 188,
+        "options": {
+          "legend": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "displayMode": "table",
+            "placement": "right",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P5DCFC7561CCDE821"
+            },
+            "editorMode": "code",
+            "expr": "conveior_hwHeartbeat{entity=\"{{ include "helmMonitorie.name" . }}\"}*1000",
+            "legendFormat": "{{ "{{" }}job}}",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Heartbeat",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "P5DCFC7561CCDE821"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "smooth",
+              "lineWidth": 1,
+              "pointSize": 3,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "bytes",
+            "unitScale": true
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 12,
+          "x": 8,
+          "y": 21
+        },
+        "id": 57,
+        "options": {
+          "legend": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "displayMode": "list",
+            "placement": "right",
+            "showLegend": false
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P5DCFC7561CCDE821"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "topk(20, conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_dbSize\"})",
+            "instant": false,
+            "legendFormat": "{{ "{{" }}label_name}}",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "20 biggest DB tables",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "P5DCFC7561CCDE821"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "mappings": [],
+            "unit": "bytes",
+            "unitScale": true
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 4,
+          "x": 20,
+          "y": 21
+        },
+        "id": 58,
+        "options": {
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "pieType": "donut",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P5DCFC7561CCDE821"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "topk(10, conveior_sql_query{entity=\"{{ include "helmMonitorie.name" . }}\", query_name=\"conveior_dbSize\"})",
+            "instant": true,
+            "legendFormat": "{{ "{{" }}label_name}}",
+            "range": false,
+            "refId": "A"
+          }
+        ],
+        "title": "10 biggest DB tables",
+        "type": "piechart"
       },
       {
         "collapsed": true,
@@ -4327,7 +4462,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 15
+          "y": 27
         },
         "id": 332,
         "panels": [
@@ -4383,7 +4518,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 16
+          "y": 28
         },
         "id": 380,
         "panels": [
@@ -4437,7 +4572,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 17
+          "y": 29
         },
         "id": 408,
         "panels": [
@@ -4490,7 +4625,7 @@ dashboard-remp.json: |-
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 18
+          "y": 30
         },
         "id": 407,
         "panels": [
@@ -4685,6 +4820,7 @@ dashboard-remp.json: |-
             "uid": "P8E80F9AEF21F6940"
           },
           "definition": "",
+          "error": {},
           "hide": 2,
           "includeAll": true,
           "label": "loki_file_remp_campaign",
