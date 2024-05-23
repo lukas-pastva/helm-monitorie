@@ -40,5 +40,5 @@ data:
 
 
 {{- define "grafana-cm-dash-remp" -}}
-{{ .Files.Get "files/dashboard-remp.json" | quote | indent 2 }}
+{{ .Files.Get "files/dashboard-remp.json" | tpl | indent 2 }}
 {{- end }}
