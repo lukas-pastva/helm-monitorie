@@ -1908,7 +1908,7 @@
             "axisSoftMin": 0,
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 5,
+            "fillOpacity": 0,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -2009,7 +2009,7 @@
             "axisSoftMin": 0,
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 5,
+            "fillOpacity": 0,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -2018,6 +2018,9 @@
             },
             "insertNulls": false,
             "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
             "lineWidth": 1,
             "pointSize": 3,
             "scaleDistribution": {
@@ -2047,7 +2050,7 @@
               }
             ]
           },
-          "unit": "percent",
+          "unit": "bytes",
           "unitScale": true
         },
         "overrides": []
@@ -2560,7 +2563,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 15,
+            "fillOpacity": 0,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -3821,6 +3824,7 @@
           "uid": "P8E80F9AEF21F6940"
         },
         "definition": "",
+        "error": {},
         "hide": 2,
         "includeAll": true,
         "label": "loki_file_remp_campaign",
@@ -3854,6 +3858,7 @@
           "uid": "P8E80F9AEF21F6940"
         },
         "definition": "",
+        "error": {},
         "hide": 2,
         "includeAll": true,
         "label": "loki_file_remp_mailer",
