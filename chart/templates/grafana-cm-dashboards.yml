@@ -6,62 +6,68 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
 data:
-  dashboards.yaml: |-
-    apiVersion: 1
-    providers:
-      - name: 'default'
-        orgId: 1
-        folder: ''
-        type: file
-        disableDeletion: false
-        editable: true
-        options:
-          path: /etc/grafana/provisioning/dashboards/
+    dashboards.yaml: |-
+      apiVersion: 1
+      providers:
+        - name: 'default'
+          orgId: 1
+          folder: ''
+          type: file
+          disableDeletion: false
+          editable: true
+          options:
+            path: /etc/grafana/provisioning/dashboards/
 
 {{- if or (eq .Values.grafana.dashboards.feEnabled "default") (eq .Values.grafana.dashboards.feEnabled "true") }}
-    {{ include "grafana-cm-dash-fe" $ | nindent 2 }}
-{{ end }}
-{{- define "grafana-cm-dash-fe" -}}
-dashboard-fe.json: |-
-  {{ .Files.Get "files/_dash-fe.json" | indent 2 }}
+{{ include "grafana-cm-dash-fe" $ | nindent 4 }}
 {{- end }}
 
 {{- if or (eq .Values.grafana.dashboards.nodeExporterEnabled "default") (eq .Values.grafana.dashboards.nodeExporterEnabled "true") }}
-    {{ include "grafana-cm-dash-node-exporter" $ | nindent 2 }}
-{{ end }}
-{{- define "grafana-cm-dash-node-exporter" -}}
-dashboard-node-exporter.json: |-
-  {{ .Files.Get "files/_dash-node-exporter.json" | indent 2 }}
+{{ include "grafana-cm-dash-node-exporter" $ | nindent 4 }}
 {{- end }}
 
 {{- if or (eq .Values.grafana.dashboards.rempEnabled "default") (eq .Values.grafana.dashboards.rempEnabled "true") }}
-    {{ include "grafana-cm-dash-remp" $ | nindent 2 }}
-{{ end }}
-{{- define "grafana-cm-dash-remp" -}}
-dashboard-remp.json: |-
-  {{ .Files.Get "files/_dash-remp.json" | indent 2 }}
+{{ include "grafana-cm-dash-remp" $ | nindent 4 }}
 {{- end }}
 
 {{- if or (eq .Values.grafana.dashboards.systemEnabled "default") (eq .Values.grafana.dashboards.systemEnabled "true") }}
-    {{ include "grafana-cm-dash-system" $ | nindent 2 }}
-{{ end }}
-{{- define "grafana-cm-dash-system" -}}
-dashboard-system.json: |-
-  {{ .Files.Get "files/_dash-system.json" | indent 2 }}
+{{ include "grafana-cm-dash-system" $ | nindent 4 }}
 {{- end }}
 
 {{- if or (eq .Values.grafana.dashboards.telegramEnabled "default") (eq .Values.grafana.dashboards.telegramEnabled "true") }}
-    {{ include "grafana-cm-dash-telegram" $ | nindent 2 }}
-{{ end }}
-{{- define "grafana-cm-dash-telegram" -}}
-dashboard-telegram.json: |-
-  {{ .Files.Get "files/_dash-telegram.json" | indent 2 }}
+{{ include "grafana-cm-dash-telegram" $ | nindent 4 }}
 {{- end }}
 
 {{- if or (eq .Values.grafana.dashboards.wpEnabled "default") (eq .Values.grafana.dashboards.wpEnabled "true") }}
-    {{ include "grafana-cm-dash-wp" $ | nindent 2 }}
-{{ end }}
+{{ include "grafana-cm-dash-wp" $ | nindent 4 }}
+{{- end }}
+
+{{- define "grafana-cm-dash-fe" -}}
+dashboard-fe.json: |-
+{{ .Files.Get "files/_dash-fe.json" | indent 2 }}
+{{- end }}
+
+{{- define "grafana-cm-dash-node-exporter" -}}
+dashboard-node-exporter.json: |-
+{{ .Files.Get "files/_dash-node-exporter.json" | indent 2 }}
+{{- end }}
+
+{{- define "grafana-cm-dash-remp" -}}
+dashboard-remp.json: |-
+{{ .Files.Get "files/_dash-remp.json" | indent 2 }}
+{{- end }}
+
+{{- define "grafana-cm-dash-system" -}}
+dashboard-system.json: |-
+{{ .Files.Get "files/_dash-system.json" | indent 2 }}
+{{- end }}
+
+{{- define "grafana-cm-dash-telegram" -}}
+dashboard-telegram.json: |-
+{{ .Files.Get "files/_dash-telegram.json" | indent 2 }}
+{{- end }}
+
 {{- define "grafana-cm-dash-wp" -}}
 dashboard-wp.json: |-
-  {{ .Files.Get "files/_dash-wp.json" | indent 2 }}
+{{ .Files.Get "files/_dash-wp.json" | indent 2 }}
 {{- end }}

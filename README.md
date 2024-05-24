@@ -21,8 +21,7 @@ helm install helm-monitorie /Users/psw/Desktop/git.lukas-pastva/helm-monitorie/c
   --set secrets.type=helm \
   --set mail.username=aaa \
   --set thanos.grafanaAdminPassword=aaa \
-  --set grafana.dashboards.nodeExporterEnabled="true" \
-  --set grafana.dashboards.rempEnabled="default" \
+  --set grafana.dashboards.wpEnabled="default" \
   --debug --dry-run
 
 ```
