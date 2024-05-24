@@ -19,6 +19,7 @@ loki:
   enabled: true
   domain: ""
   ingressUri: ""
+  storage: 3Gi
 prometheus:
   rulesSystem:
     enabled: true
