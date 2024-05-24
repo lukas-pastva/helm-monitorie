@@ -104,7 +104,7 @@
           "exemplar": false,
           "expr": "conveior_dockerContainer{entity=\"$entity\",label_name=\"$container\"}[300s]",
           "instant": true,
-          "legendFormat": "{{ "{{" }}label_name}}",
+          "legendFormat": "{{label_name}}",
           "range": false,
           "refId": "A"
         }
@@ -183,7 +183,7 @@
           "exemplar": false,
           "expr": "probe_success{instance=~\"$url\"}",
           "instant": true,
-          "legendFormat": "{{ "{{" }}instance}}",
+          "legendFormat": "{{instance}}",
           "range": false,
           "refId": "A"
         }
@@ -294,7 +294,7 @@
               "expr": "conveior_sql_query{entity=\"$entity\", query_name=\"conveior_sqlPaymentYear\"}[300s]",
               "format": "time_series",
               "instant": true,
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": false,
               "refId": "A"
             }
@@ -389,7 +389,7 @@
               "exemplar": false,
               "expr": "conveior_sql_query{entity=\"$entity\", query_name=\"conveior_sqlPaymentMonth\"}[300s]",
               "instant": true,
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": false,
               "refId": "A"
             }
@@ -486,7 +486,7 @@
               "expr": "conveior_sql_query{entity=\"$entity\", query_name=\"conveior_sqlPaymentWeekFailed\"}[300s]",
               "format": "time_series",
               "instant": true,
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": false,
               "refId": "A"
             }
@@ -583,7 +583,7 @@
               "exemplar": false,
               "expr": "conveior_sql_query{entity=\"$entity\", query_name=\"conveior_sqlPaymentDayFailed\"}[300s]",
               "instant": true,
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": false,
               "refId": "A"
             }
@@ -679,7 +679,7 @@
               "exemplar": false,
               "expr": "conveior_sql_query{entity=\"$entity\", query_name=\"conveior_sqlPaymentHourFailed\"}[300s]",
               "instant": true,
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": false,
               "refId": "A"
             }
@@ -775,7 +775,7 @@
               "exemplar": false,
               "expr": "conveior_sql_query{entity=\"$entity\", query_name=\"conveior_sqlPaymentGatewayWeekFailed\"}[300s]",
               "instant": true,
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": false,
               "refId": "A"
             }
@@ -871,7 +871,7 @@
               "exemplar": false,
               "expr": "conveior_sql_query{entity=\"$entity\", query_name=\"conveior_sqlPaymentGatewayDayFailed\"}[300s]",
               "instant": true,
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": false,
               "refId": "A"
             }
@@ -968,7 +968,7 @@
               "exemplar": false,
               "expr": "conveior_sql_query{entity=\"$entity\", query_name=\"conveior_sqlPaymentGatewayHourFailed\"}[300s]",
               "instant": true,
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": false,
               "refId": "A"
             }
@@ -1065,7 +1065,7 @@
               "exemplar": false,
               "expr": "conveior_sql_query{entity=\"$entity\", query_name=\"conveior_sqlMailQueing\"}[300s]",
               "instant": true,
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": false,
               "refId": "A"
             }
@@ -1162,7 +1162,7 @@
               "exemplar": false,
               "expr": "conveior_sql_query{entity=\"$entity\", query_name=\"conveior_loginAttempts\"}[300s]",
               "instant": true,
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": false,
               "refId": "A"
             }
@@ -1272,7 +1272,7 @@
               "exemplar": false,
               "expr": "conveior_sql_query{query_name=\"conveior_sqlUserYear\",entity=\"$entity\"}[300s]",
               "instant": true,
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": false,
               "refId": "A"
             }
@@ -1366,7 +1366,7 @@
               "exemplar": false,
               "expr": "conveior_sql_query{entity=\"$entity\",query_name=\"conveior_sqlUserMonth\"}[300s]",
               "instant": true,
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": false,
               "refId": "A"
             }
@@ -1459,7 +1459,7 @@
               "exemplar": false,
               "expr": "conveior_sql_query{query_name=\"conveior_sqlPayment5m\",entity=\"$entity\"}",
               "instant": false,
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": true,
               "refId": "A"
             }
@@ -1772,7 +1772,7 @@
           "exemplar": false,
           "expr": "conveior_hwDisk{entity=\"$entity\",label_name=\"overlay\"}[300s]",
           "instant": true,
-          "legendFormat": "{{ "{{" }}label_name}}",
+          "legendFormat": "{{label_name}}",
           "range": false,
           "refId": "A"
         }
@@ -1873,7 +1873,7 @@
           },
           "editorMode": "code",
           "expr": "conveior_hwCpu{entity=\"$entity\"}",
-          "legendFormat": "{{ "{{" }}label_name}}",
+          "legendFormat": "{{label_name}}",
           "range": true,
           "refId": "A"
         }
@@ -1973,7 +1973,7 @@
           },
           "editorMode": "code",
           "expr": "conveior_hwRam{entity=\"$entity\"}",
-          "legendFormat": "{{ "{{" }}label_name}}",
+          "legendFormat": "{{label_name}}",
           "range": true,
           "refId": "A"
         }
@@ -2072,7 +2072,7 @@
           },
           "editorMode": "code",
           "expr": "conveior_hwSwap{entity=\"$entity\"}",
-          "legendFormat": "{{ "{{" }}label_name}}",
+          "legendFormat": "{{label_name}}",
           "range": true,
           "refId": "A"
         }
@@ -2168,7 +2168,7 @@
           },
           "editorMode": "code",
           "expr": "conveior_hwDisk{entity=\"$entity\"}",
-          "legendFormat": "{{ "{{" }}label_name}}",
+          "legendFormat": "{{label_name}}",
           "range": true,
           "refId": "A"
         }
@@ -2251,7 +2251,7 @@
               "exemplar": false,
               "expr": "conveior_hwCpuProcess{entity=\"$entity\"}[300s]",
               "instant": true,
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": false,
               "refId": "A"
             }
@@ -2321,7 +2321,7 @@
               "exemplar": false,
               "expr": "conveior_hwRamProcess{entity=\"$entity\"}[300s]",
               "instant": true,
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": false,
               "refId": "A"
             }
@@ -2391,7 +2391,7 @@
               "exemplar": false,
               "expr": "conveior_hwProcess{entity=\"$entity\",label_name=\"conveior\"}[300s]",
               "instant": true,
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": false,
               "refId": "A"
             }
@@ -2561,7 +2561,7 @@
               },
               "editorMode": "code",
               "expr": "conveior_hwCpuProcess{entity=\"$entity\"}",
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": true,
               "refId": "A"
             }
@@ -2660,7 +2660,7 @@
               },
               "editorMode": "code",
               "expr": "conveior_hwRamProcess{entity=\"$entity\"}",
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": true,
               "refId": "A"
             }
@@ -2755,7 +2755,7 @@
               },
               "editorMode": "code",
               "expr": "conveior_hwProcess{entity=\"$entity\"}",
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": true,
               "refId": "A"
             }
@@ -2824,7 +2824,7 @@
               "exemplar": false,
               "expr": "conveior_sql_query{entity=\"$entity\",query_name=\"conveior_mysql_global_wait_timeout\"}[300s]",
               "instant": true,
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": false,
               "refId": "A"
             }
@@ -2894,7 +2894,7 @@
               "exemplar": false,
               "expr": "conveior_sql_query{entity=\"$entity\",query_name=\"conveior_mysql_global_interactive_timeout\"}[300s]",
               "instant": true,
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": false,
               "refId": "A"
             }
@@ -2964,7 +2964,7 @@
               "exemplar": false,
               "expr": "conveior_sql_query{entity=\"$entity\",query_name=\"conveior_mysql_local_wait_timeout\"}[300s]",
               "instant": true,
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": false,
               "refId": "A"
             }
@@ -3034,7 +3034,7 @@
               "exemplar": false,
               "expr": "conveior_sql_query{entity=\"$entity\",query_name=\"conveior_mysql_local_interactive_timeout\"}[300s]",
               "instant": true,
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": false,
               "refId": "A"
             }
@@ -3104,7 +3104,7 @@
               "exemplar": false,
               "expr": "sum(conveior_sql_query{entity=\"$entity\",query_name=\"conveior_sqlSleeperProcess\"})",
               "instant": true,
-              "legendFormat": "{{ "{{" }}pod}}",
+              "legendFormat": "{{pod}}",
               "range": false,
               "refId": "A"
             }
@@ -3174,7 +3174,7 @@
               "exemplar": false,
               "expr": "sum(conveior_hwDockerSize{entity=\"$entity\"})",
               "instant": true,
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": false,
               "refId": "A"
             }
@@ -3246,7 +3246,7 @@
               },
               "editorMode": "code",
               "expr": "sum(conveior_hwNetwork{entity=\"$entity\"})",
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": true,
               "refId": "A"
             }
@@ -3320,7 +3320,7 @@
               "exemplar": false,
               "expr": "conveior_elasticsearch{entity=\"$entity\"}[300s]",
               "instant": true,
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": false,
               "refId": "A"
             }
@@ -3416,7 +3416,7 @@
               },
               "editorMode": "code",
               "expr": "conveior_sql_query{entity=\"$entity\",query_name=\"conveior_sqlSleeperProcess\"}",
-              "legendFormat": "{{ "{{" }}pod}}",
+              "legendFormat": "{{pod}}",
               "range": true,
               "refId": "A"
             }
@@ -3511,7 +3511,7 @@
               },
               "editorMode": "code",
               "expr": "conveior_hwDockerSize{entity=\"$entity\"}",
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": true,
               "refId": "A"
             }
@@ -3604,7 +3604,7 @@
               },
               "editorMode": "code",
               "expr": "conveior_hwNetwork{entity=\"$entity\",query_name=\"tx\"}",
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": true,
               "refId": "A"
             },
@@ -3616,7 +3616,7 @@
               "editorMode": "code",
               "expr": "conveior_hwNetwork{entity=\"$entity\",query_name=\"rx\"}*(-1)",
               "hide": false,
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": true,
               "refId": "B"
             }
@@ -3723,7 +3723,7 @@
               },
               "editorMode": "code",
               "expr": "conveior_elasticsearch{entity=\"$entity\"}",
-              "legendFormat": "{{ "{{" }}label_name}}",
+              "legendFormat": "{{label_name}}",
               "range": true,
               "refId": "A"
             }
@@ -3842,7 +3842,7 @@
           },
           "editorMode": "code",
           "expr": "conveior_hwDockerLs{entity=\"$entity\"}*1000",
-          "legendFormat": "{{ "{{" }}label_name}}",
+          "legendFormat": "{{label_name}}",
           "range": true,
           "refId": "A"
         }
@@ -3942,7 +3942,7 @@
           },
           "editorMode": "code",
           "expr": "conveior_hwDockerSize{entity=\"$entity\"}",
-          "legendFormat": "{{ "{{" }}label_name}}",
+          "legendFormat": "{{label_name}}",
           "range": true,
           "refId": "A"
         }
@@ -4010,7 +4010,7 @@
           "exemplar": false,
           "expr": "topk(10,conveior_hwDockerSize{entity=\"$entity\"})",
           "instant": true,
-          "legendFormat": "{{ "{{" }}label_name}}",
+          "legendFormat": "{{label_name}}",
           "range": false,
           "refId": "A"
         }
@@ -4110,7 +4110,7 @@
           },
           "editorMode": "code",
           "expr": "conveior_hwDockerVolumeSize{entity=\"$entity\"}",
-          "legendFormat": "{{ "{{" }}label_name}}",
+          "legendFormat": "{{label_name}}",
           "range": true,
           "refId": "A"
         }
@@ -4178,7 +4178,7 @@
           "exemplar": false,
           "expr": "topk(10,conveior_hwDockerVolumeSize{entity=\"$entity\"})",
           "instant": true,
-          "legendFormat": "{{ "{{" }}label_name}}",
+          "legendFormat": "{{label_name}}",
           "range": false,
           "refId": "A"
         }
@@ -4277,7 +4277,7 @@
           },
           "editorMode": "code",
           "expr": "conveior_hwHeartbeat{entity=\"$entity\"}*1000",
-          "legendFormat": "{{ "{{" }}job}}",
+          "legendFormat": "{{job}}",
           "range": true,
           "refId": "A"
         }
@@ -4378,7 +4378,7 @@
           "exemplar": false,
           "expr": "topk(20, conveior_sql_query{entity=\"$entity\", query_name=\"conveior_dbSize\"})",
           "instant": false,
-          "legendFormat": "{{ "{{" }}label_name}}",
+          "legendFormat": "{{label_name}}",
           "range": true,
           "refId": "A"
         }
@@ -4446,7 +4446,7 @@
           "exemplar": false,
           "expr": "topk(10, conveior_sql_query{entity=\"$entity\", query_name=\"conveior_dbSize\"})",
           "instant": true,
-          "legendFormat": "{{ "{{" }}label_name}}",
+          "legendFormat": "{{label_name}}",
           "range": false,
           "refId": "A"
         }
