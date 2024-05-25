@@ -59,8 +59,7 @@
                 "value": 3
               }
             ]
-          },
-          "unitScale": true
+          }
         },
         "overrides": []
       },
@@ -91,7 +90,7 @@
         "textMode": "name",
         "wideLayout": true
       },
-      "pluginVersion": "10.3.1",
+      "pluginVersion": "10.4.3",
       "repeat": "container",
       "repeatDirection": "h",
       "targets": [
@@ -138,8 +137,7 @@
                 "value": 1
               }
             ]
-          },
-          "unitScale": true
+          }
         },
         "overrides": []
       },
@@ -170,7 +168,7 @@
         "textMode": "name",
         "wideLayout": true
       },
-      "pluginVersion": "10.3.1",
+      "pluginVersion": "10.4.3",
       "repeat": "url",
       "repeatDirection": "h",
       "targets": [
@@ -1547,8 +1545,7 @@
               }
             ]
           },
-          "unit": "percent",
-          "unitScale": true
+          "unit": "percent"
         },
         "overrides": []
       },
@@ -1648,8 +1645,7 @@
               }
             ]
           },
-          "unit": "bytes",
-          "unitScale": true
+          "unit": "bytes"
         },
         "overrides": []
       },
@@ -1748,8 +1744,7 @@
               }
             ]
           },
-          "unit": "bytes",
-          "unitScale": true
+          "unit": "bytes"
         },
         "overrides": []
       },
@@ -1845,8 +1840,7 @@
               }
             ]
           },
-          "unit": "percent",
-          "unitScale": true
+          "unit": "percent"
         },
         "overrides": []
       },
@@ -1946,8 +1940,7 @@
               }
             ]
           },
-          "unit": "percent",
-          "unitScale": true
+          "unit": "percent"
         },
         "overrides": []
       },
@@ -2050,8 +2043,7 @@
               }
             ]
           },
-          "unit": "bytes",
-          "unitScale": true
+          "unit": "bytes"
         },
         "overrides": []
       },
@@ -2113,8 +2105,7 @@
               }
             ]
           },
-          "unit": "dateTimeAsIso",
-          "unitScale": true
+          "unit": "dateTimeAsIso"
         },
         "overrides": []
       },
@@ -2144,7 +2135,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.3.1",
+      "pluginVersion": "10.4.3",
       "targets": [
         {
           "datasource": {
@@ -2184,8 +2175,7 @@
               }
             ]
           },
-          "unit": "s",
-          "unitScale": true
+          "unit": "s"
         },
         "overrides": []
       },
@@ -2215,7 +2205,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.3.1",
+      "pluginVersion": "10.4.3",
       "targets": [
         {
           "datasource": {
@@ -2255,8 +2245,7 @@
               }
             ]
           },
-          "unit": "s",
-          "unitScale": true
+          "unit": "s"
         },
         "overrides": []
       },
@@ -2286,7 +2275,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.3.1",
+      "pluginVersion": "10.4.3",
       "targets": [
         {
           "datasource": {
@@ -2326,8 +2315,7 @@
               }
             ]
           },
-          "unit": "s",
-          "unitScale": true
+          "unit": "s"
         },
         "overrides": []
       },
@@ -2357,7 +2345,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.3.1",
+      "pluginVersion": "10.4.3",
       "targets": [
         {
           "datasource": {
@@ -2397,8 +2385,7 @@
               }
             ]
           },
-          "unit": "s",
-          "unitScale": true
+          "unit": "s"
         },
         "overrides": []
       },
@@ -2428,7 +2415,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.3.1",
+      "pluginVersion": "10.4.3",
       "targets": [
         {
           "datasource": {
@@ -2502,8 +2489,7 @@
               }
             ]
           },
-          "unit": "none",
-          "unitScale": true
+          "unit": "none"
         },
         "overrides": []
       },
@@ -2597,8 +2583,7 @@
               }
             ]
           },
-          "unit": "Bps",
-          "unitScale": true
+          "unit": "Bps"
         },
         "overrides": []
       },
@@ -2718,8 +2703,7 @@
               }
             ]
           },
-          "unit": "none",
-          "unitScale": true
+          "unit": "none"
         },
         "overrides": []
       },
@@ -2817,8 +2801,7 @@
               }
             ]
           },
-          "unit": "dateTimeAsSystem",
-          "unitScale": true
+          "unit": "dateTimeAsSystem"
         },
         "overrides": []
       },
@@ -2916,8 +2899,7 @@
               }
             ]
           },
-          "unit": "dateTimeAsSystem",
-          "unitScale": true
+          "unit": "dateTimeAsSystem"
         },
         "overrides": []
       },
@@ -2963,7 +2945,7 @@
         "type": "prometheus",
         "uid": "P5DCFC7561CCDE821"
       },
-      "description": "",
+      "description": "Showing only conveior_hwDockerVirtualSize, there is also conveior_hwDockerSize metric",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3016,8 +2998,7 @@
               }
             ]
           },
-          "unit": "bytes",
-          "unitScale": true
+          "unit": "bytes"
         },
         "overrides": []
       },
@@ -3049,7 +3030,7 @@
             "uid": "P5DCFC7561CCDE821"
           },
           "editorMode": "code",
-          "expr": "conveior_hwDockerSize{entity=\"$entity\"}",
+          "expr": "conveior_hwDockerVirtualSize{entity=\"$entity\"}",
           "legendFormat": "{{label_name}}",
           "range": true,
           "refId": "A"
@@ -3077,8 +3058,7 @@
             }
           },
           "mappings": [],
-          "unit": "bytes",
-          "unitScale": true
+          "unit": "bytes"
         },
         "overrides": []
       },
@@ -3116,7 +3096,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "topk(10,conveior_hwDockerSize{entity=\"$entity\"})",
+          "expr": "topk(10,conveior_hwDockerVirtualSize{entity=\"$entity\"})",
           "instant": true,
           "legendFormat": "{{label_name}}",
           "range": false,
@@ -3183,8 +3163,7 @@
               }
             ]
           },
-          "unit": "bytes",
-          "unitScale": true
+          "unit": "bytes"
         },
         "overrides": []
       },
@@ -3244,8 +3223,7 @@
             }
           },
           "mappings": [],
-          "unit": "bytes",
-          "unitScale": true
+          "unit": "bytes"
         },
         "overrides": []
       },
@@ -3349,8 +3327,7 @@
               }
             ]
           },
-          "unit": "bytes",
-          "unitScale": true
+          "unit": "bytes"
         },
         "overrides": []
       },
@@ -3412,8 +3389,7 @@
             }
           },
           "mappings": [],
-          "unit": "bytes",
-          "unitScale": true
+          "unit": "bytes"
         },
         "overrides": []
       },
@@ -3684,7 +3660,7 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": [
             "All"
           ],
@@ -3715,7 +3691,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": [
             "All"
           ],
@@ -3745,7 +3721,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": [
             "All"
           ],
@@ -3778,7 +3754,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": [
             "All"
           ],
@@ -3811,7 +3787,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": [
             "All"
           ],
@@ -3824,7 +3800,6 @@
           "uid": "P8E80F9AEF21F6940"
         },
         "definition": "",
-        "error": {},
         "hide": 2,
         "includeAll": true,
         "label": "loki_file_remp_campaign",
@@ -3845,7 +3820,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": [
             "All"
           ],
@@ -3858,7 +3833,6 @@
           "uid": "P8E80F9AEF21F6940"
         },
         "definition": "",
-        "error": {},
         "hide": 2,
         "includeAll": true,
         "label": "loki_file_remp_mailer",
@@ -3879,12 +3853,12 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": [
-            "All"
+            "dashboard-staging-master"
           ],
           "value": [
-            "$__all"
+            "dashboard-staging-master"
           ]
         },
         "datasource": {
