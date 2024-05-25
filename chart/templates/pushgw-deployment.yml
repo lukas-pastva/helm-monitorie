@@ -25,7 +25,7 @@ spec:
       containers:
         - args:
             - '--web.route-prefix=/{{ .Values.pushgw.uri }}'
-          image: 'quay.io/prometheus/pushgateway:v1.6.0'
+          image: 'quay.io/prometheus/pushgateway:v1.8.0'
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:

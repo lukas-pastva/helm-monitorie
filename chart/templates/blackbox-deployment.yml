@@ -30,7 +30,7 @@ spec:
         - args:
             - '--config.file=/config/blackbox.yaml'
           env: null
-          image: 'prom/blackbox-exporter:v0.22.0'
+          image: 'prom/blackbox-exporter:v0.25.0'
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:

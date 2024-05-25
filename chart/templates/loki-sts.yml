@@ -58,7 +58,7 @@ spec:
                 secretKeyRef:
                   key: S3_LOKI_SECRET_ACCESS_KEY
                   name: secret
-          image: 'docker.io/grafana/loki:2.9.0'
+          image: 'docker.io/grafana/loki:2.9.8'
           imagePullPolicy: IfNotPresent
           name: loki
           ports:

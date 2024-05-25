@@ -48,7 +48,7 @@ spec:
             - '--storage.tsdb.max-block-duration=2h'
             - '--storage.tsdb.min-block-duration=2h'
             - '--web.enable-remote-write-receiver'
-          image: 'quay.io/prometheus/prometheus:v2.40.5'
+          image: 'quay.io/prometheus/prometheus:v2.52.0'
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 6
@@ -123,7 +123,7 @@ spec:
                 secretKeyRef:
                   key: objstore.yml
                   name: secret
-          image: 'quay.io/thanos/thanos:v0.32.2'
+          image: 'quay.io/thanos/thanos:v0.35.0'
           imagePullPolicy: IfNotPresent
           name: thanos-sidecar
           ports:
