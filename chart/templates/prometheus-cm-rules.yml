@@ -24,7 +24,7 @@ data:
             annotations:
               description: "{{ include "helmMonitorie.name" . }} - missing metrics"
               summary: "{{ include "helmMonitorie.name" . }} - missing metrics"
-            expr: conveior_hwHeartbeat{entity="{{ include "helmMonitorie.name" . }}"} == absent(conveior_hwHeartbeat{entity="{{ include "helmMonitorie.name" . }}"}) offset 5m
+            expr: conveior_hwHeartbeat == absent(conveior_hwHeartbeat) offset 5m
             for: 15m
             labels:
               severity: warning
@@ -34,7 +34,7 @@ data:
             annotations:
               description: "{{ include "helmMonitorie.name" . }} - usage ({{ "{{" }} $value }}%)"
               summary: "{{ include "helmMonitorie.name" . }} - usage ({{ "{{" }} $value }}%)"
-            expr: 100 - ((node_filesystem_avail_bytes{entity="{{ include "helmMonitorie.name" . }}"} * 100) / node_filesystem_size_bytes{entity="{{ include "helmMonitorie.name" . }}"}) > 90
+            expr: 100 - ((node_filesystem_avail_bytes * 100) / node_filesystem_size_bytes) > 90
             for: 5m
             labels:
               severity: warning
@@ -44,7 +44,7 @@ data:
             annotations:
               description: "{{ include "helmMonitorie.name" . }}"
               summary: "{{ include "helmMonitorie.name" . }}"
-            expr: (node_memory_SwapTotal_bytes{entity="{{ include "helmMonitorie.name" . }}"} == 0) or on() vector(0)
+            expr: (node_memory_SwapTotal_bytes == 0) or on() vector(0)
             for: 10m
             labels:
               severity: warning
@@ -54,7 +54,7 @@ data:
             annotations:
               description: "{{ include "helmMonitorie.name" . }} - High Swap Usage"
               summary: "{{ include "helmMonitorie.name" . }} - High Swap Usage"
-            expr: (node_memory_SwapTotal_bytes{entity="{{ include "helmMonitorie.name" . }}"} - node_memory_SwapFree_bytes{entity="{{ include "helmMonitorie.name" . }}"}) / node_memory_SwapTotal_bytes{entity="{{ include "helmMonitorie.name" . }}"} > 0.80
+            expr: (node_memory_SwapTotal_bytes - node_memory_SwapFree_bytes) / node_memory_SwapTotal_bytes > 0.80
             for: 5m
             labels:
               severity: warning
@@ -64,7 +64,7 @@ data:
             annotations:
               description: "{{ include "helmMonitorie.name" . }}"
               summary: "{{ include "helmMonitorie.name" . }}"
-            expr: conveior_dockerContainer{entity="{{ include "helmMonitorie.name" . }}"} > 2
+            expr: conveior_dockerContainer > 2
             for: 5m
             labels:
               severity: warning
@@ -74,7 +74,7 @@ data:
             annotations:
               description: "{{ include "helmMonitorie.name" . }} - Elastic red indices ({{ "{{" }} $value }})"
               summary: "{{ include "helmMonitorie.name" . }} - Elastic red indices ({{ "{{" }} $value }})"
-            expr: conveior_elasticsearch{entity="{{ include "helmMonitorie.name" . }}",label_name="red"} > 0
+            expr: conveior_elasticsearch{label_name="red"} > 0
             for: 5m
             labels:
               severity: warning
