@@ -44,7 +44,7 @@ data:
             annotations:
               description: "{{ include "helmMonitorie.name" . }}"
               summary: "{{ include "helmMonitorie.name" . }}"
-            expr: (node_memory_SwapTotal_bytes{entity="{{ include "helmMonitorie.name" . }}"} == 0) or on() vector(0)
+            expr: node_memory_SwapTotal_bytes{entity="{{ include "helmMonitorie.name" . }}"} / 1024 / 1024 / 1024 < 4            
             for: 10m
             labels:
               severity: warning
