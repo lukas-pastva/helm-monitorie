@@ -1,4 +1,4 @@
-{{- if eq .Values.prometheus.rulesSystem.enabled true }}
+{{ if eq .Values.prometheus.rulesSystem.enabled true -}}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -9,7 +9,7 @@ data:
     groups:
       - name: dashboard
         rules:
-        {{- if .Values.prometheus.rulesSystem.enableCertificateExpirySoon }}
+  {{- if .Values.prometheus.rulesSystem.enableCertificateExpirySoon }}
           - alert: CertificateExpirySoon
             expr: probe_ssl_earliest_cert_expiry - time() < 86400
             for: 10m
@@ -18,68 +18,68 @@ data:
             annotations:
               title: "Certificate Expiry Alert"
               description: "The SSL certificate is expiring in less than 24 hours."
-        {{- end }}
-        {{- if .Values.prometheus.rulesSystem.enableHeartBeat }}
+  {{- end  }}
+  {{- if .Values.prometheus.rulesSystem.enableHeartBeat }}
           - alert: HeartBeat
             annotations:
               description: "{{ include "helmMonitorie.name" . }} - missing metrics"
               summary: "{{ include "helmMonitorie.name" . }} - missing metrics"
-            expr: conveior_hwHeartbeat == absent(conveior_hwHeartbeat) offset 5m
+            expr: absent(conveior_hwHeartbeat{entity="{{ include "helmMonitorie.name" . }}"}) == 1
             for: 15m
             labels:
               severity: warning
-        {{- end }}
-        {{- if .Values.prometheus.rulesSystem.enableDiskUsage }}
-          - alert: DiskUsage
-            annotations:
-              description: "{{ include "helmMonitorie.name" . }} - usage ({{ "{{" }} $value }}%)"
-              summary: "{{ include "helmMonitorie.name" . }} - usage ({{ "{{" }} $value }}%)"
-            expr: 100 - ((node_filesystem_avail_bytes * 100) / node_filesystem_size_bytes) > 90
-            for: 5m
-            labels:
-              severity: warning
-        {{- end }}
-        {{- if .Values.prometheus.rulesSystem.enableNoSWAP }}
+  {{- end  }}
+  {{- if .Values.prometheus.rulesSystem.enableDiskUsage }}
+            - alert: DiskUsage
+              annotations:
+                description: "{{ include "helmMonitorie.name" . }} - usage ({{ "{{" }} $value }}%)"
+                summary: "{{ include "helmMonitorie.name" . }} - usage ({{ "{{" }} $value }}%)"
+              expr: 100 - ((node_filesystem_avail_bytes{entity="{{ include "helmMonitorie.name" . }}"} * 100) / node_filesystem_size_bytes{entity="{{ include "helmMonitorie.name" . }}"}) > 90
+              for: 5m
+              labels:
+                severity: warning
+  {{- end }}
+  {{- if .Values.prometheus.rulesSystem.enableNoSWAP }}
           - alert: NoSWAP
             annotations:
               description: "{{ include "helmMonitorie.name" . }}"
               summary: "{{ include "helmMonitorie.name" . }}"
-            expr: (node_memory_SwapTotal_bytes == 0) or on() vector(0)
+            expr: (node_memory_SwapTotal_bytes{entity="{{ include "helmMonitorie.name" . }}"} == 0) or on() vector(0)
             for: 10m
             labels:
               severity: warning
-        {{- end }}
-        {{- if .Values.prometheus.rulesSystem.enableHighSwapUsage }}
+  {{- end  }}
+  {{- if .Values.prometheus.rulesSystem.enableHighSwapUsage }}
           - alert: HighSwapUsage
             annotations:
               description: "{{ include "helmMonitorie.name" . }} - High Swap Usage"
               summary: "{{ include "helmMonitorie.name" . }} - High Swap Usage"
-            expr: (node_memory_SwapTotal_bytes - node_memory_SwapFree_bytes) / node_memory_SwapTotal_bytes > 0.80
+            expr: (node_memory_SwapTotal_bytes{entity="{{ include "helmMonitorie.name" . }}"} - node_memory_SwapFree_bytes{entity="{{ include "helmMonitorie.name" . }}"}) / node_memory_SwapTotal_bytes{entity="{{ include "helmMonitorie.name" . }}"} > 0.80
             for: 5m
             labels:
               severity: warning
-        {{- end }}
-        {{- if .Values.prometheus.rulesSystem.enableContainerDown }}
+  {{- end  }}
+  {{- if .Values.prometheus.rulesSystem.enableContainerDown }}
           - alert: ContainerDown
             annotations:
               description: "{{ include "helmMonitorie.name" . }}"
               summary: "{{ include "helmMonitorie.name" . }}"
-            expr: conveior_dockerContainer > 2
+            expr: conveior_dockerContainer{entity="{{ include "helmMonitorie.name" . }}"} > 2
             for: 5m
             labels:
               severity: warning
-        {{- end }}
-        {{- if .Values.prometheus.rulesSystem.enableElasticSearchIndices }}
+  {{- end  }}
+  {{- if .Values.prometheus.rulesSystem.enableElasticSearchIndices }}
           - alert: ElasticSearchIndices
             annotations:
               description: "{{ include "helmMonitorie.name" . }} - Elastic red indices ({{ "{{" }} $value }})"
               summary: "{{ include "helmMonitorie.name" . }} - Elastic red indices ({{ "{{" }} $value }})"
-            expr: conveior_elasticsearch{label_name="red"} > 0
+            expr: conveior_elasticsearch{entity="{{ include "helmMonitorie.name" . }}",label_name="red"} > 0
             for: 5m
             labels:
               severity: warning
-        {{- end }}
-        {{- if .Values.prometheus.rulesSystem.enableLokiErrors }}
+  {{- end  }}
+  {{- if .Values.prometheus.rulesSystem.enableLokiErrors }}
           - alert: LokiErrors
             expr: rate(loki_error_rate[1m]) > 1
             for: 5m
@@ -88,8 +88,8 @@ data:
             annotations:
               summary: "{{ include "helmMonitorie.name" . }} - Loki errors ({{ "{{" }} $value }})"
               description: "{{ include "helmMonitorie.name" . }} - Loki errors ({{ "{{" }} $value }})"
-        {{- end }}
-        {{- if .Values.prometheus.rulesSystem.enableLokiHighErrors }}
+  {{- end  }}
+  {{- if .Values.prometheus.rulesSystem.enableLokiHighErrors }}
           - alert: LokiErrorsHigh
             expr: rate(loki_error_rate[5m]) > 5
             for: 15m
@@ -98,8 +98,8 @@ data:
             annotations:
               summary: "{{ include "helmMonitorie.name" . }} - Loki errors ({{ "{{" }} $value }})"
               description: "{{ include "helmMonitorie.name" . }} - Loki errors ({{ "{{" }} $value }})"
-        {{- end }}
-        {{- if .Values.prometheus.extraRules }}
-        {{ toYaml .Values.prometheus.extraRules | nindent 8 }}
-        {{- end }}
-{{- end }}
+  {{- end  }}
+  {{- if .Values.prometheus.extraRules }}
+  {{- toYaml .Values.prometheus.extraRules | nindent 10 }}
+  {{- end }}
+  {{ end }}
