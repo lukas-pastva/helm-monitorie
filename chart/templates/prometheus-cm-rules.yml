@@ -30,22 +30,22 @@ data:
               severity: warning
   {{- end  }}
   {{- if .Values.prometheus.rulesSystem.enableDiskUsage }}
-          - alert: DiskUsage
-            annotations:
-              description: "{{ include "helmMonitorie.name" . }} - usage ({{ "{{" }} $value }}%)"
-              summary: "{{ include "helmMonitorie.name" . }} - usage ({{ "{{" }} $value }}%)"
-            expr: conveior_hwDisk{entity="{{ include "helmMonitorie.name" . }}"} > 90
-            for: 5m
-            labels:
-              severity: warning
-  {{- end  }}
+            - alert: DiskUsage
+              annotations:
+                description: "{{ include "helmMonitorie.name" . }} - usage ({{ "{{" }} $value }}%)"
+                summary: "{{ include "helmMonitorie.name" . }} - usage ({{ "{{" }} $value }}%)"
+              expr: 100 - ((node_filesystem_avail_bytes{entity="{{ include "helmMonitorie.name" . }}"} * 100) / node_filesystem_size_bytes{entity="{{ include "helmMonitorie.name" . }}"}) > 90
+              for: 5m
+              labels:
+                severity: warning
+  {{- end }}
   {{- if .Values.prometheus.rulesSystem.enableNoSWAP }}
           - alert: NoSWAP
             annotations:
               description: "{{ include "helmMonitorie.name" . }}"
               summary: "{{ include "helmMonitorie.name" . }}"
-            expr: (conveior_hwSwap{entity="{{ include "helmMonitorie.name" . }}",label_name="total"} or on() vector(0)) < 524288000
-            for: 5m
+            expr: (node_memory_SwapTotal_bytes{entity="{{ include "helmMonitorie.name" . }}"} == 0) or on() vector(0)
+            for: 10m
             labels:
               severity: warning
   {{- end  }}
@@ -54,7 +54,7 @@ data:
             annotations:
               description: "{{ include "helmMonitorie.name" . }} - High Swap Usage"
               summary: "{{ include "helmMonitorie.name" . }} - High Swap Usage"
-            expr: conveior_hwSwap{entity="{{ include "helmMonitorie.name" . }}",label_name="used"} / conveior_hwSwap{entity="{{ include "helmMonitorie.name" . }}",label_name="total"} > 0.80
+            expr: (node_memory_SwapTotal_bytes{entity="{{ include "helmMonitorie.name" . }}"} - node_memory_SwapFree_bytes{entity="{{ include "helmMonitorie.name" . }}"}) / node_memory_SwapTotal_bytes{entity="{{ include "helmMonitorie.name" . }}"} > 0.80
             for: 5m
             labels:
               severity: warning

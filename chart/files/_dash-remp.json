@@ -1581,6 +1581,19 @@
           "legendFormat": "{{label_name}}",
           "range": true,
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P5DCFC7561CCDE821"
+          },
+          "editorMode": "code",
+          "expr": "(((count(count(node_cpu_seconds_total{entity=\"$entity\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode='idle',entity=\"$entity\"}[10m])))) * 100) / count(count(node_cpu_seconds_total{entity=\"$entity\"}) by (cpu))",
+          "hide": true,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
         }
       ],
       "title": "CPU",
@@ -1607,7 +1620,7 @@
             "axisSoftMin": 0,
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 5,
+            "fillOpacity": 0,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -1677,10 +1690,25 @@
             "uid": "P5DCFC7561CCDE821"
           },
           "editorMode": "code",
-          "expr": "conveior_hwRam{entity=\"$entity\"}",
-          "legendFormat": "{{label_name}}",
+          "expr": "node_memory_MemTotal_bytes{entity=\"$entity\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "total",
           "range": true,
-          "refId": "A"
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P5DCFC7561CCDE821"
+          },
+          "editorMode": "code",
+          "expr": "node_memory_MemTotal_bytes{entity=\"$entity\"} - node_memory_MemAvailable_bytes{entity=\"$entity\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "used",
+          "range": true,
+          "refId": "C"
         }
       ],
       "title": "RAM",
@@ -1706,7 +1734,7 @@
             "axisSoftMin": 0,
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 5,
+            "fillOpacity": 0,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -1776,10 +1804,25 @@
             "uid": "P5DCFC7561CCDE821"
           },
           "editorMode": "code",
-          "expr": "conveior_hwSwap{entity=\"$entity\"}",
-          "legendFormat": "{{label_name}}",
+          "expr": "node_memory_SwapTotal_bytes{entity=\"$entity\"} - node_memory_SwapFree_bytes{entity=\"$entity\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "used new",
           "range": true,
-          "refId": "A"
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P5DCFC7561CCDE821"
+          },
+          "editorMode": "code",
+          "expr": "node_memory_SwapTotal_bytes{entity=\"$entity\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "total new",
+          "range": true,
+          "refId": "C"
         }
       ],
       "title": "SWAP",
@@ -1872,10 +1915,12 @@
             "uid": "P5DCFC7561CCDE821"
           },
           "editorMode": "code",
-          "expr": "conveior_hwDisk{entity=\"$entity\"}",
-          "legendFormat": "{{label_name}}",
+          "expr": "100 - ((node_filesystem_avail_bytes{entity=\"$entity\"} * 100) / node_filesystem_size_bytes{entity=\"$entity\"})",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "{{mountpoint}}",
           "range": true,
-          "refId": "A"
+          "refId": "B"
         }
       ],
       "title": "DISK",
@@ -2144,7 +2189,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "conveior_hwBoot{entity=\"$entity\"}[300s]",
+          "expr": "node_boot_time_seconds{entity=\"$entity\"} * 1000",
           "instant": true,
           "legendFormat": "__auto",
           "range": false,
@@ -3660,7 +3705,7 @@
     "list": [
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
@@ -3691,7 +3736,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
@@ -3721,7 +3766,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
@@ -3754,7 +3799,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
@@ -3787,7 +3832,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
@@ -3820,7 +3865,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
@@ -3853,12 +3898,12 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
-            "dashboard-staging-master"
+            "All"
           ],
           "value": [
-            "dashboard-staging-master"
+            "$__all"
           ]
         },
         "datasource": {
