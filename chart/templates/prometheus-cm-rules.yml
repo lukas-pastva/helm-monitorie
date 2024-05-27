@@ -1,4 +1,4 @@
-{{ if eq .Values.prometheus.rulesSystem.enabled true -}}
+{{- if eq .Values.prometheus.rulesSystem.enabled true }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -9,7 +9,7 @@ data:
     groups:
       - name: dashboard
         rules:
-  {{- if .Values.prometheus.rulesSystem.enableCertificateExpirySoon }}
+        {{- if .Values.prometheus.rulesSystem.enableCertificateExpirySoon }}
           - alert: CertificateExpirySoon
             expr: probe_ssl_earliest_cert_expiry - time() < 86400
             for: 10m
@@ -18,28 +18,28 @@ data:
             annotations:
               title: "Certificate Expiry Alert"
               description: "The SSL certificate is expiring in less than 24 hours."
-  {{- end  }}
-  {{- if .Values.prometheus.rulesSystem.enableHeartBeat }}
+        {{- end }}
+        {{- if .Values.prometheus.rulesSystem.enableHeartBeat }}
           - alert: HeartBeat
             annotations:
               description: "{{ include "helmMonitorie.name" . }} - missing metrics"
               summary: "{{ include "helmMonitorie.name" . }} - missing metrics"
-            expr: conveior_hwHeartbeat{entity="{{ include "helmMonitorie.name" . }}"} == conveior_hwHeartbeat{entity="{{ include "helmMonitorie.name" . }}"} offset 5m
+            expr: conveior_hwHeartbeat{entity="{{ include "helmMonitorie.name" . }}"} == absent(conveior_hwHeartbeat{entity="{{ include "helmMonitorie.name" . }}"}) offset 5m
             for: 15m
             labels:
               severity: warning
-  {{- end  }}
-  {{- if .Values.prometheus.rulesSystem.enableDiskUsage }}
-            - alert: DiskUsage
-              annotations:
-                description: "{{ include "helmMonitorie.name" . }} - usage ({{ "{{" }} $value }}%)"
-                summary: "{{ include "helmMonitorie.name" . }} - usage ({{ "{{" }} $value }}%)"
-              expr: 100 - ((node_filesystem_avail_bytes{entity="{{ include "helmMonitorie.name" . }}"} * 100) / node_filesystem_size_bytes{entity="{{ include "helmMonitorie.name" . }}"}) > 90
-              for: 5m
-              labels:
-                severity: warning
-  {{- end }}
-  {{- if .Values.prometheus.rulesSystem.enableNoSWAP }}
+        {{- end }}
+        {{- if .Values.prometheus.rulesSystem.enableDiskUsage }}
+          - alert: DiskUsage
+            annotations:
+              description: "{{ include "helmMonitorie.name" . }} - usage ({{ "{{" }} $value }}%)"
+              summary: "{{ include "helmMonitorie.name" . }} - usage ({{ "{{" }} $value }}%)"
+            expr: 100 - ((node_filesystem_avail_bytes{entity="{{ include "helmMonitorie.name" . }}"} * 100) / node_filesystem_size_bytes{entity="{{ include "helmMonitorie.name" . }}"}) > 90
+            for: 5m
+            labels:
+              severity: warning
+        {{- end }}
+        {{- if .Values.prometheus.rulesSystem.enableNoSWAP }}
           - alert: NoSWAP
             annotations:
               description: "{{ include "helmMonitorie.name" . }}"
@@ -48,8 +48,8 @@ data:
             for: 10m
             labels:
               severity: warning
-  {{- end  }}
-  {{- if .Values.prometheus.rulesSystem.enableHighSwapUsage }}
+        {{- end }}
+        {{- if .Values.prometheus.rulesSystem.enableHighSwapUsage }}
           - alert: HighSwapUsage
             annotations:
               description: "{{ include "helmMonitorie.name" . }} - High Swap Usage"
@@ -58,8 +58,8 @@ data:
             for: 5m
             labels:
               severity: warning
-  {{- end  }}
-  {{- if .Values.prometheus.rulesSystem.enableContainerDown }}
+        {{- end }}
+        {{- if .Values.prometheus.rulesSystem.enableContainerDown }}
           - alert: ContainerDown
             annotations:
               description: "{{ include "helmMonitorie.name" . }}"
@@ -68,8 +68,8 @@ data:
             for: 5m
             labels:
               severity: warning
-  {{- end  }}
-  {{- if .Values.prometheus.rulesSystem.enableElasticSearchIndices }}
+        {{- end }}
+        {{- if .Values.prometheus.rulesSystem.enableElasticSearchIndices }}
           - alert: ElasticSearchIndices
             annotations:
               description: "{{ include "helmMonitorie.name" . }} - Elastic red indices ({{ "{{" }} $value }})"
@@ -78,8 +78,8 @@ data:
             for: 5m
             labels:
               severity: warning
-  {{- end  }}
-  {{- if .Values.prometheus.rulesSystem.enableLokiErrors }}
+        {{- end }}
+        {{- if .Values.prometheus.rulesSystem.enableLokiErrors }}
           - alert: LokiErrors
             expr: rate(loki_error_rate[1m]) > 1
             for: 5m
@@ -88,8 +88,8 @@ data:
             annotations:
               summary: "{{ include "helmMonitorie.name" . }} - Loki errors ({{ "{{" }} $value }})"
               description: "{{ include "helmMonitorie.name" . }} - Loki errors ({{ "{{" }} $value }})"
-  {{- end  }}
-  {{- if .Values.prometheus.rulesSystem.enableLokiHighErrors }}
+        {{- end }}
+        {{- if .Values.prometheus.rulesSystem.enableLokiHighErrors }}
           - alert: LokiErrorsHigh
             expr: rate(loki_error_rate[5m]) > 5
             for: 15m
@@ -98,8 +98,8 @@ data:
             annotations:
               summary: "{{ include "helmMonitorie.name" . }} - Loki errors ({{ "{{" }} $value }})"
               description: "{{ include "helmMonitorie.name" . }} - Loki errors ({{ "{{" }} $value }})"
-  {{- end  }}
-  {{- if .Values.prometheus.extraRules }}
-  {{- toYaml .Values.prometheus.extraRules | nindent 10 }}
-  {{- end }}
-  {{ end }}
+        {{- end }}
+        {{- if .Values.prometheus.extraRules }}
+        {{ toYaml .Values.prometheus.extraRules | nindent 8 }}
+        {{- end }}
+{{- end }}
