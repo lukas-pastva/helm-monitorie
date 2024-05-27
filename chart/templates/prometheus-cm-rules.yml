@@ -30,14 +30,14 @@ data:
               severity: warning
   {{- end  }}
   {{- if .Values.prometheus.rulesSystem.enableDiskUsage }}
-            - alert: DiskUsage
-              annotations:
-                description: "{{ include "helmMonitorie.name" . }} - usage ({{ "{{" }} $value }}%)"
-                summary: "{{ include "helmMonitorie.name" . }} - usage ({{ "{{" }} $value }}%)"
-              expr: 100 - ((node_filesystem_avail_bytes{entity="{{ include "helmMonitorie.name" . }}"} * 100) / node_filesystem_size_bytes{entity="{{ include "helmMonitorie.name" . }}"}) > 90
-              for: 5m
-              labels:
-                severity: warning
+          - alert: DiskUsage
+            annotations:
+              description: "{{ include "helmMonitorie.name" . }} - usage ({{ "{{" }} $value }}%)"
+              summary: "{{ include "helmMonitorie.name" . }} - usage ({{ "{{" }} $value }}%)"
+            expr: 100 - ((node_filesystem_avail_bytes{entity="{{ include "helmMonitorie.name" . }}"} * 100) / node_filesystem_size_bytes{entity="{{ include "helmMonitorie.name" . }}"}) > 90
+            for: 5m
+            labels:
+              severity: warning
   {{- end }}
   {{- if .Values.prometheus.rulesSystem.enableNoSWAP }}
           - alert: NoSWAP
