@@ -24,12 +24,16 @@ jobs:
         with:
           version: v3.5.1
 
-      - name: Get Version from Git Tag
+      - name: Get Tag from Git Describe
         id: get_tag
-        run: echo "::set-output name=TAG_NAME::${GITHUB_REF#refs/tags/}"
+        run: |
+          TAG_NAME=$(git describe --tags --abbrev=0)
+          echo "TAG_NAME=${TAG_NAME}" >> $GITHUB_ENV
+          echo "::set-output name=TAG_NAME::${TAG_NAME}"
 
       - name: Update Chart Version
-        run: sed -i "s/^version:.*/version: ${{ steps.get_tag.outputs.TAG_NAME }}/" chart/Chart.yaml
+        run: |
+          sed -i "s/^version:.*/version: ${{ env.TAG_NAME }}/" chart/Chart.yaml
 
       - name: Package Helm Chart
         run: |
@@ -44,8 +48,8 @@ jobs:
 
       - name: Push Helm Chart to GitHub Packages
         run: |
-          helm chart save ./helm-monitorie-*.tgz ghcr.io/lukas-pastva/helm-monitorie:${{ steps.get_tag.outputs.TAG_NAME }}
-          helm chart push ghcr.io/lukas-pastva/helm-monitorie:${{ steps.get_tag.outputs.TAG_NAME }}
+          helm chart save ./helm-monitorie-*.tgz ghcr.io/lukas-pastva/helm-monitorie:${{ env.TAG_NAME }}
+          helm chart push ghcr.io/lukas-pastva/helm-monitorie:${{ env.TAG_NAME }}
 
       - name: Create Release
         id: create_release
@@ -53,8 +57,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
         with:
-          tag_name: ${{ steps.get_tag.outputs.TAG_NAME }}
-          release_name: "Helm Chart Release ${{ steps.get_tag.outputs.TAG_NAME }}"
+          tag_name: ${{ env.TAG_NAME }}
+          release_name: "Helm Chart Release ${{ env.TAG_NAME }}"
           draft: false
           prerelease: false
 
@@ -65,5 +69,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./helm-monitorie-*.tgz
-          asset_name: helm-monitorie-${{ steps.get_tag.outputs.TAG_NAME }}.tgz
+          asset_name: helm-monitorie-${{ env.TAG_NAME }}.tgz
           asset_content_type: application/gzip
