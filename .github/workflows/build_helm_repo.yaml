@@ -86,15 +86,25 @@ jobs:
           asset_content_type: application/x-yaml
 
       - name: Checkout gh-pages
-        uses: actions/checkout@v2
-        with:
-          ref: gh-pages
-          path: gh-pages
+        if: always()
+        run: |
+          git fetch origin
+          if git ls-remote --exit-code --heads origin gh-pages; then
+            git checkout gh-pages
+            git pull origin gh-pages
+          else
+            git checkout --orphan gh-pages
+            git reset --hard
+            echo "<!DOCTYPE html><title>404 Not Found</title><h1>404 Not Found</h1><p>The requested URL was not found on this server.</p>" > 404.html
+            git add 404.html
+            git commit -m "Initialize gh-pages branch"
+            git push origin gh-pages
+          fi
 
       - name: Copy Files to gh-pages
         run: |
-          cp ./helm-monitorie-*.tgz gh-pages/
-          cp ./index.yaml gh-pages/
+          cp ./helm-monitorie-*.tgz ./gh-pages/
+          cp ./index.yaml ./gh-pages/
 
       - name: Push to gh-pages
         run: |
