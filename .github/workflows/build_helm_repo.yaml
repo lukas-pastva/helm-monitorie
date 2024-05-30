@@ -1,6 +1,10 @@
 name: Helm Publish
 
-on: [workflow_dispatch]
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -26,16 +30,30 @@ jobs:
           helm package chart
           helm repo index --url https://github.com/lukas-pastva/helm-monitorie --merge index.yaml .
 
-      - name: Commit and Push Changes
+      - name: Upload Helm Chart to GitHub Packages
+        run: |
+          helm cm-push ./helm-monitorie-*.tgz oci://ghcr.io/lukas-pastva/charts
+        env:
+          HELM_EXPERIMENTAL_OCI: 1
+          CR_PAT: ${{ secrets.PAT }}
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
-        run: |
-          git add .
-          git commit -m "Update Helm chart and repository index"
-          git push https://$GITHUB_ACTOR:${{ secrets.PAT }}@github.com/lukas-pastva/helm-monitorie.git HEAD:main
-
-      - name: Upload Helm Package as Artifact
-        uses: actions/upload-artifact@v2
         with:
-          name: helm-chart
-          path: "*.tgz"
+          tag_name: v1.0.0
+          release_name: "Helm Chart Release"
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./helm-monitorie-*.tgz
+          asset_name: helm-monitorie-0.1.0.tgz
+          asset_content_type: application/gzip
