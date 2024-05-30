@@ -38,7 +38,7 @@ jobs:
       - name: Package Helm Chart
         run: |
           helm package chart
-          helm repo index . --url https://github.com/lukas-pastva/helm-monitorie --merge index.yaml
+          helm repo index . --url https://lukas-pastva.github.io/helm-monitorie --merge index.yaml
 
       - name: List Files for Debugging
         run: ls -la
@@ -84,3 +84,23 @@ jobs:
           asset_path: ./index.yaml
           asset_name: index.yaml
           asset_content_type: application/x-yaml
+
+      - name: Checkout gh-pages
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Copy Files to gh-pages
+        run: |
+          cp ./helm-monitorie-*.tgz gh-pages/
+          cp ./index.yaml gh-pages/
+
+      - name: Push to gh-pages
+        run: |
+          cd gh-pages
+          git add .
+          git commit -m "Update Helm chart and index.yaml for version ${{ env.TAG_NAME }}"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
