@@ -85,11 +85,10 @@ jobs:
           asset_name: index.yaml
           asset_content_type: application/x-yaml
 
-      - name: Checkout gh-pages
-        if: always()
+      - name: Checkout or Create gh-pages Branch
         run: |
           git fetch origin
-          if git ls-remote --exit-code --heads origin gh-pages; then
+          if git rev-parse --verify origin/gh-pages; then
             git checkout gh-pages
             git pull origin gh-pages
           else
@@ -111,6 +110,6 @@ jobs:
           cd gh-pages
           git add .
           git commit -m "Update Helm chart and index.yaml for version ${{ env.TAG_NAME }}"
-          git push
+          git push origin gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
