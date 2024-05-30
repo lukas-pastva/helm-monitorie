@@ -3,8 +3,8 @@ name: Helm Publish
 on: 
   workflow_dispatch:
   push:
-    branches:
-      - main
+    tags:
+      - '*'
 
 jobs:
   build:
@@ -18,12 +18,18 @@ jobs:
         run: |
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          git pull
 
       - name: Install Helm
         uses: azure/setup-helm@v1
         with:
           version: v3.5.1
+
+      - name: Get Version from Git Tag
+        id: get_tag
+        run: echo "::set-output name=TAG_NAME::${GITHUB_REF#refs/tags/}"
+
+      - name: Update Chart Version
+        run: sed -i "s/^version:.*/version: ${{ steps.get_tag.outputs.TAG_NAME }}/" chart/Chart.yaml
 
       - name: Package Helm Chart
         run: |
@@ -38,8 +44,8 @@ jobs:
 
       - name: Push Helm Chart to GitHub Packages
         run: |
-          helm chart save ./helm-monitorie-*.tgz ghcr.io/lukas-pastva/helm-monitorie:0.1.0
-          helm chart push ghcr.io/lukas-pastva/helm-monitorie:0.1.0
+          helm chart save ./helm-monitorie-*.tgz ghcr.io/lukas-pastva/helm-monitorie:${{ steps.get_tag.outputs.TAG_NAME }}
+          helm chart push ghcr.io/lukas-pastva/helm-monitorie:${{ steps.get_tag.outputs.TAG_NAME }}
 
       - name: Create Release
         id: create_release
@@ -47,8 +53,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
         with:
-          tag_name: v0.1.0
-          release_name: "Helm Chart Release v0.1.0"
+          tag_name: ${{ steps.get_tag.outputs.TAG_NAME }}
+          release_name: "Helm Chart Release ${{ steps.get_tag.outputs.TAG_NAME }}"
           draft: false
           prerelease: false
 
@@ -59,5 +65,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./helm-monitorie-*.tgz
-          asset_name: helm-monitorie-0.1.0.tgz
+          asset_name: helm-monitorie-${{ steps.get_tag.outputs.TAG_NAME }}.tgz
           asset_content_type: application/gzip
