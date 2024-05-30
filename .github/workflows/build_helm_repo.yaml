@@ -30,6 +30,9 @@ jobs:
           helm package chart
           helm repo index --url https://github.com/lukas-pastva/helm-monitorie --merge index.yaml .
 
+      - name: Set Helm Experimental OCI Environment Variable
+        run: echo "HELM_EXPERIMENTAL_OCI=1" >> $GITHUB_ENV
+
       - name: Login to GitHub Container Registry
         run: echo ${{ secrets.PAT }} | helm registry login -u $GITHUB_ACTOR --password-stdin ghcr.io
 
@@ -37,8 +40,6 @@ jobs:
         run: |
           helm chart save ./helm-monitorie-*.tgz ghcr.io/lukas-pastva/helm-monitorie:0.1.0
           helm chart push ghcr.io/lukas-pastva/helm-monitorie:0.1.0
-        env:
-          HELM_EXPERIMENTAL_OCI: 1
 
       - name: Create Release
         id: create_release
