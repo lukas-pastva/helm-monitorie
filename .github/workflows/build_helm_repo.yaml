@@ -10,7 +10,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
@@ -85,20 +86,11 @@ jobs:
           asset_name: index.yaml
           asset_content_type: application/x-yaml
 
-      - name: Checkout or Create gh-pages Branch
-        run: |
-          git fetch origin
-          if git rev-parse --verify origin/gh-pages; then
-            git checkout gh-pages
-            git pull origin gh-pages
-          else
-            git checkout --orphan gh-pages
-            git reset --hard
-            echo "<!DOCTYPE html><title>404 Not Found</title><h1>404 Not Found</h1><p>The requested URL was not found on this server.</p>" > 404.html
-            git add 404.html
-            git commit -m "Initialize gh-pages branch"
-            git push origin gh-pages
-          fi
+      - name: Checkout gh-pages
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+          path: gh-pages
 
       - name: Copy Files to gh-pages
         run: |
