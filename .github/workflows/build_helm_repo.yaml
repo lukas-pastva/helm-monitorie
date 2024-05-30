@@ -30,12 +30,15 @@ jobs:
           helm package chart
           helm repo index --url https://github.com/lukas-pastva/helm-monitorie --merge index.yaml .
 
-      - name: Upload Helm Chart to GitHub Packages
+      - name: Login to GitHub Container Registry
+        run: echo ${{ secrets.PAT }} | helm registry login -u $GITHUB_ACTOR --password-stdin ghcr.io
+
+      - name: Push Helm Chart to GitHub Packages
         run: |
-          helm cm-push ./helm-monitorie-*.tgz oci://ghcr.io/lukas-pastva/charts
+          helm chart save ./helm-monitorie-*.tgz ghcr.io/lukas-pastva/helm-monitorie:0.1.0
+          helm chart push ghcr.io/lukas-pastva/helm-monitorie:0.1.0
         env:
           HELM_EXPERIMENTAL_OCI: 1
-          CR_PAT: ${{ secrets.PAT }}
 
       - name: Create Release
         id: create_release
@@ -43,8 +46,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
         with:
-          tag_name: v1.0.0
-          release_name: "Helm Chart Release"
+          tag_name: v0.1.0
+          release_name: "Helm Chart Release v0.1.0"
           draft: false
           prerelease: false
 
