@@ -102,6 +102,7 @@ spec:
               mountPath: /etc/scripts
             - name: grafana-logs
               mountPath: /var/log
+      restartPolicy: OnFailure
       enableServiceLinks: true
       securityContext:
         fsGroup: 472

@@ -15,8 +15,9 @@ data:
       until curl --fail --silent http://localhost:3000/api/health; do
         RETRIES=$((RETRIES+1))
         if [ $RETRIES -ge 30 ]; then
-          echo "Grafana is not ready after multiple attempts. Exiting."
-          exit 1
+          echo "Grafana is not ready after multiple attempts. Continuing to wait..."
+          sleep 5
+          continue
         fi
         sleep 5
       done
@@ -34,7 +35,9 @@ data:
         
         if [ "$EXISTING_USER_ID" != "null" ]; then
           echo "User $name already exists with ID $EXISTING_USER_ID. Updating role to $role."
-          curl -X PATCH http://$GF_SECURITY_ADMIN_USER:$GF_SECURITY_ADMIN_PASSWORD@localhost:3000/api/orgs/1/users/$EXISTING_USER_ID -H "Content-Type: application/json" -d "{\"role\":\"$role\"}"
+          if ! curl -X PATCH http://$GF_SECURITY_ADMIN_USER:$GF_SECURITY_ADMIN_PASSWORD@localhost:3000/api/orgs/1/users/$EXISTING_USER_ID -H "Content-Type: application/json" -d "{\"role\":\"$role\"}"; then
+            echo "Failed to update role for user $name"
+          fi
         else
           echo "Creating user $name with role $role"
           USER_RESPONSE=$(curl -s -X POST http://$GF_SECURITY_ADMIN_USER:$GF_SECURITY_ADMIN_PASSWORD@localhost:3000/api/admin/users -H "Content-Type: application/json" -d "{\"name\":\"$name\",\"email\":\"$email\",\"login\":\"$name\",\"password\":\"$password\"}")
@@ -42,7 +45,9 @@ data:
           echo "USER_ID: $USER_ID"
           if [ "$USER_ID" != "null" ]; then
             echo "Setting role for user $name to $role"
-            curl -X PATCH http://$GF_SECURITY_ADMIN_USER:$GF_SECURITY_ADMIN_PASSWORD@localhost:3000/api/orgs/1/users/$USER_ID -H "Content-Type: application/json" -d "{\"role\":\"$role\"}"
+            if ! curl -X PATCH http://$GF_SECURITY_ADMIN_USER:$GF_SECURITY_ADMIN_PASSWORD@localhost:3000/api/orgs/1/users/$USER_ID -H "Content-Type: application/json" -d "{\"role\":\"$role\"}"; then
+              echo "Failed to set role for user $name"
+            fi
           else
             echo "Failed to create user $name"
           fi
@@ -51,4 +56,5 @@ data:
     else
       echo "Secret does not exist. Skipping user creation."
     fi
-    exit 0
+    echo "User creation script completed. Sleeping indefinitely..."
+    sleep infinity
