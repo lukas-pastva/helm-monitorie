@@ -23,7 +23,8 @@ spec:
     spec:
       automountServiceAccountToken: true
       containers:
-        - env:
+        - name: grafana
+          env:
             - name: GF_SECURITY_ADMIN_USER
               value: {{ .Values.grafana.adminUsername }}
             - name: GF_SECURITY_ADMIN_PASSWORD
@@ -47,7 +48,6 @@ spec:
               port: 3000
             initialDelaySeconds: 60
             timeoutSeconds: 30
-          name: grafana
           ports:
             - containerPort: 3000
               name: grafana
@@ -62,44 +62,6 @@ spec:
             requests:
               cpu: 30m
               memory: 30Mi
-          lifecycle:
-            postStart:
-              exec:
-                command:
-                  - /bin/sh
-                  - -c
-                  - |
-                    {
-                      echo "Checking for the existence of the secret..."
-                      if [ -f /etc/grafana-users-secret/GRAFANA_USERS ]; then
-                        echo "Secret exists. Proceeding to create users..."
-                        USERS=$(cat /etc/grafana-users-secret/GRAFANA_USERS)
-                        echo "Waiting for Grafana to be ready..."
-                        RETRIES=0
-                        until wget --spider --quiet http://localhost:3000/api/health; do
-                          RETRIES=$((RETRIES+1))
-                          if [ $RETRIES -ge 30 ]; then
-                            echo "Grafana is not ready after multiple attempts. Exiting."
-                            exit 1
-                          fi
-                          sleep 5
-                        done
-                        echo "Grafana is ready. Creating users..."
-                        for user in $(echo $USERS | jq -c '.[]'); do
-                          name=$(echo $user | jq -r '.name')
-                          email=$(echo $user | jq -r '.email')
-                          password=$(echo $user | jq -r '.password')
-                          role=$(echo $user | jq -r '.role')
-                          echo "Creating user $name with role $role"
-                          USER_RESPONSE=$(wget --quiet --method=POST --header="Content-Type: application/json" --body-data="{\"name\":\"$name\",\"email\":\"$email\",\"login\":\"$name\",\"password\":\"$password\"}" --output-document - http://$GF_SECURITY_ADMIN_USER:$GF_SECURITY_ADMIN_PASSWORD@localhost:3000/api/admin/users)
-                          USER_ID=$(echo $USER_RESPONSE | grep -o '"id":[0-9]*' | grep -o '[0-9]*')
-                          echo "Setting role for user $name to $role"
-                          wget --quiet --method=PUT --header="Content-Type: application/json" --body-data="{\"role\":\"$role\"}" --output-document - http://$GF_SECURITY_ADMIN_USER:$GF_SECURITY_ADMIN_PASSWORD@localhost:3000/api/orgs/1/users/${USER_ID}
-                        done
-                      else
-                        echo "Secret does not exist. Skipping user creation."
-                      fi
-                    } >> /var/log/poststart.log 2>&1
           volumeMounts:
             - mountPath: /etc/grafana
               name: grafana-ini
@@ -110,19 +72,17 @@ spec:
             - name: grafana-users-secret
               mountPath: /etc/grafana-users-secret
               readOnly: true
-            - name: grafana-logs
-              mountPath: /var/log
-        - name: log-output
-          image: busybox
+        - name: user-creation
+          image: badouralix/curl-jq
           command:
             - /bin/sh
-            - -c
-            - |
-              while true; do
-                cat /var/log/poststart.log
-                sleep 10
-              done
+            - /etc/scripts/create-users.sh
           volumeMounts:
+            - name: grafana-users-secret
+              mountPath: /etc/grafana-users-secret
+              readOnly: true
+            - name: user-creation-script
+              mountPath: /etc/scripts
             - name: grafana-logs
               mountPath: /var/log
       enableServiceLinks: true
@@ -180,5 +140,8 @@ spec:
         - name: grafana-users-secret
           secret:
             secretName: grafana-users-secret
+        - name: user-creation-script
+          configMap:
+            name: grafana-user-creation-script
         - name: grafana-logs
           emptyDir: {}
