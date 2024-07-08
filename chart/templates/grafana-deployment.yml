@@ -74,6 +74,14 @@ spec:
               readOnly: true
         - name: user-creation
           image: badouralix/curl-jq
+          env:
+            - name: GF_SECURITY_ADMIN_USER
+              value: {{ .Values.grafana.adminUsername }}
+            - name: GF_SECURITY_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: GF_SECURITY_ADMIN_PASSWORD
           command:
             - /bin/sh
             - /etc/scripts/create-users.sh

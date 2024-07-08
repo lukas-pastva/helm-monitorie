@@ -12,7 +12,7 @@ data:
       USERS=$(cat /etc/grafana-users-secret/GRAFANA_USERS)
       echo "Waiting for Grafana to be ready..."
       RETRIES=0
-      until wget --spider --quiet http://localhost:3000/api/health; do
+      until curl --fail --silent http://localhost:3000/api/health; do
         RETRIES=$((RETRIES+1))
         if [ $RETRIES -ge 30 ]; then
           echo "Grafana is not ready after multiple attempts. Exiting."
@@ -27,10 +27,10 @@ data:
         password=$(echo $user | jq -r '.password')
         role=$(echo $user | jq -r '.role')
         echo "Creating user $name with role $role"
-        USER_RESPONSE=$(wget --quiet --method=POST --header="Content-Type: application/json" --body-data="{\"name\":\"$name\",\"email\":\"$email\",\"login\":\"$name\",\"password\":\"$password\"}" --output-document - http://$GF_SECURITY_ADMIN_USER:$GF_SECURITY_ADMIN_PASSWORD@localhost:3000/api/admin/users)
-        USER_ID=$(echo $USER_RESPONSE | grep -o '"id":[0-9]*' | grep -o '[0-9]*')
+        USER_RESPONSE=$(curl -s -XPOST http://$GF_SECURITY_ADMIN_USER:$GF_SECURITY_ADMIN_PASSWORD@localhost:3000/api/admin/users -H "Content-Type: application/json" -d "{\"name\":\"$name\",\"email\":\"$email\",\"login\":\"$name\",\"password\":\"$password\"}")
+        USER_ID=$(echo $USER_RESPONSE | jq -r '.id')
         echo "Setting role for user $name to $role"
-        wget --quiet --method=PUT --header="Content-Type: application/json" --body-data="{\"role\":\"$role\"}" --output-document - http://$GF_SECURITY_ADMIN_USER:$GF_SECURITY_ADMIN_PASSWORD@localhost:3000/api/orgs/1/users/${USER_ID}
+        curl -s -XPUT http://$GF_SECURITY_ADMIN_USER:$GF_SECURITY_ADMIN_PASSWORD@localhost:3000/api/orgs/1/users/${USER_ID} -H "Content-Type: application/json" -d "{\"role\":\"$role\"}"
       done
     else
       echo "Secret does not exist. Skipping user creation."
