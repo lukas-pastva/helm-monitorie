@@ -24,7 +24,7 @@ spec:
       automountServiceAccountToken: true
       initContainers:
         - name: create-grafana-users
-          image: busybox
+          image: alpine:latest
           command:
             - /bin/sh
             - -c
@@ -32,7 +32,7 @@ spec:
               echo "Checking for the existence of the secret..."
               if [ -f /etc/grafana-users-secret/GRAFANA_USERS ]; then
                 echo "Secret exists. Proceeding to create users..."
-                USERS=$(cat /etc/grafana-users-secret/GRAFANA_USERS | base64 --decode)
+                USERS=$(cat /etc/grafana-users-secret/GRAFANA_USERS | base64 -d)
                 echo "Waiting for Grafana to be ready..."
                 until curl --fail --silent http://localhost:3000/api/health; do
                   sleep 5
