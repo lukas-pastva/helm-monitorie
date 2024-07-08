@@ -108,7 +108,6 @@ spec:
             requests:
               cpu: 10m
               memory: 20Mi
-      restartPolicy: OnFailure
       enableServiceLinks: true
       securityContext:
         fsGroup: 472
