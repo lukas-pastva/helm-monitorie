@@ -102,6 +102,12 @@ spec:
               mountPath: /etc/scripts
             - name: grafana-logs
               mountPath: /var/log
+          resources:
+            limits:
+              memory: 50Mi
+            requests:
+              cpu: 10m
+              memory: 20Mi
       restartPolicy: OnFailure
       enableServiceLinks: true
       securityContext:
