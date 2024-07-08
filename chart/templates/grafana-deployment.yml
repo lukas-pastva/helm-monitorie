@@ -78,9 +78,6 @@ spec:
               name: grafana-datasource
             - name: grafana-dashboards
               mountPath: /etc/grafana/provisioning/dashboards/
-            - name: grafana-users-secret
-              mountPath: /etc/grafana-users-secret
-              readOnly: true
         {{- if .Values.grafana.createUsers }}
         - name: user-creation
           image: badouralix/curl-jq
@@ -101,8 +98,6 @@ spec:
               readOnly: true
             - name: user-creation-script
               mountPath: /etc/scripts
-            - name: grafana-logs
-              mountPath: /var/log
           resources:
             limits:
               memory: 50Mi
@@ -162,11 +157,11 @@ spec:
               - key: dashboard-wp.json
                 path: {{- if eq .Values.grafana.dashboards.wpEnabled "default" }} default.json{{ else }} dashboard-wp.json{{ end }}
 {{ end }}
+{{- if .Values.grafana.createUsers }}
         - name: grafana-users-secret
           secret:
             secretName: grafana-users-secret
         - name: user-creation-script
           configMap:
             name: grafana-user-creation-script
-        - name: grafana-logs
-          emptyDir: {}
+{{ end }}
