@@ -21,17 +21,34 @@ data:
         sleep 5
       done
       echo "Grafana is ready. Creating users..."
+      sleep 10
       for user in $(echo $USERS | jq -c '.[]'); do
         name=$(echo $user | jq -r '.name')
         email=$(echo $user | jq -r '.email')
         password=$(echo $user | jq -r '.password')
         role=$(echo $user | jq -r '.role')
-        echo "Creating user $name with role $role"
-        USER_RESPONSE=$(curl -s -XPOST http://$GF_SECURITY_ADMIN_USER:$GF_SECURITY_ADMIN_PASSWORD@localhost:3000/api/admin/users -H "Content-Type: application/json" -d "{\"name\":\"$name\",\"email\":\"$email\",\"login\":\"$name\",\"password\":\"$password\"}")
-        USER_ID=$(echo $USER_RESPONSE | jq -r '.id')
-        echo "Setting role for user $name to $role"
-        curl -s -XPUT http://$GF_SECURITY_ADMIN_USER:$GF_SECURITY_ADMIN_PASSWORD@localhost:3000/api/orgs/1/users/${USER_ID} -H "Content-Type: application/json" -d "{\"role\":\"$role\"}"
+        
+        echo "Checking if user $name exists..."
+        EXISTING_USER=$(curl -s -X GET http://$GF_SECURITY_ADMIN_USER:$GF_SECURITY_ADMIN_PASSWORD@localhost:3000/api/users/lookup?loginOrEmail=$email)
+        EXISTING_USER_ID=$(echo $EXISTING_USER | jq -r '.id')
+        
+        if [ "$EXISTING_USER_ID" != "null" ]; then
+          echo "User $name already exists with ID $EXISTING_USER_ID. Updating role to $role."
+          curl -X PATCH http://$GF_SECURITY_ADMIN_USER:$GF_SECURITY_ADMIN_PASSWORD@localhost:3000/api/orgs/1/users/$EXISTING_USER_ID -H "Content-Type: application/json" -d "{\"role\":\"$role\"}"
+        else
+          echo "Creating user $name with role $role"
+          USER_RESPONSE=$(curl -s -X POST http://$GF_SECURITY_ADMIN_USER:$GF_SECURITY_ADMIN_PASSWORD@localhost:3000/api/admin/users -H "Content-Type: application/json" -d "{\"name\":\"$name\",\"email\":\"$email\",\"login\":\"$name\",\"password\":\"$password\"}")
+          USER_ID=$(echo $USER_RESPONSE | jq -r '.id')
+          echo "USER_ID: $USER_ID"
+          if [ "$USER_ID" != "null" ]; then
+            echo "Setting role for user $name to $role"
+            curl -X PATCH http://$GF_SECURITY_ADMIN_USER:$GF_SECURITY_ADMIN_PASSWORD@localhost:3000/api/orgs/1/users/$USER_ID -H "Content-Type: application/json" -d "{\"role\":\"$role\"}"
+          else
+            echo "Failed to create user $name"
+          fi
+        fi
       done
     else
       echo "Secret does not exist. Skipping user creation."
     fi
+    exit 0

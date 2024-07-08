@@ -42,20 +42,29 @@ spec:
               value: /etc/grafana/provisioning
           image: 'grafana/grafana:10.4.3'
           livenessProbe:
-            failureThreshold: 10
+            failureThreshold: 5
             httpGet:
               path: /api/health
               port: 3000
+              scheme: HTTP
             initialDelaySeconds: 60
-            timeoutSeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
           ports:
             - containerPort: 3000
               name: grafana
               protocol: TCP
           readinessProbe:
+            failureThreshold: 3
             httpGet:
               path: /api/health
               port: 3000
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
           resources:
             limits:
               memory: 150Mi
