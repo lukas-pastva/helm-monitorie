@@ -24,7 +24,7 @@ spec:
       automountServiceAccountToken: true
       initContainers:
         - name: create-grafana-users
-          image: alpine:latest
+          image: curlimages/curl:latest
           command:
             - /bin/sh
             - -c
