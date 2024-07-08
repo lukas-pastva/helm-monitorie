@@ -1,3 +1,4 @@
+{{- if .Values.grafana.createUsers }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -58,3 +59,4 @@ data:
     fi
     echo "User creation script completed. Sleeping indefinitely..."
     sleep infinity
+{{ end }}
