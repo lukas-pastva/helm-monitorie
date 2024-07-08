@@ -90,10 +90,10 @@ spec:
                         password=$(echo $user | jq -r '.password')
                         role=$(echo $user | jq -r '.role')
                         echo "Creating user $name with role $role"
-                        USER_RESPONSE=$(curl -XPOST http://admin:admin@localhost:3000/api/admin/users -H "Content-Type: application/json" -d "{\"name\":\"$name\",\"email\":\"$email\",\"login\":\"$name\",\"password\":\"$password\"}")
+                        USER_RESPONSE=$(curl -XPOST http://$GF_SECURITY_ADMIN_USER:$GF_SECURITY_ADMIN_PASSWORD@localhost:3000/api/admin/users -H "Content-Type: application/json" -d "{\"name\":\"$name\",\"email\":\"$email\",\"login\":\"$name\",\"password\":\"$password\"}")
                         USER_ID=$(echo $USER_RESPONSE | grep -o '"id":[0-9]*' | grep -o '[0-9]*')
                         echo "Setting role for user $name to $role"
-                        curl -XPUT http://admin:admin@localhost:3000/api/orgs/1/users/${USER_ID} -H "Content-Type: application/json" -d "{\"role\":\"$role\"}"
+                        curl -XPUT http://$GF_SECURITY_ADMIN_USER:$GF_SECURITY_ADMIN_PASSWORD@localhost:3000/api/orgs/1/users/${USER_ID} -H "Content-Type: application/json" -d "{\"role\":\"$role\"}"
                       done
                     else
                       echo "Secret does not exist. Skipping user creation."
