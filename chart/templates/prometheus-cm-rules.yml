@@ -78,16 +78,18 @@ data:
             for: 5m
             labels:
               severity: warning
-
+  {{- end  }}
+  {{- if .Values.prometheus.rulesSystem.enableElasticsearchIndexWithWriteSuffix }}
           - alert: ElasticsearchIndexWithWriteSuffix
             annotations:
               description: "{{ include "helmMonitorie.name" . }} - Index with _write suffix detected."
               summary: "{{ include "helmMonitorie.name" . }} - Index with _write suffix detected."
-            expr: count(conveior_elasticsearch_indices{index=~".*_write"}) > 0
+            expr: count(conveior_elasticsearch_indices_store_size{index=~".*_write"}) > 0
             for: 5m
             labels:
               severity: warning
-
+  {{- end  }}
+  {{- if .Values.prometheus.rulesSystem.enableMissingElasticsearchIndex }}
           - alert: MissingElasticsearchIndex
             annotations:
               description: "{{ include "helmMonitorie.name" . }} - One or more indices are missing for the past 7 days."
@@ -95,16 +97,16 @@ data:
             expr: |
               (
                 (
-                  count(elasticsearch_indices{index=~"events-.*"}) < 1 or
-                  count(elasticsearch_indices{index=~"pageviews-.*"}) < 1 or
-                  count(elasticsearch_indices{index=~"pageviews_progress-.*"}) < 1 or
-                  count(elasticsearch_indices{index=~"pageviews_time_spent-.*"}) < 1 or
-                  count(elasticsearch_indices{index=~"commerce-.*"}) < 1 or
-                  count(elasticsearch_indices{index=~"concurrents_by_browser-.*"}) < 1 or
-                  count(elasticsearch_indices{index=~"entities-.*"}) < 1
+                  count(conveior_elasticsearch_indices_store_size{index=~"events-.*"}) < 1 or
+                  count(conveior_elasticsearch_indices_store_size{index=~"pageviews-.*"}) < 1 or
+                  count(conveior_elasticsearch_indices_store_size{index=~"pageviews_progress-.*"}) < 1 or
+                  count(conveior_elasticsearch_indices_store_size{index=~"pageviews_time_spent-.*"}) < 1 or
+                  count(conveior_elasticsearch_indices_store_size{index=~"commerce-.*"}) < 1 or
+                  count(conveior_elasticsearch_indices_store_size{index=~"concurrents_by_browser-.*"}) < 1 or
+                  count(conveior_elasticsearch_indices_store_size{index=~"entities-.*"}) < 1
                 ) and
                 (
-                  time() - timestamp(elasticsearch_indices) < 7 * 24 * 60 * 60
+                  time() - timestamp(conveior_elasticsearch_indices_store_size) < 7 * 24 * 60 * 60
                 )
               ) > 0
             for: 15m

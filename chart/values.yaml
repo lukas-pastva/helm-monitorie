@@ -31,6 +31,8 @@ prometheus:
     enableHighSwapUsage: true
     enableContainerDown: true
     enableElasticSearchIndices: true
+    enableElasticsearchIndexWithWriteSuffix: true
+    enableMissingElasticsearchIndex: true
     enableLokiErrors: true
     enableLokiHighErrors: true
   extraRules: {}
