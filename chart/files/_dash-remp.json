@@ -254,7 +254,7 @@
             "h": 5,
             "w": 6,
             "x": 0,
-            "y": 4
+            "y": 7
           },
           "id": 79,
           "options": {
@@ -351,7 +351,7 @@
             "h": 5,
             "w": 18,
             "x": 6,
-            "y": 4
+            "y": 7
           },
           "id": 107,
           "options": {
@@ -447,7 +447,7 @@
             "h": 5,
             "w": 6,
             "x": 0,
-            "y": 9
+            "y": 12
           },
           "id": 104,
           "options": {
@@ -545,7 +545,7 @@
             "h": 5,
             "w": 14,
             "x": 6,
-            "y": 9
+            "y": 12
           },
           "id": 110,
           "options": {
@@ -641,7 +641,7 @@
             "h": 5,
             "w": 4,
             "x": 20,
-            "y": 9
+            "y": 12
           },
           "id": 98,
           "options": {
@@ -737,7 +737,7 @@
             "h": 5,
             "w": 6,
             "x": 0,
-            "y": 14
+            "y": 17
           },
           "id": 99,
           "options": {
@@ -833,7 +833,7 @@
             "h": 5,
             "w": 14,
             "x": 6,
-            "y": 14
+            "y": 17
           },
           "id": 100,
           "options": {
@@ -930,7 +930,7 @@
             "h": 5,
             "w": 4,
             "x": 20,
-            "y": 14
+            "y": 17
           },
           "id": 106,
           "options": {
@@ -1026,7 +1026,7 @@
             "h": 5,
             "w": 6,
             "x": 0,
-            "y": 19
+            "y": 22
           },
           "id": 109,
           "options": {
@@ -1124,7 +1124,7 @@
             "h": 5,
             "w": 18,
             "x": 6,
-            "y": 19
+            "y": 22
           },
           "id": 103,
           "options": {
@@ -1222,7 +1222,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "dark-blue"
+                    "color": "dark-blue",
+                    "value": null
                   }
                 ]
               }
@@ -1315,7 +1316,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "dark-blue"
+                    "color": "dark-blue",
+                    "value": null
                   }
                 ]
               }
@@ -1416,7 +1418,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "dark-blue"
+                    "color": "dark-blue",
+                    "value": null
                   }
                 ]
               }
@@ -2151,8 +2154,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
-        "w": 4,
+        "h": 3,
+        "w": 2,
         "x": 12,
         "y": 12
       },
@@ -2194,6 +2197,104 @@
       ],
       "title": "Boot time",
       "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P5DCFC7561CCDE821"
+      },
+      "description": "System health and response time",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "hidden",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "dateTimeAsSystem"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 2,
+        "x": 14,
+        "y": 12
+      },
+      "id": 188,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P5DCFC7561CCDE821"
+          },
+          "editorMode": "code",
+          "expr": "conveior_hwHeartbeat{entity=\"$entity\"}*1000",
+          "legendFormat": "{{job}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Heartbeat",
+      "type": "timeseries"
     },
     {
       "datasource": {
@@ -2334,6 +2435,104 @@
       ],
       "title": "SQL global_interactive_timeout",
       "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P5DCFC7561CCDE821"
+      },
+      "description": "Container start-up times",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "hidden",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "dateTimeAsSystem"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 12,
+        "y": 15
+      },
+      "id": 25,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P5DCFC7561CCDE821"
+          },
+          "editorMode": "code",
+          "expr": "conveior_hwDockerLs{entity=\"$entity\"}*1000",
+          "legendFormat": "{{label_name}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Containers start up",
+      "type": "timeseries"
     },
     {
       "datasource": {
@@ -2848,7 +3047,7 @@
         "type": "prometheus",
         "uid": "P5DCFC7561CCDE821"
       },
-      "description": "System health and response time",
+      "description": "Elasticsearch indices over time",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2859,7 +3058,7 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "hidden",
+            "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 0,
@@ -2870,8 +3069,8 @@
               "viz": false
             },
             "insertNulls": false,
-            "lineInterpolation": "smooth",
-            "lineWidth": 1,
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
             "pointSize": 3,
             "scaleDistribution": {
               "type": "linear"
@@ -2883,7 +3082,7 @@
               "mode": "none"
             },
             "thresholdsStyle": {
-              "mode": "off"
+              "mode": "line"
             }
           },
           "mappings": [],
@@ -2893,24 +3092,20 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           },
-          "unit": "dateTimeAsSystem"
+          "unit": "bytes"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 6,
-        "w": 4,
+        "w": 5,
         "x": 16,
         "y": 18
       },
-      "id": 188,
+      "id": 484,
       "options": {
         "legend": {
           "calcs": [
@@ -2918,7 +3113,9 @@
           ],
           "displayMode": "table",
           "placement": "right",
-          "showLegend": false
+          "showLegend": false,
+          "sortBy": "Last *",
+          "sortDesc": true
         },
         "tooltip": {
           "mode": "multi",
@@ -2932,13 +3129,16 @@
             "uid": "P5DCFC7561CCDE821"
           },
           "editorMode": "code",
-          "expr": "conveior_hwHeartbeat{entity=\"$entity\"}*1000",
-          "legendFormat": "{{job}}",
+          "exemplar": true,
+          "expr": "avg(conveior_elasticsearch_indices_store_size{index!~\"\\\\..*\", index=~\"$elastic_index_filter.*\"}) by (index,health)",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{index}}",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Heartbeat",
+      "title": "Elasticsearch indices",
       "type": "timeseries"
     },
     {
@@ -2946,80 +3146,47 @@
         "type": "prometheus",
         "uid": "P5DCFC7561CCDE821"
       },
-      "description": "Container start-up times",
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "hidden",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "smooth",
-            "lineWidth": 1,
-            "pointSize": 3,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
             }
           },
           "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "dateTimeAsSystem"
+          "unit": "bytes"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 6,
-        "w": 4,
-        "x": 20,
+        "w": 3,
+        "x": 21,
         "y": 18
       },
-      "id": 25,
+      "id": 485,
       "options": {
         "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "pieType": "pie",
+        "reduceOptions": {
           "calcs": [
             "lastNotNull"
           ],
-          "displayMode": "table",
-          "placement": "right",
-          "showLegend": false
+          "fields": "",
+          "values": true
         },
         "tooltip": {
-          "mode": "multi",
+          "mode": "single",
           "sort": "none"
         }
       },
@@ -3030,14 +3197,15 @@
             "uid": "P5DCFC7561CCDE821"
           },
           "editorMode": "code",
-          "expr": "conveior_hwDockerLs{entity=\"$entity\"}*1000",
+          "exemplar": false,
+          "expr": "topk(10, max(conveior_elasticsearch_indices_store_size{index!~\"\\\\..*\"}) by (index))",
+          "instant": true,
           "legendFormat": "{{label_name}}",
-          "range": true,
+          "range": false,
           "refId": "A"
         }
       ],
-      "title": "Containers start up",
-      "type": "timeseries"
+      "type": "piechart"
     },
     {
       "datasource": {
@@ -3554,7 +3722,7 @@
             "h": 4,
             "w": 24,
             "x": 0,
-            "y": 31
+            "y": 39
           },
           "id": 356,
           "maxPerRow": 2,
@@ -3610,7 +3778,7 @@
             "h": 4,
             "w": 24,
             "x": 0,
-            "y": 17
+            "y": 25
           },
           "id": 379,
           "maxPerRow": 2,
@@ -3664,7 +3832,7 @@
             "h": 4,
             "w": 24,
             "x": 0,
-            "y": 12
+            "y": 20
           },
           "id": 435,
           "maxPerRow": 2,
@@ -3717,7 +3885,7 @@
             "h": 4,
             "w": 24,
             "x": 0,
-            "y": 13
+            "y": 21
           },
           "id": 436,
           "maxPerRow": 2,
@@ -3981,6 +4149,25 @@
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "hide": 2,
+        "name": "elastic_index_filter",
+        "options": [
+          {
+            "selected": true,
+            "text": "",
+            "value": ""
+          }
+        ],
+        "query": "",
+        "skipUrlSync": false,
+        "type": "textbox"
       }
     ]
   },
@@ -3992,6 +4179,6 @@
   "timezone": "",
   "title": "Dashboard",
   "uid": "remp",
-  "version": 3,
+  "version": 1,
   "weekStart": ""
 }
