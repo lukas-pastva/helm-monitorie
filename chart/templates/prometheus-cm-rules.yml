@@ -78,6 +78,38 @@ data:
             for: 5m
             labels:
               severity: warning
+
+          - alert: ElasticsearchIndexWithWriteSuffix
+            annotations:
+              description: "{{ include "helmMonitorie.name" . }} - Index with _write suffix detected."
+              summary: "{{ include "helmMonitorie.name" . }} - Index with _write suffix detected."
+            expr: count(conveior_elasticsearch_indices{index=~".*_write"}) > 0
+            for: 5m
+            labels:
+              severity: warning
+
+          - alert: MissingElasticsearchIndex
+            annotations:
+              description: "{{ include "helmMonitorie.name" . }} - One or more indices are missing for the past 7 days."
+              summary: "{{ include "helmMonitorie.name" . }} - One or more indices are missing for the past 7 days."
+            expr: |
+              (
+                (
+                  count(elasticsearch_indices{index=~"events-.*"}) < 1 or
+                  count(elasticsearch_indices{index=~"pageviews-.*"}) < 1 or
+                  count(elasticsearch_indices{index=~"pageviews_progress-.*"}) < 1 or
+                  count(elasticsearch_indices{index=~"pageviews_time_spent-.*"}) < 1 or
+                  count(elasticsearch_indices{index=~"commerce-.*"}) < 1 or
+                  count(elasticsearch_indices{index=~"concurrents_by_browser-.*"}) < 1 or
+                  count(elasticsearch_indices{index=~"entities-.*"}) < 1
+                ) and
+                (
+                  time() - timestamp(elasticsearch_indices) < 7 * 24 * 60 * 60
+                )
+              ) > 0
+            for: 15m
+            labels:
+              severity: warning
   {{- end  }}
   {{- if .Values.prometheus.rulesSystem.enableLokiErrors }}
           - alert: LokiErrors
