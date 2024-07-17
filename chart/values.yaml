@@ -71,3 +71,10 @@ secrets:
 #  lokiS3SecretKey: ""
 
 extraObjects: []
+  # - apiVersion: v1
+  #   data:
+  #     GRAFANA_USERS: [{"name": "viewer", "email": "email@domain.com", "password": "pass", "role": "viewer"}]
+  #   kind: Secret
+  #   metadata:
+  #     name: grafana-users-secret
+  #   type: Opaque
