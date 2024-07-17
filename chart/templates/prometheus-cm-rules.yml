@@ -95,20 +95,33 @@ data:
               description: "{{ include "helmMonitorie.name" . }} - One or more indices are missing for the past 7 days."
               summary: "{{ include "helmMonitorie.name" . }} - One or more indices are missing for the past 7 days."
             expr: |
-              (
                 (
-                  count(conveior_elasticsearch_indices_store_size{index=~"events-.*"}) < 1 or
-                  count(conveior_elasticsearch_indices_store_size{index=~"pageviews-.*"}) < 1 or
-                  count(conveior_elasticsearch_indices_store_size{index=~"pageviews_progress-.*"}) < 1 or
-                  count(conveior_elasticsearch_indices_store_size{index=~"pageviews_time_spent-.*"}) < 1 or
-                  count(conveior_elasticsearch_indices_store_size{index=~"commerce-.*"}) < 1 or
-                  count(conveior_elasticsearch_indices_store_size{index=~"concurrents_by_browser-.*"}) < 1 or
-                  count(conveior_elasticsearch_indices_store_size{index=~"entities-.*"}) < 1
-                ) and
-                (
-                  time() - timestamp(conveior_elasticsearch_indices_store_size) < 7 * 24 * 60 * 60
+                  (time() * 1000 - max by (index) (creation_date{index=~"^events-.*"})) > 7 * 24 * 60 * 60 * 1000
                 )
-              ) > 0
+                or
+                (
+                  (time() * 1000 - max by (index) (creation_date{index=~"^pageviews-.*"})) > 7 * 24 * 60 * 60 * 1000
+                )
+                or
+                (
+                  (time() * 1000 - max by (index) (creation_date{index=~"^pageviews_progress-.*"})) > 7 * 24 * 60 * 60 * 1000
+                )
+                or
+                (
+                  (time() * 1000 - max by (index) (creation_date{index=~"^pageviews_time_spent-.*"})) > 7 * 24 * 60 * 60 * 1000
+                )
+                or
+                (
+                  (time() * 1000 - max by (index) (creation_date{index=~"^commerce-.*"})) > 7 * 24 * 60 * 60 * 1000
+                )
+                or
+                (
+                  (time() * 1000 - max by (index) (creation_date{index=~"^concurrents_by_browser-.*"})) > 7 * 24 * 60 * 60 * 1000
+                )
+                or
+                (
+                  (time() * 1000 - max by (index) (creation_date{index=~"^entities-.*"})) > 7 * 24 * 60 * 60 * 1000
+                )
             for: 15m
             labels:
               severity: warning
