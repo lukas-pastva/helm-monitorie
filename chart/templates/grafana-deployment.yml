@@ -93,8 +93,8 @@ spec:
             - /bin/sh
             - /etc/scripts/create-users.sh
           volumeMounts:
-            - name: grafana-users-secret
-              mountPath: /etc/grafana-users-secret
+            - name: grafana-users
+              mountPath: /etc/grafana-users
               readOnly: true
             - name: user-creation-script
               mountPath: /etc/scripts
@@ -158,9 +158,9 @@ spec:
                 path: {{- if eq .Values.grafana.dashboards.wpEnabled "default" }} default.json{{ else }} dashboard-wp.json{{ end }}
 {{ end }}
 {{- if .Values.grafana.createUsers }}
-        - name: grafana-users-secret
+        - name: grafana-users
           secret:
-            secretName: grafana-users-secret
+            secretName: grafana-users
         - name: user-creation-script
           configMap:
             name: grafana-user-creation-script

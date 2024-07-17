@@ -24,7 +24,7 @@ helm repo update
 apiVersion: v1
 kind: Secret
 metadata:
-  name: grafana-users-secret
+  name: grafana-users
   namespace: TODO
 type: Opaque
 data:

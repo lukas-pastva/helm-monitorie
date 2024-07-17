@@ -76,5 +76,5 @@ extraObjects: []
   #     GRAFANA_USERS: [{"name": "viewer", "email": "email@domain.com", "password": "pass", "role": "viewer"}]
   #   kind: Secret
   #   metadata:
-  #     name: grafana-users-secret
+  #     name: grafana-users
   #   type: Opaque

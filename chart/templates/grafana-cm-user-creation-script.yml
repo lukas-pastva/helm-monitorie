@@ -8,9 +8,9 @@ data:
   create-users.sh: |
     #!/bin/sh
     echo "Checking for the existence of the secret..."
-    if [ -f /etc/grafana-users-secret/GRAFANA_USERS ]; then
+    if [ -f /etc/grafana-users/GRAFANA_USERS ]; then
       echo "Secret exists. Proceeding to create users..."
-      USERS=$(cat /etc/grafana-users-secret/GRAFANA_USERS)
+      USERS=$(cat /etc/grafana-users/GRAFANA_USERS)
       echo "Waiting for Grafana to be ready..."
       RETRIES=0
       until curl --fail --silent http://localhost:3000/api/health; do
