@@ -94,34 +94,7 @@ data:
             annotations:
               description: "{{ include "helmMonitorie.name" . }} - One or more indices are missing for the past 7 days."
               summary: "{{ include "helmMonitorie.name" . }} - One or more indices are missing for the past 7 days."
-            expr: |
-                (
-                  (time() * 1000 - max by (index) (creation_date{index=~"^events-.*"})) > 7 * 24 * 60 * 60 * 1000
-                )
-                or
-                (
-                  (time() * 1000 - max by (index) (creation_date{index=~"^pageviews-.*"})) > 7 * 24 * 60 * 60 * 1000
-                )
-                or
-                (
-                  (time() * 1000 - max by (index) (creation_date{index=~"^pageviews_progress-.*"})) > 7 * 24 * 60 * 60 * 1000
-                )
-                or
-                (
-                  (time() * 1000 - max by (index) (creation_date{index=~"^pageviews_time_spent-.*"})) > 7 * 24 * 60 * 60 * 1000
-                )
-                or
-                (
-                  (time() * 1000 - max by (index) (creation_date{index=~"^commerce-.*"})) > 7 * 24 * 60 * 60 * 1000
-                )
-                or
-                (
-                  (time() * 1000 - max by (index) (creation_date{index=~"^concurrents_by_browser-.*"})) > 7 * 24 * 60 * 60 * 1000
-                )
-                or
-                (
-                  (time() * 1000 - max by (index) (creation_date{index=~"^entities-.*"})) > 7 * 24 * 60 * 60 * 1000
-                )
+            expr: (time() *1000 - max by (prefix) (label_replace(conveior_elasticsearch_index_creation_date{index!~"^\\..*"},"prefix","$1","index","^(.*?)-.*"))) > 7 * 24 * 60 * 60 * 1000
             for: 15m
             labels:
               severity: warning
